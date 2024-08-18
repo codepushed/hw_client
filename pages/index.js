@@ -1,16 +1,11 @@
 import React from "react";
-import Head from "next/head";
-import { useRouter } from "next/router";
+
+import { LandingSeo } from "../components/Seo";
 
 const Home = () => {
-  const router = useRouter();
   return (
     <div className="landingContainer">
-      <Head>
-      <link rel="icon" href="/hw_small.png" type="image/x-icon" />
-      <link rel="shortcut icon" href="/hw_small.png" type="image/x-icon" />
-        <title>Homework - Service at your doorstep</title>
-      </Head>
+      <LandingSeo />
 
       <div className="comingSoonContainer">
         <h1>One Tap to </h1>
