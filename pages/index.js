@@ -29,8 +29,6 @@ const Home = () => {
             <p>we've got you covered!</p>
           </div>
         </div>
-
-        {/* <img src="/assets/icons/brushIcon.png" alt="bucket" /> */}
       </div>
       <SearchBox />
     </div>
