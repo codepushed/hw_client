@@ -1,0 +1,44 @@
+.basicRoundedButton {
+  background-color: #ff8c8c;
+  color: #fff;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif !important;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.basicRoundedButton-2 {
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif !important;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.buttonWithIcon {
+  background-color: #ff8c8c;
+  color: #000;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif !important;
+  border: none;
+  outline: none;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buttonIcon {
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+}

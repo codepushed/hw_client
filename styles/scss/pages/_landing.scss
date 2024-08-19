@@ -1,0 +1,82 @@
+.headerContainer {
+  margin-top: 10px;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLogo > h1 {
+  font-family: "Pattaya", sans-serif !important;
+  color: #ff8c8c;
+  font-size: 40px;
+  font-weight: 400;
+}
+.headerLogo > p {
+  color: #000;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 0px;
+}
+
+.headerButtonContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerlistContainer {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 20px;
+}
+
+.landingContainerHeading {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+  text-align: center;
+  position: absolute;
+}
+
+.landingContainerHeading > h1 {
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 100px;
+}
+
+.landingContainerSubHeading {
+  margin-top: 12px;
+}
+
+.landingContainerSubHeading > p {
+  color: #958f8f;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.landingContainerHeaderContent {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 30px;
+}
+
+.landingContainerImg {
+  position: relative;
+  height: 200px;
+  width: 200px;
+}
+
+.bucketIcon {
+  position: absolute;
+  height: 100%;
+}
