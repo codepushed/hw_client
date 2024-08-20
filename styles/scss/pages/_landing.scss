@@ -80,3 +80,91 @@
   position: absolute;
   height: 100%;
 }
+
+.landingOfferHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  position: relative;
+}
+
+.landingOfferHeader > h1 {
+  font-size: 60px;
+  z-index: 1;
+}
+
+.landingOfferHeader > p {
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+.landingOfferLeft {
+  position: absolute;
+  height: 80%;
+  top: -10%;
+  z-index: 0;
+}
+
+.landingOfferLeft > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  z-index: 0;
+}
+
+.landingOfferCenter {
+  height: 50%;
+  width: 50%;
+  z-index: 1;
+}
+
+.landingOfferCenter > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.landingOfferCenterContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+
+.landingOfferRight {
+  position: absolute;
+  height: 80%;
+  top: 30%;
+  z-index: 0;
+  right: 0;
+}
+
+.landingOfferRight > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.landingOfferNotification {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 1;
+}
+
+.landingOfferNotification > div {
+  width: 100%;
+}
+
+.landingOfferContainer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.notificationRight {
+  right: 0% !important;
+}

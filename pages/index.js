@@ -3,6 +3,7 @@ import React from "react";
 import { LandingSeo } from "../components/Seo";
 import Header from "../components/Header";
 import SearchBox from "../components/SearchBox";
+import Notification from "../components/Notification";
 
 const Home = () => {
   return (
@@ -31,6 +32,46 @@ const Home = () => {
         </div>
       </div>
       <SearchBox />
+
+      <div className="landingOfferContainer">
+        <div className="landingOfferHeader">
+          <h1>From Repairs to Cleaning We've Got You</h1>
+          <p>Top rated services at your fingertips</p>
+        </div>
+
+        <div className="landingOfferNotification">
+          <div>
+          <Notification
+            title="30% Off on Cleaning Services! 🚀"
+            desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+          />
+          </div>
+        </div>
+
+        <div className="landingOfferLeft">
+          <img src="/assets/visuals/leftLine.png" alt="left" />
+        </div>
+
+        {/* <div className="landingOfferNotification notificationRight">
+
+          <div>
+          <Notification
+            title="30% Off on Cleaning Services! 🚀"
+            desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+          />
+          </div>
+        </div> */}
+
+        <div className="landingOfferCenterContainer">
+          <div className="landingOfferCenter">
+            <img src="/assets/person.png" alt="person" />
+          </div>
+        </div>
+
+        <div className="landingOfferRight">
+          <img src="/assets/visuals/rightLine.png" alt="left" />
+        </div>
+      </div>
     </div>
   );
 };
