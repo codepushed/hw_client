@@ -1,0 +1,48 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: start;
+}
+
+.loginLeftContent {
+  width: 50%;
+  padding: 0 50px;
+}
+
+.loginRightContent {
+  width: 100%;
+  height: 100%;
+}
+
+.loginRightContent > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.loginLeftContentHeading {
+  margin-top: 100px;
+}
+
+.loginleftContentForm {
+  margin-top: 20px;
+  width: 300px;
+}
+
+.loginleftContentForm > input {
+  border: 1px solid #d4d1d1;
+  border-radius: 4px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 5px;
+  outline: darkgray;
+  width: 100%;
+}
+
+.loginleftContentForm > p {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #000;
+}

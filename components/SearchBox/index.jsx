@@ -12,7 +12,11 @@ const SearchBox = () => {
           />
           <p>Enter location</p>
         </div>
-        <input type="text" placeholder="Gwalior, MP" className="searchBoxInput" />
+        <input
+          type="text"
+          placeholder="Gwalior, MP"
+          className="searchBoxInput"
+        />
       </div>
       <div className="searchBoxContent">
         <div className="searchBoxHeader">
@@ -24,7 +28,11 @@ const SearchBox = () => {
           <p>Find a service</p>
         </div>
         <div className="searchboxSearchBtn">
-          <input type="text" placeholder="Plumbering" className="searchBoxInput" />
+          <input
+            type="text"
+            placeholder="Plumbering"
+            className="searchBoxInput"
+          />
           <button className="buttonWithIcon">
             <img
               src="/assets/icons/search.png"
