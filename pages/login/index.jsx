@@ -14,7 +14,6 @@ const Login = () => {
             <p>Log in to get things moving</p>
           </div>
 
-
           <div className="loginleftContentForm">
             <p>What's your email?</p>
             <input type="text" placeholder="hi@gmail.com" />
@@ -30,16 +29,32 @@ const Login = () => {
             </button>
           </div>
 
-          <p>Forgot password</p>
+          <div className="loginleftContentSignup">
+            <p>Forgot password</p>
+            
+          </div>
 
-          <span>
-            <p>Don't have an account?</p> Signup
-          </span>
+          <div className="loginLeftContentSignupPara ">
+            <p>Don't have an account?</p>
+            <span>Signup</span>
+          </div>
 
-          {/* <div>
+         
+
+          <div className="loginleftContentSignup loginAlternative">
             <p>Or</p>
-            <button>Login with google</button>
-          </div> */}
+          </div>
+          
+          <div className="loginWithGooglebtnContainer">
+            <button className="buttonWithIcon loginWithGoogleIcon">
+              <img
+                src="/assets/googleIcon.png"
+                alt="google"
+                className="googleIcon"
+              />
+              Login with google
+            </button>
+          </div>
         </div>
 
         <div className="loginRightContent">

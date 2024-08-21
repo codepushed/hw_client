@@ -43,11 +43,21 @@
   object-fit: contain;
 }
 
-
 .basiclongBtn {
   border-radius: 4px !important;
   color: #fff !important;
   width: 100% !important;
   padding-top: 12px !important;
   padding-bottom: 12px !important;
+}
+
+.loginWithGoogleIcon {
+  background-color: #fff !important;
+  border: 1px solid #dfdfdf;
+}
+
+.googleIcon {
+  height: 35px;
+  width: 35px;
+  object-fit: contain;
 }
