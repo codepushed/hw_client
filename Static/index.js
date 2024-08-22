@@ -16,3 +16,12 @@ export const featureNotifications = [
     desc: "Experienced technicians ready to fix your appliances. Get quick and reliable repairs.",
   },
 ];
+
+export const kitchenServices = [
+  "Chimney cleaning",
+  "Appliance cleaning",
+  "Cabinets & tiles",
+  "Complete kitchen cleaning",
+  "Move in kitchen cleaning",
+  "Mini services",
+];
