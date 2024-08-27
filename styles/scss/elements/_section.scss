@@ -1,0 +1,84 @@
+.sectionContainer {
+  height: auto;
+  width: 100%;
+  background-color: rgba(115, 144, 249, 0.45);
+  margin-top: 200px;
+}
+
+.sectionHeader {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.sectionHeaderContent > h1 {
+  font-size: 80px;
+  color: #000;
+  font-weight: bold;
+  padding: 40px;
+  padding-bottom: 5px;
+}
+
+.sectionHeaderContent > p {
+  font-size: 60px;
+  font-weight: 200;
+  padding-left: 40px;
+}
+
+.sectionHeaderImg {
+  height: 600px;
+}
+
+.sectionHeaderImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.sectionContent {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.sectionContentRight {
+  flex-direction: row-reverse !important;
+}
+
+.sectionContentImg {
+  height: 300px;
+  width: 300px;
+}
+
+.sectionContentImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.sectionContentTyphographyHead {
+  font-size: 30px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sectionContentTyphographySubHead {
+  font-size: 25px;
+  color: #000;
+  font-weight: lighter;
+  width: 300px;
+  line-height: 35px;
+  margin-left: 5px;
+}
+
+.sectionContentContainer {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

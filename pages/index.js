@@ -4,6 +4,7 @@ import { LandingSeo } from "../components/Seo";
 import Header from "../components/Header";
 import SearchBox from "../components/SearchBox";
 import Notification from "../components/Notification";
+import WhyChooseUsSection from "../components/Section/WhyChooseUsSection";
 
 const Home = () => {
   return (
@@ -39,28 +40,39 @@ const Home = () => {
           <p>Top rated services at your fingertips</p>
         </div>
 
-        <div className="landingOfferNotification">
-          <div>
-          <Notification
-            title="30% Off on Cleaning Services! 🚀"
-            desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
-          />
+        <div className="landingOfferNotificationContainer">
+          <div className="landingOfferNotification">
+            <Notification
+              title="30% Off on Cleaning Services! 🚀"
+              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+            />
+          </div>
+
+          <div className="landingOfferNotification-2">
+            <Notification
+              title="30% Off on Cleaning Services! 🚀"
+              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+            />
+          </div>
+
+          <div className="landingOfferNotification-3">
+            <Notification
+              title="30% Off on Cleaning Services! 🚀"
+              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+            />
+          </div>
+
+          <div className="landingOfferNotification-4">
+            <Notification
+              title="30% Off on Cleaning Services! 🚀"
+              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+            />
           </div>
         </div>
 
         <div className="landingOfferLeft">
           <img src="/assets/visuals/leftLine.png" alt="left" />
         </div>
-
-        {/* <div className="landingOfferNotification notificationRight">
-
-          <div>
-          <Notification
-            title="30% Off on Cleaning Services! 🚀"
-            desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
-          />
-          </div>
-        </div> */}
 
         <div className="landingOfferCenterContainer">
           <div className="landingOfferCenter">
@@ -72,6 +84,8 @@ const Home = () => {
           <img src="/assets/visuals/rightLine.png" alt="left" />
         </div>
       </div>
+
+      <WhyChooseUsSection />
     </div>
   );
 };

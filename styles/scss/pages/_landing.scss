@@ -148,10 +148,36 @@
   object-fit: contain;
 }
 
+
+.landingOfferNotificationContainer {
+  width: 100%;
+  z-index: 1;
+}
+
 .landingOfferNotification {
   position: absolute;
+  left: 3%;
+  z-index: 1;
   top: 20%;
-  left: 5%;
+}
+
+.landingOfferNotification-2 {
+  position: absolute;
+  right: 0%;
+  top: 30%;
+}
+
+.landingOfferNotification-3 {
+  position: absolute;
+  left: 12%;
+  top: 60%;
+  z-index: 1;
+}
+
+.landingOfferNotification-4 {
+  position: absolute;
+  right: 0%;
+  top: 100%;
   z-index: 1;
 }
 

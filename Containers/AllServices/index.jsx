@@ -32,15 +32,15 @@ const AllService = () => {
             <p>See more</p>
           </div>
         </div>
+
+        <div className="servicesOfferContainer"></div>
       </div>
 
       <div className="servicesSubCategoryContainer">
         <h2>Chimney Cleaning</h2>
-
-
         {Array.from({ length: 6 }).map((_, index) => (
-        <ServiceCard />
-      ))}
+          <ServiceCard />
+        ))}
       </div>
     </div>
   );
