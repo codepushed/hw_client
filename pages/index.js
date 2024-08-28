@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import SearchBox from "../components/SearchBox";
 import Notification from "../components/Notification";
 import WhyChooseUsSection from "../components/Section/WhyChooseUsSection";
+import Services from "../components/Section/Services";
 
 const Home = () => {
   return (
@@ -86,6 +87,7 @@ const Home = () => {
       </div>
 
       <WhyChooseUsSection />
+      <Services />
     </div>
   );
 };
