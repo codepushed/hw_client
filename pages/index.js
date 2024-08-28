@@ -7,6 +7,7 @@ import Notification from "../components/Notification";
 import WhyChooseUsSection from "../components/Section/WhyChooseUsSection";
 import Services from "../components/Section/Services";
 import HowItWorks from "../components/Section/HowItWorks";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -90,6 +91,8 @@ const Home = () => {
       <WhyChooseUsSection />
       <Services />
       <HowItWorks />
+
+      <Footer />
     </div>
   );
 };
