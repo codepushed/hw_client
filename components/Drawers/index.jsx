@@ -27,6 +27,7 @@ const Drawers = () => {
           anchor="bottom"
           open={true}
           onClose={() => setIsDrawerOpen(false)}
+          sx={{ width: "80%" }}
         >
           <div className="drawerCloseBtnWrapper drawerCloseBtnSpacing">
             <div className="drawerCloseBtn">x</div>
