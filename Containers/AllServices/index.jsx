@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import ServiceCard from "../../components/Card/ServiceCard";
 
 import { kitchenServices } from "../../Static";
+import Drawers from "../../components/Drawers";
 
 const AllService = () => {
   return (
@@ -42,6 +43,7 @@ const AllService = () => {
           <ServiceCard />
         ))}
       </div>
+      <Drawers />
     </div>
   );
 };

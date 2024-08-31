@@ -1,0 +1,110 @@
+.drawerContainer {
+  padding: 10px 40px;
+}
+
+.drawerContainer > h1 {
+  margin-top: -20px;
+}
+
+.drawerContainer > h2 {
+    margin: 20px 0;
+    font-size: 25px;
+}
+
+.drawerCloseBtn {
+  background-color: #000;
+  border-radius: 50px;
+  padding: 5px;
+  height: 20px;
+  width: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.drawerCloseBtnWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.drawerCloseBtnSpacing {
+  padding: 10px;
+}
+
+.drawerDivider {
+  width: 100%;
+  height: 2px;
+  background-color: #cfcfcf;
+}
+
+
+.drawerUserExperienceContainer {
+  margin-top: 50px;
+}
+
+.drawerUserExperienceHeader {
+  margin-top: 20px;
+}
+
+.drawerUserExperienceHeader > span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.drawerUserExperienceHeader > span > img {
+  height: 25px;
+  width: 25px;
+}
+
+
+.drawerUserExperienceHeader  > p {
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+.drawerUserExperienceContent {
+  margin-top: 50px;
+}
+
+.drawerUserExperienceHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawerUserExperienceRating {
+  border-radius: 6px;
+  background-color: #07794C;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+.drawerUserExperienceRating > img {
+  height: 15px;
+  width: 15px;
+}
+
+.drawerUserExperienceSubHead {
+  color: #8B8B8B;
+  font-weight: 200;
+  font-size: 15px;
+  width: 700px;
+}
+
+.drawerUserExperienceSub {
+  font-size: 15px;
+  color: #000;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.drawerUserExperienceDate {
+  font-size: 13px;
+  color: #8B8B8B;
+  font-weight: 200;
+  font-size: 13px;
+}

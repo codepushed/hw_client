@@ -25,3 +25,15 @@ export const kitchenServices = [
   "Move in kitchen cleaning",
   "Mini services",
 ];
+
+
+export const steps = [
+  {
+    label: "Chimney cleaning",
+    description: `Power steam to remove oil & grease stains from filters. Dirt/ deposits/ oil from chimney exterior.`,
+  },
+  {
+    label: "Stove cleaning",
+    description: `Power steam to clean gas stove burners, stovetop & knobs.`,
+  },
+];
