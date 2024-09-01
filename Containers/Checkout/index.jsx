@@ -1,11 +1,12 @@
 import { Divider } from "@mui/material";
 import React from "react";
+import Slot from "../../components/Modal/Slot";
 
 const Checkout = () => {
   return (
     <div className="checkoutContainer">
       <h1>Checkout</h1>
-
+<Slot />
       <div className="checkoutServiceDetailsBox">
         <div className="checkoutServiceDetails">
           <p>Basic cleaning</p>
