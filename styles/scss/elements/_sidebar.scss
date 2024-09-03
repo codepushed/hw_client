@@ -1,0 +1,36 @@
+.sidebarContainer{
+    border-radius: 16px;
+    border: 1px solid #B8B8B8;
+    width: 200px;
+    height: 150px;
+    margin-top: 50px;
+}
+
+.sidebarList {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.activeSidebarList {
+    width: 2px;
+    background-color: #FF8C8C;
+    height: 100%;
+}
+
+.sidebarListActive{
+    background-color: rgba(255, 140, 140, 0.22);
+}
+
+.sidebarList > img {
+    height: 30px;
+    width: 30px;
+}
+
+.sidebarList > p {
+    font-weight: 500;
+    font-size: 14px;
+}
