@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
+import Bookings from "./bookings";
 
 const Profile = () => {
   return (
@@ -11,7 +12,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="profileRight">
+      {/* <div className="profileRight">
         <p>Profile picture</p>
 
         <div className="profileRightPicture">
@@ -40,7 +41,9 @@ const Profile = () => {
 
           <button className="basicRoundedButton profileFormBtn ">Update</button>
         </div>
-      </div>
+      </div> */}
+
+      <Bookings />
     </div>
   );
 };
