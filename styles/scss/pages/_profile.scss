@@ -1,0 +1,69 @@
+.profileContainer {
+    padding: 0 40px;
+    margin-top: 80px;
+}
+
+.profileContainer {
+    display: flex;
+    align-items: start;
+    gap: 100px;
+}
+
+.profileRightPicture {
+    display: flex;
+    align-items: center;
+}
+
+.profileRightPicture > img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    object-fit: cover;
+    margin-right: 80px;
+
+}
+
+.profileRight > p {
+    margin-bottom: 20px;
+}
+
+.profileLeftHead {
+    margin-bottom: 20px;
+}
+
+.profileRight {
+    margin-top: 60px;
+}
+
+.profileRightPictureBtns {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.profileRightFormContainer {
+    margin-top: 50px;
+}
+
+.profileRightFormInput {
+    border: 1px solid #B8B8B8;
+    border-radius: 10px;
+   width: 100%;
+   padding: 15px 5px;
+    outline: none;
+    background-color: #F6F3F3;
+}
+
+.profileRightForm{
+    margin-top: 20px;
+}
+
+.profileRightForm > p {
+    margin-bottom: 10px;
+}
+
+
+.profileFormBtn {
+    margin-top: 30px;
+}
