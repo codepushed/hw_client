@@ -223,3 +223,21 @@ input[type="radio"]:checked::before {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.bookingDetailsheading {
+  margin-top: -20px;
+}
+
+.bookingDetailsRecieptBtn > img {
+  height: 15px;
+  width: 15px;
+  object-fit: cover;
+}
+
+.bookingDetailsRecieptBtn {
+  margin-top: 20px;
+}
+
+.professionalDetails {
+  display: flex;
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import Bookings from "./bookings";
+import BookingDetails from "../../components/Modal/BookingDetails";
 
 const Profile = () => {
   return (
@@ -44,6 +45,7 @@ const Profile = () => {
       </div> */}
 
       <Bookings />
+      <BookingDetails />
     </div>
   );
 };
