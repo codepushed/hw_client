@@ -1,0 +1,167 @@
+.blogsContainer {
+  padding: 10px 60px;
+  margin-top: 50px;
+  display: flex;
+}
+
+.blogTitle {
+  font-size: 50px;
+}
+
+.blogsSubHeader {
+  width: 80%;
+}
+
+.blogsSubHeader > p {
+  font-weight: 300;
+  color: rgba(15, 15, 15, 1);
+  line-height: 25px;
+  margin: 20px 0;
+}
+
+.blogsSubContainer {
+  // height: 100vh;
+  margin-bottom: 50px;
+}
+
+.blogHeaderImg {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.blogHeaderImgCollections {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.blogHeaderImgCollections > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.blogHeaderImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.blogsSub > p {
+  font-weight: 300;
+  margin: 20px 0;
+  color: rgba(15, 15, 15, 1);
+  line-height: 25px;
+}
+
+.blogsSub {
+  width: 80%;
+  margin-top: 40px;
+}
+
+.blogPoints {
+  list-style-type: none;
+  font-weight: 300;
+  color: rgba(15, 15, 15, 1);
+  line-height: 25px;
+}
+
+.blogPoints > li {
+  padding: 10px 0;
+}
+
+.blogsSubTitle {
+  margin-bottom: 30px;
+  line-height: 45px;
+}
+
+.blogAuthorDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.blogAuthor {
+  height: 50px;
+  width: 50px;
+}
+
+.blogAuthor > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.blogAuthorDetailsContainer {
+  display: flex;
+  align-items: start;
+  align-items: start;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.BlogAuthorCategory {
+  font-weight: 300;
+  color: #b8b8b8;
+}
+
+
+.blogAuthorDetailsContent {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.blogServiceDesc {
+  font-weight: 300;
+  color: #b8b8b8;
+  margin-bottom: 20px;
+}
+
+.blogServiceContainer {
+  padding: 10px 20px;
+  border: 1px solid #b8b8b8;
+  border-radius: 16px;
+  height: fit-content;
+}
+
+.blogServiceContainer > h1 {
+  color: #FF8C8C;
+  margin-bottom: 30px;
+  text-decoration: underline;
+}
+
+.blogServiceImgContainer {
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  background-color: #b8b8b8;
+  margin-top: 10px;
+}
+
+.blogServiceImgContainer > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 100px;
+
+}
+
+.blogServiceContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+}
+
+.blogServiceContent > h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.blogServiceBtn {
+  margin: 20px 0;
+}
