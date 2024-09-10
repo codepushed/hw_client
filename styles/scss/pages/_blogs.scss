@@ -168,3 +168,26 @@
 .blogServiceBtn {
   margin: 20px 0;
 }
+
+@media (max-width: 768px) {
+  .blogsContainer {
+    width: 100%;
+    padding: 10px 30px;
+    flex-direction: column;
+  }
+
+  .blogHeaderImgCollections {
+   flex-direction: column;
+  }
+
+  .headerContainer {
+    width: 100%;
+  }
+
+  .blogsSubHeader {
+    width: unset;
+  }
+  .blogsSub {
+    width: unset;
+  }
+}

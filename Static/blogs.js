@@ -33,10 +33,9 @@ export const blogs = [
         title:
           "Choosing the Right Hairstyle Can Be Problematic: We’re Here to Help!",
         desc: "Finding the perfect hairstyle can feel overwhelming, but our experts have you covered. Whether you want a fresh cut, hair coloring, or styling for an event, our Gwalior-based home salon team knows what’s trending and what suits your face shape and hair texture. Book a session with our hair experts to transform your look effortlessly.",
-        imgCollections: [
-          "/assets/chooseHairstyle-1.jpg",
-          "/assets/chooseHairstyle-2.jpg",
-          "/assets/Woman with Natural Makeup and Dark Hair.jpg",
+        img: [
+          "/assets/collectionofhairstyles.png",
+          
         ],
       },
       {

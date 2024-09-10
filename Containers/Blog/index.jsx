@@ -16,7 +16,7 @@ const Blog = () => {
 
             <div className="blogAuthorDetailsContent">
               <div className="blogAuthorDetails">
-                <p>Dharika Jain</p>
+                <p>Aditi Sharma</p>
                 <p className="BlogAuthorCategory">Author</p>
               </div>
 
@@ -40,14 +40,6 @@ const Blog = () => {
                   <img src={images} alt="salon services" key={index} />
                 ))}
             </div>
-
-            {item.imgCollections && (
-              <div className="blogHeaderImgCollections">
-                {item?.imgCollections.map((images, index) => (
-                  <img src={images} alt="salon services" key={index} />
-                ))}
-              </div>
-            )}
 
             <p>{item.desc}</p>
             <ul className="blogPoints">
@@ -84,10 +76,7 @@ const Blog = () => {
           </p>
         </div>
 
-        <div className="blogServiceContent" 
-            style={{ marginTop: "20px" }}
-        
-        >
+        <div className="blogServiceContent" style={{ marginTop: "20px" }}>
           <h1>Tan removal treatment</h1>
 
           <span className="blogServiceImgContainer">
