@@ -86,12 +86,15 @@
 .blogAuthor {
   height: 50px;
   width: 50px;
+  border-radius: 6px;
 }
 
 .blogAuthor > img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 6px;
+
 }
 
 .blogAuthorDetailsContainer {
