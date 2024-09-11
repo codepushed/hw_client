@@ -21,6 +21,7 @@
   font-size: 14px;
   font-weight: 300;
   text-align: center;
+  cursor: pointer;
 }
 
 .drawerCloseBtnWrapper {
@@ -240,4 +241,21 @@ input[type="radio"]:checked::before {
 
 .professionalDetails {
   display: flex;
+}
+
+.launchModalImg {
+  height: 500px;
+  width: 500px;
+}
+
+.launchModalImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.launchModalsubTitle {
+  margin-top: 10px;
+  font-weight: 300;
+  color: #8b8b8b;
 }

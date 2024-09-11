@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Header from "../../components/Header";
 import ServiceCard from "../../components/Card/ServiceCard";
@@ -6,11 +6,13 @@ import ServiceCard from "../../components/Card/ServiceCard";
 import { kitchenServices } from "../../Static";
 import Drawers from "../../components/Drawers";
 
-const AllService = () => {
+const AllService = ({ data }) => {
+  const [selectedServices, setSelectedServices] = useState(data[0]);
+
   return (
     <div className="servicesContainer">
       <Header />
-      <h1 className="servicesHeader">Kitchen cleaning</h1>
+      <h1 className="servicesHeader">Salon for Women</h1>
 
       <div className="servicesHeaderContent">
         <div className="servicesHeaderImg">
@@ -21,10 +23,13 @@ const AllService = () => {
           <p>Select a service</p>
 
           <div className="servicesTypesContainer">
-            {kitchenServices?.map((service) => (
-              <div className="servicesTypes">
+            {data?.slice(0, 6).map((service) => (
+              <div
+                className="servicesTypes"
+                onClick={() => setSelectedServices(service)}
+              >
                 <img src="/assets/kitchen.png" alt="service" />
-                <p>{service}</p>
+                <p>{service.name}</p>
               </div>
             ))}
           </div>
@@ -38,12 +43,14 @@ const AllService = () => {
       </div>
 
       <div className="servicesSubCategoryContainer">
-        <h2>Chimney Cleaning</h2>
-        {Array.from({ length: 6 }).map((_, index) => (
-          <ServiceCard />
-        ))}
+        <h2>{selectedServices.name}</h2>
+
+        {selectedServices &&
+          selectedServices.subservices?.map((item, index) => (
+            <ServiceCard data={item} key={index} />
+          ))}
       </div>
-      <Drawers />
+      {/* <Drawers /> */}
     </div>
   );
 };

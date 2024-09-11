@@ -1,8 +1,10 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 import { blogs } from "../../Static/blogs";
 
 const Blog = () => {
+  const router = useRouter();
   return (
     <div className="blogsContainer">
       <div className="blogsSubContainer">
@@ -66,7 +68,16 @@ const Blog = () => {
             />
           </span>
 
-          <button className="basicRoundedButton blogServiceBtn">Explore</button>
+          <button
+            className="basicRoundedButton blogServiceBtn"
+            onClick={() =>
+              router.push(
+                "/services/salon/women/hair-care-solutions/curls-waves-styling"
+              )
+            }
+          >
+            Explore
+          </button>
           <p className="blogServiceDesc">
             Create curls or waves using curling irons, rollers, or other styling
             tools.
@@ -87,7 +98,16 @@ const Blog = () => {
             />
           </span>
 
-          <button className="basicRoundedButton blogServiceBtn">Explore</button>
+          <button
+            className="basicRoundedButton blogServiceBtn"
+            onClick={() =>
+              router.push(
+                "/services/salon/women/skin-bleaching-tan-removal/tan-removal-treatment"
+              )
+            }
+          >
+            Explore
+          </button>
           <p className="blogServiceDesc">
             Use specialized products to lighten and remove tan from the skin.
           </p>
@@ -98,6 +118,7 @@ const Blog = () => {
           <button
             className="basicRoundedButton blogServiceBtn"
             style={{ width: "100%" }}
+            onClick={() => router.push("/services/salon/women")}
           >
             Explore All
           </button>
