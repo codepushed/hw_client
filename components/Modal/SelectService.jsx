@@ -28,10 +28,11 @@ const SelectService = ({ isOpen, handleClose, data }) => {
           <div
             className="servicesTypesContainer moreServicesTypesContainer"   
           >
-            {data?.map((service) => (
+            {data?.map((service, index) => (
               <div
                 className="servicesTypes moreServiceTypes"
                 onClick={() => setSelectedServices(service)}
+                key={index}
               >
                 <img src="/assets/kitchen.png" alt="service" />
                 <p>{service.name}</p>
