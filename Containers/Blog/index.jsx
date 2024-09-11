@@ -5,6 +5,7 @@ import { blogs } from "../../Static/blogs";
 
 const Blog = () => {
   const router = useRouter();
+  
   return (
     <div className="blogsContainer">
       <div className="blogsSubContainer">
