@@ -5,9 +5,15 @@ import ServiceCard from "../../components/Card/ServiceCard";
 
 import { kitchenServices } from "../../Static";
 import Drawers from "../../components/Drawers";
+import SelectService from "../../components/Modal/SelectService";
 
 const AllService = ({ data }) => {
   const [selectedServices, setSelectedServices] = useState(data[0]);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  }
 
   return (
     <div className="servicesContainer">
@@ -34,7 +40,7 @@ const AllService = ({ data }) => {
             ))}
           </div>
 
-          <div className="servicesSeeMoreContainer">
+          <div className="servicesSeeMoreContainer" onClick={() => setOpen(true)} >
             <p>See more</p>
           </div>
         </div>
@@ -50,6 +56,7 @@ const AllService = ({ data }) => {
             <ServiceCard data={item} key={index} />
           ))}
       </div>
+      <SelectService handleClose={handleClose} isOpen={open} data={data} />
       {/* <Drawers /> */}
     </div>
   );

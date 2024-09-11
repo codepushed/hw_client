@@ -88,7 +88,7 @@ export const salonServiceDetails = {
     },
 
     {
-      name: "Skin Bleaching & Tan Removal",
+      name: "Bleaching & Tan",
       category: "Female",
       subservices: [
         {
