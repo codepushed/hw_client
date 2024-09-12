@@ -34,7 +34,7 @@ const SelectService = ({ isOpen, handleClose, data }) => {
                 onClick={() => setSelectedServices(service)}
                 key={index}
               >
-                <img src="/assets/kitchen.png" alt="service" />
+                <img src={service.img} alt="service" />
                 <p>{service.name}</p>
               </div>
             ))}

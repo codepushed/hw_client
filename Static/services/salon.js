@@ -3,6 +3,7 @@ export const salonServiceDetails = {
     {
       name: "Waxing",
       category: "Female",
+      img: "/assets/salon/91cbbb47-2756-4c6d-8c91-9f3bd5ae86c4.jpg",
       subservices: [
         {
           name: "Honey waxing:  Complete Arm, Underarm, and Leg Experience",
@@ -38,6 +39,7 @@ export const salonServiceDetails = {
     },
     {
       name: "Facial & Cleanups",
+      img: "/assets/salon/Young Woman Enjoying a Moment of Tranquility.jpg",
       category: "Female",
       subservices: [
         {
@@ -55,6 +57,7 @@ export const salonServiceDetails = {
     {
       name: "Manicure",
       category: "Female",
+      img: "/assets/salon/manicure.jpg",
       subservices: [
         {
           name: "Cut, file & polish",
@@ -90,6 +93,7 @@ export const salonServiceDetails = {
     {
       name: "Bleaching & Tan",
       category: "Female",
+      img: "/assets/salon/facial.png",
       subservices: [
         {
           name: "Bleach",
@@ -106,6 +110,7 @@ export const salonServiceDetails = {
 
     {
       name: "Hair Care Solutions",
+      img: "/assets/salon/Serene Woman with Eyes Closed.jpg",
       category: "Female",
       subservices: [
         {
@@ -174,11 +179,12 @@ export const salonServiceDetails = {
     {
       name: "Makeups",
       category: "Female",
+      img: "/assets/salon/Woman Applying Makeup.jpg",
       subservices: [
         {
           name: "Basic makeup",
           desc: "Procedure: Apply fundamental makeup products to enhance natural features. Areas Covered: Face. Details: Includes foundation, concealer, blush, and basic eye and lip makeup for a polished look.",
-          img: "",
+          img: "/assets/salon/Woman Applying Makeup.jpg",
         },
         {
           name: "Bridal makeup",
@@ -188,73 +194,73 @@ export const salonServiceDetails = {
       ],
     },
 
-    {
-      name: "Hair care",
-      category: "Men",
-      subservices: [
-        {
-          name: "Hair Coloring",
-          desc: "Procedure: Apply hair color to achieve the desired shade. Areas Covered: Hair on the scalp. Details: Professional coloring for a fresh look or covering greys.",
-          img: "",
-        },
-        {
-          name: "Hair fall Treatment",
-          desc: "Procedure: Utilize targeted therapies, including topical solutions and specialized shampoos, to address and reduce hair loss. Areas Covered: Scalp, with a focus on areas experiencing thinning or shedding. Details: Aims to strengthen hair follicles, reduce hair fall, and improve overall hair health and density.",
-          img: "",
-        },
-        {
-          name: "Hair Growth Enhancement Treatment",
-          desc: "Procedure: Apply specialized serums or treatments aimed at stimulating hair follicles and promoting new hair growth. Areas Covered: Scalp, focusing on areas with thinning hair or hair loss. Details: Uses targeted ingredients and techniques to improve hair density, strength, and overall health.",
-          img: "",
-        },
-        {
-          name: "Relaxing Spa Treatments",
-          desc: "Procedure: Enjoy a series of soothing treatments including massages and skin care tailored to relax and rejuvenate. Areas Covered: Commonly includes head, face, and neck, with some treatments extending to the back and shoulders. Details: Designed to relieve stress, improve circulation, and enhance overall well-being with a calming experience.",
-          img: "",
-        },
-        {
-          name: "Beard, triming and styling",
-          desc: "Procedure: Trim, shape, and style the beard to desired specifications. Areas Covered: Beard and mustache. Details: Maintains a well-groomed and polished appearance.",
-          img: "",
-        },
-        {
-          name: "Clean shave",
-          desc: "Procedure: Shave off all facial hair for a smooth, clean look. Areas Covered: Entire face. Details: Provides a fresh and clean shave, free of stubble.",
-          img: "",
-        },
-        {
-          name: "Haircuts",
-          desc: "Procedure: Precision cutting to style and trim hair according to preference. Areas Covered: Entire scalp. Details: Customizable to suit personal style and hair type.",
-          img: "",
-        },
-        {
-          name: "Head, face and neck massage",
-          desc: "Procedure: Relaxing massage targeting the head, face, and neck areas. Areas Covered: Head, face, neck. Details: Relieves tension and promotes relaxation.",
-          img: "",
-        },
-      ],
-    },
-    {
-      name: "Skin care",
-      category: "Men",
-      subservices: [
-        {
-          name: "Facial packs",
-          desc: "Procedure: Apply facial packs to cleanse and rejuvenate the skin. Areas Covered: Face. Details: Treats various skin concerns and leaves skin refreshed.",
-          img: "",
-        },
-      ],
-    },
-    {
-      name: "Hair care",
-      category: "Kids",
-      subservices: [
-        {
-          name: "Hair cuts",
-          desc: "Procedure: Precision cutting to style and trim hair according to preference. Areas Covered: Entire scalp. Details: Customizable to suit personal style and hair type.",
-          img: "",
-        },
-      ],
-    },
+    // {
+    //   name: "Hair care",
+    //   category: "Men",
+    //   subservices: [
+    //     {
+    //       name: "Hair Coloring",
+    //       desc: "Procedure: Apply hair color to achieve the desired shade. Areas Covered: Hair on the scalp. Details: Professional coloring for a fresh look or covering greys.",
+    //       img: "",
+    //     },
+    //     {
+    //       name: "Hair fall Treatment",
+    //       desc: "Procedure: Utilize targeted therapies, including topical solutions and specialized shampoos, to address and reduce hair loss. Areas Covered: Scalp, with a focus on areas experiencing thinning or shedding. Details: Aims to strengthen hair follicles, reduce hair fall, and improve overall hair health and density.",
+    //       img: "",
+    //     },
+    //     {
+    //       name: "Hair Growth Enhancement Treatment",
+    //       desc: "Procedure: Apply specialized serums or treatments aimed at stimulating hair follicles and promoting new hair growth. Areas Covered: Scalp, focusing on areas with thinning hair or hair loss. Details: Uses targeted ingredients and techniques to improve hair density, strength, and overall health.",
+    //       img: "",
+    //     },
+    //     {
+    //       name: "Relaxing Spa Treatments",
+    //       desc: "Procedure: Enjoy a series of soothing treatments including massages and skin care tailored to relax and rejuvenate. Areas Covered: Commonly includes head, face, and neck, with some treatments extending to the back and shoulders. Details: Designed to relieve stress, improve circulation, and enhance overall well-being with a calming experience.",
+    //       img: "",
+    //     },
+    //     {
+    //       name: "Beard, triming and styling",
+    //       desc: "Procedure: Trim, shape, and style the beard to desired specifications. Areas Covered: Beard and mustache. Details: Maintains a well-groomed and polished appearance.",
+    //       img: "",
+    //     },
+    //     {
+    //       name: "Clean shave",
+    //       desc: "Procedure: Shave off all facial hair for a smooth, clean look. Areas Covered: Entire face. Details: Provides a fresh and clean shave, free of stubble.",
+    //       img: "",
+    //     },
+    //     {
+    //       name: "Haircuts",
+    //       desc: "Procedure: Precision cutting to style and trim hair according to preference. Areas Covered: Entire scalp. Details: Customizable to suit personal style and hair type.",
+    //       img: "",
+    //     },
+    //     {
+    //       name: "Head, face and neck massage",
+    //       desc: "Procedure: Relaxing massage targeting the head, face, and neck areas. Areas Covered: Head, face, neck. Details: Relieves tension and promotes relaxation.",
+    //       img: "",
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: "Skin care",
+    //   category: "Men",
+    //   subservices: [
+    //     {
+    //       name: "Facial packs",
+    //       desc: "Procedure: Apply facial packs to cleanse and rejuvenate the skin. Areas Covered: Face. Details: Treats various skin concerns and leaves skin refreshed.",
+    //       img: "",
+    //     },
+    //   ],
+    // },
+    // {
+    //   name: "Hair care",
+    //   category: "Kids",
+    //   subservices: [
+    //     {
+    //       name: "Hair cuts",
+    //       desc: "Procedure: Precision cutting to style and trim hair according to preference. Areas Covered: Entire scalp. Details: Customizable to suit personal style and hair type.",
+    //       img: "",
+    //     },
+    //   ],
+    // },
   ],
 };

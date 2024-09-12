@@ -3,7 +3,7 @@ export const blogs = [
     title:
       "Why Pay More at Salons? Get Celebrity-Style Beauty Services at Home!",
     titleImg:
-      "/assets/Luxurious Salon Pampering with Sparkling Hair Treatment.jpg",
+      "/assets/Peaceful Wellness Therapy Session.jpg",
     desc: "When it comes to pampering yourself, convenience is key. The world is moving toward home-based services, and Gwalior is no exception. Why spend extra time and money at salons when you can get professional beauty treatments at home? Here’s why choosing home salon services can make all the difference in your self-care routine.",
     subheading: [
       {
@@ -26,7 +26,7 @@ export const blogs = [
         ],
         extra:
           "These tips can keep you looking fresh daily, and when you need that extra touch, our Gwalior home salon experts are just a booking away",
-        img: ["/assets/queen.jpg"],
+        img: ["/assets/Joyful Skincare Routine.jpg"],
       },
 
       {

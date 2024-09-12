@@ -22,7 +22,7 @@ const AllService = ({ data }) => {
 
       <div className="servicesHeaderContent">
         <div className="servicesHeaderImg">
-          <img src="/assets/kitchenmain.jpg" alt="kitchen cleaning" />
+          <img src="/assets/Luxurious Salon Pampering with Sparkling Hair Treatment.jpg" alt="kitchen cleaning" />
         </div>
 
         <div className="servicesSelectContainer">
@@ -34,7 +34,7 @@ const AllService = ({ data }) => {
                 className="servicesTypes"
                 onClick={() => setSelectedServices(service)}
               >
-                <img src="/assets/kitchen.png" alt="service" />
+                <img src={service.img} alt="service" />
                 <p>{service.name}</p>
               </div>
             ))}
