@@ -1,93 +1,72 @@
 .contactContainer {
-    padding: 0 50px;
+  padding: 0 50px;
 }
 
 .contactContainer > h1 {
-    margin-top: 50px;
-    font-size: 40px;
+  margin-top: 50px;
+  font-size: 40px;
 }
 
 .contactContainer > p {
-    font-weight: 300;
-    font-size: 20px;
-    color: #958F8F;
+  font-weight: 300;
+  font-size: 20px;
+  color: #958f8f;
 }
 
 .contactUs {
-    display: flex;
-    align-items: start;
-    margin-top: 50px;
-    width: 100%;
-   gap: 100px;
+  display: flex;
+  align-items: start;
+  margin-top: 50px;
+  width: 100%;
+  gap: 100px;
 }
 
 .contactUsHeading {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .contactUsMaps > p {
-    color: #958F8F;
-    font-weight: 300;
-    margin-top: 20px;
+  color: #958f8f;
+  font-weight: 300;
+  margin-top: 20px;
 }
 
 .contactUsEmail > p {
-    color: #958F8F;
-    font-weight: 300;
-    margin-bottom: 10px;
+  color: #958f8f;
+  font-weight: 300;
+  margin-bottom: 10px;
 }
 
 .contactEmail {
-    margin-bottom:  30px;
+  margin-bottom: 30px;
 }
 
 .contactCall > p {
-    color: #958F8F;
-    font-weight: 300;
-    margin-bottom: 5px;
+  color: #958f8f;
+  font-weight: 300;
+  margin-bottom: 5px;
 }
 
 .contactCall {
-    margin-top: 20px;
+  margin-top: 20px;
+}
 
+.contactusIframe {
+  height: 400px;
 }
 
 @media (max-width: 768px) {
-    .contactUs{
-        gap: 20px;
-        flex-direction: column;
-        // padding: 0 30px;
-    }
+  .contactUs {
+    gap: 20px;
+    flex-direction: column;
+  }
 
-  .contactUsMaps {
-    padding: 0 30px;
+  .contactusIframeMobile {
+    height: 100px;
+    width: 100px;
   }
 
   .contactContainer {
-    padding: 0;
-  }
-
-  .contactContainer > h1 {
-    padding: 0 20px ;
-  }
-
-  .contactContainer > p {
-    padding: 0 20px ;
     width: 100%;
   }
-
-  .contactCall  {
-    padding: 0 20px ;
-  }
-
-  .contactUsEmail > h2 {
-    padding: 0 20px ;
-    margin-top: 20px;
-  }
-
-  .contactUsEmail > p {
-    padding: 0 20px ;
-  }
-
-
 }
