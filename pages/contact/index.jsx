@@ -32,10 +32,10 @@ const Contact = () => {
             <h2 className="contactUsHeading">Email us</h2>
             <p>contact@homeworkservice.in</p>
 
-<div className="contactCall">
-            <h2 className="contactUsHeading">Call us</h2>
-            <p>+91 8818854600</p>
-            <p>+91 8818854500</p>
+            <div className="contactCall">
+              <h2 className="contactUsHeading">Call us</h2>
+              <p>+91 8818854600</p>
+              <p>+91 8818854500</p>
             </div>
           </div>
         </div>

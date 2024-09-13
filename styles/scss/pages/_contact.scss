@@ -51,3 +51,43 @@
     margin-top: 20px;
 
 }
+
+@media (max-width: 768px) {
+    .contactUs{
+        gap: 20px;
+        flex-direction: column;
+        // padding: 0 30px;
+    }
+
+  .contactUsMaps {
+    padding: 0 30px;
+  }
+
+  .contactContainer {
+    padding: 0;
+  }
+
+  .contactContainer > h1 {
+    padding: 0 20px ;
+  }
+
+  .contactContainer > p {
+    padding: 0 20px ;
+    width: 100%;
+  }
+
+  .contactCall  {
+    padding: 0 20px ;
+  }
+
+  .contactUsEmail > h2 {
+    padding: 0 20px ;
+    margin-top: 20px;
+  }
+
+  .contactUsEmail > p {
+    padding: 0 20px ;
+  }
+
+
+}
