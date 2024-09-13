@@ -55,6 +55,7 @@
   font-weight: 300;
   font-size: 16px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .footerContentList {
@@ -84,13 +85,40 @@
 }
 
 .footerBottomSocial {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .footerBottomSocial > img {
-    height: 20px;
-    width: 20px;
-    object-fit: contain;
-    cursor: pointer;
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .footerSuperContainer {
+    width: 100%;
+  }
+
+  .footerHeader {
+    text-align: center;
+  }
+
+  .footerContentListContainer {
+    display: flex;
+    width: 100%;
+  }
+
+  .footerBottomContainer {
+    flex-direction: column;
+  }
+
+  .footerBottomTypo {
+    margin-bottom: 10px;
+  }
+
+  .footerBottomSocial {
+    margin-bottom: 10px;
+  }
 }

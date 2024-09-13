@@ -1,6 +1,14 @@
 import React from "react";
 
+import { useRouter } from "next/router";
+
 const Footer = () => {
+  const router = useRouter();
+
+  const handleRedirect = () => {
+    router.push("/coming-soon");
+  };
+
   return (
     <div className="footerSuperContainer">
       <div className="footerContainer">
@@ -16,21 +24,21 @@ const Footer = () => {
         <div className="footerContent">
           <div className="footerContentListContainer">
             <div className="footerContentList">
-              <p>Services</p>
-              <p>Faqs</p>
-              <p>Contact us</p>
+              <p onClick={() => handleRedirect()}>Services</p>
+              <p onClick={() => handleRedirect()}>Faqs</p>
+              <p onClick={() => handleRedirect()}>Contact us</p>
             </div>
 
             <div className="footerContentList">
-              <p>Book a service</p>
-              <p>Terms & conditions</p>
-              <p>Pricing</p>
+              <p onClick={() => handleRedirect()}>Book a service</p>
+              <p onClick={() => handleRedirect()}>Terms & conditions</p>
+              <p onClick={() => handleRedirect()}>Pricing</p>
             </div>
 
             <div className="footerContentList">
-              <p>How it works</p>
-              <p>Register as a professional</p>
-              <p>Why choose us</p>
+              <p onClick={() => handleRedirect()}>How it works</p>
+              <p onClick={() => handleRedirect()}>Register as a professional</p>
+              <p onClick={() => handleRedirect()}>Why choose us</p>
             </div>
           </div>
         </div>
@@ -38,7 +46,9 @@ const Footer = () => {
         <div className="footerDivider" />
 
         <div className="footerBottomContainer">
-          <p className="footerBottomTypo">&#169; homeworkserice.in</p>
+          <p className="footerBottomTypo" onClick={() => handleRedirect()}>
+            &#169; homeworkserice.in
+          </p>
 
           <div className="footerBottomSocial">
             <img src="/assets/icons/instagram.png" alt="instagram" />

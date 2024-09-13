@@ -7,7 +7,6 @@ const BlogListing = () => {
   return (
     <div className="blogListingContainer">
       <h1 className="blogListingHeading">Blogs</h1>
-
       <div className="blogListingCardList">
         <div className="blogListingCard" onClick={() => router.push("/blogs/why-pay-more-at-salons")} >
           <div className="blogListingImg">

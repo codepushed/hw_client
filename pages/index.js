@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LandingSeo } from "../components/Seo";
+import { LandingSeo } from "../Seo/index";
 import Header from "../components/Header";
 import SearchBox from "../components/SearchBox";
 import Notification from "../components/Notification";

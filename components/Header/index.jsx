@@ -1,14 +1,17 @@
 import React from "react";
 import Logo from "../Logo";
 
+import { useRouter } from "next/router";
+
 const Header = ({ isHidden }) => {
+  const router = useRouter();
   return (
     <div className="headerContainer">
-      <Logo />
+      <Logo onClick={() => router.push("/coming-soon")} />
       {!isHidden && (
         <>
           <ul className="headerlistContainer">
-            <li>Blogs</li>
+            <li onClick={() => router.push("/blogs")}>Blogs</li>
             {/* <li>Services</li>
             <li>Pricing</li>
             <li>How it works</li> */}
