@@ -13,7 +13,7 @@ export const BlogSeo = () => {
       <meta name="description" content={seoDesc} />
 
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://homeworkservice.in/blogs/why-pay More at Salons " />
+      <meta property="og:url" content="https://homeworkservice.in/blogs/why-pay-more-at-salons" />
       <meta property="og:title" content={seoTitle} />
       <meta property="og:description" content={seoDesc} />
       <meta property="og:image" content={brandUrl} />
