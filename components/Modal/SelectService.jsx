@@ -4,7 +4,12 @@ import Modal from "@mui/material/Modal";
 
 import { basicModalStyling } from "./helper";
 
-const SelectService = ({ isOpen, handleClose, data }) => {
+const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
+  const handleSelectService = (service) => {
+    setSelectedServices(service);
+    handleClose();
+  };
+
   return (
     <div>
       <Modal
@@ -21,17 +26,18 @@ const SelectService = ({ isOpen, handleClose, data }) => {
             <div className="drawerCloseBtn">x</div>
           </div>
 
-          <h1 className="slotTimingsHead addressHeading bookingDetailsheading" style={{ paddingLeft: "20px" }} >
+          <h1
+            className="slotTimingsHead addressHeading bookingDetailsheading"
+            style={{ paddingLeft: "20px" }}
+          >
             Select a service
           </h1>
 
-          <div
-            className="servicesTypesContainer moreServicesTypesContainer"   
-          >
+          <div className="servicesTypesContainer moreServicesTypesContainer">
             {data?.map((service, index) => (
               <div
                 className="servicesTypes moreServiceTypes"
-                onClick={() => setSelectedServices(service)}
+                onClick={() => handleSelectService(service)}
                 key={index}
               >
                 <img src={service.img} alt="service" />

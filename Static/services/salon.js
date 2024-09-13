@@ -28,7 +28,7 @@ export const salonServiceDetails = {
         {
           name: "Arms waxing",
           desc: "Procedure: Waxing service to remove hair from the arms. Areas Covered: Full arms or specific sections as needed. Details: Achieve smooth arms without the hassle of shaving.",
-          img: "",
+          img: "/assets/09d59bc2-7d84-4284-922b-baa0d8ac57ab copy.jpg",
         },
         {
           name: "Underarms waxing",
@@ -45,7 +45,7 @@ export const salonServiceDetails = {
         {
           name: "Tan Removal Treatment",
           desc: "Procedure: Use specialized products to lighten and remove tan from the skin. Areas Covered: Affected areas with tan. Details: Brightens skin tone and reduces tan lines.",
-          img: "",
+          img: "/assets/detan.png",
         },
         {
           name: "Instant glow facials",
@@ -69,11 +69,12 @@ export const salonServiceDetails = {
     {
       name: "Pedicure",
       category: "Female",
+      img: "/assets/Sunlit Feet in Pool.jpeg",
       subservices: [
         {
           name: "Cut, file & polish",
           desc: "Procedure: Trim, shape, and polish nails for a neat and elegant look. Areas Covered: Hands and feet. Details: Enhances nail appearance with a professional finish.",
-          img: "",
+          img: "/assets/Sunlit Feet in Pool.jpeg",
         },
       ],
     },
@@ -81,11 +82,12 @@ export const salonServiceDetails = {
     {
       name: "Threading",
       category: "Female",
+      img: "/assets/Serene Contemplation in Gold.jpeg",
       subservices: [
         {
           name: "Eyebrow Threading & Shaping",
           desc: "Procedure: Threading technique to shape and define eyebrows. Areas Covered: Eyebrows. Details: Precision shaping for well-defined and tidy brows.",
-          img: "",
+          img: "/assets/Serene Contemplation in Gold.jpeg",
         },
       ],
     },
