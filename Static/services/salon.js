@@ -115,11 +115,7 @@ export const salonServiceDetails = {
       img: "/assets/salon/Serene Woman with Eyes Closed.jpg",
       category: "Female",
       subservices: [
-        {
-          name: "Henna/Mehendi",
-          desc: "Procedure: Apply intricate henna designs to the skin, usually on hands and feet, for decorative purposes. Areas Covered: Hands, feet, and sometimes arms. Details: Offers temporary body art with natural dyes, ideal for special occasions.",
-          img: "",
-        },
+       
         {
           name: "Hair Coloring",
           desc: "Procedure: Apply hair dye to achieve a desired color or shade. Areas Covered: Entire scalp or specific sections as requested. Details: Customizable to enhance natural color or change it completely, with options for highlights and lowlights.",
@@ -133,32 +129,32 @@ export const salonServiceDetails = {
         {
           name: "Relaxing Spa Treatments",
           desc: "Procedure: Experience a variety of soothing treatments, including massages and skin care, aimed at relaxation and rejuvenation. Areas Covered: Typically includes head, face, neck, and back. Details: Enhances overall well-being with a calming and restorative experience.",
-          img: "",
+          img: "/assets/Tranquil Spa Serenity.jpeg",
         },
         {
           name: "Precision Hair Cutting & styling",
           desc: "Procedure: Cut and style hair with attention to detail, tailored to individual preferences and face shape. Areas Covered: Entire head. Details: Provides a polished look with customized cuts and styling techniques.",
-          img: "",
+          img: "/assets/A female stylist dressed as a chola or pachuca.jpg",
         },
         {
           name: "Hair Fall Recovery Treatment",
           desc: "Procedure: Apply treatments designed to strengthen hair and reduce breakage or loss. Areas Covered: Scalp. Details: Focuses on improving hair health and minimizing hair fall through targeted therapies.",
-          img: "",
+          img: "/assets/christin-hume-0MoF-Fe0w0A-unsplash.jpg",
         },
         {
           name: "Refreshing Hair Wash",
           desc: "Procedure: Thoroughly cleanse the hair and scalp with high-quality shampoo and conditioner. Areas Covered: Entire scalp and hair. Details: Removes impurities and revitalizes the hair for a clean and refreshed feel.",
-          img: "",
+          img: "/assets/Luxurious Salon Pampering with Sparkling Hair Treatment.jpg",
         },
         {
           name: "Hair Bleaching",
           desc: "Procedure: Apply bleaching agents to lighten hair color. Areas Covered: Scalp or specific sections of hair. Details: Ideal for achieving a lighter hair shade or preparing for further coloring.",
-          img: "",
+          img: "/assets/Serene Beauty Portrait.jpeg",
         },
         {
           name: "Hair Straightening",
           desc: "Procedure: Use chemical treatments or heat styling to straighten curly or wavy hair. Areas Covered: Entire scalp. Details: Provides smooth, straight hair with long-lasting results.",
-          img: "",
+          img: "/assets/50f1c88c-68ac-4d1e-9e59-ca2a647ee6dc.jpg",
         },
         {
           name: "Curls & Waves Styling",
@@ -168,12 +164,12 @@ export const salonServiceDetails = {
         {
           name: "Hair Trimming",
           desc: "Procedure: Trim the ends of the hair to remove split ends and maintain healthy growth. Areas Covered: Hair ends. Details: Keeps hair looking fresh and prevents damage by removing split ends.",
-          img: "",
+          img: "/assets/farhad-ibrahimzade-V2HDOQTJh3o-unsplash.jpg",
         },
         {
           name: "Keratin Treatment",
           desc: "Procedure: Apply a keratin-rich formula to smooth and strengthen hair. Areas Covered: Entire scalp. Details: Reduces frizz, adds shine, and makes hair more manageable with long-lasting effects.",
-          img: "",
+          img: "/assets/271861ea-9d29-41ca-9786-82a9c9e24314.jpg",
         },
       ],
     },
