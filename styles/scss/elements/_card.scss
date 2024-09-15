@@ -1,0 +1,89 @@
+.serviceCardContainer {
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  border: 1px solid #cfcfcf;
+  padding: 8px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.serviceCardImg {
+  border-radius: 16px;
+  width: 220px;
+  height: 100%;
+  border-radius: 16px;
+  display: flex;
+  gap: 30px;
+}
+
+.serviceCardHeadContent > h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.serviceCardPara {
+    font-size: 14px;
+    color: #B8B8B8;
+    font-weight: 400;
+    width: 600px;
+    line-height: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+}
+
+.serviceCardImg > img {
+  min-width: 220px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.serviceCardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 10px;
+  display: none;
+}
+
+.serviceCardPricing {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #B8B8B8;
+
+}
+
+.serviceCardPricingRuppee {
+  display: flex;
+  align-items: center;
+}
+
+
+.serviceCardHeadContent {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+
+.dotIcon {
+    height: 5px;
+    width: 5px;
+    object-fit: contain;
+    margin: 0 5px;
+}
+
+
+.ruppeeIcon {
+    height: 18px;
+    width: 18px;
+    object-fit: contain;
+}

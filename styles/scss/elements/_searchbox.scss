@@ -1,0 +1,41 @@
+.searchBoxContainer {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  justify-content: center;
+  height: 250px;
+  margin-top: 80px;
+}
+
+.searchBoxInput {
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  padding: 12px 10px;
+  outline-color: gray;
+}
+
+.searchBoxHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.searchBoxIcons {
+  height: 25px;
+  width: 25px;
+  object-fit: contain;
+}
+
+.searchBoxHeader > p {
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.searchboxSearchBtn {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}

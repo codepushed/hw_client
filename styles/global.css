@@ -31,6 +31,7 @@
     width: 500px;
 }
 
+
 @media (max-width: 768px) {
     .comingSoonImgContainer {
       width: auto;
@@ -39,6 +40,10 @@
     .comingSoonContainer {
         flex-direction: column;
         text-align: center;
+    }
+
+    .servicesOfferContainer {
+        margin-top: 20px;
     }
   }
   

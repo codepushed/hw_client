@@ -1,0 +1,48 @@
+.sidebarContainer{
+    border-radius: 16px;
+    border: 1px solid #B8B8B8;
+    width: 200px;
+    height: 150px;
+}
+
+.sidebarList {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    position: relative;
+    cursor: pointer;
+}
+
+.activeSidebarList {
+    width: 2px;
+    background-color: #FF8C8C;
+    height: 100%;
+}
+
+.sidebarListActive{
+    background-color: rgba(255, 140, 140, 0.22);
+}
+
+.sidebarList > img {
+    height: 30px;
+    width: 30px;
+}
+
+.sidebarList > p {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.profileSidebarDivider {
+    top: 12px;
+    position: absolute;
+    right: 0;
+    height: 35px;
+    width: 2px;
+    border: 1px solid #FF8C8C;
+    border-radius: 6px;
+    background-color: #FF8C8C;
+}

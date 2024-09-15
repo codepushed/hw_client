@@ -1,0 +1,75 @@
+.contactContainer {
+  padding: 0 50px;
+}
+
+.contactContainer > h1 {
+  margin-top: 50px;
+  font-size: 40px;
+}
+
+.contactContainer > p {
+  font-weight: 300;
+  font-size: 20px;
+  color: #958f8f;
+}
+
+.contactUs {
+  display: flex;
+  align-items: start;
+  margin-top: 50px;
+  width: 100%;
+  gap: 100px;
+  
+}
+
+.contactUsHeading {
+  margin-bottom: 20px;
+  margin-top: 40px;
+
+}
+
+.contactUsMaps > p {
+  color: #958f8f;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.contactUsEmail > p {
+  color: #958f8f;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.contactEmail {
+  margin-bottom: 30px;
+}
+
+.contactCall > p {
+  color: #958f8f;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.contactCall {
+  margin-top: 20px;
+}
+
+.contactusIframe {
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .contactUs {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .contactusIframeMobile {
+    height: 100px;
+    width: 100px;
+  }
+
+  .contactContainer {
+    width: 100%;
+  }
+}
