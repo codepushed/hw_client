@@ -1,10 +1,10 @@
 import React from "react";
 
-import AllServices from "../../Containers/AllServices";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import AllServices from "../../../Containers/AllServices";
+import Footer from "../../../components/Footer";
+import Header from "../../../components/Header";
 
-import { salonServiceDetails } from "../../Static/services/salon";
+import { salonServiceDetails } from "../../../Static/services/salon";
 
 
 const Services = ({ isHeader, data }) => {

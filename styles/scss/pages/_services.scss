@@ -53,7 +53,7 @@
 }
 
 .servicesOfferContainer {
-  border: 1px solid #CFCFCF;
+  border: 1px solid #cfcfcf;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -152,8 +152,58 @@
 }
 
 .moreServicesTypesContainer {
-    align-items: flex-start;
-    margin-top: 40px;
-    padding-right: 40px;
-    gap: 10px;
+  align-items: flex-start;
+  margin-top: 40px;
+  padding-right: 40px;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .servicesHeader {
+    padding: 0 20px !important;
+  }
+
+  .servicesHeaderContent {
+    height: unset;
+    width: 100%;
+    flex-direction: column;
+    padding: 0 20px !important;
+  }
+
+  .servicesHeaderImg {
+    height: unset;
+  }
+
+  .servicesSelectWrapper {
+    width: unset;
+  }
+
+  .serviceCardPara {
+    display: none;
+  }
+
+  .serviceCardContent {
+    display: none;
+  }
+
+  .servicesSubCategoryContainer {
+    width: 100%;
+    padding: 10px;
+  }
+  .outlineBtn {
+    margin-top: 20px;
+  }
+
+  .serviceCardImg {
+    width: unset;
+    gap: 10px !important;
+  }
+
+  .servicesSubCategoryContainer > h2 {
+    padding-left: 10px;
+  }
+
+  .serviceCardHeadContent {
+    width: 100%;
+  }
 }

@@ -73,7 +73,7 @@ const Blog = () => {
             className="basicRoundedButton blogServiceBtn"
             onClick={() =>
               router.push(
-                "/services/salon/women/hair-care-solutions/curls-waves-styling"
+                "/services/salon/women-salon"
               )
             }
           >
@@ -103,7 +103,7 @@ const Blog = () => {
             className="basicRoundedButton blogServiceBtn"
             onClick={() =>
               router.push(
-                "/services/salon/women/skin-bleaching-tan-removal/tan-removal-treatment"
+                "/services/salon/women-salon"
               )
             }
           >
@@ -119,7 +119,7 @@ const Blog = () => {
           <button
             className="basicRoundedButton blogServiceBtn"
             style={{ width: "100%" }}
-            onClick={() => router.push("/services/salon/women")}
+            onClick={() => router.push("/services/salon/women-salon")}
           >
             Explore All
           </button>

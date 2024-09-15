@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pattaya&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pattaya&display=swap");
 
 .headerContainer {
   margin-top: 10px;
@@ -13,12 +13,14 @@
   color: #ff8c8c;
   font-size: 40px;
   font-weight: 400;
+  cursor: pointer;
 }
 .headerLogo > p {
   color: #000;
   font-size: 14px;
   font-weight: 200;
   line-height: 0px;
+  cursor: pointer;
 }
 
 .headerButtonContainer {
@@ -136,7 +138,6 @@
   z-index: 1;
 }
 
-
 .landingOfferRight {
   position: absolute;
   height: 80%;
@@ -150,7 +151,6 @@
   width: 100%;
   object-fit: contain;
 }
-
 
 .landingOfferNotificationContainer {
   width: 100%;
@@ -198,14 +198,10 @@
   right: 0% !important;
 }
 
-
-
-
-//coming soon page 
+//coming soon page
 
 .comingSoonWrapper {
   padding: 0 40px;
-  
 }
 
 .comingSoonContentText {
@@ -225,7 +221,7 @@
   font-size: 20px;
   font-weight: 300;
   line-height: 80px;
-  color: #958F8F;
+  color: #958f8f;
 }
 
 .comingSoonImg > img {
@@ -236,4 +232,38 @@
 
 .comingSoonContentSubText {
   line-height: 50px;
+}
+
+@media (max-width: 768px) {
+  .comingSoonWrapper {
+    padding: 0 20px;
+    margin-top: 60px;
+
+  }
+
+  .comingSoonContentText > h1 {
+    font-size: 25px;
+    margin-top: unset;
+  }
+
+  .comingSoonContentText > p {
+    line-height: 30px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  .comingSoonContentSubText {
+    font-size: 40px !important;
+    margin-top: unset;
+    line-height: 45px;
+  }
+
+  .comingSoonContentText {
+    align-items: self-start;
+  }
+
+  .comingSoonContentText > button {
+    margin-top: 20px;
+  }
+
 }

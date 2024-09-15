@@ -94,7 +94,6 @@
   width: 100%;
   object-fit: cover;
   border-radius: 6px;
-
 }
 
 .blogAuthorDetailsContainer {
@@ -109,7 +108,6 @@
   font-weight: 300;
   color: #b8b8b8;
 }
-
 
 .blogAuthorDetailsContent {
   display: flex;
@@ -131,7 +129,7 @@
 }
 
 .blogServiceContainer > h1 {
-  color: #FF8C8C;
+  color: #ff8c8c;
   margin-bottom: 30px;
   text-decoration: underline;
 }
@@ -149,7 +147,6 @@
   width: 100%;
   object-fit: contain;
   border-radius: 100px;
-
 }
 
 .blogServiceContent {
@@ -184,7 +181,7 @@
   height: 380px;
   width: 400px;
   border-radius: 16px;
-  border: 1px solid #E4E4E4;
+  border: 1px solid #e4e4e4;
   cursor: pointer;
 }
 
@@ -199,7 +196,6 @@
   width: 100%;
   object-fit: cover;
   border-radius: 16px;
-
 }
 
 .blogListingTitle {
@@ -214,7 +210,6 @@
   margin-top: 20px;
 }
 
-
 @media (max-width: 768px) {
   .blogsContainer {
     width: 100%;
@@ -223,11 +218,11 @@
   }
 
   .blogHeaderImgCollections {
-   flex-direction: column;
+    flex-direction: column;
   }
 
   .headerContainer {
-    width: 100%;
+    padding: 0 20px;
   }
 
   .blogsSubHeader {
@@ -235,5 +230,20 @@
   }
   .blogsSub {
     width: unset;
+  }
+
+  .blogListingHeading {
+    padding: 0 20px;
+  }
+
+  .blogListingCardList {
+    padding: 0 20px;
+  }
+
+  .blogServiceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

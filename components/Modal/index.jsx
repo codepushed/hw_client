@@ -4,18 +4,18 @@ import Modals from "@mui/material/Modal";
 
 import { basicModalStyling } from "./helper";
 
-const Modal = ({ isOpen, handleClose }) => {
+const Modal = ({ isOpen, handleClosed }) => {
   return (
     <div>
       <Modals
         open={isOpen}
-        onClose={handleClose}
+        onClose={handleClosed}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={basicModalStyling}>
           <div className="drawerCloseBtnWrapper drawerCloseBtnSpacing">
-            <div className="drawerCloseBtn" onClick={() => handleClose()}>
+            <div className="drawerCloseBtn" onClick={() => handleClosed()}>
               x
             </div>
           </div>
