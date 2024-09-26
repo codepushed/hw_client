@@ -6,12 +6,12 @@ export const salonServiceDetails = {
       img: "/assets/salon/91cbbb47-2756-4c6d-8c91-9f3bd5ae86c4.jpg",
       subservices: [
         {
-          name: "Honey waxing:  Complete Arm, Underarm, and Leg Experience",
+          name: "Honey waxing",
           desc: "Procedure: Apply honey-based wax to remove hair from full arms, underarms, and legs. Areas Covered: Full arms, underarms, and full legs.Details: Smooth and hair-free skin with minimal irritation.",
           img: "/assets/salon/Honey Jar Close-Up.jpg",
         },
         {
-          name: "Chocolate Wax: Complete Arm, Underarm, and Leg Experience",
+          name: "Chocolate Wax",
           desc: "Procedure: Use chocolate-scented wax to eliminate hair from full arms, underarms, and legs. Areas Covered: Full arms, underarms, and full legs. Details: Enjoy a soothing aroma and silky skin post-treatment.",
           img: "/assets/salon/Honey Jar Close-Up-2.jpg",
         },

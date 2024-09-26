@@ -259,6 +259,14 @@ input[type="radio"]:checked::before {
   color: #8b8b8b;
 }
 
+.modelSmall {
+  width: 100px;
+}
+
+.modelBig {
+  width: 600px;
+}
+
 @media (max-width: 768px) {
   .launchModalImg {
     height: unset;
