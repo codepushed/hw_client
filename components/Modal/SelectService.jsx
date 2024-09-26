@@ -2,7 +2,9 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 
-import { basicModalStyling } from "./helper";
+import { basicModalStyling, basicModalStylingMobile } from "./helper";
+import Image from "next/image";
+import { isMobile, isMobileSafari } from "react-device-detect";
 
 const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
   const handleSelectService = (service) => {
@@ -18,7 +20,13 @@ const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={basicModalStyling}>
+        <Box
+          sx={
+            isMobileSafari && isMobile
+              ? basicModalStylingMobile
+              : basicModalStyling
+          }
+        >
           <div
             className="drawerCloseBtnWrapper drawerCloseBtnSpacing"
             onClick={() => handleClose()}
@@ -40,7 +48,7 @@ const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
                 onClick={() => handleSelectService(service)}
                 key={index}
               >
-                <img src={service.img} alt="service" />
+                <Image src={service.img} alt="service" height={500} width={500} />
                 <p>{service.name}</p>
               </div>
             ))}

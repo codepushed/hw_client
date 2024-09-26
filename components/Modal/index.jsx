@@ -2,7 +2,9 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Modals from "@mui/material/Modal";
 
-import { basicModalStyling } from "./helper";
+import { basicModalStyling, basicModalStylingMobile } from "./helper";
+import Image from "next/image";
+import { isMobile, isMobileSafari } from "react-device-detect";
 
 const Modal = ({ isOpen, handleClosed }) => {
   return (
@@ -13,7 +15,13 @@ const Modal = ({ isOpen, handleClosed }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={basicModalStyling}>
+        <Box
+          sx={
+            isMobileSafari && isMobile
+              ? basicModalStylingMobile
+              : basicModalStyling
+          }
+        >
           <div className="drawerCloseBtnWrapper drawerCloseBtnSpacing">
             <div className="drawerCloseBtn" onClick={() => handleClosed()}>
               x
@@ -24,7 +32,12 @@ const Modal = ({ isOpen, handleClosed }) => {
           <h3 className="launchModalsubTitle">Stay tunned Gwalior</h3>
 
           <div className="launchModalImg">
-            <img src="/assets/launch.png" alt="launch" />
+            <Image
+              src="/assets/launch.png"
+              alt="launch"
+              height={500}
+              width={500}
+            />
           </div>
         </Box>
       </Modals>

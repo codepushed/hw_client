@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
+import Image from "next/image";
+import { isMobileSafari } from "react-device-detect";
 
 const ComingSoon = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -30,7 +32,7 @@ const ComingSoon = () => {
           </h1>
 
           <p>Plumbing, Electrical Work, Cleaning, and More—Coming Soon!</p>
-          {isMobile && (
+          {isMobile && isMobileSafari && (
             <button
               className="basicRoundedButton pingUsBtn"
               onClick={() => router.push("/contact")}
@@ -42,12 +44,19 @@ const ComingSoon = () => {
 
         <div className="comingSoonImg">
           {isMobile && isMobile ? (
-            <img
+            <Image
               src="/assets/Stylized 3D Construction Worker Background Removed.png"
               alt="professionals"
+              height={1000}
+              width={1000}
             />
           ) : (
-            <img src="/assets/groupofpro.png" alt="professionals" />
+            <Image
+              src="/assets/groupofpro.png"
+              alt="professionals"
+              height={1000}
+              width={1000}
+            />
           )}
         </div>
       </div>
