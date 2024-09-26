@@ -19,7 +19,7 @@ const Blog = () => {
 
             <div className="blogAuthorDetailsContent">
               <div className="blogAuthorDetails">
-                <p>Aditi Sharma</p>
+                <p>Dharika Jain</p>
                 <p className="BlogAuthorCategory">Author</p>
               </div>
 
