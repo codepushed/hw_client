@@ -12,7 +12,6 @@ const AllService = ({ data }) => {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
-    console.log("yes")
     setOpen(false);
   };
 

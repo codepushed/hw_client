@@ -26,7 +26,7 @@ const Footer = () => {
             <div className="footerContentList">
               <p onClick={() => handleRedirect()}>Services</p>
               <p onClick={() => handleRedirect()}>Faqs</p>
-              <p onClick={() => handleRedirect()}>Contact us</p>
+              <p onClick={() => router.push('/contact')}>Contact us</p>
             </div>
 
             <div className="footerContentList">

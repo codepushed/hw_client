@@ -8,6 +8,7 @@ const BlogList = ({ isHeader }) => {
   return (
     <>
       <Header />
+      <BlogSeo />
       <BlogListing isHeader={isHeader} />
       <Footer />
     </>

@@ -4,7 +4,7 @@ const LandingSeo = () => {
   const seoTitle = "Homework - Service at your doorstep";
   const seoDesc =
     "Book services like plumbing, electrical work, cleaning, and more with just one tap. Our platform connects you with professionals at your doorstep.";
-  const brandUrl = "https://homeworkservice.in/hw_big.png";
+  const brandUrl = "https://homeworkservice.in/assets/Group 46.png";
 
   return (
     <Head>
