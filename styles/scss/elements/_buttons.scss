@@ -1,0 +1,112 @@
+.basicRoundedButton {
+  background-color: #ff8c8c;
+  color: #fff;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif !important;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.basicRoundedButton-2 {
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif !important;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.buttonWithIcon {
+  background-color: #ff8c8c;
+  color: #000;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif !important;
+  border: none;
+  outline: none;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buttonIcon {
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+}
+
+.basiclongBtn {
+  border-radius: 4px !important;
+  color: #fff !important;
+  width: 100% !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.loginWithGoogleIcon {
+  background-color: #fff !important;
+  border: 1px solid #dfdfdf;
+}
+
+.googleIcon {
+  height: 35px;
+  width: 35px;
+  object-fit: contain;
+}
+
+.outlineBtn {
+  border: 1px solid #ff8c8c;
+  border-radius: 6px;
+  background-color: #fff;
+  padding: 8px;
+  color: #ff8c8c;
+  width: 60px;
+  cursor: pointer;
+}
+
+.delBtn {
+  background-color: #f6f3f3;
+  color: #ff8c8c;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif !important;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #b8b8b8;
+}
+
+.viewDetailsBtn {
+  border-radius: 8px;
+  border: 1px solid #b8b8b8;
+  background-color: #f6f3f3;
+  color: #000;
+  padding: 5px 10px;
+  font-weight: 500;
+}
+
+.graybtnWithIcon {
+  border-radius: 16px;
+  border: 1px solid #b8b8b8;
+  background-color: #f6f3f3;
+  color: #000;
+  padding: 5px 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.pingUsBtn {
+  border-radius: 50px !important;
+}

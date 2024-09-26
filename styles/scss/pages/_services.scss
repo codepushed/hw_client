@@ -1,0 +1,209 @@
+.servicesContainer {
+  width: 100%;
+  height: 100vh;
+}
+
+.servicesHeader {
+  padding-left: 50px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+.servicesHeaderContent {
+  padding: 0 50px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.servicesHeaderImg {
+  height: 500px;
+  border-radius: 16px;
+  background-color: gray;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.servicesHeaderImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.servicesSelectWrapper {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.serviceOfferImg {
+  height: 40px;
+  width: 40px;
+}
+
+.serviceOfferImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  transform: rotate(35deg);
+}
+
+.servicesOfferContainer {
+  border: 1px solid #cfcfcf;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 16px;
+}
+
+.servicesSelectContainer {
+  height: 420px;
+  border-radius: 16px;
+  background-color: #000;
+  width: 100%;
+  position: relative;
+}
+
+.servicesSelectContainer > p {
+  color: #fff;
+  padding: 20px;
+}
+
+.servicesTypes {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  padding-left: 20px;
+  margin-bottom: 60px;
+  cursor: pointer;
+}
+
+.servicesTypes > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.servicesTypes > p {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.servicesTypesContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.servicesSeeMoreContainer {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+
+.servicesSeeMoreContainer > p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+}
+
+.servicesSubCategoryContainer {
+  padding: 0 50px;
+  margin-top: 80px;
+}
+
+.servicesSubCategoryContainer > h2 {
+  margin-bottom: 20px;
+}
+
+.serviceCardDetails {
+  width: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  color: #ff8c8c;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.moreServiceTypes {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  margin-bottom: 70px;
+}
+
+.moreServiceTypes > p {
+  color: #000;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.moreServicesTypesContainer {
+  align-items: flex-start;
+  margin-top: 40px;
+  padding-right: 40px;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .servicesHeader {
+    padding: 0 20px !important;
+  }
+
+  .servicesHeaderContent {
+    height: unset;
+    width: 100%;
+    flex-direction: column;
+    padding: 0 20px !important;
+  }
+
+  .servicesHeaderImg {
+    height: unset;
+  }
+
+  .servicesSelectWrapper {
+    width: unset;
+  }
+
+  .serviceCardPara {
+    display: none;
+  }
+
+  .serviceCardContent {
+    display: none;
+  }
+
+  .servicesSubCategoryContainer {
+    width: 100%;
+    padding: 10px;
+  }
+  .outlineBtn {
+    margin-top: 20px;
+  }
+
+  .serviceCardImg {
+    width: unset;
+    gap: 10px !important;
+  }
+
+  .servicesSubCategoryContainer > h2 {
+    padding-left: 10px;
+  }
+
+  .serviceCardHeadContent {
+    width: 100%;
+  }
+}

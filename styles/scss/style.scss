@@ -1,3 +1,20 @@
 @import "base/base";
 
+@import "elements/buttons";
+@import 'elements/searchbox';
+@import "elements/notification";
+@import "elements/card";
+@import "elements/section";
+@import "elements/footer";
+@import "elements/modal";
+@import "elements/stepper";
+@import "elements/mui";
+@import "elements/sidebar";
+
 @import "pages/landing";
+@import "pages/login";
+@import "pages/services";
+@import "pages/cart";
+@import "pages/profile";
+@import "pages/blogs";
+@import "pages/contact";
