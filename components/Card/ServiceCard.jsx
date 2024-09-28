@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Modal from "../Modal";
+import Image from "next/image";
 
 const ServiceCard = ({ data }) => {
   const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const ServiceCard = ({ data }) => {
     <>
       <div className="serviceCardContainer" onClick={() => handleOpen()}>
         <div className="serviceCardImg">
-          <img src={data.img} alt="service" />
+          <Image src={data.img} alt="service" height={500} width={500} />
           <div className="serviceCardHeadContent">
             <h1>{data.name}</h1>
             <p className="serviceCardPara">{data.desc}</p>

@@ -6,6 +6,7 @@ import { kitchenServices } from "../../Static";
 import Drawers from "../../components/Drawers";
 import SelectService from "../../components/Modal/SelectService";
 import Footer from "../../components/Footer";
+import Image from "next/image";
 
 const AllService = ({ data }) => {
   const [selectedServices, setSelectedServices] = useState(data[0]);
@@ -21,9 +22,10 @@ const AllService = ({ data }) => {
 
       <div className="servicesHeaderContent">
         <div className="servicesHeaderImg">
-          <img
+          <Image
             src="/assets/Luxurious Salon Pampering with Sparkling Hair Treatment.jpg"
             alt="kitchen cleaning"
+            height={500} width={500}
           />
         </div>
 
@@ -37,7 +39,7 @@ const AllService = ({ data }) => {
                   className="servicesTypes"
                   onClick={() => setSelectedServices(service)}
                 >
-                  <img src={service.img} alt="service" />
+                  <Image src={service.img} alt="service" height={500} width={500} />
                   <p>{service.name}</p>
                 </div>
               ))}
@@ -53,7 +55,7 @@ const AllService = ({ data }) => {
 
           <div className="servicesOfferContainer">
             <div className="serviceOfferImg">
-              <img src="/assets/icons/launchIcon.png" alt="launch" />
+              <Image src="/assets/icons/launchIcon.png" alt="launch" height={500} width={500} />
             </div>
 
             <p>Stay tuned! Launching soon near you</p>

@@ -1,10 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modals from "@mui/material/Modal";
 
-import { basicModalStyling } from "./helper";
+import Image from "next/image";
 
 const Modal = ({ isOpen, handleClosed }) => {
+  const [isMobileDefault, setIsMobileDefault] = useState(false);
+
+  const basicModalStyling = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: isMobileDefault ? 300 : 600,
+    bgcolor: "background.paper",
+    outline: "none",
+    borderRadius: "6px",
+    paddingLeft: 4,
+    marginTop: "10px",
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setIsMobileDefault(true);
+    } else {
+      setIsMobileDefault(false);
+    }
+  };
+
+  useEffect(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div>
       <Modals
@@ -24,7 +57,12 @@ const Modal = ({ isOpen, handleClosed }) => {
           <h3 className="launchModalsubTitle">Stay tunned Gwalior</h3>
 
           <div className="launchModalImg">
-            <img src="/assets/launch.png" alt="launch" />
+            <Image
+              src="/assets/launch.png"
+              alt="launch"
+              height={500}
+              width={500}
+            />
           </div>
         </Box>
       </Modals>

@@ -15,7 +15,7 @@ export const basicModalStyling = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
+  width: "100px",
   bgcolor: "background.paper",
   outline: "none",
   borderRadius: "6px",
@@ -29,10 +29,13 @@ export const basicModalStylingMobile = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "80%",
+  width: "100px",
   bgcolor: "background.paper",
   outline: "none",
   borderRadius: "6px",
   paddingLeft: 4,
   marginTop: "10px",
 };
+
+
+

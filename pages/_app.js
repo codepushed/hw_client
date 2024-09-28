@@ -18,7 +18,9 @@ const MyApp = ({ Component, pageProps }) => {
     ReactGA.initialize(productConfigs.GA);
 
     if (router.pathname == "/") {
+      setLoading(true);
       router.push("/coming-soon");
+      setLoading(false);
     }
     if (
       router.pathname !== "/blogs" &&
@@ -27,7 +29,6 @@ const MyApp = ({ Component, pageProps }) => {
       router.pathname !== "/contact" &&
       router.pathname !== "/services/[subservice]/[id]"
     ) {
-      // setLoading(true);
       router.push("/coming-soon");
     } else {
       setLoading(false);

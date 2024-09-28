@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import { blogs } from "../../Static/blogs";
+import Image from "next/image";
 
 const Blog = () => {
   const router = useRouter();
@@ -14,7 +15,7 @@ const Blog = () => {
 
           <div className="blogAuthorDetailsContainer">
             <span className="blogAuthor">
-              <img src="/assets/bloggerprofile.png" alt="bloggerprofile" />
+              <Image src="/assets/bloggerprofile.png" alt="bloggerprofile" height={500} width={500} />
             </span>
 
             <div className="blogAuthorDetailsContent">
@@ -29,7 +30,7 @@ const Blog = () => {
 
           <p>{blogs[0].desc}</p>
           <div className="blogHeaderImg">
-            <img src={blogs[0].titleImg} alt="salon services" />
+            <Image src={blogs[0].titleImg} alt="salon services" height={500} width={500} />
           </div>
         </div>
 
@@ -40,7 +41,7 @@ const Blog = () => {
             <div className="blogHeaderImg">
               {item.img &&
                 item?.img.map((images, index) => (
-                  <img src={images} alt="salon services" key={index} />
+                  <Image src={images} alt="salon services" key={index} height={500} width={500} />
                 ))}
             </div>
 
@@ -63,9 +64,10 @@ const Blog = () => {
           <h1>Curls & waves styling</h1>
 
           <span className="blogServiceImgContainer">
-            <img
+            <Image
               src="/assets/Joyful Young Woman in Grayscale Background Removed.png"
               alt="blogservice"
+              height={500} width={500}
             />
           </span>
 
@@ -92,10 +94,11 @@ const Blog = () => {
           <h1>Tan removal treatment</h1>
 
           <span className="blogServiceImgContainer">
-            <img
+            <Image
               src="/assets/Indulgent Beauty Treatment.jpg"
               alt="blogservice"
               style={{ objectFit: "cover" }}
+              height={500} width={500}
             />
           </span>
 
