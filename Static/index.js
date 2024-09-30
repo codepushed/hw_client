@@ -37,3 +37,9 @@ export const steps = [
     description: `Power steam to clean gas stove burners, stovetop & knobs.`,
   },
 ];
+
+export const staticJobCard = {
+  name: "Plumbering",
+  desc: "Water leakage issue",
+  distance: "1.4km away"
+}

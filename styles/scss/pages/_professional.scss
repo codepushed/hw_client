@@ -1,0 +1,43 @@
+.professionalHeaderContainer {
+  height: 280px;
+  width: 100%;
+  background-color: #f3c4c4; //need opacity
+  margin-top: 20px;
+  padding: 40px;
+}
+
+.professionalHeader > h1 {
+  font-size: 25px;
+}
+
+.professionalHeader {
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.professionalSubHeader {
+  font-size: 18px;
+  color: #6f6e6e;
+  font-weight: 300;
+  line-height: 25px;
+}
+
+.joinBtn {
+  margin-top: 20px;
+}
+
+
+.professionalHeaderImg {
+    height: 400px;
+    width: 400px;
+}
+
+.professionalHeaderImg > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.professionalHeaderWrapper {
+    display: flex;
+}
