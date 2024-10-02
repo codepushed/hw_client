@@ -10,29 +10,27 @@ const Professional = () => {
       <Header />
       <div className="professionalHeaderContainer">
         <div className="professionalHeaderWrapper">
-            <div>
-        <h1>Become a certified</h1>
-        <h1 className="professionalHeader">professional today!</h1>
+          <div>
+            <h1>Become a certified</h1>
+            <h1 className="professionalHeader">professional today!</h1>
 
-        <span className="professionalSubHeader">
-          <p>Flexible jobs, fair pay, and constant</p>
-          <p>demand - start working on your terms</p>
-        </span>
+            <span className="professionalSubHeader">
+              <p>Flexible jobs, fair pay, and constant</p>
+              <p>demand - start working on your terms</p>
+            </span>
 
-        <button className="basicRoundedButton pingUsBtn joinBtn">
-          Join us
-        </button>
+            <button className="basicRoundedButton pingUsBtn joinBtn">
+              Join us
+            </button>
+          </div>
 
-        </div>
+          <div className="professionalHeaderImg">
+            <img src="/assets/constructionbros.png" alt="professional" />
+          </div>
 
-        <div className="professionalHeaderImg">
-          <img
-            src="/assets/Confident_Worker_in_Industrial_Setting-removebg-preview.png"
-            alt="professional"
-          />
-        </div>
-
-        {/* <JobCard staticJobCard={staticJobCard} /> */}
+          <div className="jobCardWrapper">
+            <JobCard staticJobCard={staticJobCard} />
+          </div>
         </div>
       </div>
     </div>

@@ -3,16 +3,16 @@ import React from "react";
 const JobCard = ({ staticJobCard }) => {
   return (
     <div className="jobCardContainer">
-      <span>
+      <span className="jobCardName">
         <h1>{staticJobCard.name}</h1>
         <p>{staticJobCard.distance}</p>
       </span>
 
-      <p>{staticJobCard.desc}</p>
+      <p className="jobCardDesc">{staticJobCard.desc}</p>
 
-      <div>
-        <button>Accept</button>
-        <button>Decline</button>
+      <div className="jobCardButton">
+        <button className="jobCardAcceptBtn">Accept</button>
+        <button className="jobCardDeclineBtn">Decline</button>
       </div>
     </div>
   );
