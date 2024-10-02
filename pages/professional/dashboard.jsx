@@ -2,6 +2,7 @@ import React from "react";
 
 import ToggleWidget from "../../components/ToggleWidget";
 import Header from "../../components/Header";
+import ServiceDetailsModel from "../../components/Modal/ServiceDetailsModel";
 
 const Dashboard = () => {
   return (
@@ -9,6 +10,8 @@ const Dashboard = () => {
       <Header />
 
       <ToggleWidget />
+
+      <ServiceDetailsModel />
     </div>
   );
 };
