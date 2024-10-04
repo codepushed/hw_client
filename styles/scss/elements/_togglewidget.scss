@@ -28,7 +28,6 @@
 
 .toggleWidgetPanelOne {
   position: relative;
-
 }
 
 .toggleWidgetPanelJobs {
@@ -58,4 +57,16 @@
 .toggleWidgetProDetails {
   width: 95%;
   margin-bottom: 5px;
+}
+
+.JobsChartContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.JobsChartContainer > h1 {
+  font-weight: 300;
 }

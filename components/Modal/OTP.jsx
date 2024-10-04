@@ -30,7 +30,7 @@ const OTP = ({ isOpen, handleClose }) => {
   return (
     <div>
       <Modal
-        open={true}
+        open={false}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

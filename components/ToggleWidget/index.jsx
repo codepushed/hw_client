@@ -4,14 +4,27 @@ import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import dynamic from "next/dynamic";
+
+const GaugeChart = dynamic(() => import("react-gauge-component"), {
+  ssr: false,
+});
 
 import JobCard from "../Card/JobCard";
 
 import { staticJobCard } from "../../Static";
 
 const ToggleWidget = () => {
-  const [value, setValue] = useState("1");
- 
+  const [value, setValue] = useState("2");
+  const [options, setOptions] = useState({
+    type: "radial-gauge",
+    value: 80,
+    scale: {
+      min: 0,
+      max: 100,
+    },
+  });
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -82,7 +95,10 @@ const ToggleWidget = () => {
           </div>
         </TabPanel>
         <TabPanel value="2" className="toggleWidgetTabPanel">
-          Item Two
+          <div className="JobsChartContainer">
+        <GaugeChart style={{ width: "50%" }} />
+        <h1>Overall Jobs done</h1>
+        </div>
         </TabPanel>
       </TabContext>
     </Box>
