@@ -2,10 +2,9 @@ import React from "react";
 
 import Header from "../../components/Header";
 import JobCard from "../../components/Card/JobCard";
-import Footer from '../../components/Footer'
+import Footer from "../../components/Footer";
 
 import { staticJobCard } from "../../Static";
-
 
 const Professional = () => {
   return (

@@ -22,7 +22,7 @@
 }
 
 .joinBtn {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .professionalHeaderImg {
@@ -110,10 +110,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30%;
+  padding: 10px;
+  justify-content: center;
+  border: 1px solid #e7e2e2;
+  border-radius: 16px;
+  margin: 0px auto;
+  margin-top: 40px;
 }
 
 .professionalVerificationImg {
-  height: 300px;
   width: 300px;
 }
 
@@ -126,7 +132,7 @@
 .professionalVerificationInput > input {
   border-radius: 16px;
   border: none;
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
   padding: 15px 60px;
 }
 
