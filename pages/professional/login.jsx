@@ -9,7 +9,9 @@ const Login = () => {
       <div className="professionalLogin">
         <h1>Login</h1>
         <p>Access your dashboard and</p>
-        <p>start receiving job requests</p>
+        <p className="professionalLoginSubHeading">
+          start receiving job requests
+        </p>
 
         <div className="professionalLoginInput">
           <div className="professionalLoginInputSection">
