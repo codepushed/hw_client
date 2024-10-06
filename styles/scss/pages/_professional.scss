@@ -1,0 +1,142 @@
+.professionalHeaderContainer {
+  height: 280px;
+  background-color: #f3c4c4; //need opacity
+  margin-top: 20px;
+  padding: 40px;
+}
+
+.professionalHeader > h1 {
+  font-size: 25px;
+}
+
+.professionalHeader {
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.professionalSubHeader {
+  font-size: 18px;
+  color: #6f6e6e;
+  font-weight: 300;
+  line-height: 25px;
+}
+
+.joinBtn {
+  margin: 20px 0;
+}
+
+.professionalHeaderImg {
+  height: 400px;
+  width: 600px;
+  margin-top: -80px;
+}
+
+.professionalHeaderImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.professionalHeaderWrapper {
+  display: flex;
+  font-size: 20px;
+}
+
+.professionalSectionWrapper {
+  padding: 0 40px;
+}
+
+.professionalSection {
+  height: 630px;
+  width: 80%;
+  border-radius: 16px;
+  background: linear-gradient(to right, #daecf2, #fddcdc);
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px 80px;
+}
+
+.professionalSection > h1 {
+  font-size: 60px;
+}
+
+.professionalSectionCardContainer {
+  width: 75%;
+  margin-top: 40px;
+}
+
+.professionalSectionCard {
+  border-radius: 8px;
+  background-color: #f0f799;
+  width: 450px;
+  height: 100px;
+  padding: 20px 30px;
+  margin-bottom: 30px;
+}
+
+.professionalSectionCard > p {
+  color: #6f6e6e;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.professionalSectionFairPay {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.professionalVerificationHead {
+  width: 80%;
+  // background-color: #f0f799;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px 40px;
+}
+
+.professionalVerificationHead > h1 {
+  font-size: 60px;
+}
+
+.professionalVerificationHead > p {
+  font-size: 30px;
+  color: #6f6e6e;
+  font-weight: 300;
+  line-height: 40px;
+}
+
+.professionalVerificationContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  padding: 10px;
+  justify-content: center;
+  border: 1px solid #e7e2e2;
+  border-radius: 16px;
+  margin: 0px auto;
+  margin-top: 40px;
+}
+
+.professionalVerificationImg {
+  width: 300px;
+}
+
+.professionalVerificationImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.professionalVerificationInput > input {
+  border-radius: 16px;
+  border: none;
+  background-color: #eeeeee;
+  padding: 15px 60px;
+}
+
+.professionalVerificationInput > p {
+  margin-bottom: 10px;
+  font-size: 13px;
+}
