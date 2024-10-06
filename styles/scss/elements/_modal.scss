@@ -1,0 +1,396 @@
+.drawerContainer {
+  padding: 10px 40px;
+}
+
+.drawerContainer > h1 {
+  margin-top: -20px;
+}
+
+.drawerContainer > h2 {
+  margin: 20px 0;
+  font-size: 25px;
+}
+
+.drawerCloseBtn {
+  background-color: #000;
+  border-radius: 50px;
+  padding: 5px;
+  height: 20px;
+  width: 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
+  cursor: pointer;
+}
+
+.drawerCloseBtnWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.drawerCloseBtnSpacing {
+  padding: 10px;
+}
+
+.drawerDivider {
+  width: 100%;
+  height: 2px;
+  background-color: #cfcfcf;
+}
+
+.drawerUserExperienceContainer {
+  margin-top: 50px;
+}
+
+.drawerUserExperienceHeader {
+  margin-top: 20px;
+}
+
+.drawerUserExperienceHeader > span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.drawerUserExperienceHeader > span > img {
+  height: 25px;
+  width: 25px;
+}
+
+.drawerUserExperienceHeader > p {
+  font-weight: 300;
+  margin-top: 5px;
+}
+
+.drawerUserExperienceContent {
+  margin-top: 50px;
+}
+
+.drawerUserExperienceHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawerUserExperienceRating {
+  border-radius: 6px;
+  background-color: #07794c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+.drawerUserExperienceRating > img {
+  height: 15px;
+  width: 15px;
+}
+
+.drawerUserExperienceSubHead {
+  color: #8b8b8b;
+  font-weight: 200;
+  font-size: 15px;
+  width: 700px;
+}
+
+.drawerUserExperienceSub {
+  font-size: 15px;
+  color: #000;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.drawerUserExperienceDate {
+  font-size: 13px;
+  color: #8b8b8b;
+  font-weight: 200;
+  font-size: 13px;
+}
+
+.slotTimingsContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.slotTimingsHead {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.slotTimings {
+  padding: 8px 35px;
+  border-radius: 6px;
+  border: 1px solid #ff8c8c;
+  background-color: rgba(255, 140, 140, 0.22);
+  text-align: center;
+  color: #000000 !important;
+}
+
+.slotTimings > h1 {
+  font-size: 20px;
+  z-index: 1;
+  color: #000000 !important;
+}
+
+.slotTimings > p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.slotDateHead {
+  margin-top: 50px;
+}
+
+.slotDateContainer {
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.dateSlotNotActive {
+  border: 1px solid #b8b8b8 !important;
+  background-color: #fff !important;
+}
+
+.selectSlotBtn {
+  width: 100%;
+  font-weight: 500 !important;
+}
+
+.selectSlotBtnContainer {
+  margin: 40px 0;
+  padding-right: 40px;
+}
+
+.addressHeading {
+  font-size: 30px !important;
+}
+
+.addressSubHeading {
+  color: #ff8c8c;
+  font-size: 18px;
+  padding: 25px 0;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.addressContainer {
+  padding-right: 40px;
+  margin-bottom: 30px;
+}
+
+.addressTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.addressContainer > p {
+  color: #b8b8b8;
+  font-weight: 400;
+  margin-top: 5px;
+  margin-left: 25px;
+}
+
+input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ff8c8c;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="radio"]:checked {
+  background-color: #ff8c8c;
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  display: block;
+  width: 13px;
+  height: 13px;
+  background-color: #000000;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bookingDetailsheading {
+  margin-top: -20px;
+}
+
+.bookingDetailsRecieptBtn > img {
+  height: 15px;
+  width: 15px;
+  object-fit: cover;
+}
+
+.bookingDetailsRecieptBtn {
+  margin-top: 20px;
+}
+
+.professionalDetails {
+  display: flex;
+}
+
+.launchModalImg {
+  height: 500px;
+  width: 500px;
+}
+
+.launchModalImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.launchModalsubTitle {
+  margin-top: 10px;
+  font-weight: 300;
+  color: #8b8b8b;
+}
+
+.modelSmall {
+  width: 100px;
+}
+
+.modelBig {
+  width: 600px;
+}
+
+.serviceDetailsMap {
+  // width: 100%;
+  height: 200px;
+  border-radius: 18px;
+  position: relative;
+}
+
+.serviceDetailClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.serviceDetailsMap > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.serviceDetails {
+  padding: 10px 20px;
+  margin-top: 10px;
+}
+
+.serviceDetailsPrice {
+  display: flex;
+  align-items: center;
+  font-weight: 300;
+  color: #958f8f;
+  font-size: 20px;
+}
+
+.serviceDetailsCustomerImg {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.serviceDetailsCustomerImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 50%;
+}
+
+.serviceDetailsCustomerNameContainer {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.serviceDetailsCustomer {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.serviceDetailsCustomerContainer {
+  padding: 10px 20px;
+}
+
+.customerName {
+  font-size: 20px;
+}
+
+.serviceDetailsAddress {
+  font-weight: 300;
+  color: #958f8f;
+}
+
+.markasCompleteBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.otpModalContainer {
+  padding: 20px 20px;
+}
+
+.otpModalInputs {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.otpModalInputs > input {
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #cfcfcf;
+  color: #fff;
+  width: 50px;
+  height: 60px;
+  padding: 0 5px;
+  text-align: center;
+}
+
+.otpModalSubheading {
+  color: #8b8b8b;
+  font-weight: 300;
+  line-height: 20px;
+  margin-bottom: 20px;
+  width: 400px;
+}
+
+.otpBtn {
+  align-items: flex-start !important;
+  display: flex !important;
+  justify-content: flex-start;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .launchModalImg {
+    height: unset;
+    width: unset;
+  }
+}

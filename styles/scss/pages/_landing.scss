@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pattaya&display=swap");
+
+.headerContainer {
+  margin-top: 10px;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLogo > h1 {
+  font-family: "Pattaya", sans-serif !important;
+  color: #ff8c8c;
+  font-size: 40px;
+  font-weight: 400;
+  cursor: pointer;
+  display: swap;
+}
+.headerLogo > p {
+  color: #000;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 0px;
+  cursor: pointer;
+}
+
+.headerButtonContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerlistContainer {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.landingContainerHeading {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+  text-align: center;
+  position: absolute;
+}
+
+.landingContainerHeading > h1 {
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 100px;
+}
+
+.landingContainerSubHeading {
+  margin-top: 12px;
+}
+
+.landingContainerSubHeading > p {
+  color: #958f8f;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.landingContainerHeaderContent {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 30px;
+}
+
+.landingContainerImg {
+  position: relative;
+  height: 200px;
+  width: 200px;
+}
+
+.bucketIcon {
+  position: absolute;
+  height: 100%;
+}
+
+.landingOfferHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  position: relative;
+}
+
+.landingOfferHeader > h1 {
+  font-size: 60px;
+  z-index: 1;
+}
+
+.landingOfferHeader > p {
+  font-size: 18px;
+  margin-top: 6px;
+}
+
+.landingOfferLeft {
+  position: absolute;
+  height: 80%;
+  top: -10%;
+  z-index: 0;
+}
+
+.landingOfferLeft > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  z-index: 0;
+}
+
+.landingOfferCenter {
+  height: 50%;
+  width: 50%;
+  z-index: 1;
+}
+
+.landingOfferCenter > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.landingOfferCenterContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.landingOfferRight {
+  position: absolute;
+  height: 80%;
+  top: 30%;
+  z-index: 0;
+  right: 0;
+}
+
+.landingOfferRight > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.landingOfferNotificationContainer {
+  width: 100%;
+  z-index: 1;
+}
+
+.landingOfferNotification {
+  position: absolute;
+  left: 3%;
+  z-index: 1;
+  top: 20%;
+}
+
+.landingOfferNotification-2 {
+  position: absolute;
+  right: 0%;
+  top: 30%;
+}
+
+.landingOfferNotification-3 {
+  position: absolute;
+  left: 12%;
+  top: 60%;
+  z-index: 1;
+}
+
+.landingOfferNotification-4 {
+  position: absolute;
+  right: 0%;
+  top: 100%;
+  z-index: 1;
+}
+
+.landingOfferNotification > div {
+  width: 100%;
+}
+
+.landingOfferContainer {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.notificationRight {
+  right: 0% !important;
+}
+
+//coming soon page
+
+.comingSoonWrapper {
+  padding: 0 40px;
+}
+
+.comingSoonContentText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.comingSoonContentText > h1 {
+  font-size: 80px;
+  font-weight: 700;
+  margin-top: 20px;
+}
+
+.comingSoonContentText > p {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 80px;
+  color: #958f8f;
+}
+
+.comingSoonImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.comingSoonContentSubText {
+  line-height: 50px;
+}
+
+@media (max-width: 768px) {
+  .comingSoonWrapper {
+    padding: 0 20px;
+    margin-top: 60px;
+
+  }
+
+  .comingSoonContentText > h1 {
+    font-size: 25px;
+    margin-top: unset;
+  }
+
+  .comingSoonContentText > p {
+    line-height: 30px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  .comingSoonContentSubText {
+    font-size: 40px !important;
+    margin-top: unset;
+    line-height: 45px;
+  }
+
+  .comingSoonContentText {
+    align-items: self-start;
+  }
+
+  .comingSoonContentText > button {
+    margin-top: 20px;
+  }
+
+}
