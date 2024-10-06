@@ -1,8 +1,9 @@
 .loginContainer {
   display: flex;
   height: 100vh;
-  width: 100%;
   align-items: start;
+  justify-content: space-between;
+  padding: 0 50px;
 }
 
 .loginLeftContent {
@@ -10,8 +11,11 @@
 }
 
 .loginRightContent {
-  width: 100%;
-  height: 100%;
+  width: 60%;
+  height: fit-content;
+  border-radius: 16px;
+  background: linear-gradient(to bottom right, #ffd1d1, #e0e0e0);
+  margin-right: 10px;
 }
 
 .loginRightContent > img {
@@ -34,6 +38,32 @@
 .loginleftContentForm {
   margin-top: 20px;
   width: 300px;
+}
+
+
+.loginRightContentHead {
+  font-size: 80px;
+  font-weight: 700;
+  padding-left: 20px;
+}
+
+.loginRightContentSubHead {
+  font-size: 80px;
+  font-weight: 200;
+  line-height: 60px;
+  padding-left: 20px;
+}
+
+.loginRightContentImg {
+  height: 500px;
+  width: 350px;
+  margin: 0 auto;
+}
+
+.loginRightContentImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .loginleftContentForm > input {

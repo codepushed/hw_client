@@ -6,7 +6,6 @@ const Login = () => {
   return (
     <div>
       <Header isHidden={true} />
-
       <div className="loginContainer">
         <div className="loginLeftContent">
           <div className="loginLeftContentHeading">
@@ -58,7 +57,11 @@ const Login = () => {
         </div>
 
         <div className="loginRightContent">
-          <img src="/assets/login.png" alt="login" />
+          <h1 className="loginRightContentHead">Get your first</h1>
+          <h1 className="loginRightContentSubHead">Booking done</h1>
+          <div className="loginRightContentImg">
+          <img src="/assets/hw_worker.png" alt="login" />
+          </div>
         </div>
       </div>
     </div>
