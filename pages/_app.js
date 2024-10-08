@@ -15,7 +15,7 @@ const MyApp = ({ Component, pageProps }) => {
 
   useEffect(() => {
     clarity.init(productConfigs.CLARITY);
-    ReactGA.initialize(productConfigs.GA);
+    // ReactGA.initialize(productConfigs.GA);
 
     if (router.pathname == "/") {
       setLoading(true);
