@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 import { blogs } from "../../Static/blogs";
-import Image from "next/image";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState(null);
@@ -107,72 +107,79 @@ const Blog = () => {
               </div>
             ))}
           </div>
-          <div className="blogServiceContainer">
-            <h1>Our services</h1>
+          {id.includes(
+            "signs-you-need-to-call-an-electrician-for-your-home"
+          ) ? (
+            ""
+          ) : (
+            <div className="blogServiceContainer">
+              <h1>Our services</h1>
 
-            <div className="blogServiceContent">
-              <h1>Curls & waves styling</h1>
+              <div className="blogServiceContent">
+                <h1>Curls & waves styling</h1>
 
-              <span className="blogServiceImgContainer">
-                <Image
-                  src="/assets/Joyful Young Woman in Grayscale Background Removed.png"
-                  alt="blogservice"
-                  height={500}
-                  width={500}
-                />
-              </span>
+                <span className="blogServiceImgContainer">
+                  <Image
+                    src="/assets/Joyful Young Woman in Grayscale Background Removed.png"
+                    alt="blogservice"
+                    height={500}
+                    width={500}
+                  />
+                </span>
 
-              <button
-                className="basicRoundedButton blogServiceBtn"
-                onClick={() => router.push("/services/salon/women-salon")}
-              >
-                Explore
-              </button>
-              <p className="blogServiceDesc">
-                Create curls or waves using curling irons, rollers, or other
-                styling tools.
-              </p>
-              <p className="blogServiceDesc">
-                Adds volume and texture to hair for a dynamic and stylish look.
-              </p>
+                <button
+                  className="basicRoundedButton blogServiceBtn"
+                  onClick={() => router.push("/services/salon/women-salon")}
+                >
+                  Explore
+                </button>
+                <p className="blogServiceDesc">
+                  Create curls or waves using curling irons, rollers, or other
+                  styling tools.
+                </p>
+                <p className="blogServiceDesc">
+                  Adds volume and texture to hair for a dynamic and stylish
+                  look.
+                </p>
+              </div>
+
+              <div className="blogServiceContent" style={{ marginTop: "20px" }}>
+                <h1>Tan removal treatment</h1>
+
+                <span className="blogServiceImgContainer">
+                  <Image
+                    src="/assets/Indulgent Beauty Treatment.jpg"
+                    alt="blogservice"
+                    style={{ objectFit: "cover" }}
+                    height={500}
+                    width={500}
+                  />
+                </span>
+
+                <button
+                  className="basicRoundedButton blogServiceBtn"
+                  onClick={() => router.push("/services/salon/women-salon")}
+                >
+                  Explore
+                </button>
+                <p className="blogServiceDesc">
+                  Use specialized products to lighten and remove tan from the
+                  skin.
+                </p>
+                <p className="blogServiceDesc">
+                  Brightens skin tone and reduces tan lines.
+                </p>
+
+                <button
+                  className="basicRoundedButton blogServiceBtn"
+                  style={{ width: "100%" }}
+                  onClick={() => router.push("/services/salon/women-salon")}
+                >
+                  Explore All
+                </button>
+              </div>
             </div>
-
-            <div className="blogServiceContent" style={{ marginTop: "20px" }}>
-              <h1>Tan removal treatment</h1>
-
-              <span className="blogServiceImgContainer">
-                <Image
-                  src="/assets/Indulgent Beauty Treatment.jpg"
-                  alt="blogservice"
-                  style={{ objectFit: "cover" }}
-                  height={500}
-                  width={500}
-                />
-              </span>
-
-              <button
-                className="basicRoundedButton blogServiceBtn"
-                onClick={() => router.push("/services/salon/women-salon")}
-              >
-                Explore
-              </button>
-              <p className="blogServiceDesc">
-                Use specialized products to lighten and remove tan from the
-                skin.
-              </p>
-              <p className="blogServiceDesc">
-                Brightens skin tone and reduces tan lines.
-              </p>
-
-              <button
-                className="basicRoundedButton blogServiceBtn"
-                style={{ width: "100%" }}
-                onClick={() => router.push("/services/salon/women-salon")}
-              >
-                Explore All
-              </button>
-            </div>
-          </div>
+          )}
         </>
       )}
     </div>
