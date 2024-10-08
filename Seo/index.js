@@ -11,7 +11,6 @@ const LandingSeo = () => {
       <title>Homework - Service at your doorstep</title>
       <meta name="title" content={seoTitle} />
       <meta name="description" content={seoDesc} />
-      <meta name="google-site-verification" content="OIMbE7nYwrXB42YRzGBpbHZZfcnEgUHHO1qt4J7tYTc" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://homeworkservice.in" />
       <meta property="og:title" content={seoTitle} />
@@ -19,7 +18,7 @@ const LandingSeo = () => {
       <meta property="og:image" content={brandUrl} />
 
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://www.lenzgig.com/" />
+      <meta property="twitter:url" content="https://homeworkservice.in" />
       <meta property="twitter:title" content={seoTitle} />
       <meta property="twitter:description" content={seoDesc} />
       <meta property="twitter:image" content={brandUrl} />

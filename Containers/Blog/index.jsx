@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 import { blogs } from "../../Static/blogs";
+import ElectricianBlogSeo from "../../Seo/electricianblog";
+import { BlogSeo } from "../../Seo/blog";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState(null);
@@ -42,6 +44,11 @@ const Blog = () => {
 
   return (
     <div className="blogsContainer">
+      {id.includes("signs-you-need-to-call-an-electrician-for-your-home") ? (
+        <ElectricianBlogSeo />
+      ) : (
+        <BlogSeo />
+      )}
       {blogData && (
         <>
           <div className="blogsSubContainer">

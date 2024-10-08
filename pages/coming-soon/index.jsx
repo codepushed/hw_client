@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Image from "next/image";
 import { isMobileSafari } from "react-device-detect";
+import { LandingSeo } from '../../Seo'
 
 const ComingSoon = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -23,6 +24,7 @@ const ComingSoon = () => {
 
   return (
     <div>
+      <LandingSeo />
       <Header />
       <div className="comingSoonWrapper">
         <div className="comingSoonContentText">

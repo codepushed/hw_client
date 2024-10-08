@@ -2,10 +2,12 @@ import React from "react";
 import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+import { LandingSeo } from "../../Seo";
 
 const Contact = () => {
   return (
     <div>
+      <LandingSeo />
       <Header />
       <div className="contactContainer">
         <h1>Contact us</h1>

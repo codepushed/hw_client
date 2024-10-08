@@ -18,6 +18,7 @@ const AllService = ({ data }) => {
 
   return (
     <div className="servicesContainer">
+      
       <h1 className="servicesHeader">Salon for Women</h1>
 
       <div className="servicesHeaderContent">
