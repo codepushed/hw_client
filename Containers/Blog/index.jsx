@@ -60,11 +60,11 @@ const Blog = () => {
 
                 <div className="blogAuthorDetailsContent">
                   <div className="blogAuthorDetails">
-                    <p>Dharika Jain</p>
+                    <p>{blogData.author}</p>
                     <p className="BlogAuthorCategory">Author</p>
                   </div>
 
-                  <p className="BlogAuthorCategory">8 Sept 2024</p>
+                  <p className="BlogAuthorCategory">{blogData.date}</p>
                 </div>
               </div>
 

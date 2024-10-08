@@ -1,6 +1,8 @@
 export const blogs = [
   {
     id: 0,
+    author: "Dharika Jain",
+    date: "8 Sept 2024",
     title:
       "Why Pay More at Salons? Get Celebrity-Style Beauty Services at Home!",
     titleImg: "/assets/Peaceful Wellness Therapy Session.jpg",
@@ -49,11 +51,12 @@ export const blogs = [
       },
     ],
   },
-
   {
     id: 1,
+    author: "Dharika Jain",
+    date: "8 Oct 2024",
     title: "Signs You Need to Call an Electrician for Your Home",
-    titleImg: "/assets/Peaceful Wellness Therapy Session.jpg",
+    titleImg: "/assets/ryc-xd-fcWD1e__Q6I-unsplash.jpg",
     desc: "Many homeowners tend to overlook minor electrical issues, but these small problems can often lead to bigger, more dangerous situations if left unaddressed. It’s essential to know when to call a professional electrician to handle these issues before they escalate. Here are some clear signs that you need to pick up the phone and schedule a visit from an electrician.",
     subheading: [
       {
@@ -63,53 +66,57 @@ export const blogs = [
       {
         title: "2. Flickering or Dimming Lights",
         desc: "Flickering or dimming lights are another sign of an electrical problem. This could be caused by loose wiring or an overloaded circuit, especially if the lights flicker when you use other appliances. It could also be due to faulty connections in the circuit. Ignoring this issue might lead to damaged wiring, which is a serious fire hazard. If you notice flickering lights throughout your home, it's time to get a professional to check it out., Gwalior residents can now maintain their beauty regimen without stepping outside. Our certified beauticians use premium products and equipment to ensure you get the best care possible, without the hefty salon prices.",
-        img: ["/assets/Contemplative Young Woman with Mirror.jpg"],
+        img: ["/assets/sergi-kabrera-BFYcfOUsqt0-unsplash.jpg"],
       },
       {
         title: "3. Burning Smell or Scorched Outlets",
         desc: "If you detect a burning smell coming from any electrical outlet, switch, or even from within your walls, it’s crucial to act immediately. A burning odor indicates overheating or possibly an electrical fire waiting to happen. Along with the smell, if you notice scorch marks around outlets or switches, it’s a definite red flag that something is wrong. Turn off the power to the area and call an electrician right away.",
-        img: ["/assets/Joyful Skincare Routine.jpg"],
       },
 
       {
         title: "4. Sparks or Shocks",
         desc: "If you see sparks when plugging or unplugging devices, or if you experience a mild shock when touching an outlet or switch, it’s time to take action. These signs point to loose wiring or poor grounding, which can lead to serious injury or fire. An electrician can fix the issue before it becomes dangerous.",
-        img: ["/assets/collectionofhairstyles.png"],
+        img: ["/assets/anastasiya-badun-krARgGsRCxM-unsplash.jpg"],
       },
       {
         title: "5. Outlets That Feel Warm or Buzz",
         desc: "Outlets or switches that feel warm to the touch, or emit a buzzing sound, are signals that something is wrong inside the electrical system. Warmth might indicate overloading or faulty wiring, while buzzing suggests an electrical current is not flowing properly. These issues should never be ignored, as they pose a risk of electrical fires.",
-        img: ["/assets/Facial Treatment Serenity.jpg"],
+        img: ["/assets/heeren-darji-SHl3zR9M1QQ-unsplash.jpg"],
       },
 
       {
         title: "6. Old or Faulty Wiring",
         desc: "Homes that are more than 20-30 years old may have outdated or worn wiring that doesn't meet modern electrical safety standards. If you notice frequent electrical problems, such as dimming lights, breakers that constantly trip, or old outlets, your wiring may be at fault. Old wiring can deteriorate over time, increasing the risk of electrical fires. If your home has never had its wiring updated, an electrician can inspect and upgrade your system to ensure it's safe and up to code.",
-        img: ["/assets/collectionofhairstyles.png"],
+        img: ["/assets/frames-for-your-heart-iOLHAIaxpDA-unsplash.jpg"],
       },
 
       {
         title: "7. Unusual Sounds",
         desc: "Electrical systems should operate silently, so if you hear buzzing, crackling, or sizzling sounds from outlets or switches, there’s likely a problem. These noises can indicate poor wiring connections, which could spark a fire. Turn off the power in the affected area and have an electrician inspect it.",
-        img: ["/assets/collectionofhairstyles.png"],
       },
 
       {
         title: "8. Frequently Blown Fuses",
         desc: "If you find yourself constantly replacing fuses, it’s a sign that your electrical system is overloaded. This often happens in older homes that weren't built to handle the number of modern appliances we use today. An electrician can install additional circuits or upgrade your electrical panel to better support your needs.",
-        img: ["/assets/collectionofhairstyles.png"],
       },
 
       {
         title: "9. Non-Functioning Outlets",
         desc: "If one or more of your outlets suddenly stops working, it could be due to a tripped breaker or an internal wiring issue. If resetting the breaker doesn't solve the problem, it’s best to have an electrician look into it. Faulty outlets can be a sign of underlying issues that could become more serious if not addressed.",
-        img: ["/assets/collectionofhairstyles.png"],
+        img: ["/assets/clint-patterson-exfrR9KkzlE-unsplash.jpg"],
       },
       {
         title: "10. Consistently High Electricity Bills",
         desc: "If your energy bills are rising for no apparent reason, it could be due to faulty wiring or inefficient appliances. An electrician can inspect your system, identify areas of energy waste, and suggest upgrades or repairs that could help lower your bills.",
-        img: ["/assets/collectionofhairstyles.png"],
+        img: ["/assets/Floating Dollar Bills.jpeg"],
       },
     ],
+    additionalContent: {
+      heading: "When in Doubt, Call a Professional",
+      paragraph1:
+        "Electrical problems are not something to take lightly. While DIY projects can be fun, electrical repairs should always be left to the professionals. A licensed electrician can identify the root cause of the issue and fix it safely and effectively.",
+      paragraph2:
+        "When you encounter any of the signs mentioned above, don’t delay. Electrical problems can worsen quickly, putting your home and family at risk. Call an experienced electrician to ensure your home’s electrical system is running safely and efficiently.",
+    },
   },
 ];
