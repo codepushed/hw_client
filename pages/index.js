@@ -14,28 +14,30 @@ const Home = () => {
     <div className="landingContainer">
       <LandingSeo />
       <Header />
-      <div className="landingContainerHeaderContent">
-        <div className="landingContainerImg">
-          <img
-            src="/assets/icons/bucketIcon.png"
-            alt="bucket"
-            className="bucketIcon"
-          />
-        </div>
-        <div className="landingContainerHeading">
-          <h1>Uncover the hype</h1>
-          <h1>home services on fleek</h1>
+      <div style={{ height: "100vh", width: "100%" }}>
+        <div className="landingContainerHeaderContent">
+          <div className="landingContainerImg">
+            <img
+              src="/assets/icons/bucketIcon.png"
+              alt="bucket"
+              className="bucketIcon"
+            />
+          </div>
+          <div className="landingContainerHeading">
+            <h1>Uncover the hype</h1>
+            <h1>home services on fleek</h1>
 
-          <div className="landingContainerSubHeading">
-            <p>
-              Book Trusted Home Services at Your DoorstepFrom plumbing to salon
-              services,
-            </p>
-            <p>we've got you covered!</p>
+            <div className="landingContainerSubHeading">
+              <p>
+                Book Trusted Home Services at Your DoorstepFrom plumbing to
+                salon services,
+              </p>
+              <p>we've got you covered!</p>
+            </div>
           </div>
         </div>
+        <SearchBox />
       </div>
-      <SearchBox />
 
       <div className="landingOfferContainer">
         <div className="landingOfferHeader">

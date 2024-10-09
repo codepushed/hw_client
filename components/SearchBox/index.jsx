@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
+
+import productConfigs from "../../config";
+
+const libraries = ['places'];
+
 
 const SearchBox = () => {
+  const [location, setLocation] = useState("");
+  const [service, setService] = useState("");
+  const autoCompleteRef = useRef(null);
+
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: productConfigs.GOOGLE_MAPS_API,
+    libraries,
+  });
+
+  const onPlaceSelected = (place) => {
+    if (place) {
+      setLocation(place.formatted_address);
+    }
+  };
+
+  if (!isLoaded) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="searchBoxContainer">
       <div className="searchBoxContent">
@@ -12,11 +37,22 @@ const SearchBox = () => {
           />
           <p>Enter location</p>
         </div>
-        <input
-          type="text"
-          placeholder="Gwalior, MP"
-          className="searchBoxInput"
-        />
+
+        <Autocomplete
+          onLoad={(autocomplete) => (autoCompleteRef.current = autocomplete)}
+          onPlaceChanged={() => {
+            const place = autoCompleteRef.current.getPlace();
+            onPlaceSelected(place);
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Gwalior, MP"
+            className="searchBoxInput"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </Autocomplete>
       </div>
       <div className="searchBoxContent">
         <div className="searchBoxHeader">
@@ -39,7 +75,7 @@ const SearchBox = () => {
               alt="search"
               className="buttonIcon"
             />
-            Submit
+            Search
           </button>
         </div>
       </div>
