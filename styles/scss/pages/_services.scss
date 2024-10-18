@@ -158,6 +158,187 @@
   gap: 10px;
 }
 
+// new services pages
+
+.landingServicesContainer {
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.landingServicesBentos {
+  border-radius: 20px;
+  background-color: #c4bbbb;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.landingServicesBentosTwo {
+  width: 400px;
+  border-radius: 20px;
+  background-color: #c4bbbb;
+  display: flex;
+  height: 150px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background: url('/assets/Modern Kitchen Interior Design.jpg');
+  background-size: cover;
+}
+
+.landingServicesBentosContainer {
+  background-color: #d9d9d9;
+  margin-top: 30px;
+  border-radius: 16px;
+  height: 700px;
+  padding: 20px;
+  display: flex;
+  align-items: start;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.landingServicesBentosFive {
+  width: 400px;
+  border-radius: 20px;
+  background-color: #c4bbbb;
+  display: flex;
+  height: 150px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background: url('/assets/painting.png');
+  background-size: cover;
+  width: 800px;
+}
+
+.bentosExploreWrapper > button {
+  border-radius: 50px;
+  background-color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 8px 10px;
+}
+
+.bentosExploreWrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.bentosExploremoreBtn {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bentosRowContainer {
+  display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.landingServicesBentosThree {
+  border-radius: 20px;
+  background-color: #c4bbbb;
+  // width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-top: 20px;
+  // padding-bottom: 10px;
+  // height: 200px;
+}
+
+.bentosRowOne {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.landingServicesBentosFour {
+  border-radius: 20px;
+  background-color: #c4bbbb;
+  display: flex;
+  height: 140px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background: url('/assets/Elegant Modern Kitchen with Gold Accents.jpeg');
+  background-size: cover;
+  width: 300px;
+}
+
+.landingServicesBentosFive { 
+  border-radius: 20px;
+  background-color: #c4bbbb;
+  display: flex;
+  height: 200px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background: url('/assets/painting.png');
+  background-size: cover;
+  // width: 500px;
+}
+
+.landingServicesContainer > h1 {
+  font-size: 60px;
+}
+
+.landingServicesContainer > p {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.landingServiceBentosImg {
+  width: 200px;
+}
+
+.landingServiceBentosImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.landingServicesTags {
+  border-radius: 50px;
+  background-color: #fff;
+  color: #000;
+  width: fit-content;
+  padding: 5px 8px;
+  margin-bottom: 5px;
+}
+
+.landingServicesTags > h1 {
+  font-size: 12px;
+}
+
 @media (max-width: 768px) {
   .servicesHeader {
     padding: 0 20px !important;
