@@ -14,7 +14,7 @@ const Home = () => {
     <div className="landingContainer">
       <LandingSeo />
       <Header />
-      <div style={{ height: "100vh", width: "100%" }}>
+      <div style={{ width: "100%" }}>
         <div className="landingContainerHeaderContent">
           <div className="landingContainerImg">
             <img
@@ -37,6 +37,24 @@ const Home = () => {
           </div>
         </div>
         <SearchBox />
+      </div>
+
+      <div className="landingDeviceWrapper">
+        <div className="landingDevicesContainer">
+          <div className="landingDevicesContent">
+            <h1>Effortless Booking Experience </h1>
+            <p>at your fingertips</p>
+
+            <button className="buttonWithIcon explorServiceBtn">
+              Explore services
+            </button>
+          </div>
+
+          <div className="landingDeviceImg">
+            <img src="/assets/homeworkweb.png" alt="laptop" />
+            <img src="/assets/homeworkapp.png" className="landingDeviceMobile" alt="mobile" />
+          </div>
+        </div>
       </div>
 
       <div className="landingOfferContainer">
