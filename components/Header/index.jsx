@@ -1,10 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../Logo";
 
 import { useRouter } from "next/router";
+import { isLoggedIn } from "../../helpers/basic";
 
 const Header = ({ isHidden }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
   const router = useRouter();
+
+  const getLoggedInUser = async () => {
+    const isUserLoggedIn = await isLoggedIn();
+    if (isUserLoggedIn) {
+      setLoggedIn(true);
+    }
+  };
+
+  useEffect(() => {
+    getLoggedInUser();
+  }, []);
 
   return (
     <div className="headerContainer">
@@ -27,7 +40,15 @@ const Header = ({ isHidden }) => {
             <li>How it works</li>
           </ul>
           <div className="headerButtonContainer">
-            <button className="basicRoundedButton" onClick={() => router.push('/login')}>Sign In</button>
+            {!loggedIn && (
+              <button
+                className="basicRoundedButton"
+                onClick={() => router.push("/login")}
+              >
+                Sign In
+              </button>
+            )}
+
             {router.asPath.includes("/coming-soon") && (
               <button
                 className="basicRoundedButton pingUsBtn"
@@ -37,6 +58,11 @@ const Header = ({ isHidden }) => {
               </button>
             )}
             <button className="basicRoundedButton-2">Book a service</button>
+            {loggedIn && (
+              <div className="headerProfileContainer">
+                <img src="/assets/profilePicture.jpg" alt="profile" />
+              </div>
+            )}
           </div>
         </>
       )}
