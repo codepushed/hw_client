@@ -8,7 +8,7 @@ const Header = ({ isHidden }) => {
 
   return (
     <div className="headerContainer">
-      <Logo onClick={() => router.push("/coming-soon")} />
+      <Logo onClick={() => router.push("/")} />
       {!isHidden && (
         <>
           <ul className="headerlistContainer">
@@ -16,28 +16,28 @@ const Header = ({ isHidden }) => {
               <li onClick={() => router.push("/blogs")}>Blogs</li>
             ) : (
               <button
-              className="basicRoundedButton pingUsBtn"
-              onClick={() => router.push("/contact")}
-            >
-              Ping us
-            </button>
+                className="basicRoundedButton pingUsBtn"
+                onClick={() => router.push("/contact")}
+              >
+                Ping us
+              </button>
             )}
-            {/* <li>Services</li>
+            <li>Services</li>
             <li>Pricing</li>
-            <li>How it works</li> */}
+            <li>How it works</li>
           </ul>
-          {/* <div className="headerButtonContainer"> */}
-            {/* <button className="basicRoundedButton">Sign In</button> */}
-            {/* {router.asPath.includes("/coming-soon") && (
+          <div className="headerButtonContainer">
+            <button className="basicRoundedButton" onClick={() => router.push('/login')}>Sign In</button>
+            {router.asPath.includes("/coming-soon") && (
               <button
                 className="basicRoundedButton pingUsBtn"
                 onClick={() => router.push("/contact")}
               >
                 Ping us
               </button>
-            ) } */}
-            {/* <button className="basicRoundedButton-2">Book a service</button> */}
-          {/* </div> */}
+            )}
+            <button className="basicRoundedButton-2">Book a service</button>
+          </div>
         </>
       )}
     </div>
