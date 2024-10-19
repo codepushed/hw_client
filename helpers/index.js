@@ -7,3 +7,8 @@ export const login = async (data) => {
 export const signup = async (data) => {
   return userApi.signup(data);
 };
+
+export const profile = async () => {
+  return userApi.profile();
+};
+     

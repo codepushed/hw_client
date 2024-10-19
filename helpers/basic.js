@@ -30,3 +30,12 @@ export const isLoggedIn = () => {
     }
   }
 };
+
+export const getAccessToken = () => {
+  const userData = Cookies.get("userData");
+  let accessToken = "";
+  if (userData) {
+    accessToken = parseData(userData.token);
+  }
+  return accessToken;
+};

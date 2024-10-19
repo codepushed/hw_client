@@ -15,6 +15,7 @@ const Header = ({ isHidden }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [username, setUsername] = useState("S");
+  const [name, setName] = useState("")
   const open = Boolean(anchorEl);
   const router = useRouter();
 
@@ -29,7 +30,8 @@ const Header = ({ isHidden }) => {
     const userData = Cookies.get("userData");
     if (userData) {
       const parseData = JSON.parse(userData);
-      const FirstName = parseData.email;
+      const FirstName = parseData?.user?.name;
+      setName(FirstName);
       const firstLetter = FirstName.charAt(0);
       setUsername(firstLetter);
     }
@@ -45,7 +47,7 @@ const Header = ({ isHidden }) => {
 
   useEffect(() => {
     getLoggedInUser();
-    // getUsername();
+    getUsername();
   }, []);
 
   const handleLogout = () => {
@@ -147,7 +149,12 @@ const Header = ({ isHidden }) => {
                   transformOrigin={{ horizontal: "right", vertical: "top" }}
                   anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 >
-                  <MenuItem style={{ fontSize: "12px" }}>Profile</MenuItem>
+                  <MenuItem
+                    style={{ fontSize: "12px" }}
+                    onClick={() => router.push(`/user/${name}`)}
+                  >
+                    Profile
+                  </MenuItem>
                   <MenuItem
                     onClick={() => handleLogout()}
                     style={{ fontSize: "12px" }}

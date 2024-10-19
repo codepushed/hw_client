@@ -4,6 +4,8 @@ import _ from "lodash";
 import endPoints from "./config/endpoints";
 import conf from "./config";
 
+import { getAccessToken } from "./helpers/basic";
+
 const API_TIMEOUT = 180000;
 
 const API_HEADERS = {
@@ -16,6 +18,15 @@ const api = axios.create({
   timeout: API_TIMEOUT,
   headers: API_HEADERS,
 });
+
+api.interceptors.request.use(
+  (config) => {
+    const auxConfig = { ...config };
+    auxConfig.headers.authorization = `${getAccessToken()}`;
+    return auxConfig;
+  },
+  (err) => Promise.reject(err)
+);
 
 const resolvePatch = async (...args) => {
   try {
@@ -88,4 +99,5 @@ const resolveGet = async (...args) => {
 export const userApi = {
   login: (data = {}) => resolvePost(endPoints.login, data),
   signup: (data = {}) => resolvePost(endPoints.signup, data),
+  profile: () => resolveGet(endPoints.profile),
 };

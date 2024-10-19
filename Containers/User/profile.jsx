@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../../components/Sidebar";
 import Bookings from "./bookings";
 import BookingDetails from "../../components/Modal/BookingDetails";
+import { profile } from "../../helpers";
 
 const Profile = () => {
+
+  const geto = async() => {
+    const response = await profile();
+    console.log(response)
+  }
+
+  useEffect(() => {
+    geto()
+  }, [])
+
   return (
     <div className="profileContainer">
       <div className="profileLeft">
@@ -13,7 +24,7 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* <div className="profileRight">
+      <div className="profileRight">
         <p>Profile picture</p>
 
         <div className="profileRightPicture">
@@ -42,10 +53,10 @@ const Profile = () => {
 
           <button className="basicRoundedButton profileFormBtn ">Update</button>
         </div>
-      </div> */}
+      </div>
 
-      <Bookings />
-      <BookingDetails />
+      {/* <Bookings />
+      <BookingDetails /> */}
     </div>
   );
 };
