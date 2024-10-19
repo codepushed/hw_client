@@ -1,8 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import Cookies from "js-cookie";
+import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
+import { signup } from "../../helpers";
+import { validateEmailAndPassword } from "../../helpers/basic";
 
 const Signup = () => {
+  const [name, setName] = useState();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const userSignIn = async () => {
+    setIsLoading(true);
+    const isEmailPasswordValid = validateEmailAndPassword(email, password);
+    if (isEmailPasswordValid) {
+      if (email && password && name) {
+        const data = {
+          name: name,
+          email: email,
+          password: password,
+        };
+        const response = await signup(data);
+        if (response?.token) {
+          Cookies.set("userData", JSON.stringify(response));
+          setIsLoading(false);
+          router.push("/");
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
+          alert("Sign up error: Please enter name, email and password ");
+        }
+      }
+    }
+  };
+
   return (
     <div>
       <Header isHidden={true} />
@@ -17,20 +52,43 @@ const Signup = () => {
 
           <div className="loginleftContentForm">
             <p>Full name</p>
-            <input type="text" placeholder="hi@gmail.com" />
-            <p style={{ marginTop: "20px" }}>Password</p>
+            <input
+              type="text"
+              placeholder="Shristi sharma"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <p style={{ marginTop: "20px" }}>Email</p>
 
-            <input type="password" placeholder="*********" />
+            <input
+              type="email"
+              placeholder="shristi@gmail.com"
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-            <p style={{ marginTop: "20px" }}>Confirm password</p>
+            <p style={{ marginTop: "20px" }}> Password</p>
 
-            <input type="password" placeholder="*********" />
+            <input
+              type="password"
+              placeholder="*********"
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
             <button
               className="basicRoundedButton basiclongBtn"
               style={{ marginTop: "20px" }}
+              onClick={() => userSignIn()}
             >
               Sign up
+              {isLoading && (
+                <CircularProgress
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    color: "#fff",
+                    marginLeft: "10px",
+                  }}
+                />
+              )}
             </button>
           </div>
 

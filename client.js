@@ -17,7 +17,6 @@ const api = axios.create({
   headers: API_HEADERS,
 });
 
-
 const resolvePatch = async (...args) => {
   try {
     const response = await api.patch(...args);
@@ -87,5 +86,6 @@ const resolveGet = async (...args) => {
 };
 
 export const userApi = {
-  login: (data = {}) => resolvePost(endPoints.login, data)
+  login: (data = {}) => resolvePost(endPoints.login, data),
+  signup: (data = {}) => resolvePost(endPoints.signup, data),
 };
