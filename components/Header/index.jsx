@@ -15,7 +15,7 @@ const Header = ({ isHidden }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [username, setUsername] = useState("S");
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
   const open = Boolean(anchorEl);
   const router = useRouter();
 
@@ -54,7 +54,6 @@ const Header = ({ isHidden }) => {
     Cookies.remove("userData");
     router.push("/login");
   };
-
 
   return (
     <div className="headerContainer">
@@ -124,7 +123,8 @@ const Header = ({ isHidden }) => {
                     elevation: 0,
                     sx: {
                       overflow: "visible",
-                      filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                      border: "1px solid #d1d1d1",
+                      width: "100px",
                       mt: 1.5,
                       "& .MuiAvatar-root": {
                         width: 32,
@@ -132,32 +132,20 @@ const Header = ({ isHidden }) => {
                         ml: -0.5,
                         mr: 1,
                       },
-                      "&:before": {
-                        content: '""',
-                        display: "block",
-                        position: "absolute",
-                        top: 0,
-                        right: 14,
-                        width: 10,
-                        height: 10,
-                        bgcolor: "background.paper",
-                        transform: "translateY(-50%) rotate(45deg)",
-                        zIndex: 0,
-                      },
                     },
                   }}
                   transformOrigin={{ horizontal: "right", vertical: "top" }}
                   anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 >
                   <MenuItem
-                    style={{ fontSize: "12px" }}
+                    style={{ fontSize: "13px", fontWeight: 700 }}
                     onClick={() => router.push(`/user/${name}`)}
                   >
                     Profile
                   </MenuItem>
                   <MenuItem
                     onClick={() => handleLogout()}
-                    style={{ fontSize: "12px" }}
+                    style={{ fontSize: "13px", fontWeight: 700 }}
                   >
                     Logout
                   </MenuItem>
