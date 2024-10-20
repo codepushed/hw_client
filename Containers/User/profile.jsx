@@ -64,7 +64,7 @@ const Profile = ({ data }) => {
           <p>Profile picture</p>
 
           <div className="profileRightPicture">
-            <img src="/assets/profilePicture.jpg" alt="profile_picture" />
+            <img src="/assets/profiledefault.png" alt="profile_picture" />
             <div className="profileRightPictureBtns">
               <button
                 className="basicRoundedButton"
