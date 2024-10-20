@@ -35,7 +35,10 @@ export const getAccessToken = () => {
   const userData = Cookies.get("userData");
   let accessToken = "";
   if (userData) {
-    accessToken = parseData(userData.token);
+      const parsedData = JSON.parse(userData);
+      if(parsedData){
+        accessToken = parsedData.token;
+      }
   }
   return accessToken;
 };

@@ -22,10 +22,20 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const auxConfig = { ...config };
-    auxConfig.headers.authorization = `${getAccessToken()}`;
+    const token = getAccessToken();
+    
+    if (token) {
+      auxConfig.headers.authorization = `Bearer ${token}`;
+    } else {
+      console.warn("No access token found!");
+    }
+
     return auxConfig;
   },
-  (err) => Promise.reject(err)
+  (err) => {
+    console.error("Request error: ", err);
+    return Promise.reject(err);
+  }
 );
 
 const resolvePatch = async (...args) => {
