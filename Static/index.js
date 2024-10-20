@@ -26,7 +26,6 @@ export const kitchenServices = [
   "Mini services",
 ];
 
-
 export const steps = [
   {
     label: "Chimney cleaning",
@@ -41,5 +40,11 @@ export const steps = [
 export const staticJobCard = {
   name: "Plumbering",
   desc: "Water leakage issue",
-  distance: "1.4km away"
-}
+  distance: "1.4km away",
+};
+
+export const snackbarsMsg = {
+  profileUpdateSuccess:
+    "Success! Your profile is now up-to-date and looking great!",
+  error: "Failed! try after sometime."
+};

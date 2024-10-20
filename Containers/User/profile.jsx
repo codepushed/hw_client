@@ -1,11 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Bookings from "./bookings";
 import BookingDetails from "../../components/Modal/BookingDetails";
-import { profile } from "../../helpers";
+import { profile, profileUpdate } from "../../helpers";
+import Snackbars from "../../components/Snackbars";
+import { snackbarsMsg } from "../../Static";
 
 const Profile = ({ data }) => {
-  
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [snack, setSnack] = useState(false);
+
+  const updateProfileDetails = async () => {
+    if (name && email) {
+      const data = {
+        name: name,
+        email: email,
+      };
+      const response = await profileUpdate(data);
+      if (response) {
+        setSnack(true);
+        setOpen(true);
+      } else {
+        setSnack(false);
+      }
+    } else {
+      alert("Fill the details");
+    }
+  };
+
+  useEffect(() => {
+    if (data?.name) {
+      setName(data.name);
+      setEmail(data.email);
+    }
+  }, [data]);
+
   return (
     <div className="profileContainer">
       <div className="profileLeft">
@@ -32,7 +63,8 @@ const Profile = ({ data }) => {
             <input
               type="text"
               className="profileRightFormInput"
-              value={data?.name}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
@@ -41,7 +73,8 @@ const Profile = ({ data }) => {
             <input
               type="text"
               className="profileRightFormInput"
-              value={data?.email}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -50,9 +83,20 @@ const Profile = ({ data }) => {
             <input type="text" className="profileRightFormInput" />
           </div>
 
-          <button className="basicRoundedButton profileFormBtn">Update</button>
+          <button
+            className="basicRoundedButton profileFormBtn"
+            onClick={() => updateProfileDetails()}
+          >
+            Update
+          </button>
         </div>
       </div>
+
+      <Snackbars
+        open={open}
+        msg={snackbarsMsg.profileUpdateSuccess}
+        snack={snack}
+      />
 
       {/* <Bookings />
       <BookingDetails /> */}

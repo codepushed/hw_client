@@ -11,4 +11,7 @@ export const signup = async (data) => {
 export const profile = async () => {
   return userApi.profile();
 };
-     
+
+export const profileUpdate = async (data) => {
+  return userApi.profileUpdate(data);
+};

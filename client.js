@@ -23,7 +23,7 @@ api.interceptors.request.use(
   (config) => {
     const auxConfig = { ...config };
     const token = getAccessToken();
-    
+
     if (token) {
       auxConfig.headers.authorization = `Bearer ${token}`;
     } else {
@@ -110,4 +110,5 @@ export const userApi = {
   login: (data = {}) => resolvePost(endPoints.login, data),
   signup: (data = {}) => resolvePost(endPoints.signup, data),
   profile: () => resolveGet(endPoints.profile),
+  profileUpdate: (data = {}) => resolvePost(endPoints.profileUpdate, data),
 };
