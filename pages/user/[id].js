@@ -9,7 +9,7 @@ const User = ({ data }) => {
   return (
     <>
       <Header />
-      <Profile  />
+      <Profile data={data} />
     </>
   );
 };
@@ -19,11 +19,11 @@ User.getInitialProps = async (ctx) => {
     const response = await profile();
     if (response) {
       const data = {
-        name: response.name,
-        email: response.email,
-        accountCreationDate: response.createdAt,
+        name: response?.user?.name,
+        email: response?.user?.email,
+        accountCreationDate: response?.user?.createdAt,
       };
-      return { response };
+      return { data };
     }
     return {};
   } catch (err) {

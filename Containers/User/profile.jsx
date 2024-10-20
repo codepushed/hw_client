@@ -4,17 +4,8 @@ import Bookings from "./bookings";
 import BookingDetails from "../../components/Modal/BookingDetails";
 import { profile } from "../../helpers";
 
-const Profile = () => {
-
-  const geto = async() => {
-    const response = await profile();
-    console.log(response)
-  }
-
-  useEffect(() => {
-    geto()
-  }, [])
-
+const Profile = ({ data }) => {
+  
   return (
     <div className="profileContainer">
       <div className="profileLeft">
@@ -38,12 +29,20 @@ const Profile = () => {
         <div className="profileRightFormContainer">
           <div className="profileRightForm">
             <p>Name</p>
-            <input type="text" className="profileRightFormInput" />
+            <input
+              type="text"
+              className="profileRightFormInput"
+              value={data?.name}
+            />
           </div>
 
           <div className="profileRightForm">
             <p>Email</p>
-            <input type="text" className="profileRightFormInput" />
+            <input
+              type="text"
+              className="profileRightFormInput"
+              value={data?.email}
+            />
           </div>
 
           <div className="profileRightForm">
@@ -51,7 +50,7 @@ const Profile = () => {
             <input type="text" className="profileRightFormInput" />
           </div>
 
-          <button className="basicRoundedButton profileFormBtn ">Update</button>
+          <button className="basicRoundedButton profileFormBtn">Update</button>
         </div>
       </div>
 
