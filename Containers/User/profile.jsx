@@ -11,6 +11,7 @@ const Profile = ({ data }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [snack, setSnack] = useState(false);
+  const [sidebar, setSidebar] = useState(false);
   const fileInputRef = useRef(null);
 
   const handleChangePicture = (e) => {
@@ -54,66 +55,70 @@ const Profile = ({ data }) => {
       <div className="profileLeft">
         <div>
           <h1 className="profileLeftHead">My Account</h1>
-          <Sidebar />
+          <Sidebar setSidebar={setSidebar} sidebar={sidebar} />
         </div>
       </div>
 
-      <div className="profileRight">
-        <p>Profile picture</p>
+      {!sidebar ? (
+        <div className="profileRight">
+          <p>Profile picture</p>
 
-        <div className="profileRightPicture">
-          <img src="/assets/profilePicture.jpg" alt="profile_picture" />
-          <div className="profileRightPictureBtns">
+          <div className="profileRightPicture">
+            <img src="/assets/profilePicture.jpg" alt="profile_picture" />
+            <div className="profileRightPictureBtns">
+              <button
+                className="basicRoundedButton"
+                onClick={(e) => handleChangePicture(e)}
+              >
+                Change picture
+              </button>
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
+              <button className="delBtn">Delete picture</button>
+            </div>
+          </div>
+
+          <div className="profileRightFormContainer">
+            <div className="profileRightForm">
+              <p>Name</p>
+              <input
+                type="text"
+                className="profileRightFormInput"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+
+            <div className="profileRightForm">
+              <p>Email</p>
+              <input
+                type="text"
+                className="profileRightFormInput"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="profileRightForm">
+              <p>Phone no</p>
+              <input type="text" className="profileRightFormInput" />
+            </div>
+
             <button
-              className="basicRoundedButton"
-              onClick={(e) => handleChangePicture(e)}
+              className="basicRoundedButton profileFormBtn"
+              onClick={() => updateProfileDetails()}
             >
-              Change picture
+              Update
             </button>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileChange}
-              style={{ display: "none" }}
-            />
-            <button className="delBtn">Delete picture</button>
           </div>
         </div>
-
-        <div className="profileRightFormContainer">
-          <div className="profileRightForm">
-            <p>Name</p>
-            <input
-              type="text"
-              className="profileRightFormInput"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-
-          <div className="profileRightForm">
-            <p>Email</p>
-            <input
-              type="text"
-              className="profileRightFormInput"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="profileRightForm">
-            <p>Phone no</p>
-            <input type="text" className="profileRightFormInput" />
-          </div>
-
-          <button
-            className="basicRoundedButton profileFormBtn"
-            onClick={() => updateProfileDetails()}
-          >
-            Update
-          </button>
-        </div>
-      </div>
+      ) : (
+        <Bookings />
+      )}
 
       <Snackbars
         open={open}
@@ -121,8 +126,7 @@ const Profile = ({ data }) => {
         snack={snack}
       />
 
-      {/* <Bookings />
-      <BookingDetails /> */}
+      {/* <BookingDetails /> */}
     </div>
   );
 };

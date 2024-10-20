@@ -60,21 +60,23 @@ const Header = ({ isHidden }) => {
       <Logo onClick={() => router.push("/")} />
       {!isHidden && (
         <>
-          <ul className="headerlistContainer">
-            {!router.asPath.includes("/coming-soon") ? (
-              <li onClick={() => router.push("/blogs")}>Blogs</li>
-            ) : (
-              <button
-                className="basicRoundedButton pingUsBtn"
-                onClick={() => router.push("/contact")}
-              >
-                Ping us
-              </button>
-            )}
-            <li>Services</li>
-            <li>Pricing</li>
-            <li>How it works</li>
-          </ul>
+          {!loggedIn && (
+            <ul className="headerlistContainer">
+              {!router.asPath.includes("/coming-soon") ? (
+                <li onClick={() => router.push("/blogs")}>Blogs</li>
+              ) : (
+                <button
+                  className="basicRoundedButton pingUsBtn"
+                  onClick={() => router.push("/contact")}
+                >
+                  Ping us
+                </button>
+              )}
+              <li>Services</li>
+              <li>Pricing</li>
+              <li>How it works</li>
+            </ul>
+          )}
           <div className="headerButtonContainer">
             {!loggedIn && (
               <button
@@ -93,7 +95,10 @@ const Header = ({ isHidden }) => {
                 Ping us
               </button>
             )}
-            <button className="basicRoundedButton-2">Book a service</button>
+
+            {!loggedIn && (
+              <button className="basicRoundedButton-2">Book a service</button>
+            )}
             {loggedIn && (
               <>
                 <Box
