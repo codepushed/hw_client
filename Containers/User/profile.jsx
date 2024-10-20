@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Sidebar from "../../components/Sidebar";
 import Bookings from "./bookings";
 import BookingDetails from "../../components/Modal/BookingDetails";
@@ -11,6 +11,11 @@ const Profile = ({ data }) => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [snack, setSnack] = useState(false);
+  const fileInputRef = useRef(null);
+
+  const handleChangePicture = (e) => {
+    fileInputRef.current.click();
+  };
 
   const updateProfileDetails = async () => {
     if (name && email) {
@@ -27,6 +32,13 @@ const Profile = ({ data }) => {
       }
     } else {
       alert("Fill the details");
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      console.log("Selected file:", file);
     }
   };
 
@@ -52,7 +64,18 @@ const Profile = ({ data }) => {
         <div className="profileRightPicture">
           <img src="/assets/profilePicture.jpg" alt="profile_picture" />
           <div className="profileRightPictureBtns">
-            <button className="basicRoundedButton">Change picture</button>
+            <button
+              className="basicRoundedButton"
+              onClick={(e) => handleChangePicture(e)}
+            >
+              Change picture
+            </button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              style={{ display: "none" }}
+            />
             <button className="delBtn">Delete picture</button>
           </div>
         </div>
