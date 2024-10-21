@@ -3,11 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
-const Slot = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+const Slot = ({ isSlotOpen, handleSlots }) => {
   const style = {
     position: "absolute",
     top: "50%",
@@ -24,13 +20,16 @@ const Slot = () => {
   return (
     <div>
       <Modal
-        open={true}
-        onClose={handleClose}
+        open={isSlotOpen}
+        onClose={handleSlots}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="drawerCloseBtnWrapper drawerCloseBtnSpacing">
+          <div
+            className="drawerCloseBtnWrapper drawerCloseBtnSpacing"
+            onClick={() => handleSlots()}
+          >
             <div className="drawerCloseBtn">x</div>
           </div>
 

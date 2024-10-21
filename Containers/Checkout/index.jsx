@@ -1,13 +1,24 @@
+import React, { useState } from "react";
 import { Divider } from "@mui/material";
-import React from "react";
 
 import Address from "../../components/Modal/Address";
+import Slot from "../../components/Modal/Slot";
 
 const Checkout = () => {
+  const [open, setOpen] = useState(false);
+  const [isSlotOpen, setIsSlotOpen] = useState(false);
+
+  const handleSlots = () => {
+    setIsSlotOpen(false);
+  };
+
+  const handleClose = () => setOpen(false);
+
   return (
     <div className="checkoutContainer">
       <h1>Checkout</h1>
-<Address />
+      <Slot isSlotOpen={isSlotOpen} handleSlots={handleSlots} />
+      <Address open={open} handleClose={handleClose} />
       <div className="checkoutServiceDetailsBox">
         <div className="checkoutServiceDetails">
           <p>Basic cleaning</p>
@@ -45,7 +56,12 @@ const Checkout = () => {
             </span>
           </div>
           <div className="adrressslotSelectBtn">
-            <button className="basicRoundedButton">Select an address</button>
+            <button
+              className="basicRoundedButton"
+              onClick={() => setOpen(true)}
+            >
+              Select an address
+            </button>
           </div>
 
           <div className="checkoutServiceMoreDetails">
@@ -56,7 +72,12 @@ const Checkout = () => {
             </span>
           </div>
           <div className="adrressslotSelectBtn">
-            <button className="basicRoundedButton">Select date and time</button>
+            <button
+              className="basicRoundedButton"
+              onClick={() => setIsSlotOpen(true)}
+            >
+              Select date and time
+            </button>
           </div>
         </div>
 
