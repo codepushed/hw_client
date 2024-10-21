@@ -5,6 +5,9 @@ import Cookies from "js-cookie";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import Logo from "../Logo";
 
@@ -101,60 +104,75 @@ const Header = ({ isHidden }) => {
             )}
             {loggedIn && (
               <>
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  <IconButton
-                    onClick={handleClick}
-                    size="small"
-                    aria-controls={open ? "account-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}
-                  >
-                    <Avatar sx={{ width: 42, height: 42 }}>{username}</Avatar>
+                <>
+                  <IconButton aria-label="cart">
+                    <Badge
+                      badgeContent={4}
+                      sx={{
+                        "& .MuiBadge-badge": {
+                          color: "#fff",
+                          backgroundColor: "#FF8C8C",
+                        },
+                      }}
+                    >
+                      <ShoppingCartIcon />
+                    </Badge>
                   </IconButton>
-                </Box>
-                <Menu
-                  anchorEl={anchorEl}
-                  id="account-menu"
-                  open={open}
-                  onClose={handleClose}
-                  onClick={handleClose}
-                  PaperProps={{
-                    elevation: 0,
-                    sx: {
-                      overflow: "visible",
-                      border: "1px solid #d1d1d1",
-                      width: "100px",
-                      mt: 1.5,
-                      "& .MuiAvatar-root": {
-                        width: 32,
-                        height: 32,
-                        ml: -0.5,
-                        mr: 1,
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      textAlign: "center",
+                    }}
+                  >
+                    <IconButton
+                      onClick={handleClick}
+                      size="small"
+                      aria-controls={open ? "account-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                    >
+                      <Avatar sx={{ width: 42, height: 42 }}>{username}</Avatar>
+                    </IconButton>
+                  </Box>
+                  <Menu
+                    anchorEl={anchorEl}
+                    id="account-menu"
+                    open={open}
+                    onClose={handleClose}
+                    onClick={handleClose}
+                    PaperProps={{
+                      elevation: 0,
+                      sx: {
+                        overflow: "visible",
+                        border: "1px solid #d1d1d1",
+                        width: "100px",
+                        mt: 1.5,
+                        "& .MuiAvatar-root": {
+                          width: 32,
+                          height: 32,
+                          ml: -0.5,
+                          mr: 1,
+                        },
                       },
-                    },
-                  }}
-                  transformOrigin={{ horizontal: "right", vertical: "top" }}
-                  anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                >
-                  <MenuItem
-                    style={{ fontSize: "13px", fontWeight: 700 }}
-                    onClick={() => router.push(`/user/${name}`)}
+                    }}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                   >
-                    Profile
-                  </MenuItem>
-                  <MenuItem
-                    onClick={() => handleLogout()}
-                    style={{ fontSize: "13px", fontWeight: 700 }}
-                  >
-                    Logout
-                  </MenuItem>
-                </Menu>
+                    <MenuItem
+                      style={{ fontSize: "13px", fontWeight: 700 }}
+                      onClick={() => router.push(`/user/${name}`)}
+                    >
+                      Profile
+                    </MenuItem>
+                    <MenuItem
+                      onClick={() => handleLogout()}
+                      style={{ fontSize: "13px", fontWeight: 700 }}
+                    >
+                      Logout
+                    </MenuItem>
+                  </Menu>
+                </>
               </>
             )}
           </div>
