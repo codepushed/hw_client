@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getServiceById } from "../../../helpers";
 import { useRouter } from "next/router";
+
+import { getServiceById } from "../../../helpers";
+import AllServices from "../../../Containers/AllServices";
 
 const Subservice = () => {
   const [subserviceData, setSubserviceData] = useState();
@@ -24,20 +26,7 @@ const Subservice = () => {
 
   return (
     <div>
-      <h1>{subserviceData?.category}</h1>
-
-      {subserviceData?.subCategory?.map((item, index) => (
-        <div style={{ background: "pink", width: "100%" }} key={index}>
-          <h2>{item?.name}</h2>
-          {item?.subServiceName?.map((service, index) => (
-            <div>
-              <h3>{service.name}</h3>
-              <p>{service.price}</p>
-              <p>{service.desc}</p>
-            </div>
-          ))}
-        </div>
-      ))}
+     <AllServices data={subserviceData} />
     </div>
   );
 };

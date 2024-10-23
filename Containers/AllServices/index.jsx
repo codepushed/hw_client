@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ServiceCard from "../../components/Card/ServiceCard";
 
@@ -9,12 +9,20 @@ import Footer from "../../components/Footer";
 import Image from "next/image";
 
 const AllService = ({ data }) => {
-  const [selectedServices, setSelectedServices] = useState(data[0]);
+  const [selectedServices, setSelectedServices] = useState();
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (data) {
+      setSelectedServices(data?.subCategory[0]);
+    }
+  }, [data]);
+
+  console.log(selectedServices)
 
   return (
     <div className="servicesContainer">
@@ -25,7 +33,8 @@ const AllService = ({ data }) => {
           <Image
             src="/assets/Luxurious Salon Pampering with Sparkling Hair Treatment.jpg"
             alt="kitchen cleaning"
-            height={500} width={500}
+            height={500}
+            width={500}
           />
         </div>
 
@@ -34,10 +43,11 @@ const AllService = ({ data }) => {
             <p>Select a service</p>
 
             <div className="servicesTypesContainer">
-              {data?.subCategory?.slice(0, 6).map((service) => (
+              {data?.subCategory?.slice(0, 6).map((service, index) => (
                 <div
                   className="servicesTypes"
                   onClick={() => setSelectedServices(service)}
+                  key={index}
                 >
                   {/* <Image src="" alt="service" height={500} width={500} /> */}
                   <p>{service.name}</p>
@@ -55,7 +65,12 @@ const AllService = ({ data }) => {
 
           <div className="servicesOfferContainer">
             <div className="serviceOfferImg">
-              <Image src="/assets/icons/launchIcon.png" alt="launch" height={500} width={500} />
+              <Image
+                src="/assets/icons/launchIcon.png"
+                alt="launch"
+                height={500}
+                width={500}
+              />
             </div>
 
             <p>Stay tuned! Launching soon near you</p>
@@ -64,11 +79,11 @@ const AllService = ({ data }) => {
       </div>
 
       <div className="servicesSubCategoryContainer">
-        <h2>{selectedServices.name}</h2>
+        <h2>{selectedServices && selectedServices.name}</h2>
 
         {selectedServices &&
-          selectedServices.subservices?.map((item, index) => (
-            <ServiceCard data={item} key={index} />
+          selectedServices.subServiceName?.map((subservice, index) => (
+            <ServiceCard data={subservice} key={index} />
           ))}
       </div>
       {/* <SelectService

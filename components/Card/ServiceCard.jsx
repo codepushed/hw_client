@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Modal from "../Modal";
 import Image from "next/image";
 
-const ServiceCard = ({ data }) => {
+const ServiceCard = ({data}) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
