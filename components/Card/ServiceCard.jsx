@@ -15,10 +15,10 @@ const ServiceCard = ({ data }) => {
     <>
       <div className="serviceCardContainer" onClick={() => handleOpen()}>
         <div className="serviceCardImg">
-          <Image src={data.img} alt="service" height={500} width={500} />
+          {/* <Image src={data.img} alt="service" height={500} width={500} /> */}
           <div className="serviceCardHeadContent">
             <h1>{data.name}</h1>
-            <p className="serviceCardPara">{data.desc}</p>
+            <p className="serviceCardPara">{data?.desc}</p>
             <button className="outlineBtn">Add</button>
           </div>
           {/* <span className="serviceCardDetails">View details</span> */}

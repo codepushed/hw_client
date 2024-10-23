@@ -111,4 +111,6 @@ export const userApi = {
   signup: (data = {}) => resolvePost(endPoints.signup, data),
   profile: () => resolveGet(endPoints.profile),
   profileUpdate: (data = {}) => resolvePost(endPoints.profileUpdate, data),
+  allServices: () => resolveGet(endPoints.allServices),
+  serviceById: (data = {}) => resolveGet(`${endPoints.serviceById}${data}`),
 };

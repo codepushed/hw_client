@@ -4,10 +4,10 @@ import AllServices from "../../../Containers/AllServices";
 import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 
-import { salonServiceDetails } from "../../../Static/services/salon";
-
+import { getAllServices } from "../../../helpers/index";
 
 const Services = ({ isHeader, data }) => {
+  console.log(data)
   return (
     <>
       <Header />
@@ -17,10 +17,15 @@ const Services = ({ isHeader, data }) => {
 };
 
 Services.getInitialProps = async (ctx) => {
-  return {
-    data: salonServiceDetails.service,
-    isHeader: true,
-  };
+  try {
+    const service = await getAllServices();
+    return {
+      data: service?.services,
+      isHeader: true,
+    };
+  } catch {
+    console.log("Failed to get services! Try again later.");
+  }
 };
 
 export default Services;

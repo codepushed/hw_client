@@ -15,3 +15,11 @@ export const profile = async () => {
 export const profileUpdate = async (data) => {
   return userApi.profileUpdate(data);
 };
+
+export const getAllServices = async (data) => {
+  return userApi.allServices(data);
+};
+
+export const getServiceById = async (data) => {
+  return userApi.serviceById(data);
+};

@@ -18,7 +18,7 @@ const AllService = ({ data }) => {
 
   return (
     <div className="servicesContainer">
-      <h1 className="servicesHeader">Salon for Women</h1>
+      <h1 className="servicesHeader">{data?.category}</h1>
 
       <div className="servicesHeaderContent">
         <div className="servicesHeaderImg">
@@ -34,12 +34,12 @@ const AllService = ({ data }) => {
             <p>Select a service</p>
 
             <div className="servicesTypesContainer">
-              {data?.slice(0, 6).map((service) => (
+              {data?.subCategory?.slice(0, 6).map((service) => (
                 <div
                   className="servicesTypes"
                   onClick={() => setSelectedServices(service)}
                 >
-                  <Image src={service.img} alt="service" height={500} width={500} />
+                  {/* <Image src="" alt="service" height={500} width={500} /> */}
                   <p>{service.name}</p>
                 </div>
               ))}
@@ -71,12 +71,12 @@ const AllService = ({ data }) => {
             <ServiceCard data={item} key={index} />
           ))}
       </div>
-      <SelectService
+      {/* <SelectService
         handleClose={handleClose}
         isOpen={open}
         data={data}
         setSelectedServices={setSelectedServices}
-      />
+      /> */}
       {/* <Drawers /> */}
 
       <Footer />

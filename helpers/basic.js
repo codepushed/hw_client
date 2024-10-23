@@ -42,3 +42,8 @@ export const getAccessToken = () => {
   }
   return accessToken;
 };
+
+
+export const toLowerCaseString = (str) => {
+  return str.toLowerCase();
+}

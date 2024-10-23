@@ -95,7 +95,7 @@ const Header = ({ isHidden }) => {
                 className="basicRoundedButton pingUsBtn"
                 onClick={() => router.push("/contact")}
               >
-                Ping us
+                Ping us 
               </button>
             )}
 
@@ -105,7 +105,7 @@ const Header = ({ isHidden }) => {
             {loggedIn && (
               <>
                 <>
-                  <IconButton aria-label="cart">
+                  <IconButton aria-label="cart" onClick={() => router.push('/cart')}>
                     <Badge
                       badgeContent={4}
                       sx={{
