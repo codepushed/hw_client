@@ -114,4 +114,5 @@ export const userApi = {
   allServices: () => resolveGet(endPoints.allServices),
   serviceById: (data = {}) => resolveGet(`${endPoints.serviceById}${data}`),
   address: (data = {}) => resolvePost(endPoints.address, data),
+  getAddress: () => resolveGet(`${endPoints.address}`),
 };

@@ -4,12 +4,17 @@ import { useSelector } from "react-redux";
 
 import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
-import { cartPriceCalculator, gstCalculation, totalPriceWithGst } from "../../helpers/basic";
+import {
+  cartPriceCalculator,
+  gstCalculation,
+  totalPriceWithGst,
+} from "../../helpers/basic";
 import NewAddress from "../../components/Modal/newAddress";
 
 const Checkout = () => {
   const [open, setOpen] = useState(false);
   const [isSlotOpen, setIsSlotOpen] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState();
   const cart = useSelector((state) => state.cart.cart);
 
   const handleSlots = () => {
@@ -22,7 +27,11 @@ const Checkout = () => {
     <div className="checkoutContainer">
       <h1>Checkout</h1>
       <Slot isSlotOpen={isSlotOpen} handleSlots={handleSlots} />
-      <Address open={open} handleClose={handleClose} />
+      <Address
+        open={open}
+        handleClose={handleClose}
+        setSelectedAddress={setSelectedAddress}
+      />
       <div className="checkoutServiceDetailsBox">
         {cart &&
           cart?.map((items, index) => (
@@ -55,12 +64,16 @@ const Checkout = () => {
             </span>
           </div>
           <div className="adrressslotSelectBtn">
-            <button
-              className="basicRoundedButton"
-              onClick={() => setOpen(true)}
-            >
-              Select an address
-            </button>
+            {selectedAddress && selectedAddress ? (
+              <p className="checkoutServiceMoreSubPara">{selectedAddress}</p>
+            ) : (
+              <button
+                className="basicRoundedButton"
+                onClick={() => setOpen(true)}
+              >
+                Select an address
+              </button>
+            )}
           </div>
 
           <div className="checkoutServiceMoreDetails">

@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import NewAddress from "./NewAddress";
+import NewAddress from "../../components/Modal/NewAddress";
+import { getAddress } from "../../helpers";
 
-const Address = ({ open, handleClose }) => {
-  const [selectAdd, setSelectAdd] = useState();
+const Address = ({ open, handleClose, setSelectedAddress }) => {
+  const [selectAdd, setSelectAdd] = useState(false);
   const [isNewAddress, setIsNewAddress] = useState(false);
+  const [address, setAddress] = useState();
 
   const handleCloseNewAddress = () => {
     setIsNewAddress(false);
@@ -29,6 +31,22 @@ const Address = ({ open, handleClose }) => {
     handleClose();
     setIsNewAddress(true);
   };
+
+  const getAllAddresses = async () => {
+    const response = await getAddress();
+    if (response) {
+      setAddress(response?.addresses);
+    }
+  };
+
+  useEffect(() => {
+    getAllAddresses();
+  }, []);
+
+  const handleChooseAddress = (e, item) => {
+    setSelectAdd(e.target.checked);
+    setSelectedAddress(item?.address)
+  }
 
   return (
     <div>
@@ -54,68 +72,25 @@ const Address = ({ open, handleClose }) => {
           </h2>
 
           <div className="addressContainer">
-            <span className="addressTitle">
-              <input
-                type="radio"
-                checked={selectAdd}
-                onChange={(e) => setSelectAdd(e.target.value)}
-              />
-              <p>Home</p>
-            </span>
-            <p>
-              Shubham, Hinjawadi Village, Hinjawadi, Pimpri-Chinchwad,
-              Maharashtra 411057, India
-            </p>
-          </div>
-
-          <div className="addressContainer">
-            <span className="addressTitle">
-              <input
-                type="radio"
-                checked={selectAdd}
-                onChange={(e) => setSelectAdd(e.target.value)}
-              />
-              <p>Home</p>
-            </span>
-            <p>
-              Shubham, Hinjawadi Village, Hinjawadi, Pimpri-Chinchwad,
-              Maharashtra 411057, India
-            </p>
-          </div>
-
-          <div className="addressContainer">
-            <span className="addressTitle">
-              <input
-                type="radio"
-                checked={selectAdd}
-                onChange={(e) => setSelectAdd(e.target.value)}
-              />
-              <p>Home</p>
-            </span>
-            <p>
-              Shubham, Hinjawadi Village, Hinjawadi, Pimpri-Chinchwad,
-              Maharashtra 411057, India
-            </p>
-          </div>
-
-          <div className="addressContainer">
-            <span className="addressTitle">
-              <input
-                type="radio"
-                checked={selectAdd}
-                onChange={(e) => setSelectAdd(e.target.value)}
-              />
-              <p>Home</p>
-            </span>
-            <p>
-              Shubham, Hinjawadi Village, Hinjawadi, Pimpri-Chinchwad,
-              Maharashtra 411057, India
-            </p>
+            {address &&
+              address?.map((item, index) => (
+                <>
+                  <span className="addressTitle" key={index}>
+                    <input
+                      type="radio"
+                      checked={selectAdd}
+                      onChange={(e) => handleChooseAddress(e, item)}
+                    />
+                    <p>{item?.name}</p>
+                  </span>
+                  <p>{item?.address}</p>
+                </>
+              ))}
           </div>
 
           <div className="selectSlotBtnContainer">
-            <button className="basicRoundedButton selectSlotBtn">
-              Save address
+            <button className="basicRoundedButton selectSlotBtn" onClick={() => handleClose()}>
+              Select address
             </button>
           </div>
         </Box>
