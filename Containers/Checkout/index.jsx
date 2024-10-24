@@ -6,6 +6,8 @@ import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
 import {
   cartPriceCalculator,
+  formatDate,
+  formatDay,
   generateTimeSlots,
   getNextThreeDates,
   gstCalculation,
@@ -21,24 +23,21 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
-    // Generate time slots for today and the next two days
     const dates = getNextThreeDates();
     const today = new Date();
 
     const slots = dates.map((date) => {
       const isToday = today.toDateString() === date.toDateString();
-      // For today, filter past slots, for other days show all slots
       const timeSlots = generateTimeSlots(10, 20, isToday);
       return {
-        date: date.toDateString(),
+        date: formatDate(date), 
+        day: formatDay(date),
         slots: timeSlots,
       };
     });
 
     setAvailableSlots(slots);
   }, []);
-
-  console.log(availableSlots);
 
   const handleSlots = () => {
     setIsSlotOpen(false);
@@ -49,7 +48,11 @@ const Checkout = () => {
   return (
     <div className="checkoutContainer">
       <h1>Checkout</h1>
-      <Slot isSlotOpen={isSlotOpen} handleSlots={handleSlots} />
+      <Slot
+        isSlotOpen={isSlotOpen}
+        handleSlots={handleSlots}
+        availableSlots={availableSlots}
+      />
       <Address
         open={open}
         handleClose={handleClose}

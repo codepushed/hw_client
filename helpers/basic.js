@@ -77,8 +77,22 @@ export const totalPriceWithGst = (rate) => {
 
 export const formatTime = (hours) => {
   const ampm = hours >= 12 ? 'PM' : 'AM';
-  const formattedHour = hours % 12 || 12;
+  const formattedHour = hours % 12 || 12; 
   return `${formattedHour}:00 ${ampm}`;
+};
+
+
+export const formatDate = (date) => {
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+  });
+};
+
+export const formatDay = (date) => {
+  return date.toLocaleDateString('en-GB', {
+    weekday: 'short',
+  });
 };
 
 export const getNextThreeDates = () => {
