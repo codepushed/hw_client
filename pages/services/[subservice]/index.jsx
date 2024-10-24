@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 
 import { getServiceById } from "../../../helpers";
 import AllServices from "../../../Containers/AllServices";
+import Header from "../../../components/Header";
 
 const Subservice = () => {
   const [subserviceData, setSubserviceData] = useState();
@@ -26,7 +27,8 @@ const Subservice = () => {
 
   return (
     <div>
-     <AllServices data={subserviceData} />
+      <Header />
+      <AllServices data={subserviceData}/>
     </div>
   );
 };

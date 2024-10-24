@@ -8,7 +8,7 @@ import SelectService from "../../components/Modal/SelectService";
 import Footer from "../../components/Footer";
 import Image from "next/image";
 
-const AllService = ({ data }) => {
+const AllService = ({ data, setCartCounter }) => {
   const [selectedServices, setSelectedServices] = useState();
   const [open, setOpen] = useState(false);
 
@@ -22,7 +22,6 @@ const AllService = ({ data }) => {
     }
   }, [data]);
 
-  console.log(selectedServices)
 
   return (
     <div className="servicesContainer">
@@ -83,7 +82,7 @@ const AllService = ({ data }) => {
 
         {selectedServices &&
           selectedServices.subServiceName?.map((subservice, index) => (
-            <ServiceCard data={subservice} key={index} />
+            <ServiceCard data={subservice} setCartCounter={setCartCounter} key={index} />
           ))}
       </div>
       {/* <SelectService
