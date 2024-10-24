@@ -11,6 +11,7 @@ import Image from "next/image";
 const AllService = ({ data, setCartCounter }) => {
   const [selectedServices, setSelectedServices] = useState();
   const [open, setOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   const handleClose = () => {
     setOpen(false);
@@ -21,6 +22,30 @@ const AllService = ({ data, setCartCounter }) => {
       setSelectedServices(data?.subCategory[0]);
     }
   }, [data]);
+
+
+  const addToCart = (service) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item._id === service._id);
+      if (existingItem) {
+        // Update quantity if already in cart
+        return prevItems.map((item) =>
+          item._id === service._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        // Add new service with quantity 1
+        return [...prevItems, { ...service, quantity: 1 }];
+      }
+    });
+
+    // Update cart counter if needed
+    // setCartCounter((prev) => prev + 1);
+  };
+
+
+  console.log(cartItems, "finish")
 
 
   return (
@@ -82,7 +107,7 @@ const AllService = ({ data, setCartCounter }) => {
 
         {selectedServices &&
           selectedServices.subServiceName?.map((subservice, index) => (
-            <ServiceCard data={subservice} setCartCounter={setCartCounter} key={index} />
+            <ServiceCard data={subservice} setCartCounter={setCartCounter} key={index}  addToCart={addToCart} />
           ))}
       </div>
       {/* <SelectService
