@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cart: [],
+  cart: "",
 };
 
-export const storeSlice = createSlice({
+export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
@@ -14,6 +14,6 @@ export const storeSlice = createSlice({
   },
 });
 
-export const { saveExposure } = storeSlice.actions;
+export const { saveCartItems } = cartSlice.actions;
 
-export default storeSlice.reducer;
+export default cartSlice.reducer;
