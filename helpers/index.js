@@ -23,3 +23,7 @@ export const getAllServices = async (data) => {
 export const getServiceById = async (data) => {
   return userApi.serviceById(data);
 };
+
+export const addNewAddress = async (data) => {
+  return userApi.address(data);
+};

@@ -46,5 +46,6 @@ export const staticJobCard = {
 export const snackbarsMsg = {
   profileUpdateSuccess:
     "Success! Your profile is now up-to-date and looking great!",
-  error: "Failed! try after sometime."
+  error: "Failed! try after sometime.",
+  addressSuccess: "Your address has been successfully added",
 };

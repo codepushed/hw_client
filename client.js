@@ -113,4 +113,5 @@ export const userApi = {
   profileUpdate: (data = {}) => resolvePost(endPoints.profileUpdate, data),
   allServices: () => resolveGet(endPoints.allServices),
   serviceById: (data = {}) => resolveGet(`${endPoints.serviceById}${data}`),
+  address: (data = {}) => resolvePost(endPoints.address, data),
 };

@@ -2,9 +2,20 @@ import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { addNewAddress } from "../../helpers";
+import Snackbars from "../Snackbars";
+import { snackbarsMsg } from "../../Static";
 
 const NewAddress = ({ open, handleCloseNewAddress }) => {
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snack, setSnack] = useState(false);
   const [selectAdd, setSelectAdd] = useState();
+  const [houseno, setHouseNo] = useState();
+  const [landmark, setLandmark] = useState();
+  const [pincode, setPincode] = useState();
+  const [states, setStates] = useState();
+  const [city, setCity] = useState();
+  const [name, setName] = useState();
 
   const style = {
     position: "absolute",
@@ -17,6 +28,28 @@ const NewAddress = ({ open, handleCloseNewAddress }) => {
     borderRadius: "6px",
     paddingLeft: 4,
     marginTop: "10px",
+  };
+
+  const addAddress = async () => {
+    if (houseno && landmark && pincode && states && city) {
+      const fullAddress = `${houseno} ${landmark} ${pincode} ${states} ${city}`;
+      if(fullAddress){
+      const data = {
+        name: name,
+        address: fullAddress,
+      };
+      if (data) {
+        const response = await addNewAddress(data);
+        if (response) {
+          setSnack(true);
+          setOpenSnackbar(true);
+          handleCloseNewAddress();
+        } else {
+          setSnack(false);
+        }
+      }
+    }
+    }
   };
 
   return (
@@ -32,6 +65,11 @@ const NewAddress = ({ open, handleCloseNewAddress }) => {
             className="drawerCloseBtnWrapper drawerCloseBtnSpacing"
             onClick={() => handleCloseNewAddress()}
           >
+            <Snackbars
+              open={openSnackbar}
+              msg={snackbarsMsg.addressSuccess}
+              snack={snack}
+            />
             <div className="drawerCloseBtn">x</div>
           </div>
           <h1 className="slotTimingsHead addressHeading">Add new address</h1>
@@ -40,40 +78,73 @@ const NewAddress = ({ open, handleCloseNewAddress }) => {
               className="professionalLoginInputSection profProInput"
               style={{ marginTop: "10px", marginBottom: "10px" }}
             >
-              <input type="text" placeholder="House no, Street name, flat no" />
+              <input
+                type="text"
+                placeholder="House no, Street name, flat no"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </span>
+            <span
+              className="professionalLoginInputSection profProInput"
+              style={{ marginTop: "10px", marginBottom: "10px" }}
+            >
+              <input
+                type="text"
+                placeholder="House no, Street name, flat no"
+                onChange={(e) => setHouseNo(e.target.value)}
+              />
             </span>
 
             <span
               className="professionalLoginInputSection profProInput"
               style={{ marginBottom: "10px" }}
             >
-              <input type="text" placeholder="Landmark" />
+              <input
+                type="text"
+                placeholder="Landmark"
+                onChange={(e) => setLandmark(e.target.value)}
+              />
             </span>
 
             <span
               className="professionalLoginInputSection profProInput"
               style={{ marginBottom: "10px" }}
             >
-              <input type="text" placeholder="Pincode" />
+              <input
+                type="text"
+                placeholder="Pincode"
+                onChange={(e) => setPincode(e.target.value)}
+              />
             </span>
 
             <span
               className="professionalLoginInputSection profProInput"
               style={{ marginBottom: "10px" }}
             >
-              <input type="text" placeholder="City" />
+              <input
+                type="text"
+                placeholder="City"
+                onChange={(e) => setCity(e.target.value)}
+              />
             </span>
 
             <span
               className="professionalLoginInputSection profProInput"
               style={{ marginBottom: "10px" }}
             >
-              <input type="text" placeholder="State" />
+              <input
+                type="text"
+                placeholder="State"
+                onChange={(e) => setStates(e.target.value)}
+              />
             </span>
           </div>
 
           <div className="selectSlotBtnContainer">
-            <button className="basicRoundedButton selectSlotBtn">
+            <button
+              className="basicRoundedButton selectSlotBtn"
+              onClick={() => addAddress()}
+            >
               Save address
             </button>
           </div>

@@ -4,7 +4,8 @@ const endpoints = {
     profile: '/userdashboard',
     profileUpdate: "/userdashboard/update",
     allServices: "/services",
-    serviceById: "/service/"
+    serviceById: "/service/",
+    address: "/userdashboard/address"
   };
   
   export default endpoints;
