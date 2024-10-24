@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Divider } from "@mui/material";
+import { useSelector } from "react-redux";
 
 import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
+import { cartPriceCalculator, gstCalculation, totalPriceWithGst } from "../../helpers/basic";
 
 const Checkout = () => {
   const [open, setOpen] = useState(false);
   const [isSlotOpen, setIsSlotOpen] = useState(false);
+  const cart = useSelector((state) => state.cart.cart);
 
   const handleSlots = () => {
     setIsSlotOpen(false);
@@ -20,21 +23,16 @@ const Checkout = () => {
       <Slot isSlotOpen={isSlotOpen} handleSlots={handleSlots} />
       <Address open={open} handleClose={handleClose} />
       <div className="checkoutServiceDetailsBox">
-        <div className="checkoutServiceDetails">
-          <p>Basic cleaning</p>
-          <span>
-            <p>&#8377; 499</p>
-            <button className="outlineBtn">Add</button>
-          </span>
-        </div>
-
-        <div className="checkoutServiceDetails">
-          <p>Repair service</p>
-          <span>
-            <p>&#8377; 499</p>
-            <button className="outlineBtn">Add</button>
-          </span>
-        </div>
+        {cart &&
+          cart?.map((items, index) => (
+            <div className="checkoutServiceDetails">
+              <p>{items.name}</p>
+              <span>
+                <p>&#8377; {items?.price || "299"}</p>
+                {/* <button className="outlineBtn">Add</button> */}
+              </span>
+            </div>
+          ))}
       </div>
 
       <div className="checkout">
@@ -86,19 +84,19 @@ const Checkout = () => {
 
           <div className="checkoutServicePaymentsItems">
             <p>Item total</p>
-            <p>&#8377; 499</p>
+            <p>&#8377; {cartPriceCalculator(cart)}</p>
           </div>
 
           <div className="checkoutServicePaymentsItems">
-            <p>Taxes and Fee</p>
-            <p>&#8377; 499</p>
+            <p>Taxes and Fee - GST 18%</p>
+            <p>&#8377; {gstCalculation(cart)}</p>
           </div>
 
           <Divider />
 
           <div className="checkoutServicePaymentsItems">
             <p style={{ fontWeight: 700 }}>Total</p>
-            <p>&#8377; 998</p>
+            <p>&#8377; {totalPriceWithGst(cart)}</p>
           </div>
 
           <Divider />

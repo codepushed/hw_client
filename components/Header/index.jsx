@@ -13,6 +13,7 @@ import Logo from "../Logo";
 
 import { useRouter } from "next/router";
 import { isLoggedIn } from "../../helpers/basic";
+import { useSelector } from "react-redux";
 
 const Header = ({ isHidden }) => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -21,6 +22,7 @@ const Header = ({ isHidden }) => {
   const [name, setName] = useState("");
   const open = Boolean(anchorEl);
   const router = useRouter();
+  const cart = useSelector((state) => state.cart.cart);
 
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();
@@ -107,7 +109,7 @@ const Header = ({ isHidden }) => {
                 <>
                   <IconButton aria-label="cart" onClick={() => router.push('/cart')}>
                     <Badge
-                      badgeContent={4}
+                      badgeContent={cart && cart.length}
                       sx={{
                         "& .MuiBadge-badge": {
                           color: "#fff",

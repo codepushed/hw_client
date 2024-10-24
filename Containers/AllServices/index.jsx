@@ -7,11 +7,14 @@ import Drawers from "../../components/Drawers";
 import SelectService from "../../components/Modal/SelectService";
 import Footer from "../../components/Footer";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { saveCartItems } from "../../store/slices/cart";
 
 const AllService = ({ data, setCartCounter }) => {
   const [selectedServices, setSelectedServices] = useState();
   const [open, setOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const dispatch = useDispatch();
 
   const handleClose = () => {
     setOpen(false);
@@ -52,9 +55,15 @@ const AllService = ({ data, setCartCounter }) => {
           );
         }
       }
-      return prevItems; 
+      return prevItems;
     });
   };
+
+  useEffect(() => {
+    if (cartItems) {
+      dispatch(saveCartItems(cartItems));
+    }
+  }, [cartItems]);
 
   return (
     <div className="servicesContainer">
