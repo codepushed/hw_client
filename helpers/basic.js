@@ -74,3 +74,32 @@ export const totalPriceWithGst = (rate) => {
 
   return totalPrice + gst; 
 };
+
+export const formatTime = (hours) => {
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHour = hours % 12 || 12;
+  return `${formattedHour}:00 ${ampm}`;
+};
+
+export const getNextThreeDates = () => {
+  const dates = [];
+  for (let i = 0; i < 3; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() + i);
+    dates.push(date);
+  }
+  return dates;
+};
+
+export const generateTimeSlots = (startHour, endHour, filterPastSlots) => {
+  const slots = [];
+  const currentTime = new Date().getHours();
+
+  for (let i = startHour; i < endHour; i++) {
+    if (!filterPastSlots || i >= currentTime) {
+      slots.push(formatTime(i));
+    }
+  }
+
+  return slots;
+};

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
 
@@ -6,6 +6,8 @@ import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
 import {
   cartPriceCalculator,
+  generateTimeSlots,
+  getNextThreeDates,
   gstCalculation,
   totalPriceWithGst,
 } from "../../helpers/basic";
@@ -14,8 +16,29 @@ import NewAddress from "../../components/Modal/newAddress";
 const Checkout = () => {
   const [open, setOpen] = useState(false);
   const [isSlotOpen, setIsSlotOpen] = useState(false);
+  const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState();
   const cart = useSelector((state) => state.cart.cart);
+
+  useEffect(() => {
+    // Generate time slots for today and the next two days
+    const dates = getNextThreeDates();
+    const today = new Date();
+
+    const slots = dates.map((date) => {
+      const isToday = today.toDateString() === date.toDateString();
+      // For today, filter past slots, for other days show all slots
+      const timeSlots = generateTimeSlots(10, 20, isToday);
+      return {
+        date: date.toDateString(),
+        slots: timeSlots,
+      };
+    });
+
+    setAvailableSlots(slots);
+  }, []);
+
+  console.log(availableSlots);
 
   const handleSlots = () => {
     setIsSlotOpen(false);
