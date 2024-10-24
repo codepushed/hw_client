@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
 import { cartPriceCalculator, gstCalculation, totalPriceWithGst } from "../../helpers/basic";
+import NewAddress from "../../components/Modal/newAddress";
 
 const Checkout = () => {
   const [open, setOpen] = useState(false);

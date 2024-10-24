@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import NewAddress from "./NewAddress";
 
 const Address = ({ open, handleClose }) => {
+  const [selectAdd, setSelectAdd] = useState();
+  const [isNewAddress, setIsNewAddress] = useState(false);
+
+  const handleCloseNewAddress = () => {
+    setIsNewAddress(false);
+  };
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -15,6 +23,11 @@ const Address = ({ open, handleClose }) => {
     borderRadius: "6px",
     paddingLeft: 4,
     marginTop: "10px",
+  };
+
+  const handleOpenNewAddress = () => {
+    handleClose();
+    setIsNewAddress(true);
   };
 
   return (
@@ -32,13 +45,21 @@ const Address = ({ open, handleClose }) => {
           >
             <div className="drawerCloseBtn">x</div>
           </div>
-
           <h1 className="slotTimingsHead addressHeading">Saved address</h1>
-          <h2 className="addressSubHeading">+ Add another address</h2>
+          <h2
+            className="addressSubHeading"
+            onClick={() => handleOpenNewAddress()}
+          >
+            + Add another address
+          </h2>
 
           <div className="addressContainer">
             <span className="addressTitle">
-              <input type="radio" checked={true} />
+              <input
+                type="radio"
+                checked={selectAdd}
+                onChange={(e) => setSelectAdd(e.target.value)}
+              />
               <p>Home</p>
             </span>
             <p>
@@ -49,7 +70,11 @@ const Address = ({ open, handleClose }) => {
 
           <div className="addressContainer">
             <span className="addressTitle">
-              <input type="radio" checked={false} />
+              <input
+                type="radio"
+                checked={selectAdd}
+                onChange={(e) => setSelectAdd(e.target.value)}
+              />
               <p>Home</p>
             </span>
             <p>
@@ -60,7 +85,11 @@ const Address = ({ open, handleClose }) => {
 
           <div className="addressContainer">
             <span className="addressTitle">
-              <input type="radio" checked={false} />
+              <input
+                type="radio"
+                checked={selectAdd}
+                onChange={(e) => setSelectAdd(e.target.value)}
+              />
               <p>Home</p>
             </span>
             <p>
@@ -71,7 +100,11 @@ const Address = ({ open, handleClose }) => {
 
           <div className="addressContainer">
             <span className="addressTitle">
-              <input type="radio" checked={false} />
+              <input
+                type="radio"
+                checked={selectAdd}
+                onChange={(e) => setSelectAdd(e.target.value)}
+              />
               <p>Home</p>
             </span>
             <p>
@@ -87,6 +120,10 @@ const Address = ({ open, handleClose }) => {
           </div>
         </Box>
       </Modal>
+      <NewAddress
+        open={isNewAddress}
+        handleCloseNewAddress={handleCloseNewAddress}
+      />
     </div>
   );
 };

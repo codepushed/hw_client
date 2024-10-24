@@ -8,7 +8,7 @@ import SelectService from "../../components/Modal/SelectService";
 import Footer from "../../components/Footer";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
-import { saveCartItems } from "../../store/slices/cart";
+import saveCartItems  from "../../store/slices/cart";
 
 const AllService = ({ data, setCartCounter }) => {
   const [selectedServices, setSelectedServices] = useState();
