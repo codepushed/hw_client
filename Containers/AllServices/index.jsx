@@ -23,30 +23,38 @@ const AllService = ({ data, setCartCounter }) => {
     }
   }, [data]);
 
-
   const addToCart = (service) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((item) => item._id === service._id);
       if (existingItem) {
-        // Update quantity if already in cart
         return prevItems.map((item) =>
           item._id === service._id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       } else {
-        // Add new service with quantity 1
         return [...prevItems, { ...service, quantity: 1 }];
       }
     });
-
-    // Update cart counter if needed
-    // setCartCounter((prev) => prev + 1);
   };
 
-
-  console.log(cartItems, "finish")
-
+  const removeFromCart = (service) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item._id === service._id);
+      if (existingItem) {
+        if (existingItem.quantity === 1) {
+          return prevItems.filter((item) => item._id !== service._id);
+        } else {
+          return prevItems.map((item) =>
+            item._id === service._id
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          );
+        }
+      }
+      return prevItems; 
+    });
+  };
 
   return (
     <div className="servicesContainer">
@@ -107,7 +115,13 @@ const AllService = ({ data, setCartCounter }) => {
 
         {selectedServices &&
           selectedServices.subServiceName?.map((subservice, index) => (
-            <ServiceCard data={subservice} setCartCounter={setCartCounter} key={index}  addToCart={addToCart} />
+            <ServiceCard
+              data={subservice}
+              setCartCounter={setCartCounter}
+              key={index}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+            />
           ))}
       </div>
       {/* <SelectService

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const ServiceCard = ({ data, addToCart }) => {
+const ServiceCard = ({ data, addToCart, removeFromCart }) => {
   const [isCounter, setIsCounter] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="serviceCardContainer">
@@ -23,20 +24,25 @@ const ServiceCard = ({ data, addToCart }) => {
           ) : (
             <div className="counterBtnsCountainer">
               <button
-                // onClick={() => {
-                //   decreaseQuantity(data._id);
-                //   if (quantity === 1) {
-                //     setIsCounter(false);
-                //   }
-                // }}
+                onClick={() => {
+                  removeFromCart(data);
+                  setQuantity((prev) => {
+                    const newQuantity = prev - 1;
+                    if (newQuantity <= 0) {
+                      setIsCounter(false);
+                    }
+                    return newQuantity;
+                  });
+                }}
                 className="counterBtns"
               >
                 -
               </button>
-              {/* {quantity} */}
+              {quantity}
               <button
                 onClick={() => {
                   addToCart(data);
+                  setQuantity((prev) => prev + 1);
                 }}
                 className="counterBtns"
               >
