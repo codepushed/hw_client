@@ -25,6 +25,21 @@
   margin: 20px 0;
 }
 
+
+.choosePaymentBtns > button {
+  border: 1px solid #fff;
+  padding: 5px 15px;
+  outline: none;
+  border-radius: 50px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.choosePaymentBtns > button:hover {
+  border: 1px solid #f3c4c4;
+  color: #f3c4c4;
+}
+
 .professionalHeaderImg {
   height: 400px;
   width: 600px;

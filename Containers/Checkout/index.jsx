@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
@@ -23,8 +24,8 @@ const Checkout = () => {
   const [selectedDateSlots, setSelectedDateSlots] = useState();
   const [currentDateSlots, setCurrentDateSlots] = useState();
   const cart = useSelector((state) => state.cart.cart);
+  const router = useRouter();
 
-  console.log(selectedDateSlots)
 
   useEffect(() => {
     const dates = getNextThreeDates();
@@ -156,7 +157,7 @@ const Checkout = () => {
           <Divider />
 
           <div className="checkoutServicePaymentsItems proceedBtn">
-            <button className="basicRoundedButton">Proceed</button>
+            <button className="basicRoundedButton" onClick={() => router.push('/cart/choose-payment')}>Proceed</button>
           </div>
         </div>
       </div>
