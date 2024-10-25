@@ -3,8 +3,16 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
-const Slot = ({ isSlotOpen, handleSlots, availableSlots }) => {
+const Slot = ({
+  isSlotOpen,
+  handleSlots,
+  availableSlots,
+  setCurrentDateSlots,
+  setSelectedDateSlots,
+}) => {
   const [currentTimeSlots, setCurrentTimeSlots] = useState();
+  const [activeDate, setActiveDate] = useState(null);
+  const [activeTime, setActiveTime] = useState(null);
 
   const style = {
     position: "absolute",
@@ -19,11 +27,22 @@ const Slot = ({ isSlotOpen, handleSlots, availableSlots }) => {
     marginTop: "10px",
   };
 
-  useEffect(() => {
-    if (availableSlots) {
-      setCurrentTimeSlots(availableSlots[0].slots);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (availableSlots) {
+  //     setCurrentTimeSlots(availableSlots[0].slots);
+  //   }
+  // }, []);
+
+  const handleDateClick = (item, index) => {
+    setCurrentTimeSlots(item?.slots);
+    setSelectedDateSlots(item?.date);
+    setActiveDate(index);
+  };
+
+  const handleTimeClick = (item, index) => {
+    setCurrentDateSlots(item);
+    setActiveTime(index);
+  };
 
   return (
     <div>
@@ -48,9 +67,13 @@ const Slot = ({ isSlotOpen, handleSlots, availableSlots }) => {
             {availableSlots &&
               availableSlots?.map((item, index) => (
                 <div
-                  className="slotTimings"
+                  className={
+                    activeDate === index
+                      ? "slotTimingsActive slotTimings"
+                      : "slotTimings"
+                  }
                   key={index}
-                  onClick={() => setCurrentTimeSlots(item?.slots)}
+                  onClick={() => handleDateClick(item, index)}
                 >
                   <h1>{item?.date}</h1>
                   <p>{item?.day}</p>
@@ -66,9 +89,14 @@ const Slot = ({ isSlotOpen, handleSlots, availableSlots }) => {
             {currentTimeSlots &&
               currentTimeSlots?.map((item, index) => (
                 <div
-                  className="slotTimings"
+                  className={
+                    activeTime === index
+                      ? "slotTimingsActive slotTimings"
+                      : "slotTimings"
+                  }
                   key={index}
                   style={{ width: "60px" }}
+                  onClick={() => handleTimeClick(item, index)}
                 >
                   <h1>{item}</h1>
                 </div>

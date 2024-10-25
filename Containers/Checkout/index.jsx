@@ -20,7 +20,11 @@ const Checkout = () => {
   const [isSlotOpen, setIsSlotOpen] = useState(false);
   const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState();
+  const [selectedDateSlots, setSelectedDateSlots] = useState();
+  const [currentDateSlots, setCurrentDateSlots] = useState();
   const cart = useSelector((state) => state.cart.cart);
+
+  console.log(selectedDateSlots)
 
   useEffect(() => {
     const dates = getNextThreeDates();
@@ -30,7 +34,7 @@ const Checkout = () => {
       const isToday = today.toDateString() === date.toDateString();
       const timeSlots = generateTimeSlots(10, 20, isToday);
       return {
-        date: formatDate(date), 
+        date: formatDate(date),
         day: formatDay(date),
         slots: timeSlots,
       };
@@ -52,6 +56,10 @@ const Checkout = () => {
         isSlotOpen={isSlotOpen}
         handleSlots={handleSlots}
         availableSlots={availableSlots}
+        currentDateSlots={currentDateSlots}
+        setCurrentDateSlots={setCurrentDateSlots}
+        setSelectedDateSlots={setSelectedDateSlots}
+        selectedDateSlots={selectedDateSlots}
       />
       <Address
         open={open}
@@ -110,12 +118,18 @@ const Checkout = () => {
             </span>
           </div>
           <div className="adrressslotSelectBtn">
-            <button
-              className="basicRoundedButton"
-              onClick={() => setIsSlotOpen(true)}
-            >
-              Select date and time
-            </button>
+            {selectedDateSlots && selectedDateSlots ? (
+              <p>
+                {selectedDateSlots} {currentDateSlots}
+              </p>
+            ) : (
+              <button
+                className="basicRoundedButton"
+                onClick={() => setIsSlotOpen(true)}
+              >
+                Select date and time
+              </button>
+            )}
           </div>
         </div>
 
