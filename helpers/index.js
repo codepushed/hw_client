@@ -37,5 +37,5 @@ export const adminGetAllProfessionals = async (data) => {
 };
 
 export const adminProfessionalAdhaarVerification = async (data) => {
-  return adminApi.adhaarVerification(data.id, data.isAdhaarVerified);
+  return adminApi.adhaarVerification(data);
 };
