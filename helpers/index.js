@@ -1,4 +1,4 @@
-import { userApi } from "../client";
+import { adminApi, userApi } from "../client";
 
 export const login = async (data) => {
   return userApi.login(data);
@@ -30,4 +30,12 @@ export const addNewAddress = async (data) => {
 
 export const getAddress = async (data) => {
   return userApi.getAddress(data);
+};
+
+export const adminGetAllProfessionals = async (data) => {
+  return adminApi.getAllProfessionals(data);
+};
+
+export const adminProfessionalAdhaarVerification = async (data) => {
+  return adminApi.adhaarVerification(data.id, data.isAdhaarVerified);
 };

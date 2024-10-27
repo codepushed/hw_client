@@ -116,3 +116,13 @@ export const userApi = {
   address: (data = {}) => resolvePost(endPoints.address, data),
   getAddress: () => resolveGet(`${endPoints.address}`),
 };
+
+export const adminApi = {
+  getAllProfessionals: () =>
+    resolveGet(`${endPoints.adminGetAllProfessionals}`),
+  adhaarVerification: (data = {}) =>
+    resolvePut(
+      `${endPoints.adminAdhaarVerification}${data.id}`,
+      data.isAdhaarVerified
+    ),
+};
