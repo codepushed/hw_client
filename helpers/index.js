@@ -39,3 +39,11 @@ export const adminGetAllProfessionals = async (data) => {
 export const adminProfessionalAdhaarVerification = async (data) => {
   return adminApi.adhaarVerification(data);
 };
+
+export const createBooking = async (data) => {
+  return userApi.createBookings(data);
+};
+
+export const getAllBookings = async (data) => {
+  return userApi.getAllBookings(data);
+};
