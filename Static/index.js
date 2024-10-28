@@ -50,8 +50,22 @@ export const snackbarsMsg = {
   addressSuccess: "Your address has been successfully added",
 };
 
-
 export const socialmediaLinks = {
-  facebook: "https://www.facebook.com/profile.php?id=61567148183235&mibextid=ZbWKwL",
-  instagram: "https://www.instagram.com/homework.service_?igsh=Znh2NzlvYW1scWhs"
-}
+  facebook:
+    "https://www.facebook.com/profile.php?id=61567148183235&mibextid=ZbWKwL",
+  instagram:
+    "https://www.instagram.com/homework.service_?igsh=Znh2NzlvYW1scWhs",
+};
+
+export const servicesLinks = {
+  electrician:
+    "/services/electrician?category=Electrician&id=6718af1cd08fa56679b317a7",
+  plumber: "/services/plumber?category=Plumber&id=6718af9dd08fa56679b31873",
+  cleaning: "/services/cleaning?category=Cleaning&id=6718af2ed08fa56679b317e0",
+  pestControl:
+    "/services/pest%20control?category=Pest+control&id=6718afb0d08fa56679b318c0",
+  applianceRepair:
+    "/services/appliance%20repair?category=Appliance+Repair&id=6718af8ed08fa56679b31833",
+  painter:
+    "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=6718afa7d08fa56679b318ad",
+};

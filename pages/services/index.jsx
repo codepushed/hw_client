@@ -39,12 +39,16 @@ const Service = () => {
 
           {serviceData &&
             serviceData?.map((item, index) => (
-              <div className="servicesWrapper serviceCardMainContainer">
+              <div
+                className="servicesWrapper serviceCardMainContainer"
+                key={index}
+                onClick={() => handleClick(item)}
+              >
                 <div>
                   <h1 className="serviceCategories">{item?.category}</h1>
                   <div className="serviceCardMainContainer">
-                    {item?.subCategory?.map((subCat) => (
-                      <div>
+                    {item?.subCategory?.map((subCat, idx) => (
+                      <div key={idx}>
                         <div className="ServiceCardsContainer"></div>
                         <p>{subCat?.name}</p>
                       </div>

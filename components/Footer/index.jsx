@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useRouter } from "next/router";
-import { socialmediaLinks } from "../../Static";
+import { servicesLinks, socialmediaLinks } from "../../Static";
 
 const Footer = () => {
   const router = useRouter();
@@ -30,15 +30,23 @@ const Footer = () => {
         <div className="footerContent">
           <div className="footerContentListContainer">
             <div className="footerContentList">
-              <p onClick={() => router.push("/services")}>Electrician</p>
-              <p onClick={() => router.push("/services")}>Plumber</p>
-              <p onClick={() => router.push("/contact")}>Cleaning</p>
-              <p onClick={() => router.push("/contact")}>
+              <p onClick={() => router.push(servicesLinks.electrician)}>
+                Electrician
+              </p>
+              <p onClick={() => router.push(servicesLinks.plumber)}>Plumber</p>
+              <p onClick={() => router.push(servicesLinks.cleaning)}>
+                Cleaning
+              </p>
+              <p onClick={() => router.push(servicesLinks.painter)}>
                 Painter & water proofing
               </p>
 
-              <p onClick={() => router.push("/contact")}>Pest control</p>
-              <p onClick={() => router.push("/contact")}>Appliance repair</p>
+              <p onClick={() => router.push(servicesLinks.pestControl)}>
+                Pest control
+              </p>
+              <p onClick={() => router.push(servicesLinks.applianceRepair)}>
+                Appliance repair
+              </p>
             </div>
 
             <div className="footerContentList">
