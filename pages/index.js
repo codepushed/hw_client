@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 import { LandingSeo } from "../Seo/index";
 import Header from "../components/Header";
@@ -10,6 +11,8 @@ import HowItWorks from "../components/Section/HowItWorks";
 import Footer from "../components/Footer";
 
 const Home = () => {
+  const router = useRouter();
+  
   return (
     <div className="landingContainer">
       <LandingSeo />
@@ -45,14 +48,21 @@ const Home = () => {
             <h1>Effortless Booking Experience </h1>
             <p>at your fingertips</p>
 
-            <button className="buttonWithIcon explorServiceBtn">
+            <button
+              className="buttonWithIcon explorServiceBtn"
+              onClick={() => router.push("/services")}
+            >
               Explore services
             </button>
           </div>
 
           <div className="landingDeviceImg">
             <img src="/assets/homeworkweb.png" alt="laptop" />
-            <img src="/assets/homeworkapp.png" className="landingDeviceMobile" alt="mobile" />
+            <img
+              src="/assets/homeworkapp.png"
+              className="landingDeviceMobile"
+              alt="mobile"
+            />
           </div>
         </div>
       </div>

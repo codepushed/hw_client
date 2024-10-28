@@ -1,6 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const Services = () => {
+  const router = useRouter();
+
   return (
     <div className="landingServicesContainer">
       <h1>Services</h1>
@@ -66,7 +69,10 @@ const Services = () => {
 
         <div className="bentosExploremoreBtn">
           <div className="bentosExploreWrapper">
-            <button>
+            <button
+              onClick={() => router.push("/services")}
+              style={{ cursor: "pointer" }}
+            >
               Explore more
               <img src="/assets/upsideArrow.png" alt="explore" />
             </button>

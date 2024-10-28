@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useRouter } from "next/router";
+import { socialmediaLinks } from "../../Static";
 
 const Footer = () => {
   const router = useRouter();
@@ -18,26 +19,38 @@ const Footer = () => {
             <span className="footerHeaderTypography">Comfort</span>
           </h1>
           <h1>Book Expert Home Services Now</h1>
-          <button className="basicRoundedButton footerbtn">Book now</button>
+          <button
+            className="basicRoundedButton footerbtn"
+            onClick={() => router.push("/services")}
+          >
+            Book now
+          </button>
         </div>
 
         <div className="footerContent">
           <div className="footerContentListContainer">
             <div className="footerContentList">
-              <p onClick={() => handleRedirect()}>Services</p>
-              <p onClick={() => handleRedirect()}>Faqs</p>
-              <p onClick={() => router.push('/contact')}>Contact us</p>
+              <p onClick={() => router.push("/services")}>Electrician</p>
+              <p onClick={() => router.push("/services")}>Plumber</p>
+              <p onClick={() => router.push("/contact")}>Cleaning</p>
+              <p onClick={() => router.push("/contact")}>
+                Painter & water proofing
+              </p>
+
+              <p onClick={() => router.push("/contact")}>Pest control</p>
+              <p onClick={() => router.push("/contact")}>Appliance repair</p>
             </div>
 
             <div className="footerContentList">
-              <p onClick={() => handleRedirect()}>Book a service</p>
-              <p onClick={() => handleRedirect()}>Terms & conditions</p>
-              <p onClick={() => handleRedirect()}>Pricing</p>
+              <p onClick={() => router.push("/contact")}>Contact</p>
+              <p onClick={() => router.push("/services")}>Terms & conditions</p>
             </div>
 
             <div className="footerContentList">
               <p onClick={() => handleRedirect()}>How it works</p>
-              <p onClick={() => handleRedirect()}>Register as a professional</p>
+              <p onClick={() => router.push("/professional")}>
+                Register as a professional
+              </p>
               <p onClick={() => handleRedirect()}>Why choose us</p>
             </div>
           </div>
@@ -47,15 +60,16 @@ const Footer = () => {
 
         <div className="footerBottomContainer">
           <p className="footerBottomTypo" onClick={() => handleRedirect()}>
-            &#169; homeworkserice.in
+            &#169; homeworkservice.in
           </p>
 
           <div className="footerBottomSocial">
-            <img src="/assets/icons/instagram.png" alt="instagram" />
-            <img src="/assets/icons/facebook.png" alt="facebook" />
-
-            <img src="/assets/icons/linkedin.png" alt="linkedin" />
-            <img src="/assets/icons/telegram.png" alt="telegram" />
+            <a href={socialmediaLinks?.instagram}>
+              <img src="/assets/icons/instagram.png" alt="instagram" />
+            </a>
+            <a href={socialmediaLinks?.facebook}>
+              <img src="/assets/icons/facebook.png" alt="facebook" />
+            </a>
           </div>
 
           <div>

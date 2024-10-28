@@ -7,7 +7,6 @@ import Header from "../../../components/Header";
 import { getAllServices } from "../../../helpers/index";
 
 const Services = ({ isHeader, data }) => {
-  console.log(data)
   return (
     <>
       <Header />

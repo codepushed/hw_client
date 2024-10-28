@@ -78,7 +78,6 @@ const Header = ({ isHidden }) => {
                 </button>
               )}
               <li>Services</li>
-              <li>Pricing</li>
               <li>How it works</li>
             </ul>
           )}
@@ -97,17 +96,25 @@ const Header = ({ isHidden }) => {
                 className="basicRoundedButton pingUsBtn"
                 onClick={() => router.push("/contact")}
               >
-                Ping us 
+                Ping us
               </button>
             )}
 
             {!loggedIn && (
-              <button className="basicRoundedButton-2">Book a service</button>
+              <button
+                className="basicRoundedButton-2"
+                onClick={() => router.push("/services")}
+              >
+                Book a service
+              </button>
             )}
             {loggedIn && (
               <>
                 <>
-                  <IconButton aria-label="cart" onClick={() => router.push('/cart')}>
+                  <IconButton
+                    aria-label="cart"
+                    onClick={() => router.push("/cart")}
+                  >
                     <Badge
                       badgeContent={cart && cart.length}
                       sx={{

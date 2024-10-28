@@ -49,3 +49,9 @@ export const snackbarsMsg = {
   error: "Failed! try after sometime.",
   addressSuccess: "Your address has been successfully added",
 };
+
+
+export const socialmediaLinks = {
+  facebook: "https://www.facebook.com/profile.php?id=61567148183235&mibextid=ZbWKwL",
+  instagram: "https://www.instagram.com/homework.service_?igsh=Znh2NzlvYW1scWhs"
+}

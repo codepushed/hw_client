@@ -193,7 +193,7 @@
   flex-direction: column;
   padding-top: 20px;
   padding-bottom: 10px;
-  background: url('/assets/Modern Kitchen Interior Design.jpg');
+  background: url("/assets/Modern Kitchen Interior Design.jpg");
   background-size: cover;
 }
 
@@ -221,7 +221,7 @@
   flex-direction: column;
   padding-top: 20px;
   padding-bottom: 10px;
-  background: url('/assets/painting.png');
+  background: url("/assets/painting.png");
   background-size: cover;
   width: 800px;
 }
@@ -247,15 +247,15 @@
 
 .bentosExploremoreBtn {
   display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .bentosRowContainer {
   display: flex;
-    align-items: center;
-    gap: 20px;
+  align-items: center;
+  gap: 20px;
 }
 
 .landingServicesBentosThree {
@@ -287,12 +287,12 @@
   flex-direction: column;
   padding-top: 20px;
   padding-bottom: 10px;
-  background: url('/assets/Elegant Modern Kitchen with Gold Accents.jpeg');
+  background: url("/assets/Elegant Modern Kitchen with Gold Accents.jpeg");
   background-size: cover;
   width: 300px;
 }
 
-.landingServicesBentosFive { 
+.landingServicesBentosFive {
   border-radius: 20px;
   background-color: #c4bbbb;
   display: flex;
@@ -302,7 +302,7 @@
   flex-direction: column;
   padding-top: 20px;
   padding-bottom: 10px;
-  background: url('/assets/painting.png');
+  background: url("/assets/painting.png");
   background-size: cover;
   // width: 500px;
 }
@@ -337,6 +337,54 @@
 
 .landingServicesTags > h1 {
   font-size: 12px;
+}
+
+.servicesContainer {
+  width: 100%;
+}
+
+.servicesContainer > h1 {
+  font-weight: 800;
+  margin-top: 40px;
+  font-size: 50px;
+}
+
+.servicesContainer > p {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 10px;
+}
+
+.servicesWrapper {
+  border-radius: 18px;
+  margin-top: 50px;
+  background-color: #f4f2f2;
+  padding: 10px 20px;
+}
+
+.AllServicesWrapper {
+  padding: 0 40px;
+}
+
+.ServiceCardsContainer {
+  height: 200px;
+  width: 200px;
+  border-radius: 18px;
+  background: gray;
+  margin: 20px 0;
+}
+
+.serviceCardMainContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-y: scroll;
+}
+
+.serviceCategories {
+  font-size: 40px;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 @media (max-width: 768px) {

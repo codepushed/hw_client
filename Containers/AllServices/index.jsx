@@ -59,11 +59,11 @@ const AllService = ({ data, setCartCounter }) => {
     });
   };
 
-  useEffect(() => {
-    if (cartItems) {
-      dispatch(saveCartItems(cartItems));
-    }
-  }, [cartItems]);
+  // useEffect(() => {
+  //   if (cartItems) {
+  //     dispatch(saveCartItems(cartItems));
+  //   }
+  // }, [cartItems]);
 
   return (
     <div className="servicesContainer">

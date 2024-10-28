@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+
+import Header from "../../components/Header";
+
 import { getAllServices } from "../../helpers";
 import { toLowerCaseString } from "../../helpers/basic";
 
@@ -27,21 +30,31 @@ const Service = () => {
 
   return (
     <div>
-      <h1>Services</h1>
+      <Header />
 
-      <ul>
-        {serviceData &&
-          serviceData?.map((item, index) => (
-            <li
-              key={index}
-              onClick={() =>
-                handleClick(item)
-              }
-            >
-              {item?.category}
-            </li>
-          ))}
-      </ul>
+      <div className="AllServicesWrapper">
+        <div className="servicesContainer">
+          <h1>Services</h1>
+          <p>Your Trusted Solution for Every Need</p>
+
+          {serviceData &&
+            serviceData?.map((item, index) => (
+              <div className="servicesWrapper serviceCardMainContainer">
+                <div>
+                  <h1 className="serviceCategories">{item?.category}</h1>
+                  <div className="serviceCardMainContainer">
+                    {item?.subCategory?.map((subCat) => (
+                      <div>
+                        <div className="ServiceCardsContainer"></div>
+                        <p>{subCat?.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
     </div>
   );
 };
