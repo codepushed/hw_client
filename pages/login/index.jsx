@@ -11,10 +11,7 @@ import { validateEmailAndPassword } from "../../helpers/basic";
 import conf from "../../config";
 
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
   const [phoneNo, setPhoneNo] = useState();
-  const [confirmResult, setConfirmResult] = useState();
   const [reCaptcha, setRecaptcha] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isOtpSent, setIsOtpSent] = useState();
