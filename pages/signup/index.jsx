@@ -65,6 +65,14 @@ const Signup = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
 
+            <p style={{ marginTop: "20px" }}>Phone</p>
+
+            <input
+              type="number"
+              placeholder="9617373159"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
             <p style={{ marginTop: "20px" }}> Password</p>
 
             <input
@@ -92,11 +100,11 @@ const Signup = () => {
             </button>
           </div>
 
-          <div className="loginleftContentSignup loginAlternative">
-            <p>Or</p>
-          </div>
+          {/* <div className="loginleftContentSignup loginAlternative">
+            <p>Or</p> */}
+          {/* </div> */}
 
-          <div className="loginWithGooglebtnContainer">
+          {/* <div className="loginWithGooglebtnContainer">
             <button className="buttonWithIcon loginWithGoogleIcon">
               <img
                 src="/assets/googleIcon.png"
@@ -105,7 +113,7 @@ const Signup = () => {
               />
               Signup with google
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="loginRightContent">

@@ -9,6 +9,7 @@ import { validateEmailAndPassword } from "../../helpers/basic";
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [phoneNo, setPhoneNo] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
@@ -44,26 +45,26 @@ const Login = () => {
           </div>
 
           <div className="loginleftContentForm">
-            <p>What's your email?</p>
+            <p>What's your phone number?</p>
             <input
-              type="text"
-              placeholder="hi@gmail.com"
-              onChange={(e) => setEmail(e.target.value)}
+              type="number"
+              placeholder="9617373159"
+              onChange={(e) => setPhoneNo(e.target.value)}
             />
-            <p style={{ marginTop: "20px" }}>Password, please</p>
-
+            {/* <p style={{ marginTop: "20px" }}>Password, please</p> */}
+            {/* 
             <input
               type="password"
               placeholder="*********"
               onChange={(e) => setPassword(e.target.value)}
-            />
+            /> */}
 
             <button
               className="basicRoundedButton basiclongBtn"
               style={{ marginTop: "20px" }}
               onClick={() => handleLogin()}
             >
-              Login{" "}
+              Login
               {isLoading && (
                 <CircularProgress
                   style={{ height: "10px", width: "10px", color: "#fff" }}
@@ -72,20 +73,20 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="loginleftContentSignup">
+          {/* <div className="loginleftContentSignup">
             <p>Forgot password</p>
-          </div>
+          </div> */}
 
-          <div className="loginLeftContentSignupPara ">
+          {/* <div className="loginLeftContentSignupPara ">
             <p>Don't have an account?</p>
             <span>Signup</span>
-          </div>
+          </div> */}
 
-          <div className="loginleftContentSignup loginAlternative">
+          {/* <div className="loginleftContentSignup loginAlternative">
             <p>Or</p>
-          </div>
+          </div> */}
 
-          <div className="loginWithGooglebtnContainer">
+          {/* <div className="loginWithGooglebtnContainer">
             <button className="buttonWithIcon loginWithGoogleIcon">
               <img
                 src="/assets/googleIcon.png"
@@ -94,7 +95,7 @@ const Login = () => {
               />
               Login with google
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="loginRightContent">
