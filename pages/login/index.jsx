@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { auth } from "../../config/firebase"; // Adjust the path based on your structure
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { CircularProgress } from "@mui/material";
+import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
 import { login } from "../../helpers";
@@ -18,28 +19,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOtpSent, setIsOtpSent] = useState();
   const [OTP, setOTP] = useState();
-
-  const handleLogin = async () => {
-    setIsLoading(true);
-    const isEmailPasswordValid = validateEmailAndPassword(email, password);
-    if (isEmailPasswordValid) {
-      if (email && password) {
-        const data = {
-          email: email,
-          password: password,
-        };
-        const response = await login(data);
-        if (response?.token) {
-          Cookies.set("userData", JSON.stringify(response));
-          alert("logged in succesfully");
-          setIsLoading(false);
-        } else {
-          setIsLoading(false);
-          alert("login error: Please enter email and password");
-        }
-      }
-    }
-  };
+  const router = useRouter();
 
   const handleSendOTP = async (e) => {
     e.preventDefault();
@@ -96,7 +76,7 @@ const Login = () => {
           const response = await login(data);
           if (response?.token) {
             Cookies.set("userData", JSON.stringify(response));
-            alert("logged in succesfully");
+            router.push("/");
           }
         }
       })
