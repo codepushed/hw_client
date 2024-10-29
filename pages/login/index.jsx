@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
+import { auth } from "../../config/firebase"; // Adjust the path based on your structure
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { CircularProgress } from "@mui/material";
 
 import Header from "../../components/Header";
 import { login } from "../../helpers";
 import { validateEmailAndPassword } from "../../helpers/basic";
+import conf from "../../config";
 
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [phoneNo, setPhoneNo] = useState();
+  const [confirmResult, setConfirmResult] = useState();
+  const [reCaptcha, setRecaptcha] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const recap = useRef();
 
   const handleLogin = async () => {
     setIsLoading(true);
@@ -34,10 +40,47 @@ const Login = () => {
     }
   };
 
+  const handleSendOTP = async (e) => {
+    e.preventDefault();
+
+    if (!reCaptcha) {
+      console.log("erroer");
+    }
+
+    try {
+      const confirmationResults = await signInWithPhoneNumber(
+        auth,
+        phoneNo,
+        reCaptcha
+      );
+      console.log(confirmationResults, "hey")
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const recaptchaVerifier = new RecaptchaVerifier(
+      auth,
+      "recaptcha-container",
+      {
+        size: "invisible",
+      }
+    );
+
+    setRecaptcha(recaptchaVerifier);
+
+    return () => {
+      recaptchaVerifier.clear();
+    };
+  }, [auth]);
+
   return (
     <div>
       <Header isHidden={true} />
       <div className="loginContainer">
+        <div id="recaptcha-container"></div>
+
         <div className="loginLeftContent">
           <div className="loginLeftContentHeading">
             <h1>Welcome Abroad</h1>
@@ -47,8 +90,8 @@ const Login = () => {
           <div className="loginleftContentForm">
             <p>What's your phone number?</p>
             <input
-              type="number"
-              placeholder="9617373159"
+              type="text"
+              // placeholder=""
               onChange={(e) => setPhoneNo(e.target.value)}
             />
             {/* <p style={{ marginTop: "20px" }}>Password, please</p> */}
@@ -62,7 +105,7 @@ const Login = () => {
             <button
               className="basicRoundedButton basiclongBtn"
               style={{ marginTop: "20px" }}
-              onClick={() => handleLogin()}
+              onClick={(e) => handleSendOTP(e)}
             >
               Login
               {isLoading && (

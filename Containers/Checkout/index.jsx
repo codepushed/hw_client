@@ -14,7 +14,7 @@ import {
   gstCalculation,
   totalPriceWithGst,
 } from "../../helpers/basic";
-import NewAddress from "../../components/Modal/newAddress";
+// import NewAddress from "../../components/Modal/newAddress";
 
 const Checkout = () => {
   const [open, setOpen] = useState(false);

@@ -2,7 +2,7 @@ import axios from "axios";
 import _ from "lodash";
 
 import endPoints from "./config/endpoints";
-import productConfigs from "./config";
+import conf from "./config";
 
 import { getAccessToken } from "./helpers/basic";
 
@@ -14,7 +14,7 @@ const API_HEADERS = {
 };
 
 const api = axios.create({
-  baseURL: productConfigs.REACT_APP_API_URL,
+  baseURL: conf.REACT_APP_API_URL,
   timeout: API_TIMEOUT,
   headers: API_HEADERS,
 });
