@@ -16,7 +16,8 @@ const Login = () => {
   const [confirmResult, setConfirmResult] = useState();
   const [reCaptcha, setRecaptcha] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const recap = useRef();
+  const [isOtpSent, setIsOtpSent] = useState();
+  const [OTP, setOTP] = useState();
 
   const handleLogin = async () => {
     setIsLoading(true);
@@ -44,7 +45,7 @@ const Login = () => {
     e.preventDefault();
 
     if (!reCaptcha) {
-      console.log("erroer");
+      alert("erroer");
     }
 
     try {
@@ -53,9 +54,9 @@ const Login = () => {
         phoneNo,
         reCaptcha
       );
-      console.log(confirmationResults, "hey")
+      setIsOtpSent(confirmationResults);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -75,12 +76,39 @@ const Login = () => {
     };
   }, [auth]);
 
+  const handleVerifyOTP = () => {
+    if (!isOtpSent) {
+      alert("Please send OTP first.");
+      return;
+    }
+    setPhoneNo("");
+
+    isOtpSent
+      .confirm(OTP)
+      .then(async (result) => {
+        const user = result.user;
+        console.log(user, "verification done");
+        if (phoneNo) {
+          const phoneNumber = phoneNo.replace(/^\+91/, "");
+          const data = {
+            phone: phoneNumber,
+          };
+          const response = await login(data);
+          if (response?.token) {
+            Cookies.set("userData", JSON.stringify(response));
+            alert("logged in succesfully");
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error verifying OTP", error);
+      });
+  };
+
   return (
     <div>
       <Header isHidden={true} />
       <div className="loginContainer">
-        <div id="recaptcha-container"></div>
-
         <div className="loginLeftContent">
           <div className="loginLeftContentHeading">
             <h1>Welcome Abroad</h1>
@@ -88,12 +116,28 @@ const Login = () => {
           </div>
 
           <div className="loginleftContentForm">
-            <p>What's your phone number?</p>
-            <input
-              type="text"
-              // placeholder=""
-              onChange={(e) => setPhoneNo(e.target.value)}
-            />
+            {isOtpSent !== "undefined" && !isOtpSent ? (
+              <>
+                <p>What's your phone number?</p>
+                <input
+                  type="text"
+                  // placeholder=""
+                  onChange={(e) => setPhoneNo(e.target.value)}
+                />
+              </>
+            ) : (
+              <>
+                <p>Enter the OTP</p>
+                <input
+                  type="text"
+                  // placeholder=""
+                  onChange={(e) => setOTP(e.target.value)}
+                  min={6}
+                  max={6}
+                />
+              </>
+            )}
+
             {/* <p style={{ marginTop: "20px" }}>Password, please</p> */}
             {/* 
             <input
@@ -102,18 +146,28 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             /> */}
 
-            <button
-              className="basicRoundedButton basiclongBtn"
-              style={{ marginTop: "20px" }}
-              onClick={(e) => handleSendOTP(e)}
-            >
-              Login
-              {isLoading && (
-                <CircularProgress
-                  style={{ height: "10px", width: "10px", color: "#fff" }}
-                />
-              )}
-            </button>
+            {isOtpSent !== "undefined" && !isOtpSent ? (
+              <button
+                className="basicRoundedButton basiclongBtn"
+                style={{ marginTop: "20px" }}
+                onClick={(e) => handleSendOTP(e)}
+              >
+                Login
+                {isLoading && (
+                  <CircularProgress
+                    style={{ height: "10px", width: "10px", color: "#fff" }}
+                  />
+                )}
+              </button>
+            ) : (
+              <button
+                className="basicRoundedButton basiclongBtn"
+                style={{ marginTop: "20px" }}
+                onClick={(e) => handleVerifyOTP(e)}
+              >
+                Verify
+              </button>
+            )}
           </div>
 
           {/* <div className="loginleftContentSignup">
@@ -149,6 +203,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <div id="recaptcha-container"></div>
     </div>
   );
 };
