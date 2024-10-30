@@ -125,3 +125,7 @@ export const adminApi = {
   adhaarVerification: (data = {}) =>
     resolvePut(`${endPoints.adminAdhaarVerification}${data.id}`, data),
 };
+
+export const professionalApi = {
+  signUp: (data = {}) => resolvePost(endPoints.signup, data),
+};

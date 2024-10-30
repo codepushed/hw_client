@@ -49,7 +49,7 @@ export const toLowerCaseString = (str) => {
 
 export const cartPriceCalculator = (rate) => {
   const totalPrice = rate.reduce((acc, item) => {
-    return acc + Number(item.price); 
+    return acc + Number(item.price);
   }, 0);
 
   return totalPrice;
@@ -57,10 +57,10 @@ export const cartPriceCalculator = (rate) => {
 
 export const gstCalculation = (rate) => {
   const totalPrice = rate.reduce((acc, item) => {
-    return acc + Number(item.price); 
+    return acc + Number(item.price);
   }, 0);
 
-  const gst = (totalPrice * 18) / 100; 
+  const gst = (totalPrice * 18) / 100;
 
   return gst;
 };
@@ -72,26 +72,25 @@ export const totalPriceWithGst = (rate) => {
 
   const gst = (totalPrice * 18) / 100;
 
-  return totalPrice + gst; 
+  return totalPrice + gst;
 };
 
 export const formatTime = (hours) => {
-  const ampm = hours >= 12 ? 'PM' : 'AM';
-  const formattedHour = hours % 12 || 12; 
+  const ampm = hours >= 12 ? "PM" : "AM";
+  const formattedHour = hours % 12 || 12;
   return `${formattedHour}:00 ${ampm}`;
 };
 
-
 export const formatDate = (date) => {
-  return date.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'short',
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
   });
 };
 
 export const formatDay = (date) => {
-  return date.toLocaleDateString('en-GB', {
-    weekday: 'short',
+  return date.toLocaleDateString("en-GB", {
+    weekday: "short",
   });
 };
 
@@ -116,4 +115,17 @@ export const generateTimeSlots = (startHour, endHour, filterPastSlots) => {
   }
 
   return slots;
+};
+
+export const validateAadhaar = (aadhaarNumber) => {
+  const aadhaarRegex = /^\d{12}$/;
+  return aadhaarRegex.test(aadhaarNumber);
+};
+
+export const formatPhoneNumber = (phoneNumber) => {
+  const phoneRegex = /^\d{10}$/;
+  if (phoneRegex.test(phoneNumber)) {
+    return `+91${phoneNumber}`;
+  }
+  return null;
 };

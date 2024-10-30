@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { auth } from "../../config/firebase"; // Adjust the path based on your structure
+import { auth } from "../../config/firebase";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
@@ -183,14 +183,16 @@ const Signup = () => {
                   />
                 )}
               </button>
-            ) : !isOtpVerified && (
-              <button
-                className="basicRoundedButton basiclongBtn"
-                style={{ marginTop: "20px" }}
-                onClick={(e) => handleVerifyOTP(e)}
-              >
-                Verify
-              </button>
+            ) : (
+              !isOtpVerified && (
+                <button
+                  className="basicRoundedButton basiclongBtn"
+                  style={{ marginTop: "20px" }}
+                  onClick={(e) => handleVerifyOTP(e)}
+                >
+                  Verify
+                </button>
+              )
             )}
           </div>
 

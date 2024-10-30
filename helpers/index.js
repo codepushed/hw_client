@@ -1,4 +1,4 @@
-import { adminApi, userApi } from "../client";
+import { adminApi, professionalApi, userApi } from "../client";
 
 export const login = async (data) => {
   return userApi.login(data);
@@ -46,4 +46,8 @@ export const createBooking = async (data) => {
 
 export const getAllBookings = async (data) => {
   return userApi.getAllBookings(data);
+};
+
+export const professionalSignUp = async (data) => {
+  return professionalApi.signUp(data);
 };

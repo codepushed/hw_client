@@ -9,7 +9,8 @@ const endpoints = {
     adminGetAllProfessionals: "/admin/professionals",
     adminAdhaarVerification: "/admin/professionals/",
     createBooking: "/booking/create",
-    getAllBookings: "/bookings"
+    getAllBookings: "/bookings",
+    professionalSignUp: "/professional/signup"
   };
   
   export default endpoints;
