@@ -69,3 +69,30 @@ export const servicesLinks = {
   painter:
     "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=6718afa7d08fa56679b318ad",
 };
+
+export const searchLinks = [
+  {
+    name: "Electrician",
+    link: "/services/electrician?category=Electrician&id=6718af1cd08fa56679b317a7",
+  },
+  {
+    name: "Plumber",
+    link: "/services/plumber?category=Plumber&id=6718af9dd08fa56679b31873",
+  },
+  {
+    name: "Cleaning",
+    link: "/services/cleaning?category=Cleaning&id=6718af2ed08fa56679b317e0",
+  },
+  {
+    name: "Pest Control",
+    link: "/services/pest%20control?category=Pest+control&id=6718afb0d08fa56679b318c0",
+  },
+  {
+    name: "Appliance Repair",
+    link: "/services/appliance%20repair?category=Appliance+Repair&id=6718af8ed08fa56679b31833",
+  },
+  {
+    name: "Painter",
+    link: "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=6718afa7d08fa56679b318ad",
+  },
+];

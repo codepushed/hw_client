@@ -59,7 +59,6 @@ const Login = () => {
       .confirm(OTP)
       .then(async (result) => {
         const user = result.user;
-        console.log(user, "verification done");
         if (phoneNo) {
           const phoneNumber = phoneNo.replace(/^\+91/, "");
           const data = {
