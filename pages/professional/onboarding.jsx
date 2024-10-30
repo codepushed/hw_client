@@ -6,13 +6,14 @@ import { useRouter } from "next/router";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 import Header from "../../components/Header";
-import { formatPhoneNumber } from "../../helpers/basic";
+import { formatPhoneNumber, validateAadhaar } from "../../helpers/basic";
 import { professionalSignUp } from "../../helpers";
 
 const Onboarding = () => {
   const [fullname, setFullName] = useState();
   const [aadhaarNumber, setAdhaarNumber] = useState();
   const [phoneNo, setPhoneNo] = useState();
+  const [phoneWithCountryCode, setPhoneWithCountryCode] = useState();
   const [isOtpSent, setIsOtpSent] = useState();
   const [isOtpVerified, setIsOtpVerified] = useState();
   const [reCaptcha, setRecaptcha] = useState();
@@ -23,11 +24,12 @@ const Onboarding = () => {
     const isAdhaarValid = validateAadhaar(aadhaarNumber);
     const isPhoneValid = formatPhoneNumber(phoneNo);
     if (isAdhaarValid && isPhoneValid) {
+      setPhoneWithCountryCode(isPhoneValid);
       if (fullname && aadhaarNumber && phoneNo) {
         const data = {
           name: fullname,
           adhaarNumber: aadhaarNumber,
-          phone: phoneNo,
+          phone: isPhoneValid,
         };
         const response = await professionalSignUp(data);
         if (response?.token) {
@@ -48,9 +50,10 @@ const Onboarding = () => {
     }
 
     try {
+      const isPhoneValid = formatPhoneNumber(phoneNo);
       const confirmationResults = await signInWithPhoneNumber(
         auth,
-        phone,
+        isPhoneValid,
         reCaptcha
       );
       setIsOtpSent(confirmationResults);
@@ -134,9 +137,9 @@ const Onboarding = () => {
                     type="text"
                     // placeholder=""
                     style={{
-                      width: "200px",
                       paddingLeft: "10px",
                       outline: "none",
+                      width: "-webkit-fill-available",
                     }}
                     value={phoneNo}
                     onChange={(e) => setPhoneNo(e.target.value)}
@@ -156,6 +159,11 @@ const Onboarding = () => {
                     minLength="6"
                     maxLength="6"
                     pattern="^\d{6}$"
+                    style={{
+                      paddingLeft: "10px",
+                      outline: "none",
+                      width: "-webkit-fill-available",
+                    }}
                   />
                 </span>
               </div>
