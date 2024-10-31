@@ -78,7 +78,7 @@ const Login = () => {
 
   return (
     <div className="professionalLoginContainer">
-      <Header />
+      <Header isHidden={true} />
       <div className="professionalLogin">
         <h1>Login</h1>
         <p>Access your dashboard and</p>

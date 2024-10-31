@@ -23,6 +23,7 @@ const Header = ({ isHidden, noMenu }) => {
   const open = Boolean(anchorEl);
   const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
+  const isNoMenuRoutes = ["/professional/"]
 
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();
@@ -63,7 +64,7 @@ const Header = ({ isHidden, noMenu }) => {
   return (
     <div className="headerContainer">
       <Logo onClick={() => router.push("/")} />
-      {!isHidden && noMenu && (
+      {!isHidden && (
         <>
           {!loggedIn && (
             <ul className="headerlistContainer">
@@ -82,15 +83,15 @@ const Header = ({ isHidden, noMenu }) => {
             </ul>
           )}
           <div className="headerButtonContainer">
-            {!loggedIn ||
-              (noMenu && (
+            {!loggedIn
+              && (
                 <button
                   className="basicRoundedButton"
                   onClick={() => router.push("/login")}
                 >
                   Sign In
                 </button>
-              ))}
+              )}
 
             {router.asPath.includes("/coming-soon") && (
               <button
@@ -187,7 +188,8 @@ const Header = ({ isHidden, noMenu }) => {
             )}
           </div>
         </>
-      )}
+      )} 
+
     </div>
   );
 };

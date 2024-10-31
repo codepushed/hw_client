@@ -96,7 +96,7 @@ const Onboarding = () => {
 
   return (
     <div className="professionalLoginContainer">
-      <Header noMenu={true} />
+      <Header isHidden={true} />
       <div className="professionalLogin">
         <h1>Sign Up</h1>
         <p>to become a Service Professional</p>
