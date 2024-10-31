@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { isLoggedIn } from "../../helpers/basic";
 import { useSelector } from "react-redux";
 
-const Header = ({ isHidden }) => {
+const Header = ({ isHidden, noMenu }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [username, setUsername] = useState("S");
@@ -63,7 +63,7 @@ const Header = ({ isHidden }) => {
   return (
     <div className="headerContainer">
       <Logo onClick={() => router.push("/")} />
-      {!isHidden && (
+      {!isHidden && noMenu && (
         <>
           {!loggedIn && (
             <ul className="headerlistContainer">
@@ -82,14 +82,15 @@ const Header = ({ isHidden }) => {
             </ul>
           )}
           <div className="headerButtonContainer">
-            {!loggedIn && (
-              <button
-                className="basicRoundedButton"
-                onClick={() => router.push("/login")}
-              >
-                Sign In
-              </button>
-            )}
+            {!loggedIn ||
+              (noMenu && (
+                <button
+                  className="basicRoundedButton"
+                  onClick={() => router.push("/login")}
+                >
+                  Sign In
+                </button>
+              ))}
 
             {router.asPath.includes("/coming-soon") && (
               <button

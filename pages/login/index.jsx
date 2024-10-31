@@ -84,7 +84,7 @@ const Login = () => {
 
   return (
     <div>
-      <Header isHidden={true} />
+      <Header noMenu={true} />
       <div className="loginContainer">
         <div className="loginLeftContent">
           <div className="loginLeftContentHeading">
