@@ -24,8 +24,6 @@ const Header = ({ isHidden }) => {
   const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
 
-  console.log(cart, "hey")
-
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();
     if (isUserLoggedIn) {
@@ -84,15 +82,14 @@ const Header = ({ isHidden }) => {
             </ul>
           )}
           <div className="headerButtonContainer">
-            {!loggedIn
-              && (
-                <button
-                  className="basicRoundedButton"
-                  onClick={() => router.push("/login")}
-                >
-                  Sign In
-                </button>
-              )}
+            {!loggedIn && (
+              <button
+                className="basicRoundedButton"
+                onClick={() => router.push("/login")}
+              >
+                Sign In
+              </button>
+            )}
 
             {router.asPath.includes("/coming-soon") && (
               <button
@@ -189,8 +186,7 @@ const Header = ({ isHidden }) => {
             )}
           </div>
         </>
-      )} 
-
+      )}
     </div>
   );
 };

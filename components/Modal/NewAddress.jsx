@@ -6,7 +6,7 @@ import { addNewAddress } from "../../helpers";
 import Snackbars from "../Snackbars";
 import { snackbarsMsg } from "../../Static";
 
-const NewAddress = ({ open, handleCloseNewAddress }) => {
+const NewAddress = ({ open, handleCloseNewAddress, setIsNewAdressUpdated }) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snack, setSnack] = useState(false);
   const [selectAdd, setSelectAdd] = useState();
@@ -33,22 +33,23 @@ const NewAddress = ({ open, handleCloseNewAddress }) => {
   const addAddress = async () => {
     if (houseno && landmark && pincode && states && city) {
       const fullAddress = `${houseno} ${landmark} ${pincode} ${states} ${city}`;
-      if(fullAddress){
-      const data = {
-        name: name,
-        address: fullAddress,
-      };
-      if (data) {
-        const response = await addNewAddress(data);
-        if (response) {
-          setSnack(true);
-          setOpenSnackbar(true);
-          handleCloseNewAddress();
-        } else {
-          setSnack(false);
+      if (fullAddress) {
+        const data = {
+          name: name,
+          address: fullAddress,
+        };
+        if (data) {
+          const response = await addNewAddress(data);
+          if (response) {
+            setSnack(true);
+            setOpenSnackbar(true);
+            setIsNewAdressUpdated(response);
+            handleCloseNewAddress();
+          } else {
+            setSnack(false);
+          }
         }
       }
-    }
     }
   };
 
@@ -80,7 +81,7 @@ const NewAddress = ({ open, handleCloseNewAddress }) => {
             >
               <input
                 type="text"
-                placeholder="House no, Street name, flat no"
+                placeholder="Name"
                 onChange={(e) => setName(e.target.value)}
               />
             </span>

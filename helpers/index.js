@@ -51,3 +51,15 @@ export const getAllBookings = async (data) => {
 export const professionalSignUp = async (data) => {
   return professionalApi.signUp(data);
 };
+
+export const userGetAllProfessionals = async (data) => {
+  return userApi.getAllProfessionals(data);
+};
+
+export const getProfessionalsByProfession = async (data) => {
+  return userApi.getAllProfessionalsByProfession(data);
+};
+
+export const sentBookingDetails = async (data) => {
+  return userApi.sentBookingDetails(data);
+};

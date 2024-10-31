@@ -27,11 +27,6 @@ const Slot = ({
     marginTop: "10px",
   };
 
-  // useEffect(() => {
-  //   if (availableSlots) {
-  //     setCurrentTimeSlots(availableSlots[0].slots);
-  //   }
-  // }, []);
 
   const handleDateClick = (item, index) => {
     setCurrentTimeSlots(item?.slots);
@@ -104,7 +99,7 @@ const Slot = ({
           </div>
 
           <div className="selectSlotBtnContainer">
-            <button className="basicRoundedButton selectSlotBtn">
+            <button className="basicRoundedButton selectSlotBtn" onClick={() => handleSlots()}>
               Select slot
             </button>
           </div>

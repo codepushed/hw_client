@@ -117,6 +117,9 @@ export const userApi = {
   getAddress: () => resolveGet(`${endPoints.address}`),
   createBookings: (data = {}) => resolvePost(endPoints.createBooking, data),
   getAllBookings: () => resolveGet(endPoints.getAllBookings),
+  getAllProfessionals: () => resolveGet(`${endPoints.userAllProfessionals}`),
+  getAllProfessionalsByProfession: (data) => resolveGet(`${endPoints.getProfessionalsByProfession}?profession=${data}`),
+  sentBookingDetails: (data = {}) => resolvePost(endPoints.sentBookingDetails, data),
 };
 
 export const adminApi = {

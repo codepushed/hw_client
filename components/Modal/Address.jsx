@@ -8,6 +8,8 @@ import { getAddress } from "../../helpers";
 const Address = ({ open, handleClose, setSelectedAddress }) => {
   const [selectAdd, setSelectAdd] = useState(false);
   const [isNewAddress, setIsNewAddress] = useState(false);
+  const [isNewAddressUpdated, setIsNewAdressUpdated] = useState();
+  const [selectedAdd, setSelectedAdd] = useState(null);
   const [address, setAddress] = useState();
 
   const handleCloseNewAddress = () => {
@@ -41,12 +43,14 @@ const Address = ({ open, handleClose, setSelectedAddress }) => {
 
   useEffect(() => {
     getAllAddresses();
-  }, []);
+  }, [isNewAddressUpdated]);
 
-  const handleChooseAddress = (e, item) => {
+  const handleChooseAddress = (e, item, index) => {
     setSelectAdd(e.target.checked);
-    setSelectedAddress(item?.address)
-  }
+    setSelectedAddress(item?.address);
+    setSelectedAdd(index);
+  };
+
 
   return (
     <div>
@@ -78,18 +82,21 @@ const Address = ({ open, handleClose, setSelectedAddress }) => {
                   <span className="addressTitle" key={index}>
                     <input
                       type="radio"
-                      checked={selectAdd}
-                      onChange={(e) => handleChooseAddress(e, item)}
+                      checked={selectedAdd === index}
+                      onChange={(e) => handleChooseAddress(e, item, index)}
                     />
                     <p>{item?.name}</p>
                   </span>
-                  <p>{item?.address}</p>
+                  <p style={{ marginBottom: "20px" }}>{item?.address}</p>
                 </>
               ))}
           </div>
 
           <div className="selectSlotBtnContainer">
-            <button className="basicRoundedButton selectSlotBtn" onClick={() => handleClose()}>
+            <button
+              className="basicRoundedButton selectSlotBtn"
+              onClick={() => handleClose()}
+            >
               Select address
             </button>
           </div>
@@ -98,6 +105,7 @@ const Address = ({ open, handleClose, setSelectedAddress }) => {
       <NewAddress
         open={isNewAddress}
         handleCloseNewAddress={handleCloseNewAddress}
+        setIsNewAdressUpdated={setIsNewAdressUpdated}
       />
     </div>
   );

@@ -129,3 +129,17 @@ export const formatPhoneNumber = (phoneNumber) => {
   }
   return null;
 };
+
+
+export function getRandomObject(arr) {
+  // Check if the array is empty
+  if (arr.length === 0) {
+    return null; // or handle the case when there are no objects available
+  }
+
+  // Generate a random index based on the length of the array
+  const randomIndex = Math.floor(Math.random() * arr.length);
+
+  // Return the random object
+  return arr[randomIndex];
+}
