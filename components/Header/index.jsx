@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { isLoggedIn } from "../../helpers/basic";
 import { useSelector } from "react-redux";
 
-const Header = ({ isHidden, noMenu }) => {
+const Header = ({ isHidden }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [username, setUsername] = useState("S");
@@ -23,7 +23,8 @@ const Header = ({ isHidden, noMenu }) => {
   const open = Boolean(anchorEl);
   const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
-  const isNoMenuRoutes = ["/professional/"]
+
+  console.log(cart, "hey")
 
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();

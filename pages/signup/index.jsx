@@ -121,7 +121,7 @@ const Signup = () => {
                 />
                 <p style={{ marginTop: "20px" }}>Email</p>
                 <input
-                  type="number"
+                  type="email"
                   placeholder="9617373159"
                   onChange={(e) => setEmail(e.target.value)}
                 />

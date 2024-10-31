@@ -58,13 +58,11 @@ const Login = () => {
       alert("Please send OTP first.");
       return;
     }
-    setPhoneNo("");
 
     isOtpSent
       .confirm(OTP)
       .then(async (result) => {
         const user = result.user;
-        console.log(user, "verification done");
         if (phoneNo) {
           const phoneNumber = phoneNo.replace(/^\+91/, "");
           const data = {
@@ -84,7 +82,7 @@ const Login = () => {
 
   return (
     <div>
-      <Header noMenu={true} />
+      <Header isHidden={true} />
       <div className="loginContainer">
         <div className="loginLeftContent">
           <div className="loginLeftContentHeading">

@@ -4,10 +4,14 @@ import { useRouter } from "next/router";
 import { getServiceById } from "../../../helpers";
 import AllServices from "../../../Containers/AllServices";
 import Header from "../../../components/Header";
+import { useDispatch } from "react-redux";
+import { saveCartItems } from "../../../store/slices/cart";
 
 const Subservice = () => {
   const [subserviceData, setSubserviceData] = useState();
+  const [cartItems, setCartItems] = useState([]);
   const router = useRouter();
+  const dispatch = useDispatch();
   const { category, id } = router.query;
 
   const getSubservices = async () => {
@@ -25,10 +29,14 @@ const Subservice = () => {
     getSubservices();
   }, [id]);
 
+  useEffect(() => {
+    dispatch(saveCartItems(cartItems));
+  }, [cartItems]);
+
   return (
     <div>
       <Header />
-      <AllServices data={subserviceData}/>
+      <AllServices data={subserviceData} setCartItems={setCartItems} />
     </div>
   );
 };
