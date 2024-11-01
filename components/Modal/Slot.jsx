@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
-const Slot = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const Slot = ({
+  isSlotOpen,
+  handleSlots,
+  availableSlots,
+  setCurrentDateSlots,
+  setSelectedDateSlots,
+}) => {
+  const [currentTimeSlots, setCurrentTimeSlots] = useState();
+  const [activeDate, setActiveDate] = useState(null);
+  const [activeTime, setActiveTime] = useState(null);
 
   const style = {
     position: "absolute",
@@ -21,16 +27,31 @@ const Slot = () => {
     marginTop: "10px",
   };
 
+
+  const handleDateClick = (item, index) => {
+    setCurrentTimeSlots(item?.slots);
+    setSelectedDateSlots(item?.date);
+    setActiveDate(index);
+  };
+
+  const handleTimeClick = (item, index) => {
+    setCurrentDateSlots(item);
+    setActiveTime(index);
+  };
+
   return (
     <div>
       <Modal
-        open={true}
-        onClose={handleClose}
+        open={isSlotOpen}
+        onClose={handleSlots}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <div className="drawerCloseBtnWrapper drawerCloseBtnSpacing">
+          <div
+            className="drawerCloseBtnWrapper drawerCloseBtnSpacing"
+            onClick={() => handleSlots()}
+          >
             <div className="drawerCloseBtn">x</div>
           </div>
 
@@ -38,20 +59,21 @@ const Slot = () => {
             When should you the professional arrive?
           </h1>
           <div className="slotTimingsContainer">
-            <div className="slotTimings">
-              <h1>12</h1>
-              <p>Tue</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>13</h1>
-              <p>Wed</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>14</h1>
-              <p>Thu</p>
-            </div>
+            {availableSlots &&
+              availableSlots?.map((item, index) => (
+                <div
+                  className={
+                    activeDate === index
+                      ? "slotTimingsActive slotTimings"
+                      : "slotTimings"
+                  }
+                  key={index}
+                  onClick={() => handleDateClick(item, index)}
+                >
+                  <h1>{item?.date}</h1>
+                  <p>{item?.day}</p>
+                </div>
+              ))}
           </div>
 
           <h1 className="slotTimingsHead slotDateHead">
@@ -59,54 +81,25 @@ const Slot = () => {
           </h1>
 
           <div className="slotTimingsContainer slotDateContainer">
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings dateSlotNotActive">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
-
-            <div className="slotTimings">
-              <h1>12:00</h1>
-              <p>AM</p>
-            </div>
+            {currentTimeSlots &&
+              currentTimeSlots?.map((item, index) => (
+                <div
+                  className={
+                    activeTime === index
+                      ? "slotTimingsActive slotTimings"
+                      : "slotTimings"
+                  }
+                  key={index}
+                  style={{ width: "60px" }}
+                  onClick={() => handleTimeClick(item, index)}
+                >
+                  <h1>{item}</h1>
+                </div>
+              ))}
           </div>
 
           <div className="selectSlotBtnContainer">
-            <button className="basicRoundedButton selectSlotBtn">
+            <button className="basicRoundedButton selectSlotBtn" onClick={() => handleSlots()}>
               Select slot
             </button>
           </div>

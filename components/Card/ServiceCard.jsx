@@ -1,43 +1,58 @@
 import React, { useState } from "react";
 
-import Modal from "../Modal";
-import Image from "next/image";
-
-const ServiceCard = ({ data }) => {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
-  };
+const ServiceCard = ({ data, addToCart, removeFromCart }) => {
+  const [isCounter, setIsCounter] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   return (
-    <>
-      <div className="serviceCardContainer" onClick={() => handleOpen()}>
-        <div className="serviceCardImg">
-          <Image src={data.img} alt="service" height={500} width={500} />
-          <div className="serviceCardHeadContent">
-            <h1>{data.name}</h1>
-            <p className="serviceCardPara">{data.desc}</p>
-            <button className="outlineBtn">Add</button>
-          </div>
-          {/* <span className="serviceCardDetails">View details</span> */}
-        </div>
+    <div className="serviceCardContainer">
+      <div className="serviceCardImg">
+        <div className="serviceCardHeadContent">
+          <h1>{data.name}</h1>
+          <p className="serviceCardPara">{data.desc}</p>
 
-        <div className="serviceCardContent">
-          <span className="serviceCardPricing">
-            <p>Coming Soon</p>
-            {/* <img src="/assets/icons/dot.png" alt="dot" className="dotIcon" /> */}
-
-            <span className="serviceCardPricingRuppee">
-              {/* <img src="/assets/icons/ruppee.png" alt="ruppee" className="ruppeeIcon" />
-    <p>499</p> */}
-            </span>
-          </span>
+          {!isCounter ? (
+            <button
+              className="outlineBtn"
+              onClick={() => {
+                addToCart(data);
+                setIsCounter(true);
+              }}
+            >
+              Add
+            </button>
+          ) : (
+            <div className="counterBtnsCountainer">
+              <button
+                onClick={() => {
+                  removeFromCart(data);
+                  setQuantity((prev) => {
+                    const newQuantity = prev - 1;
+                    if (newQuantity <= 0) {
+                      setIsCounter(false);
+                    }
+                    return newQuantity;
+                  });
+                }}
+                className="counterBtns"
+              >
+                -
+              </button>
+              {quantity}
+              <button
+                onClick={() => {
+                  addToCart(data);
+                  setQuantity((prev) => prev + 1);
+                }}
+                className="counterBtns"
+              >
+                +
+              </button>
+            </div>
+          )}
         </div>
       </div>
-      <Modal isOpen={open} handleClosed={handleClose} />
-    </>
+    </div>
   );
 };
 
