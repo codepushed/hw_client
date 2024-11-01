@@ -5,10 +5,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useSelector } from "react-redux";
 
-const BookingDetails = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const BookingDetails = ({ open, handleClose, bookingDetails }) => {
   const finalCart = useSelector((state) => state.cart.finalCart);
 
   const style = {
@@ -24,11 +21,10 @@ const BookingDetails = () => {
     marginTop: "10px",
   };
 
-
   return (
     <div>
       <Modal
-        open={false}
+        open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -39,24 +35,27 @@ const BookingDetails = () => {
           </div>
           {finalCart?.serviceId?.map((item, indx) => (
             <h4
-              className="slotTimingsHead addressHeading bookingDetailsheading"
+              className="bookingDetailsheading"
               key={indx}
-              style={{ fontSize: "15px" }}
+              style={{ fontSize: "20px" }}
             >
               {item?.name}
             </h4>
           ))}
 
-          <span className="serviceCardPricing bookingsSubHeading">
+          <span
+            className="serviceCardPricing bookingsSubHeading"
+            style={{ gap: "10px" }}
+          >
             <p>{finalCart?.slotDate}</p>
+            <p>{finalCart?.slotTime}</p>
           </span>
           <span className="serviceCardPricingRuppee bookingsSubHeading">
-            <img
+            {/* <img
               src="/assets/icons/ruppee.png"
               alt="ruppee"
               className="ruppeeIcon"
-            />
-            <p>{finalCart?.slotTime}</p>
+            /> */}
           </span>
 
           {/* <button className="graybtnWithIcon bookingDetailsRecieptBtn">
@@ -64,14 +63,31 @@ const BookingDetails = () => {
             Receipt
           </button> */}
 
+          <p style={{ marginTop: "50px", color: "gray" }}>
+            Professional details
+          </p>
           <div className="bookingDetailsProfessional">
             <div className="professionalDetails">
-              <h1>Session with</h1>
-              <h1>Abdul Shiek</h1>
+              <h1 style={{ marginTop: "10px", fontSize: "20px" }}>
+                Session with
+              </h1>
+              <h1
+                style={{
+                  marginTop: "10px",
+                  fontSize: "20px",
+                  marginLeft: "8px",
+                  textTransform: "capitalize",
+                }}
+              >
+                {bookingDetails?.professional?.name}
+              </h1>
             </div>
 
-            <h4>OTP</h4>
-            <h1>1234</h1>
+            <p>{bookingDetails?.professional?.phone}</p>
+            <p>{bookingDetails?.professional?.profession}</p>
+
+            <p style={{ marginTop: "50px", color: "gray" }}>OTP</p>
+            <h4 style={{ marginBottom: "20px" }}>{bookingDetails?.otp}</h4>
 
             {/* <img src="/assets/professionalprofile.png" alt="professional" /> */}
           </div>

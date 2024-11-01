@@ -6,6 +6,7 @@ import BookingDetails from "../../components/Modal/BookingDetails";
 import {
   createBooking,
   getProfessionalsByProfession,
+  sentBookingDetails,
   userGetAllProfessionals,
 } from "../../helpers";
 import { getRandomObject } from "../../helpers/basic";
@@ -13,7 +14,11 @@ import { getRandomObject } from "../../helpers/basic";
 const ChoosePayment = () => {
   const [assignedProfessional, setAssignedProfessional] = useState();
   const [OTP, setOTP] = useState();
+  const [open, setOpen] = React.useState(false);
+  const [bookingDetails, setBookingDetails] = useState();
   const finalCart = useSelector((state) => state.cart.finalCart);
+
+  const handleClose = () => setOpen(false);
 
   const handleCreateBooking = async () => {
     const data = {
@@ -28,6 +33,12 @@ const ChoosePayment = () => {
 
     if (finalCart && assignedProfessional && OTP) {
       const response = await createBooking(data);
+      if (response) {
+        setBookingDetails(response?.booking);
+        console.log(response)
+        // sendBookingConfirmation(response?.booking);
+        setOpen(true);
+      }
     }
   };
 
@@ -53,6 +64,18 @@ const ChoosePayment = () => {
   // call here random professional api and assign one
   // create booking
   // generate otp
+
+  const sendBookingConfirmation = async (response) => {
+    const data = {
+      to: "homeworkindservice@gmail.com",
+      subject: "Booking recieved",
+      message: response,
+    };
+
+    if (data) {
+      const response = await sentBookingDetails(data);
+    }
+  };
 
   const generateOTP = () => {
     const otpLength = 6;
@@ -83,7 +106,7 @@ const ChoosePayment = () => {
           </div>
         </div>
       </div>
-      <BookingDetails />
+      <BookingDetails open={open} handleClose={handleClose} bookingDetails={bookingDetails} />
     </div>
   );
 };
