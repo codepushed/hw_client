@@ -22,6 +22,11 @@
     height: 100%;
 }
 
+.bookingMenu {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
 .sidebarListActive{
     background-color: rgba(255, 140, 140, 0.22);
 }

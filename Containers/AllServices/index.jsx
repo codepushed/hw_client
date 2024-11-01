@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ServiceCard from "../../components/Card/ServiceCard";
 
@@ -7,25 +7,68 @@ import Drawers from "../../components/Drawers";
 import SelectService from "../../components/Modal/SelectService";
 import Footer from "../../components/Footer";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import saveCartItems from "../../store/slices/cart";
 
-const AllService = ({ data }) => {
-  const [selectedServices, setSelectedServices] = useState(data[0]);
+const AllService = ({ data, setCartCounter, setCartItems }) => {
+  const [selectedServices, setSelectedServices] = useState();
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClose = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    if (data) {
+      setSelectedServices(data?.subCategory[0]);
+    }
+  }, [data]);
+
+  const addToCart = (service) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item._id === service._id);
+      if (existingItem) {
+        return prevItems.map((item) =>
+          item._id === service._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        return [...prevItems, { ...service, quantity: 1 }];
+      }
+    });
+  };
+
+  const removeFromCart = (service) => {
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item._id === service._id);
+      if (existingItem) {
+        if (existingItem.quantity === 1) {
+          return prevItems.filter((item) => item._id !== service._id);
+        } else {
+          return prevItems.map((item) =>
+            item._id === service._id
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          );
+        }
+      }
+      return prevItems;
+    });
+  };
+
   return (
     <div className="servicesContainer">
-      <h1 className="servicesHeader">Salon for Women</h1>
+      <h1 className="servicesHeader">{data?.category}</h1>
 
       <div className="servicesHeaderContent">
         <div className="servicesHeaderImg">
           <Image
             src="/assets/Luxurious Salon Pampering with Sparkling Hair Treatment.jpg"
             alt="kitchen cleaning"
-            height={500} width={500}
+            height={500}
+            width={500}
           />
         </div>
 
@@ -34,12 +77,13 @@ const AllService = ({ data }) => {
             <p>Select a service</p>
 
             <div className="servicesTypesContainer">
-              {data?.slice(0, 6).map((service) => (
+              {data?.subCategory?.slice(0, 6).map((service, index) => (
                 <div
                   className="servicesTypes"
                   onClick={() => setSelectedServices(service)}
+                  key={index}
                 >
-                  <Image src={service.img} alt="service" height={500} width={500} />
+                  {/* <Image src="" alt="service" height={500} width={500} /> */}
                   <p>{service.name}</p>
                 </div>
               ))}
@@ -55,7 +99,12 @@ const AllService = ({ data }) => {
 
           <div className="servicesOfferContainer">
             <div className="serviceOfferImg">
-              <Image src="/assets/icons/launchIcon.png" alt="launch" height={500} width={500} />
+              <Image
+                src="/assets/icons/launchIcon.png"
+                alt="launch"
+                height={500}
+                width={500}
+              />
             </div>
 
             <p>Stay tuned! Launching soon near you</p>
@@ -64,19 +113,25 @@ const AllService = ({ data }) => {
       </div>
 
       <div className="servicesSubCategoryContainer">
-        <h2>{selectedServices.name}</h2>
+        <h2>{selectedServices && selectedServices.name}</h2>
 
         {selectedServices &&
-          selectedServices.subservices?.map((item, index) => (
-            <ServiceCard data={item} key={index} />
+          selectedServices.subServiceName?.map((subservice, index) => (
+            <ServiceCard
+              data={subservice}
+              setCartCounter={setCartCounter}
+              key={index}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+            />
           ))}
       </div>
-      <SelectService
+      {/* <SelectService
         handleClose={handleClose}
         isOpen={open}
         data={data}
         setSelectedServices={setSelectedServices}
-      />
+      /> */}
       {/* <Drawers /> */}
 
       <Footer />

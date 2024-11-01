@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 import { LandingSeo } from "../Seo/index";
 import Header from "../components/Header";
@@ -10,32 +11,61 @@ import HowItWorks from "../components/Section/HowItWorks";
 import Footer from "../components/Footer";
 
 const Home = () => {
+  const router = useRouter();
+  
   return (
     <div className="landingContainer">
       <LandingSeo />
       <Header />
-      <div className="landingContainerHeaderContent">
-        <div className="landingContainerImg">
-          <img
-            src="/assets/icons/bucketIcon.png"
-            alt="bucket"
-            className="bucketIcon"
-          />
-        </div>
-        <div className="landingContainerHeading">
-          <h1>Uncover the hype</h1>
-          <h1>home services on fleek</h1>
+      <div style={{ width: "100%" }}>
+        <div className="landingContainerHeaderContent">
+          <div className="landingContainerImg">
+            <img
+              src="/assets/icons/bucketIcon.png"
+              alt="bucket"
+              className="bucketIcon"
+            />
+          </div>
+          <div className="landingContainerHeading">
+            <h1>Uncover the hype</h1>
+            <h1>home services on fleek</h1>
 
-          <div className="landingContainerSubHeading">
-            <p>
-              Book Trusted Home Services at Your DoorstepFrom plumbing to salon
-              services,
-            </p>
-            <p>we've got you covered!</p>
+            <div className="landingContainerSubHeading">
+              <p>
+                Book Trusted Home Services at Your DoorstepFrom plumbing to
+                salon services,
+              </p>
+              <p>we've got you covered!</p>
+            </div>
+          </div>
+        </div>
+        <SearchBox />
+      </div>
+
+      <div className="landingDeviceWrapper">
+        <div className="landingDevicesContainer">
+          <div className="landingDevicesContent">
+            <h1>Effortless Booking Experience </h1>
+            <p>at your fingertips</p>
+
+            <button
+              className="buttonWithIcon explorServiceBtn"
+              onClick={() => router.push("/services")}
+            >
+              Explore services
+            </button>
+          </div>
+
+          <div className="landingDeviceImg">
+            <img src="/assets/homeworkweb.png" alt="laptop" />
+            <img
+              src="/assets/homeworkapp.png"
+              className="landingDeviceMobile"
+              alt="mobile"
+            />
           </div>
         </div>
       </div>
-      <SearchBox />
 
       <div className="landingOfferContainer">
         <div className="landingOfferHeader">

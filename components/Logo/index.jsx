@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const Logo = () => {
   const router = useRouter();
   return (
-    <div className="headerLogo" onClick={() => router.push("/coming-soon")}>
+    <div className="headerLogo" onClick={() => router.push("/")}>
       <h1>Homework</h1>
       <p>Service at your Doorstep</p>
     </div>

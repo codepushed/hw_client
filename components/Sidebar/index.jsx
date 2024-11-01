@@ -1,19 +1,28 @@
 import React from "react";
 
-
-const Sidebar = () => {
+const Sidebar = ({ setSidebar, sidebar }) => {
   return (
     <div className="sidebarContainer">
-      <div className="sidebarList sidebarListActive">
+      <div
+        className={!sidebar ? "sidebarList sidebarListActive" : "sidebarList"}
+        onClick={() => setSidebar(false)}
+      >
         <img src="/assets/icons/profile_booking.png" alt="profile" />
         <p>Profile</p>
 
-        <div className="profileSidebarDivider"></div>
+        {!sidebar && <div className="profileSidebarDivider"></div>}
       </div>
 
-      <div className="sidebarList">
+      <div
+        className={
+          sidebar ? "sidebarList sidebarListActive bookingMenu" : "sidebarList"
+        }
+        onClick={() => setSidebar(true)}
+      >
         <img src="/assets/icons/mybookings.png" alt="mybookings" />
         <p>My bookings</p>
+
+        {sidebar && <div className="profileSidebarDivider"></div>}
       </div>
 
       <div className="sidebarList">

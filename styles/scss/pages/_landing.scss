@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pattaya&display=swap");
-
 .headerContainer {
   margin-top: 10px;
   padding: 0 50px;
@@ -28,6 +26,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.headerProfileContainer {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+}
+
+.headerProfileContainer > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50px;
 }
 
 .headerlistContainer {
@@ -65,8 +76,9 @@
 
 .landingContainerSubHeading > p {
   color: #958f8f;
-  font-weight: 500;
+  font-weight: 300;
   margin-bottom: 5px;
+  line-height: 18px;
 }
 
 .landingContainerHeaderContent {
@@ -199,6 +211,19 @@
   right: 0% !important;
 }
 
+.landingDevicesContent {
+  padding: 20px 40px;
+}
+
+.landingDevicesContent > p {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.landingDevicesContent > h1 {
+  font-size: 30px;
+}
+
 //coming soon page
 
 .comingSoonWrapper {
@@ -235,11 +260,49 @@
   line-height: 50px;
 }
 
+.landingDeviceWrapper {
+  height: 300px;
+  padding: 40px;
+  border-radius: 16px;
+}
+
+.landingDevicesContainer {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(to bottom right, #fedfdf, #b4c1d9);
+  display: flex;
+  justify-content: space-between;
+  border-radius: 16px;
+}
+
+.landingDeviceImg {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.landingDeviceMobile {
+  height: 400px;
+  width: 100%;
+}
+
+.explorServiceBtn {
+  padding: 10px;
+  border-radius: 50px;
+  color: #fff !important;
+  margin-top: 20px;
+}
+
+.landingDeviceImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 @media (max-width: 768px) {
   .comingSoonWrapper {
     padding: 0 20px;
     margin-top: 60px;
-
   }
 
   .comingSoonContentText > h1 {
@@ -266,5 +329,4 @@
   .comingSoonContentText > button {
     margin-top: 20px;
   }
-
 }
