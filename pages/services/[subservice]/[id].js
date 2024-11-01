@@ -10,7 +10,6 @@ const Services = ({ isHeader, data }) => {
   return (
     <>
       <Header />
-      <SalonSeo />
       <AllServices isHeader={isHeader} data={data} />
     </>
   );
