@@ -2,22 +2,37 @@ import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-const BlogListing = () => {
-    const router = useRouter();
+import { createSlug } from "../../helpers/basic";
+
+const BlogListing = ({ blogs }) => {
+  const router = useRouter();
+
+  const handleClick = (title) => {
+    const slug = createSlug(title);
+    router.push(`/blogs/${slug}`);
+  };
 
   return (
     <div className="blogListingContainer">
       <h1 className="blogListingHeading">Blogs</h1>
       <div className="blogListingCardList">
-        <div className="blogListingCard" onClick={() => router.push("/blogs/why-pay-more-at-salons")} >
-          <div className="blogListingImg">
-            <Image src="/assets/collectionofhairstyles.png" alt="" height={500} width={500}  />
+        {blogs?.map((items, index) => (
+          <div
+            className="blogListingCard"
+            onClick={() => handleClick(items.title)}
+            key={index}
+          >
+            <div className="blogListingImg">
+              <Image
+                src={items.titleImg}
+                alt="blogImags"
+                height={500}
+                width={500}
+              />
+            </div>
+            <p className="blogListingTitle">{items.title}</p>
           </div>
-
-          <p className="blogListingTitle">
-            Why Pay More at Salons? Get Celebrity-Style Beauty Services at Home!
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   );

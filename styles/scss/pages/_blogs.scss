@@ -208,7 +208,11 @@
 .blogListingCardList {
   padding: 0 50px;
   margin-top: 20px;
+  display: flex;
+  gap: 20px;
 }
+
+
 
 @media (max-width: 768px) {
   .blogsContainer {
@@ -238,6 +242,7 @@
 
   .blogListingCardList {
     padding: 0 20px;
+    flex-direction: column;
   }
 
   .blogServiceContainer {
