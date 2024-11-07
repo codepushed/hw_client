@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
 import JobCard from "../../components/Card/JobCard";
@@ -8,6 +9,8 @@ import { staticJobCard } from "../../Static";
 
 
 const Professional = () => {
+  const router = useRouter();
+
   return (
     <div>
       <Header />
@@ -22,7 +25,7 @@ const Professional = () => {
               <p>demand - start working on your terms</p>
             </span>
 
-            <button className="basicRoundedButton pingUsBtn joinBtn">
+            <button className="basicRoundedButton pingUsBtn joinBtn" onClick={() => router.push("/professional/onboarding")}>
               Join us
             </button>
           </div>
