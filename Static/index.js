@@ -73,7 +73,7 @@ export const servicesLinks = {
 export const searchLinks = [
   {
     name: "Electrician",
-    link: "/services/electrician?category=Electrician&id=6718af1cd08fa56679b317a7",
+    link: "/services/electrician?category=Electrician&id=672b38c88a971f1239d1668e",
   },
   {
     name: "Plumber",
@@ -81,18 +81,18 @@ export const searchLinks = [
   },
   {
     name: "Cleaning",
-    link: "/services/cleaning?category=Cleaning&id=6718af2ed08fa56679b317e0",
+    link: "/services/cleaning?category=Cleaning&id=672b38528a971f1239d165e1",
   },
   {
     name: "Pest Control",
-    link: "/services/pest%20control?category=Pest+control&id=6718afb0d08fa56679b318c0",
+    link: "/services/pest%20control?category=Pest+control&id=672b386b8a971f1239d165f5",
   },
   {
     name: "Appliance Repair",
-    link: "/services/appliance%20repair?category=Appliance+Repair&id=6718af8ed08fa56679b31833",
+    link: "/services/appliance%20repair?category=Appliance+Repair&id=672b392f8a971f1239d16703",
   },
   {
     name: "Painter",
-    link: "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=6718afa7d08fa56679b318ad",
+    link: "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=672b38818a971f1239d165ff",
   },
 ];

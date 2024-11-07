@@ -57,7 +57,7 @@ const Home = () => {
           </div>
 
           <div className="landingDeviceImg">
-            <img src="/assets/homeworkweb.png" alt="laptop" />
+            <img src="/assets/homeworkWeb.png" alt="laptop" />
             <img
               src="/assets/homeworkapp.png"
               className="landingDeviceMobile"
