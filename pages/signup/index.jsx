@@ -116,19 +116,19 @@ const Signup = () => {
                 <p>Full name</p>
                 <input
                   type="text"
-                  placeholder="Shristi sharma"
+                  placeholder="Enter your name"
                   onChange={(e) => setName(e.target.value)}
                 />
                 <p style={{ marginTop: "20px" }}>Email</p>
                 <input
                   type="email"
-                  placeholder="9617373159"
+                  placeholder="Enter your email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <p style={{ marginTop: "20px" }}> Password</p>
                 <input
                   type="password"
-                  placeholder="*********"
+                  placeholder="Enter your password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <button

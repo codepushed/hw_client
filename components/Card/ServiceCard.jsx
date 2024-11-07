@@ -7,6 +7,7 @@ const ServiceCard = ({ data, addToCart, removeFromCart }) => {
   return (
     <div className="serviceCardContainer">
       <div className="serviceCardImg">
+        <img src={data?.image} alt="service" />
         <div className="serviceCardHeadContent">
           <h1>{data.name}</h1>
           <p className="serviceCardPara">{data.desc}</p>

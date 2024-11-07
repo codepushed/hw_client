@@ -65,8 +65,8 @@ const AllService = ({ data, setCartCounter, setCartItems }) => {
       <div className="servicesHeaderContent">
         <div className="servicesHeaderImg">
           <Image
-            src="/assets/Luxurious Salon Pampering with Sparkling Hair Treatment.jpg"
-            alt="kitchen cleaning"
+            src={data?.image}
+            alt="service"
             height={500}
             width={500}
           />
@@ -83,7 +83,7 @@ const AllService = ({ data, setCartCounter, setCartItems }) => {
                   onClick={() => setSelectedServices(service)}
                   key={index}
                 >
-                  {/* <Image src="" alt="service" height={500} width={500} /> */}
+                  <Image src={service?.subServiceName[0].image} alt="service" height={500} width={500} />
                   <p>{service.name}</p>
                 </div>
               ))}

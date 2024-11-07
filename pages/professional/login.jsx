@@ -94,7 +94,6 @@ const Login = () => {
                 <input
                   style={{ marginTop: "10px" }}
                   type="text"
-                  // placeholder=""
                   onChange={(e) => setPhoneNo(e.target.value)}
                 />
               </>
@@ -103,7 +102,6 @@ const Login = () => {
                 <p>Enter the OTP</p>
                 <input
                   type="text"
-                  // placeholder=""
                   onChange={(e) => setOTP(e.target.value)}
                   min={6}
                   max={6}

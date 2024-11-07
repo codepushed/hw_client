@@ -28,6 +28,8 @@ const Service = () => {
     });
   };
 
+  console.log(serviceData);
+
   return (
     <div>
       <Header />
@@ -49,7 +51,9 @@ const Service = () => {
                   <div className="serviceCardMainContainer">
                     {item?.subCategory?.map((subCat, idx) => (
                       <div key={idx}>
-                        <div className="ServiceCardsContainer"></div>
+                        <div className="ServiceCardsContainer">
+                          <img src={subCat?.subServiceName[0].image} alt="service" />
+                        </div>
                         <p>{subCat?.name}</p>
                       </div>
                     ))}

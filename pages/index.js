@@ -12,7 +12,7 @@ import Footer from "../components/Footer";
 
 const Home = () => {
   const router = useRouter();
-  
+
   return (
     <div className="landingContainer">
       <LandingSeo />
@@ -48,12 +48,21 @@ const Home = () => {
             <h1>Effortless Booking Experience </h1>
             <p>at your fingertips</p>
 
-            <button
-              className="buttonWithIcon explorServiceBtn"
-              onClick={() => router.push("/services")}
-            >
-              Explore services
-            </button>
+            <div className="bookingExperience">
+              <button
+                className="buttonWithIcon explorServiceBtn"
+                onClick={() => router.push("/signup")}
+              >
+                Sign up now
+              </button>
+
+              <button
+                className="buttonWithIcon explorServiceBtn"
+                onClick={() => router.push("/services")}
+              >
+                Explore services
+              </button>
+            </div>
           </div>
 
           <div className="landingDeviceImg">

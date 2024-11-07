@@ -59,40 +59,40 @@ export const socialmediaLinks = {
 
 export const servicesLinks = {
   electrician:
-    "/services/electrician?category=Electrician&id=6718af1cd08fa56679b317a7",
-  plumber: "/services/plumber?category=Plumber&id=6718af9dd08fa56679b31873",
-  cleaning: "/services/cleaning?category=Cleaning&id=6718af2ed08fa56679b317e0",
+    "/services/electrician?category=Electrician&id=672c7c663272cf3e213910ea",
+  // plumber: "/services/plumber?category=Plumber&id=6718af9dd08fa56679b31873",
+  cleaning: "/services/cleaning?category=Cleaning&id=672c72d03272cf3e2139080c",
   pestControl:
-    "/services/pest%20control?category=Pest+control&id=6718afb0d08fa56679b318c0",
+    "/services/pest%20control?category=Pest+control&id=672c72dd3272cf3e21390820",
   applianceRepair:
-    "/services/appliance%20repair?category=Appliance+Repair&id=6718af8ed08fa56679b31833",
+    "/services/appliance%20repair?category=Appliance+Repair&id=672c72a53272cf3e213907ba",
   painter:
-    "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=6718afa7d08fa56679b318ad",
+    "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=672c72bd3272cf3e213907f9",
 };
 
 export const searchLinks = [
   {
     name: "Electrician",
-    link: "/services/electrician?category=Electrician&id=672b38c88a971f1239d1668e",
+    link: "/services/electrician?category=Electrician&id=672c7c663272cf3e213910ea",
   },
-  {
-    name: "Plumber",
-    link: "/services/plumber?category=Plumber&id=6718af9dd08fa56679b31873",
-  },
+  // {
+  //   name: "Plumber",
+  //   link: "/services/plumber?category=Plumber&id=6718af9dd08fa56679b31873",
+  // },
   {
     name: "Cleaning",
-    link: "/services/cleaning?category=Cleaning&id=672b38528a971f1239d165e1",
+    link: "/services/cleaning?category=Cleaning&id=672c72d03272cf3e2139080c",
   },
   {
     name: "Pest Control",
-    link: "/services/pest%20control?category=Pest+control&id=672b386b8a971f1239d165f5",
+    link: "/services/pest%20control?category=Pest+control&id=672c72dd3272cf3e21390820",
   },
   {
     name: "Appliance Repair",
-    link: "/services/appliance%20repair?category=Appliance+Repair&id=672b392f8a971f1239d16703",
+    link: "/services/appliance%20repair?category=Appliance+Repair&id=672c72a53272cf3e213907ba",
   },
   {
     name: "Painter",
-    link: "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=672b38818a971f1239d165ff",
+    link: "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=672c72bd3272cf3e213907f9",
   },
 ];

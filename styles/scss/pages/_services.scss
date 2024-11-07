@@ -370,8 +370,14 @@
   height: 200px;
   width: 200px;
   border-radius: 18px;
-  background: gray;
   margin: 20px 0;
+}
+
+.ServiceCardsContainer > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 18px;
 }
 
 .serviceCardMainContainer {

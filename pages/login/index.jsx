@@ -144,6 +144,15 @@ const Login = () => {
               </button>
             )}
           </div>
+          <div className="loginleftContentForm donthaveAccount">
+            <p>Don't have an account?</p>
+            <p
+              style={{ color: "#ff8c8c", cursor: "pointer" }}
+              onClick={() => router.push("/signup")}
+            >
+              Sign Up
+            </p>
+          </div>
 
           {/* <div className="loginleftContentSignup">
             <p>Forgot password</p>
