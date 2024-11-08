@@ -445,4 +445,21 @@
   .serviceCardHeadContent {
     width: 100%;
   }
+  .landingServicesBentosContainer {
+    height: unset;
+    padding: 10px 0;
+  }
+  .bentosRowContainer{
+    flex-direction: column;
+
+  }
+  .bentosExploremoreBtn {
+    flex-direction: column-reverse;
+  }
+  .landingServicesBentosFive {
+   width: 300px;
+  }
+  .bentosExploreWrapper {
+    margin-top: 20px;
+  }
 }

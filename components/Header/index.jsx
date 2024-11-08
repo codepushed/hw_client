@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -15,12 +16,22 @@ import { useRouter } from "next/router";
 import { isLoggedIn } from "../../helpers/basic";
 import { useSelector } from "react-redux";
 
-const Header = ({ isHidden }) => {
+const Header = ({ isHidden, isMobileHeader }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [username, setUsername] = useState("S");
   const [name, setName] = useState("");
   const open = Boolean(anchorEl);
+  const [anchorElMobile, setAnchorEMobile] = React.useState(null);
+  const openMobileNav = Boolean(anchorElMobile);
+
+  const handleClickMobileMenu = (event) => {
+    setAnchorEMobile(event.currentTarget);
+  };
+  const handleCloseMobileMenu = () => {
+    setAnchorEMobile(null);
+  };
+
   const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
 
@@ -60,10 +71,26 @@ const Header = ({ isHidden }) => {
     router.push("/login");
   };
 
+  const handleProfile = () => {
+    setAnchorEMobile(null);
+    router.push(`/user/${name}`);
+  };
+
+  const handleCart = () => {
+    setAnchorEMobile(null);
+    router.push(`/cart`);
+  };
+
+  const handlelogoutMobile = () => {
+    setAnchorEMobile(null);
+    Cookies.remove("userData");
+    router.push("/login");
+  };
+
   return (
     <div className="headerContainer">
       <Logo onClick={() => router.push("/")} />
-      {!isHidden && (
+      {!isHidden && !isMobileHeader && (
         <>
           {!loggedIn && (
             <ul className="headerlistContainer">
@@ -185,6 +212,37 @@ const Header = ({ isHidden }) => {
               </>
             )}
           </div>
+        </>
+      )}
+
+      {isMobileHeader && (
+        <>
+          <MenuIcon
+            id="demo-positioned-button"
+            aria-controls={openMobileNav ? "demo-positioned-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={openMobileNav ? "true" : undefined}
+            onClick={handleClickMobileMenu}
+          />
+          <Menu
+            id="demo-positioned-menu"
+            aria-labelledby="demo-positioned-button"
+            anchorEl={anchorElMobile}
+            open={openMobileNav}
+            onClose={handleCloseMobileMenu}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+          >
+            <MenuItem onClick={() => handleProfile()}>Profile</MenuItem>
+            <MenuItem onClick={() => handleCart()}>Cart</MenuItem>
+            <MenuItem onClick={() => handleLogoutMobile()}>Logout</MenuItem>
+          </Menu>
         </>
       )}
     </div>

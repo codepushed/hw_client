@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { isMobile, isMobileSafari } from "react-device-detect";
 
 import { LandingSeo } from "../Seo/index";
 import Header from "../components/Header";
@@ -16,16 +17,18 @@ const Home = () => {
   return (
     <div className="landingContainer">
       <LandingSeo />
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <div style={{ width: "100%" }}>
         <div className="landingContainerHeaderContent">
-          <div className="landingContainerImg">
-            <img
-              src="/assets/icons/bucketIcon.png"
-              alt="bucket"
-              className="bucketIcon"
-            />
-          </div>
+          {!isMobile && !isMobileSafari && (
+            <div className="landingContainerImg">
+              <img
+                src="/assets/icons/bucketIcon.png"
+                alt="bucket"
+                className="bucketIcon"
+              />
+            </div>
+          )}
           <div className="landingContainerHeading">
             <h1>Uncover the hype</h1>
             <h1>home services on fleek</h1>
@@ -66,7 +69,11 @@ const Home = () => {
           </div>
 
           <div className="landingDeviceImg">
-            <img src="/assets/homeworkWeb.png" alt="laptop" />
+            <img
+              src="/assets/homeworkWeb.png"
+              alt="laptop"
+              className="landingDeviceWeb"
+            />
             <img
               src="/assets/homeworkapp.png"
               className="landingDeviceMobile"

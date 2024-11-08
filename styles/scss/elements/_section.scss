@@ -181,13 +181,13 @@
 }
 
 .howitworksContainerContentCenter {
-  background-color: #3939FF !important;
+  background-color: #3939ff !important;
   color: #fff !important;
   margin-top: 40px;
 }
 
 .howitworksContainerContentButton {
-  background-color: #FF8C8C;
+  background-color: #ff8c8c;
   opacity: 0.6;
   border-radius: 30px;
   color: #fff;
@@ -196,7 +196,6 @@
   font-size: 20px;
   font-weight: 700;
 }
-
 
 .howitworkscontentContentContainer {
   display: flex;
@@ -242,4 +241,52 @@
 
 .howitworksWrapper {
   width: 60%;
+}
+
+@media (max-width: 768px) {
+  .sectionHeaderContent > h1 {
+    font-size: 32px;
+    padding: 20px;
+  }
+
+  .sectionHeaderContent > p {
+    font-size: 16px;
+    padding-left: 25px;
+  }
+  .sectionContainerCon {
+    width: 80%;
+  }
+  .sectionContentImg {
+    width: unset;
+  }
+  .sectionContent {
+    flex-direction: column !important;
+    margin-top: 20px;
+  }
+  .coinImg > img {
+    width: 300px !important;
+  }
+  .howitworksContainer {
+    margin-top: 20px;
+  }
+  .howitworksContainerTypography > h1 {
+    font-size: 32px;
+  }
+  .howitworksContainerTypography > p{
+    font-size: 16px;
+  }
+  .howitworksSection {
+    margin-top: 30px;
+    padding: 0 10px;
+  }
+  .howitworksWrapper{
+    width: unset;
+  }
+  .howitworksContainerContent {
+    width: unset;
+    font-size: 25px;
+  }
+  .howitworksContainerTypography {
+    margin-top: 30px;
+  }
 }

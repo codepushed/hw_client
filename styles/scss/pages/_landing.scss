@@ -335,4 +335,88 @@
   .comingSoonContentText > button {
     margin-top: 20px;
   }
+
+  .landingContainerHeading > h1 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .searchBoxContainer {
+    align-items: unset;
+    margin-top: 200px;
+  }
+
+  .searchBoxHeader {
+    margin-top: unset;
+  }
+
+  .searchboxSearchBtn {
+    margin-top: unset;
+    gap: unset;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .buttonWithIcon {
+    margin-top: 20px;
+  }
+
+  .landingContainerHeading {
+    margin-top: 100px;
+  }
+
+  .landingContainerSubHeading {
+    margin-bottom: 20px;
+  }
+
+  .landingContainerImg {
+    display: none;
+  }
+  .landingDevicesContainer {
+    height: 100%;
+    flex-direction: column;
+  }
+  .landingDevicesContent {
+    padding: 10px;
+    text-align: center;
+  }
+  .bookingExperience {
+    margin-bottom: 20px;
+  }
+  .landingDeviceWeb {
+    display: none;
+  }
+  .landingDeviceWrapper {
+    padding: 10px;
+    height: 100%;
+  }
+  .searchBoxContainer {
+    height: unset;
+    margin-bottom: 40px;
+  }
+  .landingOfferHeader > h1 {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .notificationCardContainer {
+    max-width: 95%;
+  }
+  .landingOfferNotification-2 {
+    top: 95%;
+    left: 3%;
+  }
+  .landingOfferNotification-3 {
+    top: 62%;
+    left: 2%;
+  }
+  .landingOfferNotification-4 {
+    top: 73%;
+  }
+  .landingOfferCenter {
+    height: unset;
+    width: unset;
+  }
+  .landingOfferNotification {
+    top: 84%;
+  }
 }

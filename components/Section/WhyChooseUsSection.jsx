@@ -48,7 +48,7 @@ const WhyChooseUsSection = () => {
           </div>
 
           <div className="sectionContent">
-            <div className="sectionContentImg">
+            <div className="sectionContentImg coinImg">
               <img src="/assets/ruppee.png" alt="pricing" style={{ width: "400px" }}  />
             </div>
             <span>
