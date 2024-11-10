@@ -90,47 +90,52 @@ const Home = () => {
         </div>
 
         <div className="landingOfferNotificationContainer">
-          <div className="landingOfferNotification">
-            <Notification
-              title="30% Off on Cleaning Services! 🚀"
-              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
-            />
+          <div className="landingOfferNotificationCon">
+            <div className="landingOfferNotification">
+              <Notification
+                title="30% Off on Cleaning Services! 🚀"
+                desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+              />
+            </div>
+
+            <div className="landingOfferNotification-2">
+              <Notification
+                title="30% Off on Cleaning Services! 🚀"
+                desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+              />
+            </div>
+
+            <div className="landingOfferNotification-3">
+              <Notification
+                title="30% Off on Cleaning Services! 🚀"
+                desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+              />
+            </div>
+
+            <div className="landingOfferNotification-4">
+              <Notification
+                title="30% Off on Cleaning Services! 🚀"
+                desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
+              />
+            </div>
+          </div>
+       
+
+        <div>
+          <div className="landingOfferLeft">
+            <img src="/assets/visuals/leftLine.png" alt="left" />
           </div>
 
-          <div className="landingOfferNotification-2">
-            <Notification
-              title="30% Off on Cleaning Services! 🚀"
-              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
-            />
+          <div className="landingOfferCenterContainer">
+            <div className="landingOfferCenter">
+              <img src="/assets/person.png" alt="person" />
+            </div>
           </div>
 
-          <div className="landingOfferNotification-3">
-            <Notification
-              title="30% Off on Cleaning Services! 🚀"
-              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
-            />
-          </div>
-
-          <div className="landingOfferNotification-4">
-            <Notification
-              title="30% Off on Cleaning Services! 🚀"
-              desc="Get your home sparkling clean with our limited-time discount. Book now and save big!"
-            />
+          <div className="landingOfferRight">
+            <img src="/assets/visuals/rightLine.png" alt="left" />
           </div>
         </div>
-
-        <div className="landingOfferLeft">
-          <img src="/assets/visuals/leftLine.png" alt="left" />
-        </div>
-
-        <div className="landingOfferCenterContainer">
-          <div className="landingOfferCenter">
-            <img src="/assets/person.png" alt="person" />
-          </div>
-        </div>
-
-        <div className="landingOfferRight">
-          <img src="/assets/visuals/rightLine.png" alt="left" />
         </div>
       </div>
 

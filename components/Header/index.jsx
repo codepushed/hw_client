@@ -84,8 +84,18 @@ const Header = ({ isHidden, isMobileHeader }) => {
   const handlelogoutMobile = () => {
     setAnchorEMobile(null);
     Cookies.remove("userData");
-    router.push("/login");
+    router.push("/");
   };
+
+  const handleBooking = () => {
+    setAnchorEMobile(null);
+    router.push("/services");
+  };
+
+  const handleLogin = () => {
+    setAnchorEMobile(null);
+    router.push("/login");
+  }
 
   return (
     <div className="headerContainer">
@@ -239,9 +249,21 @@ const Header = ({ isHidden, isMobileHeader }) => {
               horizontal: "left",
             }}
           >
-            <MenuItem onClick={() => handleProfile()}>Profile</MenuItem>
-            <MenuItem onClick={() => handleCart()}>Cart</MenuItem>
-            <MenuItem onClick={() => handleLogoutMobile()}>Logout</MenuItem>
+            {!loggedIn && (
+              <>
+                <MenuItem onClick={() => handleLogin()}>Sign In</MenuItem>
+                <MenuItem onClick={() => handleBooking()}>
+                  Book a service
+                </MenuItem>
+              </>
+            )}
+            {loggedIn && (
+              <>
+                <MenuItem onClick={() => handleProfile()}>Profile</MenuItem>
+                <MenuItem onClick={() => handleCart()}>Cart</MenuItem>
+                <MenuItem onClick={() => handlelogoutMobile()}>Logout</MenuItem>
+              </>
+            )}
           </Menu>
         </>
       )}

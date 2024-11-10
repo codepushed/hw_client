@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
 
@@ -28,11 +29,9 @@ const Service = () => {
     });
   };
 
-  console.log(serviceData);
-
   return (
     <div>
-      <Header />
+      <Header isMobileHeader={isMobile} />
 
       <div className="AllServicesWrapper">
         <div className="servicesContainer">
@@ -52,7 +51,10 @@ const Service = () => {
                     {item?.subCategory?.map((subCat, idx) => (
                       <div key={idx}>
                         <div className="ServiceCardsContainer">
-                          <img src={subCat?.subServiceName[0].image} alt="service" />
+                          <img
+                            src={subCat?.subServiceName[0].image}
+                            alt="service"
+                          />
                         </div>
                         <p>{subCat?.name}</p>
                       </div>

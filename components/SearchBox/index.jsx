@@ -20,7 +20,6 @@ const SearchBox = () => {
     const value = e.target.value;
     setInputValue(value);
 
-    // Filter suggestions based on the input
     const filteredSuggestions = searchLinks.filter((service) =>
       service.name.toLowerCase().includes(value.toLowerCase())
     );
@@ -28,9 +27,9 @@ const SearchBox = () => {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setSelectedService(suggestion.link); // Log the link to the console
-    setInputValue(suggestion.name); // Optionally set the input value to the clicked suggestion
-    setSuggestions([]); // Clear suggestions after selection
+    setSelectedService(suggestion.link); 
+    setInputValue(suggestion.name); 
+    setSuggestions([]); 
   };
 
   const { isLoaded } = useJsApiLoader({
