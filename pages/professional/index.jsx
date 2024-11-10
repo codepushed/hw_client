@@ -1,19 +1,19 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
 import JobCard from "../../components/Card/JobCard";
-import Footer from '../../components/Footer'
+import Footer from "../../components/Footer";
 
 import { staticJobCard } from "../../Static";
-
 
 const Professional = () => {
   const router = useRouter();
 
   return (
     <div>
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <div className="professionalHeaderContainer">
         <div className="professionalHeaderWrapper">
           <div>
@@ -25,7 +25,10 @@ const Professional = () => {
               <p>demand - start working on your terms</p>
             </span>
 
-            <button className="basicRoundedButton pingUsBtn joinBtn" onClick={() => router.push("/professional/onboarding")}>
+            <button
+              className="basicRoundedButton pingUsBtn joinBtn"
+              onClick={() => router.push("/professional/onboarding")}
+            >
               Join us
             </button>
           </div>

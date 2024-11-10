@@ -25,7 +25,6 @@
   margin: 20px 0;
 }
 
-
 .choosePaymentBtns > button {
   border: 1px solid #fff;
   padding: 5px 15px;
@@ -154,4 +153,50 @@
 .professionalVerificationInput > p {
   margin-bottom: 10px;
   font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .professionalHeaderImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: unset;
+    width: unset;
+  }
+  .professionalHeaderWrapper {
+    flex-direction: column;
+  }
+  .professionalHeaderContainer {
+    height: unset;
+    width: 100%;
+  }
+  .jobCardWrapper {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .professionalSection {
+    height: unset;
+  }
+  .professionalSectionWrapper {
+    padding: 0 10px;
+  }
+  .professionalSectionCardContainer {
+    width: unset;
+  }
+  .professionalSectionCard {
+    width: unset;
+  }
+  .professionalVerificationHead {
+    width: 100%;
+  }
+  .professionalVerificationHead > h1 {
+   line-height: 65px;
+   margin-bottom: 10px;
+  }
+  .professionalVerificationContainer{
+    width: unset;
+  }
 }

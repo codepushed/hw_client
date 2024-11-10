@@ -8,6 +8,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import Header from "../../components/Header";
 import { formatPhoneNumber, validateAadhaar } from "../../helpers/basic";
 import { professionalSignUp } from "../../helpers";
+import { isMobile } from "react-device-detect";
 
 const Onboarding = () => {
   const [fullname, setFullName] = useState();
@@ -96,7 +97,7 @@ const Onboarding = () => {
 
   return (
     <div className="professionalLoginContainer">
-      <Header isHidden={true} />
+      <Header isHidden={true} isMobileHeader={isMobile} />
       <div className="professionalLogin">
         <h1>Sign Up</h1>
         <p>to become a Service Professional</p>
