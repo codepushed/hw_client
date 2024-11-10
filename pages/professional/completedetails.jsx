@@ -1,11 +1,12 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
 
 const CompleteDetails = () => {
   return (
     <div className="professionalLoginContainer">
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <div className="professionalLogin">
         <h1>Final step</h1>
         <p>you are one step closer</p>

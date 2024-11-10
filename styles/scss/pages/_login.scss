@@ -188,3 +188,12 @@
 .professionalLoginSubHeading {
   margin-top: 8px;
 }
+
+@media (max-width: 768px) {
+  .professionalLogin > p {
+    font-size: 14px;
+  }
+  .professionalLoginSubHeading {
+    margin-top: unset;
+  }
+}

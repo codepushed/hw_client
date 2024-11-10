@@ -12,16 +12,60 @@ import store from "../store/store";
 
 import "../styles/global.css";
 import "../styles/scss/style.scss";
+import { isLoggedType } from "../helpers/basic";
 
 const MyApp = ({ Component, pageProps }) => {
   const [isLoading, setLoading] = useState(false);
+  const { asPath } = useRouter();
   const router = useRouter();
+  const professionalRestrictions = [
+    "/professional/completedetails",
+    "/professional/dashboard",
+    "/professional/onboarding",
+    "/professional/profile",
+    "/professional/login",
+    "/",
+  ];
+  const userRestrictions = [
+    "/professional/completedetails",
+    "/professional/dashboard",
+    "/professional/onboarding",
+    "/professional/profile",
+    "/professional/login",
+    ,
+  ];
+
+  const adminRestrictions = ["/admin", "/admin/dashboard"];
+
   let persistor = persistStore(store);
 
   useEffect(() => {
     clarity.init(productConfigs.CLARITY);
     ReactGA.initialize(productConfigs.GA);
   }, []);
+
+  const checkUserRestriction = async () => {
+    const isLoggedIn = await isLoggedType();
+    if (isLoggedIn) {
+      if (isLoggedIn === "user") {
+        if (userRestrictions.includes(asPath)) {
+          router.back();
+        }
+      } else if (isLoggedIn === "professional") {
+        if (!professionalRestrictions.includes(asPath)) {
+          router.back();
+        }
+      } else {
+        if (!adminRestrictions.includes(asPath)) {
+          router.back();
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkUserRestriction();
+  }, [asPath]);
 
   return (
     <>
