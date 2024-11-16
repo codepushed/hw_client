@@ -59,7 +59,12 @@ const Admin = () => {
 
   return (
     <div className="adminContainer">
-      <h1>Admin</h1>
+      <div className="adminProfileContainer">
+        <div className="adminProfile">
+          <img src="/assets/frameadmin.png" alt="admin" />
+        </div>
+        <h1 className="adminLoginHeader">Hey, Admin</h1>
+      </div>
       <div className="adminLoginContainer">
         <p>Login</p>
         <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
