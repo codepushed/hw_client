@@ -35,8 +35,8 @@ export const isLoggedType = () => {
   const isLoggedIn = Cookies.get("userData");
   if (isLoggedIn) {
     const userName = JSON.parse(isLoggedIn);
-    if (userName.role) {
-      return userName.role;
+    if (userName?.user?.role) {
+      return userName?.user?.role;
     }
   }
 };

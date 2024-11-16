@@ -32,7 +32,11 @@ const MyApp = ({ Component, pageProps }) => {
     "/professional/onboarding",
     "/professional/profile",
     "/professional/login",
-    ,
+    "/login",
+    "/signup",
+    "/admin",
+    "/admin/dashboard",
+    "/admin/dashboard/bookings",
   ];
 
   const adminRestrictions = ["/admin", "/admin/dashboard"];
