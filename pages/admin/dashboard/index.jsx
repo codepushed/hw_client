@@ -5,6 +5,8 @@ import {
   adminGetAllProfessionals,
   adminProfessionalAdhaarVerification,
 } from "../../../helpers";
+import Tables from "../../../components/Table";
+import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 
 const AdminDashboard = () => {
   const [data, setData] = useState();
@@ -39,22 +41,18 @@ const AdminDashboard = () => {
   }, [adhaar]);
 
   return (
-    <div style={{ padding: "0 40px" }}>
-      <h1 style={{ marginTop: "40px" }}>Dashboard</h1>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          marginTop: "10px",
-        }}
-      >
-        <button>Adhaar verify</button>
+    <div>
+      <HeaderAdmin />
+
+      <div className="adminDashboardTableContainer">
+        <h1 className="adminDashboard">Dashboard</h1>
+        <Tables />
+        {/* <button>Adhaar verify</button>
         <button onClick={() => router.push("/admin/dashboard/bookings")}>
           Manual professional asigning
-        </button>
+        </button> */}
       </div>
-      <div
+      {/* <div
         style={{
           display: "flex",
           alignItems: "center",
@@ -63,9 +61,9 @@ const AdminDashboard = () => {
       >
         <p style={{ marginTop: "40px" }}>Professional's Adhaar verification</p>
         <button>Logout</button>
-      </div>
+      </div> */}
 
-      <ul style={{ marginTop: "50px" }}>
+      {/* <ul style={{ marginTop: "50px" }}>
         {data &&
           data?.map((item, index) => (
             <li
@@ -116,7 +114,7 @@ const AdminDashboard = () => {
               </div>
             </li>
           ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
