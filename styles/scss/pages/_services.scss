@@ -360,6 +360,7 @@
   margin-top: 50px;
   background-color: #f4f2f2;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 .AllServicesWrapper {
@@ -449,15 +450,14 @@
     height: unset;
     padding: 10px 0;
   }
-  .bentosRowContainer{
+  .bentosRowContainer {
     flex-direction: column;
-
   }
   .bentosExploremoreBtn {
     flex-direction: column-reverse;
   }
   .landingServicesBentosFive {
-   width: 300px;
+    width: 300px;
   }
   .bentosExploreWrapper {
     margin-top: 20px;

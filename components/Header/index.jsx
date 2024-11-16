@@ -24,6 +24,8 @@ const Header = ({ isHidden, isMobileHeader }) => {
   const open = Boolean(anchorEl);
   const [anchorElMobile, setAnchorEMobile] = React.useState(null);
   const openMobileNav = Boolean(anchorElMobile);
+  const router = useRouter();
+  const cart = useSelector((state) => state.cart.cart);
 
   const handleClickMobileMenu = (event) => {
     setAnchorEMobile(event.currentTarget);
@@ -31,9 +33,6 @@ const Header = ({ isHidden, isMobileHeader }) => {
   const handleCloseMobileMenu = () => {
     setAnchorEMobile(null);
   };
-
-  const router = useRouter();
-  const cart = useSelector((state) => state.cart.cart);
 
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();

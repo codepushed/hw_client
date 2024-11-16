@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import ServiceCard from "../../components/Card/ServiceCard";
-
-import { kitchenServices } from "../../Static";
-import Drawers from "../../components/Drawers";
-import SelectService from "../../components/Modal/SelectService";
+import Loader from "../../components/Loader";
 import Footer from "../../components/Footer";
-import Image from "next/image";
-import { useDispatch } from "react-redux";
-import saveCartItems from "../../store/slices/cart";
+import SelectService from "../../components/Modal/SelectService";
 
 const AllService = ({ data, setCartCounter, setCartItems }) => {
   const [selectedServices, setSelectedServices] = useState();
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+  const router = useRouter();
 
+  
   const handleClose = () => {
     setOpen(false);
   };
@@ -60,81 +63,116 @@ const AllService = ({ data, setCartCounter, setCartItems }) => {
 
   return (
     <div className="servicesContainer">
-      <h1 className="servicesHeader">{data?.category}</h1>
+      {data && data ? (
+        <>
+          <>
+            <h1 className="servicesHeader">{data?.category}</h1>
+            <div className="servicesHeaderContent">
+              <div className="servicesHeaderImg">
+                <Image
+                  src={data?.image}
+                  alt="service"
+                  height={500}
+                  width={500}
+                />
+              </div>
 
-      <div className="servicesHeaderContent">
-        <div className="servicesHeaderImg">
-          <Image
-            src={data?.image}
-            alt="service"
-            height={500}
-            width={500}
-          />
-        </div>
+              <div className="servicesSelectWrapper">
+                <div className="servicesSelectContainer">
+                  <p>Select a service</p>
 
-        <div className="servicesSelectWrapper">
-          <div className="servicesSelectContainer">
-            <p>Select a service</p>
+                  <div className="servicesTypesContainer">
+                    {data?.subCategory?.slice(0, 6).map((service, index) => (
+                      <div
+                        className="servicesTypes"
+                        onClick={() => setSelectedServices(service)}
+                        key={index}
+                      >
+                        <Image
+                          src={service?.subServiceName[0].image}
+                          alt="service"
+                          height={500}
+                          width={500}
+                        />
+                        <p>{service.name}</p>
+                      </div>
+                    ))}
+                  </div>
 
-            <div className="servicesTypesContainer">
-              {data?.subCategory?.slice(0, 6).map((service, index) => (
-                <div
-                  className="servicesTypes"
-                  onClick={() => setSelectedServices(service)}
-                  key={index}
-                >
-                  <Image src={service?.subServiceName[0].image} alt="service" height={500} width={500} />
-                  <p>{service.name}</p>
+                  <div
+                    className="servicesSeeMoreContainer"
+                    onClick={() => setOpen(true)}
+                  >
+                    <p>See more</p>
+                  </div>
                 </div>
-              ))}
-            </div>
 
-            <div
-              className="servicesSeeMoreContainer"
-              onClick={() => setOpen(true)}
+                <div className="servicesOfferContainer">
+                  <div className="serviceOfferImg">
+                    <Image
+                      src="/assets/icons/launchIcon.png"
+                      alt="launch"
+                      height={500}
+                      width={500}
+                    />
+                  </div>
+
+                  <p>Stay tuned! Launching soon near you</p>
+                </div>
+              </div>
+            </div>
+            <div className="servicesSubCategoryContainer">
+              <h2>{selectedServices && selectedServices.name}</h2>
+
+              {selectedServices &&
+                selectedServices.subServiceName?.map((subservice, index) => (
+                  <ServiceCard
+                    data={subservice}
+                    setCartCounter={setCartCounter}
+                    key={index}
+                    addToCart={addToCart}
+                    removeFromCart={removeFromCart}
+                  />
+                ))}
+            </div>
+          </>
+          <SelectService
+            handleClose={handleClose}
+            isOpen={open}
+            data={data}
+            setSelectedServices={setSelectedServices}
+          />
+          {cart && cart.length > 0 && (
+            <button
+              className="floatingbButton"
+              onClick={() => router.push("/cart")}
             >
-              <p>See more</p>
-            </div>
-          </div>
+              Checkout
+              <IconButton
+                aria-label="cart"
+                onClick={() => router.push("/cart")}
+              >
+                <Badge
+                  badgeContent={cart && cart.length}
+                  sx={{
+                    "& .MuiBadge-badge": {
+                      color: "#FF8C8C",
+                      backgroundColor: "#fff",
+                    },
+                  }}
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </button>
+          )}
 
-          <div className="servicesOfferContainer">
-            <div className="serviceOfferImg">
-              <Image
-                src="/assets/icons/launchIcon.png"
-                alt="launch"
-                height={500}
-                width={500}
-              />
-            </div>
-
-            <p>Stay tuned! Launching soon near you</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="servicesSubCategoryContainer">
-        <h2>{selectedServices && selectedServices.name}</h2>
-
-        {selectedServices &&
-          selectedServices.subServiceName?.map((subservice, index) => (
-            <ServiceCard
-              data={subservice}
-              setCartCounter={setCartCounter}
-              key={index}
-              addToCart={addToCart}
-              removeFromCart={removeFromCart}
-            />
-          ))}
-      </div>
-      {/* <SelectService
-        handleClose={handleClose}
-        isOpen={open}
-        data={data}
-        setSelectedServices={setSelectedServices}
-      /> */}
-      {/* <Drawers /> */}
-
-      <Footer />
+          {/* <Drawers /> */}
+          <Footer />
+        </>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

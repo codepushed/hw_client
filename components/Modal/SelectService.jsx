@@ -69,21 +69,22 @@ const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
           </h1>
 
           <div className="servicesTypesContainer moreServicesTypesContainer">
-            {data?.map((service, index) => (
-              <div
-                className="servicesTypes moreServiceTypes"
-                onClick={() => handleSelectService(service)}
-                key={index}
-              >
-                <Image
-                  src={service.img}
-                  alt="service"
-                  height={500}
-                  width={500}
-                />
-                <p>{service.name}</p>
-              </div>
-            ))}
+            {data &&
+              data?.subCategory?.map((service, index) => (
+                <div
+                  className="servicesTypes moreServiceTypes"
+                  onClick={() => handleSelectService(service)}
+                  key={index}
+                >
+                  <Image
+                    src={service?.subServiceName[0].image}
+                    alt="service"
+                    height={500}
+                    width={500}
+                  />
+                  <p>{service.name}</p>
+                </div>
+              ))}
           </div>
         </Box>
       </Modal>
