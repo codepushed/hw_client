@@ -27,9 +27,9 @@ const SearchBox = () => {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setSelectedService(suggestion.link); 
-    setInputValue(suggestion.name); 
-    setSuggestions([]); 
+    setSelectedService(suggestion.link);
+    setInputValue(suggestion.name);
+    setSuggestions([]);
   };
 
   const { isLoaded } = useJsApiLoader({
@@ -44,7 +44,7 @@ const SearchBox = () => {
   };
 
   if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div style={{ display: "none" }}>Loading...</div>;
   }
 
   return (

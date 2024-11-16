@@ -10,6 +10,7 @@ import WhyChooseUsSection from "../components/Section/WhyChooseUsSection";
 import Services from "../components/Section/Services";
 import HowItWorks from "../components/Section/HowItWorks";
 import Footer from "../components/Footer";
+import { isLoggedIn } from "../helpers/basic";
 
 const Home = () => {
   const router = useRouter();
@@ -52,12 +53,14 @@ const Home = () => {
             <p>at your fingertips</p>
 
             <div className="bookingExperience">
-              <button
-                className="buttonWithIcon explorServiceBtn"
-                onClick={() => router.push("/signup")}
-              >
-                Sign up now
-              </button>
+              {!isLoggedIn() && (
+                <button
+                  className="buttonWithIcon explorServiceBtn"
+                  onClick={() => router.push("/signup")}
+                >
+                  Sign up now
+                </button>
+              )}
 
               <button
                 className="buttonWithIcon explorServiceBtn"
@@ -119,23 +122,22 @@ const Home = () => {
               />
             </div>
           </div>
-       
 
-        <div>
-          <div className="landingOfferLeft">
-            <img src="/assets/visuals/leftLine.png" alt="left" />
-          </div>
+          <div>
+            <div className="landingOfferLeft">
+              <img src="/assets/visuals/leftLine.png" alt="left" />
+            </div>
 
-          <div className="landingOfferCenterContainer">
-            <div className="landingOfferCenter">
-              <img src="/assets/person.png" alt="person" />
+            <div className="landingOfferCenterContainer">
+              <div className="landingOfferCenter">
+                <img src="/assets/person.png" alt="person" />
+              </div>
+            </div>
+
+            <div className="landingOfferRight">
+              <img src="/assets/visuals/rightLine.png" alt="left" />
             </div>
           </div>
-
-          <div className="landingOfferRight">
-            <img src="/assets/visuals/rightLine.png" alt="left" />
-          </div>
-        </div>
         </div>
       </div>
 

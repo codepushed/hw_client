@@ -49,22 +49,27 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   const checkUserRestriction = async () => {
+    setLoading(true);
     const isLoggedIn = await isLoggedType();
     if (isLoggedIn) {
       if (isLoggedIn === "user") {
         if (userRestrictions.includes(asPath)) {
           router.back();
+          return;
         }
       } else if (isLoggedIn === "professional") {
         if (!professionalRestrictions.includes(asPath)) {
           router.back();
+          return;
         }
       } else {
         if (!adminRestrictions.includes(asPath)) {
           router.back();
+          return;
         }
       }
     }
+    setLoading(false);
   };
 
   useEffect(() => {
