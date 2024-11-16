@@ -52,6 +52,10 @@ const Signup = () => {
           setSnack(false);
         }
       }
+    } else {
+      setOpenSnackbar(true);
+      setSnackbarMsg("Email or password is not valid!");
+      setSnack(false);
     }
   };
 
