@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Alert from "@mui/material/Alert";
+import Collapse from "@mui/material/Collapse";
+import CloseIcon from "@mui/icons-material/Close";
+import IconButton from "@mui/material/IconButton";
 
 import {
   adminGetAllProfessionals,
@@ -11,6 +15,7 @@ import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 const AdminDashboard = () => {
   const [data, setData] = useState();
   const [adhaar, setAdhaar] = useState();
+  const [open, setOpen] = useState(true);
   const router = useRouter();
 
   const getAllProfessionals = async () => {
@@ -43,6 +48,29 @@ const AdminDashboard = () => {
   return (
     <div>
       <HeaderAdmin />
+
+      {/* add loader  */}
+      <Collapse in={open} style={{ marginTop: "40px" }}>
+        <Alert
+          severity="info"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          Grab the adhaar number from here, and verify using UIDAI official
+          website, hit not verified, if the phone number and adhaar number matches
+        </Alert>
+      </Collapse>
 
       <div className="adminDashboardTableContainer">
         <h1 className="adminDashboard">Dashboard</h1>

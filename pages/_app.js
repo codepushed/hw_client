@@ -39,7 +39,7 @@ const MyApp = ({ Component, pageProps }) => {
     "/admin/dashboard/bookings",
   ];
 
-  const adminRestrictions = ["/admin", "/admin/dashboard", "/admin/dashboard/bookings"];
+  const adminRestrictions = ["/admin/dashboard"];
 
   let persistor = persistStore(store);
 

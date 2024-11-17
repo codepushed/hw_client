@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { CircularProgress } from "@mui/material";
 
-import { login } from "../../helpers";
+import { adminLogin } from "../../helpers";
 import { validateEmailAndPassword } from "../../helpers/basic";
 import Snackbars from "../../components/Snackbars";
 
@@ -25,21 +25,22 @@ const Admin = () => {
           email: email,
           password: password,
         };
-        const response = await login(data);
+        const response = await adminLogin(data);
         if (response) {
           if (response?.token) {
-            Cookies.set("userData", JSON.stringify(response));
+            console.log(response);
             setIsLoading(false);
+            Cookies.set("userData", JSON.stringify(response))
             setOpenSnackbar(true);
             setSnackbarMsg("Hey, Welcome back admin");
             setSnack(true);
+          router.push("/admin/dashboard");
           } else {
             setIsLoading(false);
             setOpenSnackbar(true);
             setSnackbarMsg("login error: Please enter email and password");
             setSnack(false);
           }
-          router.push("/admin/dashboard");
         } else {
           router.push("/admin");
         }

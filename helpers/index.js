@@ -63,3 +63,7 @@ export const getProfessionalsByProfession = async (data) => {
 export const sentBookingDetails = async (data) => {
   return userApi.sentBookingDetails(data);
 };
+
+export const adminLogin = async (data) => {
+  return adminApi.adminLogin(data);
+};

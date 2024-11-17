@@ -36,7 +36,7 @@ const Tables = () => {
             <StyledTableCell>Name</StyledTableCell>
             <StyledTableCell align="right">Phone number</StyledTableCell>
             <StyledTableCell align="right">Adhaar number</StyledTableCell>
-            <StyledTableCell align="right">Address</StyledTableCell>
+            <StyledTableCell align="center">Address</StyledTableCell>
             <StyledTableCell align="right">Adhaar verification</StyledTableCell>
           </TableRow>
         </TableHead>

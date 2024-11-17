@@ -92,10 +92,10 @@ const HeaderAdmin = ({ isHidden, isMobileHeader }) => {
                       sx: {
                         overflow: "visible",
                         border: "1px solid #d1d1d1",
-                        width: "100px",
+                        width: "140px",
                         mt: 1.5,
                         "& .MuiAvatar-root": {
-                          width: 32,
+                          width: 42,
                           height: 32,
                           ml: -0.5,
                           mr: 1,

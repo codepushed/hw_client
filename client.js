@@ -127,6 +127,7 @@ export const adminApi = {
     resolveGet(`${endPoints.adminGetAllProfessionals}`),
   adhaarVerification: (data = {}) =>
     resolvePut(`${endPoints.adminAdhaarVerification}${data.id}`, data),
+  adminLogin: (data = {}) => resolvePost(endPoints.adminLogin, data),
 };
 
 export const professionalApi = {
