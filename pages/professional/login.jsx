@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { auth } from "../../config/firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { useRouter } from "next/router";
+import { CircularProgress } from "@mui/material";
+
+import { auth } from "../../config/firebase";
 
 import Header from "../../components/Header";
 
@@ -11,24 +13,42 @@ const Login = () => {
   const [reCaptcha, setRecaptcha] = useState();
   const [isOtpSent, setIsOtpSent] = useState();
   const [OTP, setOTP] = useState();
+  const [snack, setSnack] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSendOTP = async (e) => {
-    e.preventDefault();
+    if (phoneNo) {
+      setIsLoading(true);
+      e.preventDefault();
 
-    if (!reCaptcha) {
-      alert("erroer");
-    }
+      if (!reCaptcha) {
+        setOpenSnackbar(true);
+        setSnackbarMsg("Recaptcha not available, try again later");
+        setSnack(false);
+      }
 
-    try {
-      const confirmationResults = await signInWithPhoneNumber(
-        auth,
-        phoneNo,
-        reCaptcha
-      );
-      setIsOtpSent(confirmationResults);
-    } catch (error) {
-      alert(error);
+      try {
+        const confirmationResults = await signInWithPhoneNumber(
+          auth,
+          phoneNo,
+          reCaptcha
+        );
+        setIsLoading(false);
+        setIsOtpSent(confirmationResults);
+      } catch (error) {
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Oops! Something went wrong, Try again later");
+        setSnack(false);
+      }
+    } else {
+      setIsLoading(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please enter phone number first!");
+      setSnack(false);
     }
   };
 
@@ -49,11 +69,13 @@ const Login = () => {
   }, [auth]);
 
   const handleVerifyOTP = () => {
-    if (!isOtpSent) {
-      alert("Please send OTP first.");
+    setIsLoading(true);
+    if (!isOtpSent && !OTP) {
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please enter the OTP first.");
+      setSnack(false);
       return;
     }
-    setPhoneNo("");
 
     isOtpSent
       .confirm(OTP)
@@ -66,19 +88,41 @@ const Login = () => {
           };
           const response = await login(data);
           if (response?.token) {
+            setIsLoading(false);
+            setOpenSnackbar(true);
+            setSnackbarMsg("Hey, Welcome back!");
+            setSnack(true);
             Cookies.set("userData", JSON.stringify(response));
-            router.push("/");
+            router.push("/professional/dashboard");
           }
         }
       })
       .catch((error) => {
-        console.error("Error verifying OTP", error);
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Error verifying OTP, Please try again");
+        setSnack(false);
       });
+  };
+
+  const handleOTPChange = (e) => {
+    const value = e.target.value;
+
+    if (/^\d*$/.test(value)) {
+      setOTP(value);
+
+      if (value.length > 6) {
+        setOpenSnackbar(true);
+        setSnackbarMsg("Please enter exactly 6 digits");
+        setSnack(false);
+      }
+    }
   };
 
   return (
     <div className="professionalLoginContainer">
       <Header isHidden={true} />
+      <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
       <div className="professionalLogin">
         <h1>Login</h1>
         <p>Access your dashboard and</p>
@@ -102,9 +146,10 @@ const Login = () => {
                 <p>Enter the OTP</p>
                 <input
                   type="text"
-                  onChange={(e) => setOTP(e.target.value)}
+                  onChange={(e) => handleOTPChange(e)}
                   min={6}
                   max={6}
+                  value={OTP || ""}
                 />
               </>
             )}
@@ -116,6 +161,16 @@ const Login = () => {
                 onClick={(e) => handleSendOTP(e)}
               >
                 Login
+                {isLoading && (
+                  <CircularProgress
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      color: "#fff",
+                      marginLeft: "10px",
+                    }}
+                  />
+                )}
               </button>
             ) : (
               <button
@@ -124,6 +179,16 @@ const Login = () => {
                 onClick={(e) => handleVerifyOTP(e)}
               >
                 Verify
+                {isLoading && (
+                  <CircularProgress
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      color: "#fff",
+                      marginLeft: "10px",
+                    }}
+                  />
+                )}
               </button>
             )}
           </div>
