@@ -7,6 +7,7 @@ import { CircularProgress } from "@mui/material";
 import { auth } from "../../config/firebase";
 
 import Header from "../../components/Header";
+import Snackbars from '../../components/Snackbars'
 
 const Login = () => {
   const [phoneNo, setPhoneNo] = useState();
