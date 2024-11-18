@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { isMobile } from "react-device-detect";
+import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
 
 const CompleteDetails = () => {
+  const [profession, setProfession] = useState("electrician");
+  const router = useRouter();
+
+  const handleChange = (event) => {
+    setProfession(event.target.value);
+  };
+
+  const updateProfession = async () => {
+    if (profession) {
+      const response = await updateProfessionalDetails();
+      if (response) {
+        router.push("/professional/dashboard");
+      }
+    }
+  };
+
   return (
     <div className="professionalLoginContainer">
       <Header isMobileHeader={isMobile} />
@@ -13,13 +30,21 @@ const CompleteDetails = () => {
         <div className="professionalLoginInput">
           <div className="professionalLoginInputSection">
             <h3>Select profession</h3>
-           <select className="professionSelector">
-            <option>Electrician</option>
-            <option>Salon expert</option>
-            <option>Plumber</option>
-            <option>Cleaning expert</option>
-           </select>
-            <button className="basicRoundedButton profOtpbtn">Submit</button>
+            <select
+              className="professionSelector"
+              value={profession}
+              onChange={handleChange}
+            >
+              <option value="electrician">Electrician</option>
+              <option value="plumber">Plumber</option>
+              <option value="cleaner">Cleaning expert</option>
+            </select>
+            <button
+              className="basicRoundedButton profOtpbtn"
+              onClick={() => updateProfession()}
+            >
+              Submit
+            </button>
           </div>
         </div>
       </div>

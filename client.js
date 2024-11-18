@@ -132,4 +132,5 @@ export const adminApi = {
 
 export const professionalApi = {
   signUp: (data = {}) => resolvePost(endPoints.signup, data),
+  updateProfessionalDetails: (data = {}) => resolvePost(endPoints.updateProfessionalDetails, data),
 };

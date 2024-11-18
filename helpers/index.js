@@ -67,3 +67,7 @@ export const sentBookingDetails = async (data) => {
 export const adminLogin = async (data) => {
   return adminApi.adminLogin(data);
 };
+
+export const updateProfessionalDetails = async (data) => {
+  return professionalApi.updateProfessionalDetails(data);
+};

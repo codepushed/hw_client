@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
 
 const Profile = () => {
+  const [data, setData] = useState();
+  const router = useRouter();
+
+  const getUsername = () => {
+    const userData = Cookies.get("userData");
+    if (userData) {
+      const parseData = JSON.parse(userData);
+      const user = parseData?.user;
+      setData(user);
+    }
+  };
+
+  useEffect(() => {
+    getUsername();
+  }, []);
+
   return (
     <div className="professionalLoginContainer">
       <Header />
       <div className="professionalLogin">
-        <h1>Hey, Shristi</h1>
+        <h1>Hey, {data?.name}</h1>
         <p>Manage your profile here</p>
 
         <div className="viewCompletedJobsBtn">
-          <button className="basicRoundedButton viewCompletedBtn">
+          <button
+            className="basicRoundedButton viewCompletedBtn"
+            onClick={() => router.push("/professional/dashboard")}
+          >
             View completed jobs
           </button>
         </div>
@@ -23,11 +44,13 @@ const Profile = () => {
               alt="profileimg"
               className="professionalProfileImage"
             />
-            <img
-              src="/assets/verified.png"
-              alt="verify"
-              className="verifyProfessional"
-            />
+            {data?.isAdhaarVerified && (
+              <img
+                src="/assets/verified.png"
+                alt="verify"
+                className="verifyProfessional"
+              />
+            )}
           </div>
         </div>
 
@@ -35,7 +58,7 @@ const Profile = () => {
           <div className="professionalProfileDetails">
             <span className="professionalLoginInputSection profProInput">
               <p>Name</p>
-              <input type="text" />
+              <input type="text" value={data?.name} disabled />
             </span>
 
             <span
@@ -43,22 +66,25 @@ const Profile = () => {
               style={{ marginTop: "20px" }}
             >
               <p>Address</p>
-              <input type="text" className="addressBigInput" />
+              <input
+                type="text"
+                className="addressBigInput"
+                value={data?.address}
+                disabled
+              />
             </span>
           </div>
-
           <div>
             <span className="professionalLoginInputSection profProInput">
               <p>Adhaar number</p>
-              <input type="text" />
+              <input type="text" value={data?.adhaarNumber} disabled />
             </span>
-
             <span
               className="professionalLoginInputSection profProInput"
               style={{ marginTop: "20px" }}
             >
               <p>Phone no</p>
-              <input type="text" />
+              <input type="text" value={data?.phone} disabled />
             </span>
           </div>
         </div>
