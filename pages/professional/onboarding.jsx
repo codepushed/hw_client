@@ -6,6 +6,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+import Snackbars from "../../components/Snackbars";
 
 import { formatPhoneNumber, validateAadhaar } from "../../helpers/basic";
 import { professionalSignUp } from "../../helpers";
@@ -15,6 +16,7 @@ const Onboarding = () => {
   const [fullname, setFullName] = useState();
   const [aadhaarNumber, setAdhaarNumber] = useState();
   const [phoneNo, setPhoneNo] = useState();
+  const [address, setAddress] = useState();
   const [phoneWithCountryCode, setPhoneWithCountryCode] = useState();
   const [isOtpSent, setIsOtpSent] = useState();
   const [isOtpVerified, setIsOtpVerified] = useState();
@@ -31,13 +33,14 @@ const Onboarding = () => {
     if (phoneNo) {
       const isAdhaarValid = validateAadhaar(aadhaarNumber);
       const isPhoneValid = formatPhoneNumber(phoneNo);
-      if (isAdhaarValid && isPhoneValid) {
+      if (isAdhaarValid && isPhoneValid && address) {
         setPhoneWithCountryCode(isPhoneValid);
         if (fullname && aadhaarNumber && phoneNo) {
           const data = {
             name: fullname,
             adhaarNumber: aadhaarNumber,
             phone: isPhoneValid,
+            address: address
           };
           const response = await professionalSignUp(data);
           if (response?.token) {
@@ -64,6 +67,7 @@ const Onboarding = () => {
   };
 
   const handleSendOTP = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     if (!reCaptcha) {
@@ -80,6 +84,7 @@ const Onboarding = () => {
         reCaptcha
       );
       setIsOtpSent(confirmationResults);
+      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       setOpenSnackbar(true);
@@ -117,6 +122,8 @@ const Onboarding = () => {
       .confirm(OTP)
       .then(async (result) => {
         setIsOtpVerified(result?.user);
+    setIsLoading(false);
+
       })
       .catch((error) => {
         setIsLoading(false);
@@ -151,6 +158,7 @@ const Onboarding = () => {
           <div className="professionalVerificationContainer">
             {isOtpVerified && isOtpVerified ? (
               <>
+              <h2>Enter your details</h2>
                 <span className="professionalVerificationInput">
                   <p>Full name</p>
                   <input
@@ -165,6 +173,14 @@ const Onboarding = () => {
                     type="number"
                     value={aadhaarNumber}
                     onChange={(e) => setAdhaarNumber(e.target.value)}
+                  />
+                </span>
+                <span className="professionalVerificationInput">
+                  <p>Address</p>
+                  <textarea
+                    type="number"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </span>
                 <button

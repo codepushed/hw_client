@@ -147,12 +147,27 @@
   border-radius: 16px;
   border: none;
   background-color: #eeeeee;
-  padding: 15px 60px;
+  padding: 10px 10px;
+  width: 300px;
+  outline: none;
+}
+
+.professionalVerificationInput {
+  margin-top: 20px;
 }
 
 .professionalVerificationInput > p {
   margin-bottom: 10px;
   font-size: 13px;
+}
+
+.professionalVerificationInput > textarea {
+  border-radius: 16px;
+  border: none;
+  background-color: #eeeeee;
+  padding: 10px 10px;
+  width: 300px;
+  outline: none;
 }
 
 @media (max-width: 768px) {

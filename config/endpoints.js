@@ -15,7 +15,7 @@ const endpoints = {
     getProfessionalsByProfession: "/professionals",
     sentBookingDetails: "/send/bookings",
     adminLogin: "/admin",
-    updateProfessionalDetails: "/professional/dashboard/update"
+    updateProfessionalDetails: "/professional/dashboard/update",
   };
   
   export default endpoints;
