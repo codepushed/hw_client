@@ -83,7 +83,7 @@ const Profile = ({ data }) => {
 
   return (
     <div className="profileContainer">
-      {/* {isLogged ? ( */}
+      {isLogged ? (
       <>
         <div className="profileLeft">
           <div>
@@ -170,9 +170,9 @@ const Profile = ({ data }) => {
 
         <Snackbars open={open} msg={snackbarMsg} snack={snack} />
       </>
-      {/* ) : (
+      ) : (
         <Loader />
-      )} */}
+      )}
       {/* <BookingDetails /> */}
     </div>
   );

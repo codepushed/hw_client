@@ -5,7 +5,6 @@ import Loader from "../../components/Loader";
 
 import { isLoggedIn } from "../../helpers/basic";
 
-
 const Bookings = () => {
   const [isLogged, setIsLogged] = useState(false);
   const router = useRouter();
@@ -13,7 +12,7 @@ const Bookings = () => {
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();
     if (!isUserLoggedIn) {
-      // router.push("/login");
+      router.push("/login");
     } else {
       setIsLogged(true);
     }
@@ -25,7 +24,7 @@ const Bookings = () => {
 
   return (
     <div className="bookingsContainer">
-      {/* {isLogged ? ( */}
+      {isLogged ? (
         <div className="bookings">
           <div className="bookingsContent">
             <div className="bookingImgContainer">
@@ -58,9 +57,9 @@ const Bookings = () => {
 
           <button className="viewDetailsBtn">View details</button>
         </div>
-      {/* ) : (
+      ) : (
         <Loader />
-      )} */}
+      )}
     </div>
   );
 };
