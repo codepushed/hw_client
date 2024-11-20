@@ -16,6 +16,7 @@ const endpoints = {
     sentBookingDetails: "/send/bookings",
     adminLogin: "/admin",
     updateProfessionalDetails: "/professional/dashboard/update",
+    upload: "/upload/profile"
   };
   
   export default endpoints;

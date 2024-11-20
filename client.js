@@ -120,6 +120,7 @@ export const userApi = {
   getAllProfessionals: () => resolveGet(`${endPoints.userAllProfessionals}`),
   getAllProfessionalsByProfession: (data) => resolveGet(`${endPoints.getProfessionalsByProfession}?profession=${data}`),
   sentBookingDetails: (data = {}) => resolvePost(endPoints.sentBookingDetails, data),
+  upload: (data = {}) => resolvePost(endPoints.upload, data),
 };
 
 export const adminApi = {

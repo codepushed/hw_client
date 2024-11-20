@@ -71,3 +71,7 @@ export const adminLogin = async (data) => {
 export const updateProfessionalDetails = async (data) => {
   return professionalApi.updateProfessionalDetails(data);
 };
+
+export const upload = async (data) => {
+  return userApi.upload(data);
+};

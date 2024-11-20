@@ -3,6 +3,7 @@ import { isMobile } from "react-device-detect";
 import { useRouter } from "next/router";
 
 import Header from "../../components/Header";
+import { updateProfessionalDetails } from "../../helpers";
 
 const CompleteDetails = () => {
   const [profession, setProfession] = useState("electrician");
@@ -13,8 +14,11 @@ const CompleteDetails = () => {
   };
 
   const updateProfession = async () => {
+    const data = {
+      profession: profession
+    }
     if (profession) {
-      const response = await updateProfessionalDetails();
+      const response = await updateProfessionalDetails(data);
       if (response) {
         router.push("/professional/dashboard");
       }

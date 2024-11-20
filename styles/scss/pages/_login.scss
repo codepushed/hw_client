@@ -127,6 +127,29 @@
   height: 100vh;
 }
 
+.proProfileImgContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.proProfileImg {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  border: 1px solid #8b8b8b;
+}
+
+.proProfileImg > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
 .professionalLogin {
   padding: 10px 50px;
   margin-top: 50px;
