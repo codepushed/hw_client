@@ -1,36 +1,61 @@
-import React from "react";
+import React, { useState } from "react";
+import { isLoggedIn } from "../../helpers/basic";
+import Loader from "../../components/Loader";
 
 const Bookings = () => {
+  const [isLogged, setIsLogged] = useState(false);
+
+  const getLoggedInUser = async () => {
+    const isUserLoggedIn = await isLoggedIn();
+    if (!isUserLoggedIn) {
+      router.push("/login");
+    } else {
+      setIsLogged(true);
+    }
+  };
+
+  useEffect(() => {
+    getLoggedInUser();
+  }, []);
+
   return (
     <div className="bookingsContainer">
-      <div className="bookings">
-        <div className="bookingsContent">
-          <div className="bookingImgContainer">
-            <img
-              src="/assets/Modern Kitchen Interior Design.jpg"
-              alt="bookings"
-            />
-          </div>
-
-          <div className="bookingsHeadingContainer">
-            <div>
-              <h1 className="bookingsHeading">Kitchen Cleaning</h1>
-              <p className="bookingsSubHeading">Chimney cleaning</p>
+      {isLogged ? (
+        <div className="bookings">
+          <div className="bookingsContent">
+            <div className="bookingImgContainer">
+              <img
+                src="/assets/Modern Kitchen Interior Design.jpg"
+                alt="bookings"
+              />
             </div>
 
-            <span className="serviceCardPricing bookingsSubHeading">
-              <p>7 Aug 2024</p>
-              <img src="/assets/icons/dot.png" alt="dot" className="dotIcon" />
+            <div className="bookingsHeadingContainer">
+              <div>
+                <h1 className="bookingsHeading">Kitchen Cleaning</h1>
+                <p className="bookingsSubHeading">Chimney cleaning</p>
+              </div>
 
-              <span className="serviceCardPricingRuppee bookingsSubHeading">
-                <p>11:00 AM</p>
+              <span className="serviceCardPricing bookingsSubHeading">
+                <p>7 Aug 2024</p>
+                <img
+                  src="/assets/icons/dot.png"
+                  alt="dot"
+                  className="dotIcon"
+                />
+
+                <span className="serviceCardPricingRuppee bookingsSubHeading">
+                  <p>11:00 AM</p>
+                </span>
               </span>
-            </span>
+            </div>
           </div>
-        </div>
 
-        <button className="viewDetailsBtn">View details</button>
-      </div>
+          <button className="viewDetailsBtn">View details</button>
+        </div>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };
