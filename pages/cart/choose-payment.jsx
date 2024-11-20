@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
 import BookingDetails from "../../components/Modal/BookingDetails";
@@ -9,12 +10,14 @@ import {
   sentBookingDetails,
   userGetAllProfessionals,
 } from "../../helpers";
+
 import { getRandomObject } from "../../helpers/basic";
 
 const ChoosePayment = () => {
   const [assignedProfessional, setAssignedProfessional] = useState();
   const [OTP, setOTP] = useState();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
   const [bookingDetails, setBookingDetails] = useState();
   const finalCart = useSelector((state) => state.cart.finalCart);
 
@@ -35,7 +38,7 @@ const ChoosePayment = () => {
       const response = await createBooking(data);
       if (response) {
         setBookingDetails(response?.booking);
-        console.log(response)
+        console.log(response);
         // sendBookingConfirmation(response?.booking);
         setOpen(true);
       }
@@ -87,16 +90,21 @@ const ChoosePayment = () => {
 
   return (
     <div className="professionalLoginContainer">
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <div className="professionalLogin">
         <h1>Choose payment method</h1>
         <p>Your are just one step away</p>
 
         <div className="professionalLoginInput">
           <div className="professionalLoginInputSection choosePaymentBtns">
-            <button>Cash</button>
-            <button>Card/UPI (Coming soon)</button>
-            <button>Pay after service is done</button>
+            {/* <button>Cash</button> */}
+            <button disabled>Card/UPI (Coming soon)</button>
+            <button
+              onClick={() => setIsSelected(true)}
+              style={isSelected ? { background: "#ff8c8c", color: "#fff" } : {}}
+            >
+              Pay after service is done
+            </button>
             <button
               className="basicRoundedButton profOtpbtn"
               onClick={() => handleCreateBooking()}
@@ -106,7 +114,11 @@ const ChoosePayment = () => {
           </div>
         </div>
       </div>
-      <BookingDetails open={open} handleClose={handleClose} bookingDetails={bookingDetails} />
+      <BookingDetails
+        open={open}
+        handleClose={handleClose}
+        bookingDetails={bookingDetails}
+      />
     </div>
   );
 };

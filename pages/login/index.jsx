@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { auth } from "../../config/firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
 import Snackbars from "../../components/Snackbars";
 
 import { login } from "../../helpers";
+import { auth } from "../../config/firebase";
 
 const Login = () => {
   const [phoneNo, setPhoneNo] = useState();
@@ -127,7 +128,7 @@ const Login = () => {
 
   return (
     <div>
-      <Header isHidden={true} />
+      <Header isHidden={true} isMobileHeader={isMobile} />
       <div className="loginContainer">
         <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
         <div className="loginLeftContent">
@@ -236,14 +237,17 @@ const Login = () => {
           </div> */}
         </div>
 
-        <div className="loginRightContent">
-          <h1 className="loginRightContentHead">Get your first</h1>
-          <h1 className="loginRightContentSubHead">Booking done</h1>
-          <div className="loginRightContentImg">
-            <img src="/assets/hw_worker.png" alt="login" />
+        {!isMobile && (
+          <div className="loginRightContent">
+            <h1 className="loginRightContentHead">Get your first</h1>
+            <h1 className="loginRightContentSubHead">Booking done</h1>
+            <div className="loginRightContentImg">
+              <img src="/assets/hw_worker.png" alt="login" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
+
       <div id="recaptcha-container"></div>
     </div>
   );

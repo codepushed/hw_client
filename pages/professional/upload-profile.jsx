@@ -86,8 +86,8 @@ const UploadProfile = () => {
       <div className="professionalLogin">
         <h1>One more step to go</h1>
         <p>you are one step closer</p>
-        <div className="professionalLoginInput">
-          <div className="professionalLoginInputSection">
+        <div className="professionalLoginInput profilePicUploadWrapper">
+          <div className="professionalLoginInputSection profilePicUploadSection">
             <h3>Upload your profile picture</h3>
             <div className="proProfileImgContainer">
               <div className="proProfileImg">

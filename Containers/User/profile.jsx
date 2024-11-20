@@ -27,7 +27,7 @@ const Profile = ({ data }) => {
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();
     if (!isUserLoggedIn) {
-      router.push("/login");
+      // router.push("/login");
     } else {
       setIsLogged(true);
     }
@@ -83,23 +83,23 @@ const Profile = ({ data }) => {
 
   return (
     <div className="profileContainer">
-      {isLogged ? (
-        <>
-          <div className="profileLeft">
-            <div>
-              <h1 className="profileLeftHead">My Account</h1>
-              <Sidebar setSidebar={setSidebar} sidebar={sidebar} />
-            </div>
+      {/* {isLogged ? ( */}
+      <>
+        <div className="profileLeft">
+          <div>
+            <h1 className="profileLeftHead">My Account</h1>
+            <Sidebar setSidebar={setSidebar} sidebar={sidebar} />
           </div>
+        </div>
 
-          {!sidebar ? (
-            <div className="profileRight">
-              <p>Profile picture</p>
+        {!sidebar ? (
+          <div className="profileRight">
+            <p>Profile picture</p>
 
-              <div className="profileRightPicture">
-                <img src="/assets/profiledefault.png" alt="profile_picture" />
-                <div className="profileRightPictureBtns">
-                  {/* <button
+            <div className="profileRightPicture">
+              <img src="/assets/profiledefault.png" alt="profile_picture" />
+              <div className="profileRightPictureBtns">
+                {/* <button
                     className="basicRoundedButton"
                     onClick={(e) => handleChangePicture(e)}
                   >
@@ -111,68 +111,68 @@ const Profile = ({ data }) => {
                     onChange={handleFileChange}
                     style={{ display: "none" }}
                   /> */}
-                  {/* <button className="delBtn">Delete picture</button> */}
-                </div>
-              </div>
-
-              <div className="profileRightFormContainer">
-                <div className="profileRightForm">
-                  <p>Name</p>
-                  <input
-                    type="text"
-                    className="profileRightFormInput"
-                    value={name || data?.name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-
-                <div className="profileRightForm">
-                  <p>Email</p>
-                  <input
-                    type="text"
-                    className="profileRightFormInput"
-                    value={email || data?.email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-
-                <div className="profileRightForm">
-                  <p>Phone no</p>
-                  <input
-                    type="text"
-                    className="profileRightFormInput"
-                    disabled
-                    value={data?.phone}
-                  />
-                </div>
-
-                <button
-                  className="basicRoundedButton profileFormBtn"
-                  onClick={() => updateProfileDetails()}
-                >
-                  Update
-                  {isLoading && (
-                    <CircularProgress
-                      style={{
-                        height: "10px",
-                        width: "10px",
-                        color: "#fff",
-                        marginLeft: "10px",
-                      }}
-                    />
-                  )}
-                </button>
+                {/* <button className="delBtn">Delete picture</button> */}
               </div>
             </div>
-          ) : (
-            <Bookings />
-          )}
 
-          <Snackbars open={open} msg={snackbarMsg} snack={snack} />
-        </>
-      ) : (
+            <div className="profileRightFormContainer">
+              <div className="profileRightForm">
+                <p>Name</p>
+                <input
+                  type="text"
+                  className="profileRightFormInput"
+                  value={name || data?.name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+
+              <div className="profileRightForm">
+                <p>Email</p>
+                <input
+                  type="text"
+                  className="profileRightFormInput"
+                  value={email || data?.email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <div className="profileRightForm">
+                <p>Phone no</p>
+                <input
+                  type="text"
+                  className="profileRightFormInput"
+                  disabled
+                  value={data?.phone}
+                />
+              </div>
+
+              <button
+                className="basicRoundedButton profileFormBtn"
+                onClick={() => updateProfileDetails()}
+              >
+                Update
+                {isLoading && (
+                  <CircularProgress
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      color: "#fff",
+                      marginLeft: "10px",
+                    }}
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <Bookings />
+        )}
+
+        <Snackbars open={open} msg={snackbarMsg} snack={snack} />
+      </>
+      {/* ) : (
         <Loader />
-      )}
+      )} */}
       {/* <BookingDetails /> */}
     </div>
   );

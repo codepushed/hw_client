@@ -69,61 +69,65 @@
 }
 
 .adrressslotSelectBtn {
-margin-top: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 0 15px;
-margin-bottom: 20px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  margin-bottom: 20px;
 }
 
-.adrressslotSelectBtn >  button {
-    width: 100%;
+.adrressslotSelectBtn > button {
+  width: 100%;
 }
 
 .checkout {
-    width: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    margin-top: 30px;
-    gap: 30px;
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 30px;
 }
 
-
 .checkoutServicePaymentsItems {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
 }
 
 .proceedBtn {
-    justify-content: flex-end !important;
-    align-items: flex-end !important;
+  justify-content: flex-end !important;
+  align-items: flex-end !important;
 }
 
-.checkoutServicePaymentsItems  > p {
-    font-size: 15px;
-    font-weight: 300;
+.checkoutServicePaymentsItems > p {
+  font-size: 15px;
+  font-weight: 300;
 }
 
-.checkoutServicePayments  > h2 {
-    margin-bottom: 20px;
+.checkoutServicePayments > h2 {
+  margin-bottom: 20px;
 }
-
 
 .checkoutCancelPolicy {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .checkoutCancelPolicy > h2 {
-    margin-top: 50px;
-    font-weight: 700;
+  margin-top: 50px;
+  font-weight: 700;
 }
 
 .checkoutCancelPolicy > p {
-font-size: 15px;
-font-weight: 300;
-margin-top: 10px;
+  font-size: 15px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .yourcartisempty {
+    margin-top: 100px;
+  }
 }

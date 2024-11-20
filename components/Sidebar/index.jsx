@@ -1,6 +1,13 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 const Sidebar = ({ setSidebar, sidebar }) => {
+  
+  const handleLogout = () => {
+    Cookies.remove("userData");
+    router.push("/");
+  };
+
   return (
     <div className="sidebarContainer">
       <div
@@ -25,7 +32,7 @@ const Sidebar = ({ setSidebar, sidebar }) => {
         {sidebar && <div className="profileSidebarDivider"></div>}
       </div>
 
-      <div className="sidebarList">
+      <div className="sidebarList" onClick={() => handleLogout()}>
         <img src="/assets/icons/logout.png" alt="logout" />
         <p>Logout</p>
       </div>

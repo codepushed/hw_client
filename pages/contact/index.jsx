@@ -2,13 +2,14 @@ import React from "react";
 import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+
 import { LandingSeo } from "../../Seo";
 
 const Contact = () => {
   return (
     <div>
       <LandingSeo />
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <div className="contactContainer">
         <h1>Contact us</h1>
         <p>We’re Here to Help—Get in Touch!</p>
@@ -32,13 +33,14 @@ const Contact = () => {
             </div>
 
             <p>
-              656X+5RM, University Rd, Thatipur, Gwalior, Madhya Pradesh 474011
+            University Rd, Thatipur, Gwalior, Madhya Pradesh 474011
             </p>
           </div>
 
           <div className="contactUsEmail">
             <h2 className="contactUsHeading">Email us</h2>
             <p>contact@homeworkservice.in</p>
+            <p>homeworkindservices@gmail.com</p>
 
             <div className="contactCall">
               <h2 className="contactUsHeading">Call us</h2>

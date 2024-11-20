@@ -241,7 +241,7 @@ const Checkout = () => {
           </div>
         </>
       ) : (
-        <p style={{ textAlign: "center" }}>Your cart is empty</p>
+        <p style={{ textAlign: "center" }} className="yourcartisempty">Your cart is empty</p>
       )}
     </div>
   );

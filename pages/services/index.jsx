@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+import Loader from "../../components/Loader";
 
 import { getAllServices } from "../../helpers";
 import { toLowerCaseString } from "../../helpers/basic";
-import Loader from "../../components/Loader";
 
 const Service = () => {
   const [serviceData, setServiceData] = useState();
@@ -57,7 +57,7 @@ const Service = () => {
                               alt="service"
                             />
                           </div>
-                          <p>{subCat?.name}</p>
+                          <p className="ServiceCardsContainerPara">{subCat?.name}</p>
                         </div>
                       ))}
                     </div>

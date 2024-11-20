@@ -1,16 +1,16 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
 
 import AllServices from "../../../Containers/AllServices";
-import Footer from "../../../components/Footer";
 import Header from "../../../components/Header";
 
 import { getAllServices } from "../../../helpers/index";
 
-const Services = ({ isHeader, data }) => {
+const Services = ({ data }) => {
   return (
     <>
-      <Header />
-      <AllServices isHeader={isHeader} data={data} />
+      <Header isMobileHeader={isMobile} />
+      <AllServices data={data} />
     </>
   );
 };

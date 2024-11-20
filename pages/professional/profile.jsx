@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
 
@@ -23,7 +24,7 @@ const Profile = () => {
 
   return (
     <div className="professionalLoginContainer">
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <div className="professionalLogin">
         <h1>Hey, {data?.name}</h1>
         <p>Manage your profile here</p>

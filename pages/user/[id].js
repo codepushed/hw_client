@@ -1,4 +1,5 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
 import Profile from "../../Containers/User/profile";
@@ -8,7 +9,7 @@ import { profile } from "../../helpers";
 const User = ({ data }) => {
   return (
     <>
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <Profile data={data} />
     </>
   );

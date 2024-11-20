@@ -149,3 +149,17 @@ export function getRandomObject(arr) {
   // Return the random object
   return arr[randomIndex];
 }
+
+
+export const createSlug = (blogName) => {
+  if (!blogName || typeof blogName !== 'string') {
+    throw new Error("Invalid input. Please provide a valid string.");
+  }
+
+  return blogName
+    .trim() // Remove leading and trailing whitespace
+    .toLowerCase() // Convert to lowercase
+    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/-+/g, '-'); // Ensure no consecutive hyphens
+}

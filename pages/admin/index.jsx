@@ -3,9 +3,10 @@ import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { CircularProgress } from "@mui/material";
 
+import Snackbars from "../../components/Snackbars";
+
 import { adminLogin } from "../../helpers";
 import { validateEmailAndPassword } from "../../helpers/basic";
-import Snackbars from "../../components/Snackbars";
 
 const Admin = () => {
   const [email, setEmail] = useState();
@@ -28,13 +29,12 @@ const Admin = () => {
         const response = await adminLogin(data);
         if (response) {
           if (response?.token) {
-            console.log(response);
             setIsLoading(false);
-            Cookies.set("userData", JSON.stringify(response))
+            Cookies.set("userData", JSON.stringify(response));
             setOpenSnackbar(true);
             setSnackbarMsg("Hey, Welcome back admin");
             setSnack(true);
-          router.push("/admin/dashboard");
+            router.push("/admin/dashboard");
           } else {
             setIsLoading(false);
             setOpenSnackbar(true);
