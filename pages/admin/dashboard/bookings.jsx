@@ -15,6 +15,7 @@ import { isLoggedIn } from "../../../helpers/basic";
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
   const [isLogged, setLoggedIn] = useState();
+  const router = useRouter();
 
   const getAllBooking = async () => {
     const response = await getAllBookings();

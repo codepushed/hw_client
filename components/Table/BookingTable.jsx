@@ -8,10 +8,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import { adminGetAllProfessionals, getUserById } from "../../helpers";
 import Details from "../Modal/Details";
 import Booked from "../Modal/Booked";
 import ProfessionalList from "../Modal/ProfessionalList";
+import Loader from "../Loader";
+
+import { adminGetAllProfessionals, getUserById } from "../../helpers";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -85,56 +87,64 @@ const BookingTable = ({ bookings }) => {
             <StyledTableCell align="center">Assign</StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {Array.isArray(bookings) &&
-            bookings.length > 0 &&
-            bookings &&
-            bookings?.map((item, index) => (
-              <StyledTableRow>
-                <StyledTableCell component="th" scope="row" key={index}>
-                  {item?._id}
-                </StyledTableCell>
-                <StyledTableCell
-                  style={{ cursor: "pointer", textDecoration: "underline" }}
-                  align="right"
-                  onClick={() => handleUser(item?.user)}
-                >
-                  {item?.user}
-                </StyledTableCell>
-                <StyledTableCell
-                  align="right"
-                  style={{ cursor: "pointer", textDecoration: "underline" }}
-                  onClick={() => handleBooking(item)}
-                >
-                  View
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {item?.bookingStatus}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {item?.bookingStatus === "Pending" ? (
-                    <button
-                      // onClick={() => handleVerification(item)}
-                      style={{
-                        border: "none",
-                        borderRadius: "18px",
-                        padding: "5px 10px",
-                        color: "#fff",
-                        background: "red",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => assignProfessional()}
-                    >
-                      Assign
-                    </button>
-                  ) : (
-                    <p>View</p>
-                  )}
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-        </TableBody>
+
+        {bookings ? (
+          <TableBody>
+            {Array.isArray(bookings) &&
+              bookings.length > 0 &&
+              bookings &&
+              bookings?.map((item, index) => (
+                <StyledTableRow>
+                  <StyledTableCell component="th" scope="row" key={index}>
+                    {item?._id}
+                  </StyledTableCell>
+                  <StyledTableCell
+                    style={{ cursor: "pointer", textDecoration: "underline" }}
+                    align="right"
+                    onClick={() => handleUser(item?.user)}
+                  >
+                    {item?.user}
+                  </StyledTableCell>
+                  <StyledTableCell
+                    align="right"
+                    style={{ cursor: "pointer", textDecoration: "underline" }}
+                    onClick={() => handleBooking(item)}
+                  >
+                    View
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {item?.bookingStatus}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {item?.bookingStatus === "Pending" ? (
+                      <button
+                        // onClick={() => handleVerification(item)}
+                        style={{
+                          border: "none",
+                          borderRadius: "18px",
+                          padding: "5px 10px",
+                          color: "#fff",
+                          background: "red",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => assignProfessional()}
+                      >
+                        Assign
+                      </button>
+                    ) : (
+                      <p>View</p>
+                    )}
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+          </TableBody>
+        ) : (
+          <div style={{ width: "100vw", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Loader />
+          </div>
+        )}
       </Table>
+
       <Details handleClose={handleClose} open={open} data={data} />
       <Booked
         handleBookingModal={handleBookingModal}

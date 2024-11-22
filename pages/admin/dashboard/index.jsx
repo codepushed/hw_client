@@ -5,13 +5,11 @@ import Collapse from "@mui/material/Collapse";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 
-import {
-  adminGetAllProfessionals,
-  adminProfessionalAdhaarVerification,
-} from "../../../helpers";
+import { adminGetAllProfessionals } from "../../../helpers";
 import Tables from "../../../components/Table";
 import HeaderAdmin from "../../../components/Header/HeaderAdmin";
 import { isLoggedIn } from "../../../helpers/basic";
+import Loader from "../../../components/Loader";
 
 const AdminDashboard = () => {
   const [data, setData] = useState();
@@ -27,22 +25,6 @@ const AdminDashboard = () => {
     }
   };
 
-  const handleVerification = async (item) => {
-    const professionalId = item?._id;
-    if (professionalId) {
-      const data = {
-        id: professionalId,
-        isAdhaarVerified: true,
-      };
-
-      const response = await adminProfessionalAdhaarVerification(data);
-      if (response) {
-        setAdhaar(response);
-        alert(`${item?.name} adhaar verified successfully`);
-      }
-    }
-  };
-
   useEffect(() => {
     getAllProfessionals();
   }, [adhaar]);
@@ -51,8 +33,8 @@ const AdminDashboard = () => {
     const isUserLoggedIn = await isLoggedIn();
     if (isUserLoggedIn) {
       setLoggedIn(true);
-    }else{
-      router.push("/admin")
+    } else {
+      router.push("/admin");
     }
   };
 
@@ -64,35 +46,42 @@ const AdminDashboard = () => {
     <div>
       <HeaderAdmin />
       {isLogged ? (
-      <><Collapse in={open} style={{ marginTop: "40px" }}>
-          <Alert
-            severity="info"
-            action={<IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => {
-                setOpen(false);
-              } }
+        <>
+          <Collapse in={open} style={{ marginTop: "40px" }}>
+            <Alert
+              severity="info"
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
             >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>}
-            sx={{ mb: 2 }}
-          >
-            Grab the adhaar number from here, and verify using UIDAI official
-            website, hit not verified, if the phone number and adhaar number
-            matches
-          </Alert>
-        </Collapse><div className="adminDashboardTableContainer">
+              Grab the adhaar number from here, and verify using UIDAI official
+              website, hit not verified, if the phone number and adhaar number
+              matches
+            </Alert>
+          </Collapse>
+          <div className="adminDashboardTableContainer">
             <div className="adminHeadersLinks">
               <h1 className="adminDashboard">Dashboard</h1>
-              <p onClick={() => router.push("/admin/dashboard/bookings")}>bookings</p>
+              <p onClick={() => router.push("/admin/dashboard/bookings")}>
+                bookings
+              </p>
             </div>
-            <Tables />
-          </div></>
-        ) : (
-          <Loader />
-        )}
+            <Tables data={data} setAdhaar={setAdhaar} />
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };
