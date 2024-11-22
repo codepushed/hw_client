@@ -75,3 +75,10 @@ export const updateProfessionalDetails = async (data) => {
 export const upload = async (data) => {
   return userApi.upload(data);
 };
+
+export const getUserById = async (data) => {
+  return userApi.getUserById(data);
+};
+
+
+

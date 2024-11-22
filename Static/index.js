@@ -96,4 +96,3 @@ export const searchLinks = [
     link: "/services/painting%20&%20waterproofing?category=Painting+%26+waterproofing&id=672c72bd3272cf3e213907f9",
   },
 ];
-

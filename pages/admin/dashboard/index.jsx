@@ -68,81 +68,18 @@ const AdminDashboard = () => {
           sx={{ mb: 2 }}
         >
           Grab the adhaar number from here, and verify using UIDAI official
-          website, hit not verified, if the phone number and adhaar number matches
+          website, hit not verified, if the phone number and adhaar number
+          matches
         </Alert>
       </Collapse>
 
       <div className="adminDashboardTableContainer">
-        <h1 className="adminDashboard">Dashboard</h1>
+        <div className="adminHeadersLinks">
+          <h1 className="adminDashboard">Dashboard</h1>
+          <p onClick={() => router.push("/admin/dashboard/bookings")}>bookings</p>
+        </div>
         <Tables />
-        {/* <button>Adhaar verify</button>
-        <button onClick={() => router.push("/admin/dashboard/bookings")}>
-          Manual professional asigning
-        </button> */}
       </div>
-      {/* <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <p style={{ marginTop: "40px" }}>Professional's Adhaar verification</p>
-        <button>Logout</button>
-      </div> */}
-
-      {/* <ul style={{ marginTop: "50px" }}>
-        {data &&
-          data?.map((item, index) => (
-            <li
-              key={index}
-              style={{
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                gap: "20px",
-              }}
-            >
-              <div>{item?.name}</div>
-
-              <div>{item?.phoneNumber}</div>
-              <div>{item?.adhaarNumber}</div>
-
-              <div>{item?.isAdhaarVerified}</div>
-              <div>
-                {!item?.isAdhaarVerified ? (
-                  <button
-                    onClick={() => handleVerification(item)}
-                    style={{
-                      border: "none",
-                      borderRadius: "18px",
-                      padding: "5px 10px",
-                      color: "#fff",
-                      background: "red",
-                      cursor: "pointer",
-                    }}
-                  >
-                    not verified
-                  </button>
-                ) : (
-                  <button
-                    disabled
-                    style={{
-                      border: "none",
-                      borderRadius: "18px",
-                      padding: "5px 10px",
-                      color: "#fff",
-                      background: "green",
-                      cursor: "pointer",
-                    }}
-                  >
-                    verified
-                  </button>
-                )}
-              </div>
-            </li>
-          ))}
-      </ul> */}
     </div>
   );
 };

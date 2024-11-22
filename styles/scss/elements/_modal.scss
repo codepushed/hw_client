@@ -337,6 +337,26 @@ input[type="radio"]:checked::before {
   margin-top: 15px;
 }
 
+.customerDetails {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.customerDetailsSpecific {
+  margin-bottom: 20px;
+}
+
+.customerDetailsSpecific > h3 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.customerDetailsSpecific > p {
+  color: #8b8b8b;
+  font-size: 13px;
+  font-weight: 300;
+
+}
+
 .serviceDetailsCustomerContainer {
   padding: 10px 20px;
 }

@@ -150,16 +150,32 @@ export function getRandomObject(arr) {
   return arr[randomIndex];
 }
 
-
 export const createSlug = (blogName) => {
-  if (!blogName || typeof blogName !== 'string') {
+  if (!blogName || typeof blogName !== "string") {
     throw new Error("Invalid input. Please provide a valid string.");
   }
 
   return blogName
     .trim() // Remove leading and trailing whitespace
     .toLowerCase() // Convert to lowercase
-    .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/-+/g, '-'); // Ensure no consecutive hyphens
-}
+    .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/-+/g, "-"); // Ensure no consecutive hyphens
+};
+
+export const convertISODate = (isoString) => {
+  const date = new Date(isoString);
+
+  // Format the date into a readable format (e.g., MM/DD/YYYY, HH:MM:SS)
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true, // Use 12-hour format
+  };
+
+  return date.toLocaleString("en-US", options); // Customize locale and format as needed
+};

@@ -9,12 +9,12 @@
 }
 
 .adminLoginContainer {
-    padding: 40px 40px;
+    padding: 30px;
     border: 1px solid #cfcfcf;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 250px;
 }
 
 .adminEmailInput {
@@ -60,4 +60,16 @@
     gap: "10px";
     margin-top: "10px";
     padding: 0 40px;
+}
+
+.adminHeadersLinks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.adminHeadersLinks > p {
+    cursor: pointer;
+    text-decoration: underline;
 }

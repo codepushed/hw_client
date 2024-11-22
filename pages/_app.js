@@ -9,6 +9,7 @@ import { persistStore } from "redux-persist";
 import Loader from "../components/Loader";
 import productConfigs from "../config";
 import store from "../store/store";
+import SwipeableEdgeDrawer from '../components/Drawers/SwipeableEdgeDrawer'
 
 import "../styles/global.css";
 import "../styles/scss/style.scss";
@@ -39,7 +40,7 @@ const MyApp = ({ Component, pageProps }) => {
     "/admin/dashboard/bookings",
   ];
 
-  const adminRestrictions = ["/admin/dashboard"];
+  const adminRestrictions = ["/admin/dashboard", "/admin/dashboard/bookings"];
 
   let persistor = persistStore(store);
 
@@ -82,6 +83,7 @@ const MyApp = ({ Component, pageProps }) => {
         <PersistGate loading={null} persistor={persistor}>
           {isLoading && <Loader />}
           <Component {...pageProps} />
+          <SwipeableEdgeDrawer />
         </PersistGate>
       </Provider>
     </>
