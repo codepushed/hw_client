@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { styled } from "@mui/material/styles";
@@ -9,12 +9,23 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField"; // Importing TextField for the search box
+import TextField from "@mui/material/TextField";
+import Snackbars from "../Snackbars";
+import { CircularProgress } from "@mui/material";
+import { editBooking } from "../../helpers";
 
-const ProfessionalList = ({ openModal, handleOpenModal, allProfessionals }) => {
-    const [data, setData] = React.useState(null); // Start with null to simulate loading
-    const [searchQuery, setSearchQuery] = React.useState("");
-    const [filteredData, setFilteredData] = React.useState([]);
+const ProfessionalList = ({
+  openModal,
+  handleOpenModal,
+  allProfessionals,
+  bookingData,
+}) => {
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [filteredData, setFilteredData] = React.useState([]);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [snack, setSnack] = useState(false);
 
   const style = {
     position: "absolute",
@@ -58,8 +69,30 @@ const ProfessionalList = ({ openModal, handleOpenModal, allProfessionals }) => {
     }
   }, [allProfessionals, searchQuery]);
 
+  const handleAssignPro = async (pro) => {
+    setIsLoading(true);
+    const data = {
+      professionaId: pro?._id,
+      bookingId: bookingData?._id,
+      bookingStatus: "Accepted",
+    };
+    try {
+      const response = await editBooking(data);
+      setIsLoading(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Professional assigned successfully");
+      setSnack(true);
+    } catch {
+      setIsLoading(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("failed! try again later");
+      setSnack(false);
+    }
+  };
+
   return (
     <div>
+      <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
       <Modal
         open={openModal}
         onClose={handleOpenModal}
@@ -119,7 +152,7 @@ const ProfessionalList = ({ openModal, handleOpenModal, allProfessionals }) => {
                       {item.address}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {item.isAdhaarVerified ? "Yes": "No"}
+                      {item.isAdhaarVerified ? "Yes" : "No"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {item.profession}
@@ -131,11 +164,22 @@ const ProfessionalList = ({ openModal, handleOpenModal, allProfessionals }) => {
                           borderRadius: "18px",
                           padding: "5px 10px",
                           color: "#fff",
-                         backgroundColor: "orange",
+                          backgroundColor: "orange",
                           cursor: "pointer",
                         }}
+                        onClick={() => handleAssignPro(item)}
                       >
                         Assign
+                        {isLoading && (
+                          <CircularProgress
+                            style={{
+                              height: "10px",
+                              width: "10px",
+                              color: "#fff",
+                              marginLeft: "10px",
+                            }}
+                          />
+                        )}
                       </button>
                     </StyledTableCell>
                   </StyledTableRow>

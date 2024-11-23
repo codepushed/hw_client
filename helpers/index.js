@@ -80,5 +80,9 @@ export const getUserById = async (data) => {
   return userApi.getUserById(data);
 };
 
+export const editBooking = async (data) => {
+  return userApi.editBooking(data);
+};
+
 
 

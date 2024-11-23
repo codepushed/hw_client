@@ -68,6 +68,9 @@ const Checkout = () => {
     getUserDetails();
   }, []);
 
+  //check for address, slots
+
+
   const handlePayments = () => {
     const userData = Cookies.get("userData");
     if (userData) {
@@ -78,7 +81,7 @@ const Checkout = () => {
         bookingDetails: {
           address: selectedAddress,
         },
-        serviceId: cart,
+        service: cart,
         slotDate: selectedDateSlots,
         slotTime: currentDateSlots,
       };

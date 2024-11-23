@@ -155,6 +155,7 @@ const BookingTable = ({ bookings }) => {
         handleOpenModal={handleOpenModal}
         openModal={openModal}
         allProfessionals={allProfessionals}
+        bookingData={bookingData}
       />
     </TableContainer>
   );

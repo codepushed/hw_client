@@ -1,96 +1,97 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { isMobile } from "react-device-detect";
+import { CircularProgress } from "@mui/material";
 
 import Header from "../../components/Header";
 import BookingDetails from "../../components/Modal/BookingDetails";
+import Snackbars from "../../components/Snackbars";
+
 import {
   createBooking,
-  getProfessionalsByProfession,
+  // getProfessionalsByProfession,
   sentBookingDetails,
-  userGetAllProfessionals,
+  // userGetAllProfessionals,
 } from "../../helpers";
 
-import { getRandomObject } from "../../helpers/basic";
+// import { getRandomObject } from "../../helpers/basic";
 
 const ChoosePayment = () => {
-  const [assignedProfessional, setAssignedProfessional] = useState();
-  const [OTP, setOTP] = useState();
+  // const [assignedProfessional, setAssignedProfessional] = useState();
+  // const [OTP, setOTP] = useState();
   const [open, setOpen] = useState(false);
   const [isSelected, setIsSelected] = useState(false);
   const [bookingDetails, setBookingDetails] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [snack, setSnack] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
   const finalCart = useSelector((state) => state.cart.finalCart);
 
   const handleClose = () => setOpen(false);
+  
 
   const handleCreateBooking = async () => {
+    setIsLoading(true);
     const data = {
       userId: finalCart?.userId,
       bookingDetails: finalCart?.bookingDetails?.address,
       serviceId: finalCart[0]?.serviceId[0]?._id,
       slotDate: finalCart?.slotDate,
       slotTime: finalCart?.slotTime,
-      otp: OTP,
-      professionalId: assignedProfessional?._id,
+      // otp: OTP,
+      // professionalId: assignedProfessional?._id,
     };
 
-    if (finalCart && assignedProfessional && OTP) {
-      const response = await createBooking(data);
-      if (response) {
+    console.log(data, "data");
+
+    if (finalCart) {
+      try {
+        // const response = await createBooking(data);
         setBookingDetails(response?.booking);
-        console.log(response);
         // sendBookingConfirmation(response?.booking);
         setOpen(true);
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg(
+          "Booking sucessful, please wait we will assign a professional"
+        );
+        setSnack(true);
+      } catch {
+        setOpen(false);
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Booking failed, please try again");
+        setSnack(false);
       }
+    } else {
+      setIsLoading(false);
     }
   };
-
-  //need to figure out better approach
-  const getRandomProfessional = async () => {
-    const data = "electrician"; //change it
-    const professionalList = await getProfessionalsByProfession(data);
-    if (professionalList?.filteredProfessionals) {
-      const getRandomPro = getRandomObject(
-        professionalList?.filteredProfessionals
-      );
-      if (getRandomPro) {
-        setAssignedProfessional(getRandomPro);
-      }
-    }
-  };
-
-  useEffect(() => {
-    getRandomProfessional();
-    generateOTP();
-  }, []);
-
-  // call here random professional api and assign one
-  // create booking
-  // generate otp
 
   const sendBookingConfirmation = async (response) => {
     const data = {
       to: "homeworkindservice@gmail.com",
-      subject: "Booking recieved",
+      subject: "Booking recieved, Login as admin to assign professional!",
       message: response,
     };
-
     if (data) {
       const response = await sentBookingDetails(data);
     }
   };
 
-  const generateOTP = () => {
-    const otpLength = 6;
-    const otp = Array.from({ length: otpLength }, () =>
-      Math.floor(Math.random() * 10)
-    ).join("");
-    setOTP(otp);
-  };
+  // const generateOTP = () => {
+  //   const otpLength = 6;
+  //   const otp = Array.from({ length: otpLength }, () =>
+  //     Math.floor(Math.random() * 10)
+  //   ).join("");
+  //   setOTP(otp);
+  // };
 
   return (
     <div className="professionalLoginContainer">
       <Header isMobileHeader={isMobile} />
+      <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
       <div className="professionalLogin">
         <h1>Choose payment method</h1>
         <p>Your are just one step away</p>
@@ -109,7 +110,17 @@ const ChoosePayment = () => {
               className="basicRoundedButton profOtpbtn"
               onClick={() => handleCreateBooking()}
             >
-              Pay
+              Book
+              {isLoading && (
+                <CircularProgress
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    color: "#fff",
+                    marginLeft: "10px",
+                  }}
+                />
+              )}
             </button>
           </div>
         </div>

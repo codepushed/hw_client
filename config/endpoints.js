@@ -17,7 +17,8 @@ const endpoints = {
     adminLogin: "/admin",
     updateProfessionalDetails: "/professional/dashboard/update",
     upload: "/upload/profile",
-    getUserById: "/admin/user"
+    getUserById: "/admin/user",
+    editBooking: "/send/bookings/update"
   };
   
   export default endpoints;
