@@ -94,7 +94,7 @@ const BookingTable = ({ bookings }) => {
               bookings.length > 0 &&
               bookings &&
               bookings?.map((item, index) => (
-                <StyledTableRow>
+                <StyledTableRow key={index}>
                   <StyledTableCell component="th" scope="row" key={index}>
                     {item?._id}
                   </StyledTableCell>
