@@ -100,6 +100,7 @@ const ProfessionalList = ({ openModal, handleOpenModal, allProfessionals }) => {
                     Adhaar verification
                   </StyledTableCell>
                   <StyledTableCell align="right">Profession</StyledTableCell>
+                  <StyledTableCell align="right">Assign</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -118,6 +119,9 @@ const ProfessionalList = ({ openModal, handleOpenModal, allProfessionals }) => {
                       {item.address}
                     </StyledTableCell>
                     <StyledTableCell align="right">
+                      {item.isAdhaarVerified ? "Yes": "No"}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
                       {item.profession}
                     </StyledTableCell>
                     <StyledTableCell align="right">
@@ -127,8 +131,7 @@ const ProfessionalList = ({ openModal, handleOpenModal, allProfessionals }) => {
                           borderRadius: "18px",
                           padding: "5px 10px",
                           color: "#fff",
-                          background:
-                            item.verified === "verified" ? "green" : "red",
+                         backgroundColor: "orange",
                           cursor: "pointer",
                         }}
                       >

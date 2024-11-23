@@ -179,3 +179,12 @@ export const convertISODate = (isoString) => {
 
   return date.toLocaleString("en-US", options); // Customize locale and format as needed
 };
+
+export const getLoggedInUserDetails = () => {
+  const userData = Cookies.get("userData");
+  if (userData) {
+    const userName = JSON.parse(userData);
+    const user = userName?.user;
+    return user;
+  }
+};

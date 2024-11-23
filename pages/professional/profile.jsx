@@ -4,10 +4,19 @@ import { useRouter } from "next/router";
 import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+import { getLoggedInUserDetails } from "../../helpers/basic";
+import Modal from "../../components/Modal";
 
 const Profile = () => {
   const [data, setData] = useState();
+  const [open, setOpen] = useState(false);
   const router = useRouter();
+
+  const handleClose = () => {
+    if (!user?.isAdhaarVerified) {
+      setOpen(false);
+    }
+  };
 
   const getUsername = () => {
     const userData = Cookies.get("userData");
@@ -18,13 +27,24 @@ const Profile = () => {
     }
   };
 
+  const isVerified = () => {
+    const user = getLoggedInUserDetails();
+    if (user?.isAdhaarVerified) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  };
+
   useEffect(() => {
     getUsername();
+    isVerified();
   }, []);
 
   return (
     <div className="professionalLoginContainer">
       <Header isMobileHeader={isMobile} />
+      <Modal isOpen={open} handleClosed={handleClose} />
       <div className="professionalLogin">
         <h1>Hey, {data?.name}</h1>
         <p>Manage your profile here</p>

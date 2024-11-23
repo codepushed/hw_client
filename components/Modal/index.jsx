@@ -4,7 +4,7 @@ import Modals from "@mui/material/Modal";
 
 import Image from "next/image";
 
-const Modal = ({ isOpen, handleClosed }) => {
+const Modal = ({ isOpen, handleClosed, isVerified }) => {
   const [isMobileDefault, setIsMobileDefault] = useState(false);
 
   const basicModalStyling = {
@@ -43,22 +43,27 @@ const Modal = ({ isOpen, handleClosed }) => {
       <Modals
         open={isOpen}
         onClose={handleClosed}
+        disableEscapeKeyDown
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={basicModalStyling}>
           <div className="drawerCloseBtnWrapper drawerCloseBtnSpacing">
-            <div className="drawerCloseBtn" onClick={() => handleClosed()}>
+            <div className="drawerCloseBtn">
               x
             </div>
           </div>
 
-          <h1 className="slotTimingsHead addressHeading">Launching Soon</h1>
-          <h3 className="launchModalsubTitle">Stay tunned Gwalior</h3>
+          <h1 className="slotTimingsHead addressHeading">
+            We're verifying your profile
+          </h1>
+          <h3 className="launchModalsubTitle">
+            Please we patient, it may take 2-3 hours.
+          </h3>
 
           <div className="launchModalImg">
             <Image
-              src="/assets/launch.png"
+              src="/assets/verificationPending.png"
               alt="launch"
               height={500}
               width={500}

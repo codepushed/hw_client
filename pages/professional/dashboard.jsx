@@ -7,12 +7,20 @@ import Header from "../../components/Header";
 import ServiceDetailsModel from "../../components/Modal/ServiceDetailsModel";
 import OTP from "../../components/Modal/OTP";
 import Loader from "../../components/Loader";
+import Modal from "../../components/Modal";
 
-import { isLoggedIn } from "../../helpers/basic";
+import { getLoggedInUserDetails, isLoggedIn } from "../../helpers/basic";
 
 const Dashboard = () => {
   const [isLogged, setIsLogged] = useState(false);
+  const [open, setOpen] = useState(false);
   const router = useRouter();
+
+  const handleClose = () => {
+    if (!user?.isAdhaarVerified) {
+      setOpen(false);
+    }
+  };
 
   const getLoggedInUser = async () => {
     const isUserLoggedIn = await isLoggedIn();
@@ -23,8 +31,18 @@ const Dashboard = () => {
     }
   };
 
+  const isVerified = () => {
+    const user = getLoggedInUserDetails();
+    if (user?.isAdhaarVerified) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  };
+
   useEffect(() => {
     getLoggedInUser();
+    isVerified();
   }, []);
 
   return (
@@ -33,6 +51,7 @@ const Dashboard = () => {
       {isLogged ? (
         <>
           <ToggleWidget />
+          <Modal isOpen={open} handleClosed={handleClose} />
           <ServiceDetailsModel />
           <OTP />
         </>

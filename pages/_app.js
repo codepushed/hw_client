@@ -83,7 +83,7 @@ const MyApp = ({ Component, pageProps }) => {
         <PersistGate loading={null} persistor={persistor}>
           {isLoading && <Loader />}
           <Component {...pageProps} />
-          <SwipeableEdgeDrawer />
+          {/* <SwipeableEdgeDrawer /> */}
         </PersistGate>
       </Provider>
     </>
