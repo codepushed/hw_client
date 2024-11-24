@@ -103,6 +103,24 @@ const ChoosePayment = () => {
     }
   }, [bookingDetails]);
 
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (
+        bookingDetails?.bookingStatus === "Pending" ||
+        bookingDetails?.bookingStatus === "Accepted"
+      ) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [bookingDetails]);
+
   return (
     <div className="professionalLoginContainer">
       <Header isMobileHeader={isMobile} />
