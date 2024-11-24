@@ -78,7 +78,7 @@ const Professional = () => {
 
         <div className="professionalVerificationContainer">
           <div className="professionalVerificationImg">
-            <img srcq="/assets/adhaar.png" alt="adhaar" />
+            <img src="/assets/adhaar.png" alt="adhaar" />
           </div>
 
           <span className="professionalVerificationInput">
