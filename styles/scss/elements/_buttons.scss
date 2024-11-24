@@ -129,3 +129,21 @@
 .pingUsBtn {
   border-radius: 50px !important;
 }
+
+.floatingbButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff8c8c;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  cursor: pointer;
+}

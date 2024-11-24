@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { isMobile } from "react-device-detect";
+import { useDispatch } from "react-redux";
 
-import { getServiceById } from "../../../helpers";
 import AllServices from "../../../Containers/AllServices";
 import Header from "../../../components/Header";
-import { useDispatch } from "react-redux";
+
+import { getServiceById } from "../../../helpers";
 import { saveCartItems } from "../../../store/slices/cart";
 
 const Subservice = () => {
@@ -35,7 +37,7 @@ const Subservice = () => {
 
   return (
     <div>
-      <Header />
+      <Header isMobileHeader={isMobile} />
       <AllServices data={subserviceData} setCartItems={setCartItems} />
     </div>
   );

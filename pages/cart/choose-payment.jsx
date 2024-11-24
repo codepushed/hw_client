@@ -1,112 +1,184 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { isMobile } from "react-device-detect";
+import { CircularProgress } from "@mui/material";
 
 import Header from "../../components/Header";
 import BookingDetails from "../../components/Modal/BookingDetails";
+import Snackbars from "../../components/Snackbars";
+
 import {
   createBooking,
-  getProfessionalsByProfession,
+  // getProfessionalsByProfession,
   sentBookingDetails,
-  userGetAllProfessionals,
+  // userGetAllProfessionals,
 } from "../../helpers";
-import { getRandomObject } from "../../helpers/basic";
+import { EmailPreview } from "../../helpers/basic";
+
+// import { getRandomObject } from "../../helpers/basic";
 
 const ChoosePayment = () => {
-  const [assignedProfessional, setAssignedProfessional] = useState();
-  const [OTP, setOTP] = useState();
-  const [open, setOpen] = React.useState(false);
+  // const [assignedProfessional, setAssignedProfessional] = useState();
+  // const [OTP, setOTP] = useState();
+  const [open, setOpen] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
   const [bookingDetails, setBookingDetails] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [snack, setSnack] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
   const finalCart = useSelector((state) => state.cart.finalCart);
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    if (
+      !bookingDetails?.bookingStatus === "Pending" ||
+      !bookingDetails?.bookingStatus === "Accepted"
+    ) {
+      setOpen(false);
+    }
+  };
 
   const handleCreateBooking = async () => {
-    const data = {
-      userId: finalCart?.userId,
-      bookingDetails: finalCart?.bookingDetails?.address,
-      serviceId: finalCart[0]?.serviceId[0]?._id,
-      slotDate: finalCart?.slotDate,
-      slotTime: finalCart?.slotTime,
-      otp: OTP,
-      professionalId: assignedProfessional?._id,
-    };
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append("userId", finalCart?.userId);
+    formData.append("bookingDetails", finalCart?.bookingDetails?.address);
+    formData.append("service", JSON.stringify(finalCart?.service)); // Stringify nested object/array
+    formData.append("slotDate", finalCart?.slotDate);
+    formData.append("slotTime", finalCart?.slotTime);
+    // const data = {
+    //   userId: finalCart?.userId,
+    //   bookingDetails: finalCart?.bookingDetails?.address,
+    //   service: finalCart?.service,
+    //   slotDate: finalCart?.slotDate,
+    //   slotTime: finalCart?.slotTime,
+    //   // otp: OTP,
+    //   // professionalId: assignedProfessional?._id,
+    // };
 
-    if (finalCart && assignedProfessional && OTP) {
-      const response = await createBooking(data);
-      if (response) {
+    // console.log(data, "yo");
+
+    if (finalCart) {
+      try {
+        const response = await createBooking(formData);
         setBookingDetails(response?.booking);
-        console.log(response)
-        // sendBookingConfirmation(response?.booking);
-        setOpen(true);
+        if (response) {
+          await sendBookingConfirmation(response?.booking);
+          setOpen(true);
+          setIsLoading(false);
+          setOpenSnackbar(true);
+          setSnackbarMsg(
+            "Booking sucessful, please wait we will assign a professional"
+          );
+          setSnack(true);
+        }
+      } catch {
+        setOpen(false);
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Booking failed, please try again");
+        setSnack(false);
       }
+    } else {
+      setIsLoading(false);
     }
   };
 
-  //need to figure out better approach
-  const getRandomProfessional = async () => {
-    const data = "electrician"; //change it
-    const professionalList = await getProfessionalsByProfession(data);
-    if (professionalList?.filteredProfessionals) {
-      const getRandomPro = getRandomObject(
-        professionalList?.filteredProfessionals
-      );
-      if (getRandomPro) {
-        setAssignedProfessional(getRandomPro);
-      }
+  const sendBookingConfirmation = async () => {
+    const data = {
+      to: "homeworkindservices@gmail.com",
+      subject: "Booking recieved",
+      message:
+        "Hi Admin, you have a recieved a booking on behalf on homework. Please login as admin and assign a professional to the user",
+    };
+    if (data) {
+      await sentBookingDetails(data);
     }
   };
+
+  // const generateOTP = () => {
+  //   const otpLength = 6;
+  //   const otp = Array.from({ length: otpLength }, () =>
+  //     Math.floor(Math.random() * 10)
+  //   ).join("");
+  //   setOTP(otp);
+  // };
 
   useEffect(() => {
-    getRandomProfessional();
-    generateOTP();
-  }, []);
+    if (bookingDetails) {
+      if (
+        bookingDetails?.bookingStatus !== "Pending" ||
+        bookingDetails?.bookingStatus !== "Accepted"
+      ) {
+        setOpen(true);
+      }
+    } else {
+      setOpen(false);
+    }
+  }, [bookingDetails]);
 
-  // call here random professional api and assign one
-  // create booking
-  // generate otp
-
-  const sendBookingConfirmation = async (response) => {
-    const data = {
-      to: "homeworkindservice@gmail.com",
-      subject: "Booking recieved",
-      message: response,
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (bookingDetails) {
+        if (
+          bookingDetails?.bookingStatus === "Pending" ||
+          bookingDetails?.bookingStatus === "Accepted"
+        ) {
+          e.preventDefault();
+          e.returnValue = "";
+        }
+      }
     };
 
-    if (data) {
-      const response = await sentBookingDetails(data);
-    }
-  };
+    window.addEventListener("beforeunload", handleBeforeUnload);
 
-  const generateOTP = () => {
-    const otpLength = 6;
-    const otp = Array.from({ length: otpLength }, () =>
-      Math.floor(Math.random() * 10)
-    ).join("");
-    setOTP(otp);
-  };
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [bookingDetails]);
 
   return (
     <div className="professionalLoginContainer">
-      <Header />
+      <Header isMobileHeader={isMobile} />
+      <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
       <div className="professionalLogin">
         <h1>Choose payment method</h1>
         <p>Your are just one step away</p>
 
         <div className="professionalLoginInput">
           <div className="professionalLoginInputSection choosePaymentBtns">
-            <button>Cash</button>
-            <button>Card/UPI (Coming soon)</button>
-            <button>Pay after service is done</button>
+            {/* <button>Cash</button> */}
+            <button disabled>Card/UPI (Coming soon)</button>
+            <button
+              onClick={() => setIsSelected(true)}
+              style={isSelected ? { background: "#ff8c8c", color: "#fff" } : {}}
+            >
+              Pay after service is done
+            </button>
             <button
               className="basicRoundedButton profOtpbtn"
               onClick={() => handleCreateBooking()}
             >
-              Pay
+              Book
+              {isLoading && (
+                <CircularProgress
+                  style={{
+                    height: "10px",
+                    width: "10px",
+                    color: "#fff",
+                    marginLeft: "10px",
+                  }}
+                />
+              )}
             </button>
           </div>
         </div>
       </div>
-      <BookingDetails open={open} handleClose={handleClose} bookingDetails={bookingDetails} />
+      <BookingDetails
+        open={open}
+        handleClose={handleClose}
+        bookingDetails={bookingDetails}
+      />
     </div>
   );
 };

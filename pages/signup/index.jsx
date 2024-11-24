@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { auth } from "../../config/firebase";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+import Snackbars from "../../components/Snackbars";
+
+import { auth } from "../../config/firebase";
 import { signup } from "../../helpers";
 import { validateEmailAndPassword } from "../../helpers/basic";
 
@@ -14,6 +17,9 @@ const Signup = () => {
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
+  const [snack, setSnack] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [reCaptcha, setRecaptcha] = useState();
   const [isOtpSent, setIsOtpSent] = useState();
@@ -35,15 +41,23 @@ const Signup = () => {
         };
         const response = await signup(data);
         if (response?.token) {
+          setIsLoading(false);
+          setOpenSnackbar(true);
+          setSnackbarMsg("Hey, Welcome onboard!");
+          setSnack(true);
           Cookies.set("userData", JSON.stringify(response));
-          setIsLoading(false);
           router.push("/");
-          setIsLoading(false);
         } else {
           setIsLoading(false);
-          alert("Sign up error: Please enter name, email and password ");
+          setOpenSnackbar(true);
+          setSnackbarMsg("Oops! Something went wrong, Try again later");
+          setSnack(false);
         }
       }
+    } else {
+      setOpenSnackbar(true);
+      setSnackbarMsg("Email or password is not valid!");
+      setSnack(false);
     }
   };
 
@@ -51,7 +65,9 @@ const Signup = () => {
     e.preventDefault();
 
     if (!reCaptcha) {
-      alert("erroer");
+      setOpenSnackbar(true);
+      setSnackbarMsg("Recaptcha not available, try again later");
+      setSnack(false);
     }
 
     try {
@@ -62,7 +78,10 @@ const Signup = () => {
       );
       setIsOtpSent(confirmationResults);
     } catch (error) {
-      alert(error);
+      setIsLoading(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Oops! Something went wrong, Try again later");
+      setSnack(false);
     }
   };
 
@@ -83,8 +102,11 @@ const Signup = () => {
   }, [auth]);
 
   const handleVerifyOTP = () => {
-    if (!isOtpSent) {
-      alert("Please send OTP first.");
+    setIsLoading(true);
+    if (!isOtpSent && !OTP) {
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please enter the OTP first.");
+      setSnack(false);
       return;
     }
 
@@ -94,14 +116,32 @@ const Signup = () => {
         setIsOtpVerified(result?.user);
       })
       .catch((error) => {
-        console.error("Error verifying OTP", error);
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Error verifying OTP, Please try again");
+        setSnack(false);
       });
+  };
+
+  const handleOTPChange = (e) => {
+    const value = e.target.value;
+
+    if (/^\d*$/.test(value)) {
+      setOTP(value);
+
+      if (value.length > 6) {
+        setOpenSnackbar(true);
+        setSnackbarMsg("Please enter exactly 6 digits");
+        setSnack(false);
+      }
+    }
   };
 
   return (
     <div>
-      <Header isHidden={true} />
+      <Header isHidden={true} isMobileHeader={isMobile} />
       <div className="loginContainer">
+        <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
         <div className="loginLeftContent">
           <div className="loginLeftContentHeading">
             <h1 style={{ fontSize: "20px" }}>
@@ -152,19 +192,15 @@ const Signup = () => {
             ) : isOtpSent !== "undefined" && !isOtpSent ? (
               <>
                 <p>What's your phone number?</p>
-                <input
-                  type="text"
-                  // placeholder=""
-                  onChange={(e) => setPhone(e.target.value)}
-                />
+                <input type="text" onChange={(e) => setPhone(e.target.value)} />
               </>
             ) : (
               <>
                 <p>Enter the OTP</p>
                 <input
                   type="text"
-                  // placeholder=""
-                  onChange={(e) => setOTP(e.target.value)}
+                  value={OTP || ""}
+                  onChange={(e) => handleOTPChange(e)}
                   min={6}
                   max={6}
                 />
@@ -191,6 +227,16 @@ const Signup = () => {
                   onClick={(e) => handleVerifyOTP(e)}
                 >
                   Verify
+                  {isLoading && (
+                    <CircularProgress
+                      style={{
+                        height: "10px",
+                        width: "10px",
+                        color: "#fff",
+                        marginLeft: "10px",
+                      }}
+                    />
+                  )}
                 </button>
               )
             )}
@@ -212,13 +258,15 @@ const Signup = () => {
           </div> */}
         </div>
 
-        <div className="loginRightContent">
-          <h1 className="loginRightContentHead">Get your first</h1>
-          <h1 className="loginRightContentSubHead">Booking done</h1>
-          <div className="loginRightContentImg">
-            <img src="/assets/hw_worker.png" alt="login" />
+        {!isMobile && (
+          <div className="loginRightContent">
+            <h1 className="loginRightContentHead">Get your first</h1>
+            <h1 className="loginRightContentSubHead">Booking done</h1>
+            <div className="loginRightContentImg">
+              <img src="/assets/hw_worker.png" alt="login" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <div id="recaptcha-container"></div>
     </div>

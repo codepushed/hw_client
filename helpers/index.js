@@ -63,3 +63,26 @@ export const getProfessionalsByProfession = async (data) => {
 export const sentBookingDetails = async (data) => {
   return userApi.sentBookingDetails(data);
 };
+
+export const adminLogin = async (data) => {
+  return adminApi.adminLogin(data);
+};
+
+export const updateProfessionalDetails = async (data) => {
+  return professionalApi.updateProfessionalDetails(data);
+};
+
+export const upload = async (data) => {
+  return userApi.upload(data);
+};
+
+export const getUserById = async (data) => {
+  return userApi.getUserById(data);
+};
+
+export const editBooking = async (data) => {
+  return userApi.editBooking(data);
+};
+
+
+

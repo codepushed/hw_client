@@ -1,4 +1,5 @@
 import React from "react";
+import { isMobile } from "react-device-detect";
 
 import Checkout from "../../Containers/Checkout";
 import Header from "../../components/Header";
@@ -6,7 +7,7 @@ import Header from "../../components/Header";
 const Cart = ({ isHeader }) => {
   return (
     <>
-    <Header />
+    <Header isMobileHeader={isMobile} />
     <Checkout />
     </>
   );

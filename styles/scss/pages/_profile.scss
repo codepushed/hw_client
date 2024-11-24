@@ -32,6 +32,7 @@
 
 .profileRight {
   margin-top: 60px;
+  width: 30%;
 }
 
 .profileRightPictureBtns {
@@ -173,4 +174,38 @@
 
 .addressBigInput {
   height: 200px !important;
+}
+
+@media (max-width: 768px) {
+  .profProInput > input {
+    width: 100%;
+  }
+  .professionalProfileDetailsContainer {
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
+  .profProInput {
+    margin-top: 20px;
+  }
+  .professionalProfileImg {
+    margin-top: 10px;
+  }
+  .profileRight {
+    width: 100%;
+  }
+  .profileContainer {
+    gap: 5px;
+    flex-direction: column;
+  }
+  .bookingsContent {
+    width: 100%;
+  }
+  .bookings {
+    width: 100%;
+    flex-direction: column;
+  }
+  .bookingsSubHeading {
+    margin-top: 0;
+  }
 }

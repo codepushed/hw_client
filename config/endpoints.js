@@ -13,7 +13,12 @@ const endpoints = {
     professionalSignUp: "/professional/signup",
     userAllProfessionals: "/user/professionals",
     getProfessionalsByProfession: "/professionals",
-    sentBookingDetails: "/send/bookings"
+    sentBookingDetails: "/send/bookings",
+    adminLogin: "/admin",
+    updateProfessionalDetails: "/professional/dashboard/update",
+    upload: "/upload/profile",
+    getUserById: "/admin/user",
+    editBooking: "/send/bookings/update"
   };
   
   export default endpoints;

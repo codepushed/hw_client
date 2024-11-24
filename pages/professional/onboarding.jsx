@@ -1,52 +1,79 @@
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
-import { auth } from "../../config/firebase";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+import Snackbars from "../../components/Snackbars";
+
 import { formatPhoneNumber, validateAadhaar } from "../../helpers/basic";
 import { professionalSignUp } from "../../helpers";
+import { auth } from "../../config/firebase";
 
 const Onboarding = () => {
   const [fullname, setFullName] = useState();
   const [aadhaarNumber, setAdhaarNumber] = useState();
   const [phoneNo, setPhoneNo] = useState();
+  const [address, setAddress] = useState();
   const [phoneWithCountryCode, setPhoneWithCountryCode] = useState();
   const [isOtpSent, setIsOtpSent] = useState();
   const [isOtpVerified, setIsOtpVerified] = useState();
   const [reCaptcha, setRecaptcha] = useState();
   const [OTP, setOTP] = useState();
+  const [snack, setSnack] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const userSignIn = async () => {
-    const isAdhaarValid = validateAadhaar(aadhaarNumber);
-    const isPhoneValid = formatPhoneNumber(phoneNo);
-    if (isAdhaarValid && isPhoneValid) {
-      setPhoneWithCountryCode(isPhoneValid);
-      if (fullname && aadhaarNumber && phoneNo) {
-        const data = {
-          name: fullname,
-          adhaarNumber: aadhaarNumber,
-          phone: isPhoneValid,
-        };
-        const response = await professionalSignUp(data);
-        if (response?.token) {
-          Cookies.set("userData", JSON.stringify(response));
-          router.push("/");
-        } else {
-          alert("Sign up error: Please enter name, email and password ");
+    setIsLoading(true);
+    if (phoneNo) {
+      const isAdhaarValid = validateAadhaar(aadhaarNumber);
+      const isPhoneValid = formatPhoneNumber(phoneNo);
+      if (isAdhaarValid && isPhoneValid && address) {
+        setPhoneWithCountryCode(isPhoneValid);
+        if (fullname && aadhaarNumber && phoneNo) {
+          const data = {
+            name: fullname,
+            adhaarNumber: aadhaarNumber,
+            phone: isPhoneValid,
+            address: address
+          };
+          const response = await professionalSignUp(data);
+          if (response?.token) {
+            setIsLoading(false);
+            setOpenSnackbar(true);
+            setSnackbarMsg("Hey, Welcome onboard Professional!");
+            setSnack(true);
+            Cookies.set("userData", JSON.stringify(response));
+            router.push("/professional/dashboard");
+          } else {
+            setIsLoading(false);
+            setOpenSnackbar(true);
+            setSnackbarMsg("Oops! Something went wrong, Try again later");
+            setSnack(false);
+          }
         }
       }
+    } else {
+      setIsLoading(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please enter phone number first!");
+      setSnack(false);
     }
   };
 
   const handleSendOTP = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     if (!reCaptcha) {
-      alert("erroer");
+      setOpenSnackbar(true);
+      setSnackbarMsg("Recaptcha not available, try again later");
+      setSnack(false);
     }
 
     try {
@@ -57,8 +84,12 @@ const Onboarding = () => {
         reCaptcha
       );
       setIsOtpSent(confirmationResults);
+      setIsLoading(false);
     } catch (error) {
-      alert(error);
+      setIsLoading(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Oops! Something went wrong, Try again later");
+      setSnack(false);
     }
   };
 
@@ -79,8 +110,11 @@ const Onboarding = () => {
   }, [auth]);
 
   const handleVerifyOTP = () => {
-    if (!isOtpSent) {
-      alert("Please send OTP first.");
+    setIsLoading(true);
+    if (!isOtpSent && !OTP) {
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please enter the OTP first.");
+      setSnack(false);
       return;
     }
 
@@ -88,15 +122,35 @@ const Onboarding = () => {
       .confirm(OTP)
       .then(async (result) => {
         setIsOtpVerified(result?.user);
+    setIsLoading(false);
+
       })
       .catch((error) => {
-        console.error("Error verifying OTP", error);
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Error verifying OTP, Please try again");
+        setSnack(false);
       });
+  };
+
+  const handleOTPChange = (e) => {
+    const value = e.target.value;
+
+    if (/^\d*$/.test(value)) {
+      setOTP(value);
+
+      if (value.length > 6) {
+        setOpenSnackbar(true);
+        setSnackbarMsg("Please enter exactly 6 digits");
+        setSnack(false);
+      }
+    }
   };
 
   return (
     <div className="professionalLoginContainer">
-      <Header isHidden={true} />
+      <Header isHidden={true} isMobileHeader={isMobile} />
+      <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
       <div className="professionalLogin">
         <h1>Sign Up</h1>
         <p>to become a Service Professional</p>
@@ -104,6 +158,7 @@ const Onboarding = () => {
           <div className="professionalVerificationContainer">
             {isOtpVerified && isOtpVerified ? (
               <>
+              <h2>Enter your details</h2>
                 <span className="professionalVerificationInput">
                   <p>Full name</p>
                   <input
@@ -120,11 +175,29 @@ const Onboarding = () => {
                     onChange={(e) => setAdhaarNumber(e.target.value)}
                   />
                 </span>
+                <span className="professionalVerificationInput">
+                  <p>Address</p>
+                  <textarea
+                    type="number"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </span>
                 <button
                   className="basicRoundedButton pingUsBtn joinBtn"
                   onClick={() => userSignIn()}
                 >
                   Submit
+                  {isLoading && (
+                    <CircularProgress
+                      style={{
+                        height: "10px",
+                        width: "10px",
+                        color: "#fff",
+                        marginLeft: "10px",
+                      }}
+                    />
+                  )}
                 </button>
               </>
             ) : isOtpSent !== "undefined" && !isOtpSent ? (
@@ -154,11 +227,10 @@ const Onboarding = () => {
                 <span className="professionalVerificationInput">
                   <input
                     type="text"
-                    // placeholder=""
-                    onChange={(e) => setOTP(e.target.value)}
-                    minLength="6"
-                    maxLength="6"
-                    pattern="^\d{6}$"
+                    value={OTP || ""}
+                    onChange={(e) => handleOTPChange(e)}
+                    min={6}
+                    max={6}
                     style={{
                       paddingLeft: "10px",
                       outline: "none",
@@ -176,6 +248,16 @@ const Onboarding = () => {
                 onClick={(e) => handleSendOTP(e)}
               >
                 Sign up
+                {isLoading && (
+                  <CircularProgress
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      color: "#fff",
+                      marginLeft: "10px",
+                    }}
+                  />
+                )}
               </button>
             ) : (
               !isOtpVerified && (
@@ -185,6 +267,16 @@ const Onboarding = () => {
                   onClick={(e) => handleVerifyOTP(e)}
                 >
                   Verify
+                  {isLoading && (
+                    <CircularProgress
+                      style={{
+                        height: "10px",
+                        width: "10px",
+                        color: "#fff",
+                        marginLeft: "10px",
+                      }}
+                    />
+                  )}
                 </button>
               )
             )}

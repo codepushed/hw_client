@@ -1,39 +1,57 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { auth } from "../../config/firebase"; // Adjust the path based on your structure
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { CircularProgress } from "@mui/material";
 import { useRouter } from "next/router";
+import { isMobile } from "react-device-detect";
 
 import Header from "../../components/Header";
+import Snackbars from "../../components/Snackbars";
+
 import { login } from "../../helpers";
-import { validateEmailAndPassword } from "../../helpers/basic";
-import conf from "../../config";
+import { auth } from "../../config/firebase";
 
 const Login = () => {
   const [phoneNo, setPhoneNo] = useState();
   const [reCaptcha, setRecaptcha] = useState();
+  const [snack, setSnack] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [isOtpSent, setIsOtpSent] = useState();
   const [OTP, setOTP] = useState();
   const router = useRouter();
 
   const handleSendOTP = async (e) => {
-    e.preventDefault();
+    if (phoneNo) {
+      setIsLoading(true);
+      e.preventDefault();
 
-    if (!reCaptcha) {
-      alert("erroer");
-    }
+      if (!reCaptcha) {
+        setOpenSnackbar(true);
+        setSnackbarMsg("Recaptcha not available, try again later");
+        setSnack(false);
+      }
 
-    try {
-      const confirmationResults = await signInWithPhoneNumber(
-        auth,
-        phoneNo,
-        reCaptcha
-      );
-      setIsOtpSent(confirmationResults);
-    } catch (error) {
-      alert(error);
+      try {
+        const confirmationResults = await signInWithPhoneNumber(
+          auth,
+          phoneNo,
+          reCaptcha
+        );
+        setIsLoading(false);
+        setIsOtpSent(confirmationResults);
+      } catch (error) {
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Oops! Something went wrong, Try again later");
+        setSnack(false);
+      }
+    } else {
+      setIsLoading(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please enter phone number first!");
+      setSnack(false);
     }
   };
 
@@ -54,8 +72,11 @@ const Login = () => {
   }, [auth]);
 
   const handleVerifyOTP = () => {
-    if (!isOtpSent) {
-      alert("Please send OTP first.");
+    setIsLoading(true);
+    if (!isOtpSent && !OTP) {
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please enter the OTP first.");
+      setSnack(false);
       return;
     }
 
@@ -70,20 +91,46 @@ const Login = () => {
           };
           const response = await login(data);
           if (response?.token) {
+            setIsLoading(false);
+            setOpenSnackbar(true);
+            setSnackbarMsg("Hey, Welcome back!");
+            setSnack(true);
             Cookies.set("userData", JSON.stringify(response));
             router.push("/");
           }
         }
       })
       .catch((error) => {
-        console.error("Error verifying OTP", error);
+        setIsLoading(false);
+        setOpenSnackbar(true);
+        setSnackbarMsg("Error verifying OTP, Please try again");
+        setSnack(false);
       });
+  };
+
+  const handlePhoneNo = (e) => {
+    setPhoneNo("+91" + e.target.value);
+  };
+
+  const handleOTPChange = (e) => {
+    const value = e.target.value;
+
+    if (/^\d*$/.test(value)) {
+      setOTP(value);
+
+      if (value.length > 6) {
+        setOpenSnackbar(true);
+        setSnackbarMsg("Please enter exactly 6 digits");
+        setSnack(false);
+      }
+    }
   };
 
   return (
     <div>
-      <Header isHidden={true} />
+      <Header isHidden={true} isMobileHeader={isMobile} />
       <div className="loginContainer">
+        <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
         <div className="loginLeftContent">
           <div className="loginLeftContentHeading">
             <h1>Welcome Abroad</h1>
@@ -94,19 +141,15 @@ const Login = () => {
             {isOtpSent !== "undefined" && !isOtpSent ? (
               <>
                 <p>What's your phone number?</p>
-                <input
-                  type="text"
-                  // placeholder=""
-                  onChange={(e) => setPhoneNo(e.target.value)}
-                />
+                <input type="text" onChange={(e) => handlePhoneNo(e)} />
               </>
             ) : (
               <>
                 <p>Enter the OTP</p>
                 <input
                   type="text"
-                  // placeholder=""
-                  onChange={(e) => setOTP(e.target.value)}
+                  value={OTP || ""}
+                  onChange={(e) => handleOTPChange(e)}
                   min={6}
                   max={6}
                 />
@@ -130,7 +173,12 @@ const Login = () => {
                 Login
                 {isLoading && (
                   <CircularProgress
-                    style={{ height: "10px", width: "10px", color: "#fff" }}
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      color: "#fff",
+                      marginLeft: "10px",
+                    }}
                   />
                 )}
               </button>
@@ -141,6 +189,16 @@ const Login = () => {
                 onClick={(e) => handleVerifyOTP(e)}
               >
                 Verify
+                {isLoading && (
+                  <CircularProgress
+                    style={{
+                      height: "10px",
+                      width: "10px",
+                      color: "#fff",
+                      marginLeft: "10px",
+                    }}
+                  />
+                )}
               </button>
             )}
           </div>
@@ -179,14 +237,17 @@ const Login = () => {
           </div> */}
         </div>
 
-        <div className="loginRightContent">
-          <h1 className="loginRightContentHead">Get your first</h1>
-          <h1 className="loginRightContentSubHead">Booking done</h1>
-          <div className="loginRightContentImg">
-            <img src="/assets/hw_worker.png" alt="login" />
+        {!isMobile && (
+          <div className="loginRightContent">
+            <h1 className="loginRightContentHead">Get your first</h1>
+            <h1 className="loginRightContentSubHead">Booking done</h1>
+            <div className="loginRightContentImg">
+              <img src="/assets/hw_worker.png" alt="login" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
+
       <div id="recaptcha-container"></div>
     </div>
   );

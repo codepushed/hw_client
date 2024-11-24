@@ -360,6 +360,7 @@
   margin-top: 50px;
   background-color: #f4f2f2;
   padding: 10px 20px;
+  cursor: pointer;
 }
 
 .AllServicesWrapper {
@@ -391,6 +392,12 @@
   font-size: 40px;
   font-weight: 500;
   font-size: 20px;
+}
+
+.ServiceCardsContainerPara {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {
@@ -449,15 +456,14 @@
     height: unset;
     padding: 10px 0;
   }
-  .bentosRowContainer{
+  .bentosRowContainer {
     flex-direction: column;
-
   }
   .bentosExploremoreBtn {
     flex-direction: column-reverse;
   }
   .landingServicesBentosFive {
-   width: 300px;
+    width: 300px;
   }
   .bentosExploreWrapper {
     margin-top: 20px;
@@ -465,4 +471,12 @@
   .landingServicesContainer > p {
     font-size: 15px;
   }
+  .servicesContainer > p {
+    line-height: 22px;
+  }
+
+  .AllServicesWrapper {
+    padding: 0 10px;
+  }
+
 }

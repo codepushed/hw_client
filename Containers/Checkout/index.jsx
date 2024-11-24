@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 
 import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
+import Snackbars from "../../components/Snackbars";
+
 import {
   cartPriceCalculator,
   formatDate,
@@ -13,6 +15,7 @@ import {
   generateTimeSlots,
   getNextThreeDates,
   gstCalculation,
+  isLoggedIn,
   totalPriceWithGst,
 } from "../../helpers/basic";
 import { saveFinalCart } from "../../store/slices/cart";
@@ -20,12 +23,16 @@ import { saveFinalCart } from "../../store/slices/cart";
 
 const Checkout = () => {
   const [open, setOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isSlotOpen, setIsSlotOpen] = useState(false);
   const [availableSlots, setAvailableSlots] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState();
   const [selectedDateSlots, setSelectedDateSlots] = useState();
   const [currentDateSlots, setCurrentDateSlots] = useState();
   const [phoneNo, setPhoneNo] = useState();
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snack, setSnack] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
   const cart = useSelector((state) => state.cart.cart);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -68,22 +75,39 @@ const Checkout = () => {
 
   const handlePayments = () => {
     const userData = Cookies.get("userData");
-    if (userData) {
-      const parseData = JSON.parse(userData);
-      const id = parseData?.user?._id;
-      const checkoutData = {
-        userId: id,
-        bookingDetails: {
-          address: selectedAddress,
-        },
-        serviceId: cart,
-        slotDate: selectedDateSlots,
-        slotTime: currentDateSlots,
-      };
-      dispatch(saveFinalCart(checkoutData));
-      router.push("/cart/choose-payment");
+    if (selectedAddress && selectedDateSlots && currentDateSlots) {
+      if (userData) {
+        const parseData = JSON.parse(userData);
+        const id = parseData?.user?._id;
+        const checkoutData = {
+          userId: id,
+          bookingDetails: {
+            address: selectedAddress,
+          },
+          service: cart,
+          slotDate: selectedDateSlots,
+          slotTime: currentDateSlots,
+        };
+        dispatch(saveFinalCart(checkoutData));
+        router.push("/cart/choose-payment");
+      }
+    } else {
+      setSnack(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please choose slots and address");
     }
   };
+
+  const getLoggedInUser = async () => {
+    const isUserLoggedIn = await isLoggedIn();
+    if (isUserLoggedIn) {
+      setLoggedIn(true);
+    }
+  };
+
+  useEffect(() => {
+    getLoggedInUser();
+  }, []);
 
   return (
     <div className="checkoutContainer">
@@ -108,7 +132,7 @@ const Checkout = () => {
           <div className="checkoutServiceDetailsBox">
             {cart &&
               cart?.map((items, index) => (
-                <div className="checkoutServiceDetails">
+                <div className="checkoutServiceDetails" key={index}>
                   <p>{items.name}</p>
                   <span>
                     <p>&#8377; {items?.price || "0"}</p>
@@ -117,96 +141,107 @@ const Checkout = () => {
                 </div>
               ))}
           </div>
-          <div className="checkout">
-            <div className="checkoutServiceBooking">
-              <div className="checkoutServiceMoreDetails">
-                <img src="/assets/icons/profile_booking.png" alt="people" />
 
-                <span>
-                  <p className="checkoutServiceMorePara">
-                    Send booking details to
-                  </p>
-                  <p className="checkoutServiceMoreSubPara">+91 {phoneNo}</p>
-                </span>
+          {loggedIn && loggedIn ? (
+            <div className="checkout">
+              <div className="checkoutServiceBooking">
+                <div className="checkoutServiceMoreDetails">
+                  <img src="/assets/icons/profile_booking.png" alt="people" />
+
+                  <span>
+                    <p className="checkoutServiceMorePara">
+                      Send booking details to
+                    </p>
+                    <p className="checkoutServiceMoreSubPara">+91 {phoneNo}</p>
+                  </span>
+                </div>
+
+                <div className="checkoutServiceMoreDetails">
+                  <img src="/assets/icons/addresses.png" alt="address" />
+
+                  <span>
+                    <p className="checkoutServiceMorePara">Address</p>
+                  </span>
+                </div>
+                <div className="adrressslotSelectBtn">
+                  {selectedAddress && selectedAddress ? (
+                    <p className="checkoutServiceMoreSubPara">
+                      {selectedAddress}
+                    </p>
+                  ) : (
+                    <button
+                      className="basicRoundedButton"
+                      onClick={() => setOpen(true)}
+                    >
+                      Select an address
+                    </button>
+                  )}
+                </div>
+
+                <div className="checkoutServiceMoreDetails">
+                  <img src="/assets/icons/slot.png" alt="slots" />
+
+                  <span>
+                    <p className="checkoutServiceMorePara">Slot</p>
+                  </span>
+                </div>
+                <div className="adrressslotSelectBtn">
+                  {selectedDateSlots && selectedDateSlots ? (
+                    <p>
+                      {selectedDateSlots} {currentDateSlots}
+                    </p>
+                  ) : (
+                    <button
+                      className="basicRoundedButton"
+                      onClick={() => setIsSlotOpen(true)}
+                    >
+                      Select date and time
+                    </button>
+                  )}
+                </div>
               </div>
 
-              <div className="checkoutServiceMoreDetails">
-                <img src="/assets/icons/addresses.png" alt="address" />
+              <div className="checkoutServicePayments">
+                <h2>Payment summary</h2>
 
-                <span>
-                  <p className="checkoutServiceMorePara">Address</p>
-                </span>
-              </div>
-              <div className="adrressslotSelectBtn">
-                {selectedAddress && selectedAddress ? (
-                  <p className="checkoutServiceMoreSubPara">
-                    {selectedAddress}
-                  </p>
-                ) : (
+                <div className="checkoutServicePaymentsItems">
+                  <p>Item total</p>
+                  <p>&#8377; {cartPriceCalculator(cart)}</p>
+                </div>
+
+                <div className="checkoutServicePaymentsItems">
+                  <p>Taxes and Fee - GST 18%</p>
+                  <p>&#8377; {gstCalculation(cart)}</p>
+                </div>
+
+                <Divider />
+
+                <div className="checkoutServicePaymentsItems">
+                  <p style={{ fontWeight: 700 }}>Total</p>
+                  <p>&#8377; {totalPriceWithGst(cart)}</p>
+                </div>
+
+                <Divider />
+
+                <div className="checkoutServicePaymentsItems proceedBtn">
                   <button
                     className="basicRoundedButton"
-                    onClick={() => setOpen(true)}
+                    onClick={() => handlePayments()}
                   >
-                    Select an address
+                    Proceed
                   </button>
-                )}
-              </div>
-
-              <div className="checkoutServiceMoreDetails">
-                <img src="/assets/icons/slot.png" alt="slots" />
-
-                <span>
-                  <p className="checkoutServiceMorePara">Slot</p>
-                </span>
-              </div>
-              <div className="adrressslotSelectBtn">
-                {selectedDateSlots && selectedDateSlots ? (
-                  <p>
-                    {selectedDateSlots} {currentDateSlots}
-                  </p>
-                ) : (
-                  <button
-                    className="basicRoundedButton"
-                    onClick={() => setIsSlotOpen(true)}
-                  >
-                    Select date and time
-                  </button>
-                )}
+                </div>
               </div>
             </div>
-
-            <div className="checkoutServicePayments">
-              <h2>Payment summary</h2>
-
-              <div className="checkoutServicePaymentsItems">
-                <p>Item total</p>
-                <p>&#8377; {cartPriceCalculator(cart)}</p>
-              </div>
-
-              <div className="checkoutServicePaymentsItems">
-                <p>Taxes and Fee - GST 18%</p>
-                <p>&#8377; {gstCalculation(cart)}</p>
-              </div>
-
-              <Divider />
-
-              <div className="checkoutServicePaymentsItems">
-                <p style={{ fontWeight: 700 }}>Total</p>
-                <p>&#8377; {totalPriceWithGst(cart)}</p>
-              </div>
-
-              <Divider />
-
-              <div className="checkoutServicePaymentsItems proceedBtn">
-                <button
-                  className="basicRoundedButton"
-                  onClick={() => handlePayments()}
-                >
-                  Proceed
-                </button>
-              </div>
-            </div>
-          </div>
+          ) : (
+            <button
+              className="basicRoundedButton"
+              style={{ marginTop: "20px" }}
+              onClick={() => router.push("/login")}
+            >
+              Login to continue
+            </button>
+          )}
           <div className="checkoutCancelPolicy">
             <h2>Cancellation Policy</h2>
             <p>
@@ -217,8 +252,11 @@ const Checkout = () => {
           </div>
         </>
       ) : (
-        <p style={{ textAlign: "center" }}>Your cart is empty</p>
+        <p style={{ textAlign: "center" }} className="yourcartisempty">
+          Your cart is empty
+        </p>
       )}
+      <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
     </div>
   );
 };

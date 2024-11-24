@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-
-import { basicModalStyling, basicModalStylingMobile } from "./helper";
 import Image from "next/image";
-import { isMobile, isMobileSafari } from "react-device-detect";
 
 const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
   const [isMobileDefault, setIsMobileDefault] = useState(false);
@@ -14,11 +11,10 @@ const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: isMobileDefault ? 300 : 600,
+    width: isMobileDefault ? 360 : 600,
     bgcolor: "background.paper",
     outline: "none",
     borderRadius: "6px",
-    paddingLeft: 4,
     marginTop: "10px",
   };
 
@@ -69,21 +65,22 @@ const SelectService = ({ isOpen, handleClose, data, setSelectedServices }) => {
           </h1>
 
           <div className="servicesTypesContainer moreServicesTypesContainer">
-            {data?.map((service, index) => (
-              <div
-                className="servicesTypes moreServiceTypes"
-                onClick={() => handleSelectService(service)}
-                key={index}
-              >
-                <Image
-                  src={service.img}
-                  alt="service"
-                  height={500}
-                  width={500}
-                />
-                <p>{service.name}</p>
-              </div>
-            ))}
+            {data &&
+              data?.subCategory?.map((service, index) => (
+                <div
+                  className="servicesTypes moreServiceTypes"
+                  onClick={() => handleSelectService(service)}
+                  key={index}
+                >
+                  <Image
+                    src={service?.subServiceName[0].image}
+                    alt="service"
+                    height={500}
+                    width={500}
+                  />
+                  <p>{service.name}</p>
+                </div>
+              ))}
           </div>
         </Box>
       </Modal>

@@ -120,6 +120,10 @@ export const userApi = {
   getAllProfessionals: () => resolveGet(`${endPoints.userAllProfessionals}`),
   getAllProfessionalsByProfession: (data) => resolveGet(`${endPoints.getProfessionalsByProfession}?profession=${data}`),
   sentBookingDetails: (data = {}) => resolvePost(endPoints.sentBookingDetails, data),
+  upload: (data = {}) => resolvePost(endPoints.upload, data),
+  getUserById: (data) => resolveGet(`${endPoints.getUserById}/${data}`),
+  editBooking: (data = {}) => resolvePost(endPoints.editBooking, data),
+
 };
 
 export const adminApi = {
@@ -127,8 +131,10 @@ export const adminApi = {
     resolveGet(`${endPoints.adminGetAllProfessionals}`),
   adhaarVerification: (data = {}) =>
     resolvePut(`${endPoints.adminAdhaarVerification}${data.id}`, data),
+  adminLogin: (data = {}) => resolvePost(endPoints.adminLogin, data),
 };
 
 export const professionalApi = {
-  signUp: (data = {}) => resolvePost(endPoints.signup, data),
+  signUp: (data = {}) => resolvePost(endPoints.professionalSignUp, data),
+  updateProfessionalDetails: (data = {}) => resolvePost(endPoints.updateProfessionalDetails, data),
 };

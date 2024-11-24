@@ -2,19 +2,16 @@ import Cookies from "js-cookie";
 
 export const validateEmailAndPassword = (email, password) => {
   if (!email || email.trim() === "") {
-    alert("Email should not be empty");
     return false;
   }
 
   if (!password || password.trim() === "") {
-    alert("Password should not be empty");
     return false;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (!emailRegex.test(email)) {
-    alert("Invalid email address");
     return false;
   }
 
@@ -27,6 +24,16 @@ export const isLoggedIn = () => {
     const userName = JSON.parse(isLoggedIn);
     if (userName.token) {
       return true;
+    }
+  }
+};
+
+export const isLoggedType = () => {
+  const isLoggedIn = Cookies.get("userData");
+  if (isLoggedIn) {
+    const userName = JSON.parse(isLoggedIn);
+    if (userName?.user?.role) {
+      return userName?.user?.role;
     }
   }
 };
@@ -130,7 +137,6 @@ export const formatPhoneNumber = (phoneNumber) => {
   return null;
 };
 
-
 export function getRandomObject(arr) {
   // Check if the array is empty
   if (arr.length === 0) {
@@ -143,3 +149,60 @@ export function getRandomObject(arr) {
   // Return the random object
   return arr[randomIndex];
 }
+
+export const createSlug = (blogName) => {
+  if (!blogName || typeof blogName !== "string") {
+    throw new Error("Invalid input. Please provide a valid string.");
+  }
+
+  return blogName
+    .trim() // Remove leading and trailing whitespace
+    .toLowerCase() // Convert to lowercase
+    .replace(/[^a-z0-9\s-]/g, "") // Remove special characters
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+    .replace(/-+/g, "-"); // Ensure no consecutive hyphens
+};
+
+export const convertISODate = (isoString) => {
+  const date = new Date(isoString);
+
+  // Format the date into a readable format (e.g., MM/DD/YYYY, HH:MM:SS)
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true, // Use 12-hour format
+  };
+
+  return date.toLocaleString("en-US", options); // Customize locale and format as needed
+};
+
+export const getLoggedInUserDetails = () => {
+  const userData = Cookies.get("userData");
+  if (userData) {
+    const userName = JSON.parse(userData);
+    const user = userName?.user;
+    return user;
+  }
+};
+
+export const EmailPreview = () => {
+  return (
+    <div
+      style={{ border: "1px solid #ccc", padding: "20px", margin: "20px 0" }}
+    >
+      <h2></h2>
+      <p>Hi admin,</p>
+      <p>Booking received</p>
+      <p>
+        To assign a profession
+        <strong>Login in as admin</strong>.
+      </p>
+      <p>Thank you,</p>
+      <p>The Homework Service Team</p>
+    </div>
+  );
+};

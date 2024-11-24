@@ -9,13 +9,39 @@ import { persistStore } from "redux-persist";
 import Loader from "../components/Loader";
 import productConfigs from "../config";
 import store from "../store/store";
+import SwipeableEdgeDrawer from '../components/Drawers/SwipeableEdgeDrawer'
 
 import "../styles/global.css";
 import "../styles/scss/style.scss";
+import { isLoggedType } from "../helpers/basic";
 
 const MyApp = ({ Component, pageProps }) => {
   const [isLoading, setLoading] = useState(false);
+  const { asPath } = useRouter();
   const router = useRouter();
+  const professionalRestrictions = [
+    "/professional/completedetails",
+    "/professional/dashboard",
+    "/professional/onboarding",
+    "/professional/profile",
+    "/professional/login",
+    "/",
+  ];
+  const userRestrictions = [
+    "/professional/completedetails",
+    "/professional/dashboard",
+    "/professional/onboarding",
+    "/professional/profile",
+    "/professional/login",
+    "/login",
+    "/signup",
+    "/admin",
+    "/admin/dashboard",
+    "/admin/dashboard/bookings",
+  ];
+
+  const adminRestrictions = ["/admin/dashboard", "/admin/dashboard/bookings"];
+
   let persistor = persistStore(store);
 
   useEffect(() => {
@@ -23,12 +49,41 @@ const MyApp = ({ Component, pageProps }) => {
     ReactGA.initialize(productConfigs.GA);
   }, []);
 
+  const checkUserRestriction = async () => {
+    setLoading(true);
+    const isLoggedIn = await isLoggedType();
+    if (isLoggedIn) {
+      if (isLoggedIn === "user") {
+        if (userRestrictions.includes(asPath)) {
+          router.back();
+          return;
+        }
+      } else if (isLoggedIn === "professional") {
+        if (!professionalRestrictions.includes(asPath)) {
+          router.back();
+          return;
+        }
+      } else {
+        if (!adminRestrictions.includes(asPath)) {
+          router.back();
+          return;
+        }
+      }
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    checkUserRestriction();
+  }, [asPath]);
+
   return (
     <>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           {isLoading && <Loader />}
           <Component {...pageProps} />
+          {/* <SwipeableEdgeDrawer /> */}
         </PersistGate>
       </Provider>
     </>

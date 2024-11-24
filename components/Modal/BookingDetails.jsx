@@ -25,6 +25,8 @@ const BookingDetails = ({ open, handleClose, bookingDetails }) => {
     <div>
       <Modal
         open={open}
+        disableEscapeKeyDown
+        disableBackdropClick
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -33,7 +35,7 @@ const BookingDetails = ({ open, handleClose, bookingDetails }) => {
           <div className="drawerCloseBtnWrapper drawerCloseBtnSpacing">
             <div className="drawerCloseBtn">x</div>
           </div>
-          {finalCart?.serviceId?.map((item, indx) => (
+          {bookingDetails && JSON.parse(bookingDetails?.service).map((item, indx) => (
             <h4
               className="bookingDetailsheading"
               key={indx}
@@ -47,8 +49,8 @@ const BookingDetails = ({ open, handleClose, bookingDetails }) => {
             className="serviceCardPricing bookingsSubHeading"
             style={{ gap: "10px" }}
           >
-            <p>{finalCart?.slotDate}</p>
-            <p>{finalCart?.slotTime}</p>
+            <p>{bookingDetails?.slotDate}</p>
+            <p>{bookingDetails?.slotTime}</p>
           </span>
           <span className="serviceCardPricingRuppee bookingsSubHeading">
             {/* <img
@@ -66,31 +68,35 @@ const BookingDetails = ({ open, handleClose, bookingDetails }) => {
           <p style={{ marginTop: "50px", color: "gray" }}>
             Professional details
           </p>
-          <div className="bookingDetailsProfessional">
-            <div className="professionalDetails">
-              <h1 style={{ marginTop: "10px", fontSize: "20px" }}>
-                Session with
-              </h1>
-              <h1
-                style={{
-                  marginTop: "10px",
-                  fontSize: "20px",
-                  marginLeft: "8px",
-                  textTransform: "capitalize",
-                }}
-              >
-                {bookingDetails?.professional?.name}
-              </h1>
+          {bookingDetails && bookingDetails?.bookingStatus !== "Pending" ? (
+            <div className="bookingDetailsProfessional">
+              <div className="professionalDetails">
+                <h1 style={{ marginTop: "10px", fontSize: "20px" }}>
+                  Session with
+                </h1>
+                <h1
+                  style={{
+                    marginTop: "10px",
+                    fontSize: "20px",
+                    marginLeft: "8px",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {bookingDetails?.professional?.name}
+                </h1>
+              </div>
+
+              <p>{bookingDetails?.professional?.phone}</p>
+              <p>{bookingDetails?.professional?.profession}</p>
+
+              {/* <p style={{ marginTop: "50px", color: "gray" }}>OTP</p>
+            <h4 style={{ marginBottom: "20px" }}>{bookingDetails?.otp}</h4> */}
+
+              {/* <img src="/assets/professionalprofile.png" alt="professional" /> */}
             </div>
-
-            <p>{bookingDetails?.professional?.phone}</p>
-            <p>{bookingDetails?.professional?.profession}</p>
-
-            <p style={{ marginTop: "50px", color: "gray" }}>OTP</p>
-            <h4 style={{ marginBottom: "20px" }}>{bookingDetails?.otp}</h4>
-
-            {/* <img src="/assets/professionalprofile.png" alt="professional" /> */}
-          </div>
+          ) : (
+            "Please wait.. we will assign a professional"
+          )}
         </Box>
       </Modal>
     </div>
