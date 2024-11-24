@@ -13,7 +13,8 @@ import {
   sentBookingDetails,
   // userGetAllProfessionals,
 } from "../../helpers";
-import { EmailPreview } from "../../helpers/basic";
+import { EmailPreview, isLoggedIn } from "../../helpers/basic";
+import { useRouter } from "next/router";
 
 // import { getRandomObject } from "../../helpers/basic";
 
@@ -28,6 +29,14 @@ const ChoosePayment = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMsg, setSnackbarMsg] = useState();
   const finalCart = useSelector((state) => state.cart.finalCart);
+  const router = useRouter();
+
+  const getLoggedInUser = async () => {
+    const isUserLoggedIn = await isLoggedIn();
+    if (!isUserLoggedIn) {
+      router.push("/cart");
+    }
+  };
 
   const handleClose = () => {
     if (
@@ -136,6 +145,10 @@ const ChoosePayment = () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [bookingDetails]);
+
+  useEffect(() => {
+    getLoggedInUser();
+  }, []);
 
   return (
     <div className="professionalLoginContainer">

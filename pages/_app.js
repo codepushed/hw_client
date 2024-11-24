@@ -9,7 +9,7 @@ import { persistStore } from "redux-persist";
 import Loader from "../components/Loader";
 import productConfigs from "../config";
 import store from "../store/store";
-import SwipeableEdgeDrawer from '../components/Drawers/SwipeableEdgeDrawer'
+import SwipeableEdgeDrawer from "../components/Drawers/SwipeableEdgeDrawer";
 
 import "../styles/global.css";
 import "../styles/scss/style.scss";
@@ -52,6 +52,13 @@ const MyApp = ({ Component, pageProps }) => {
   const checkUserRestriction = async () => {
     setLoading(true);
     const isLoggedIn = await isLoggedType();
+
+    if (!isLoggedIn) {
+      // If not logged in, they can go anywhere
+      setLoading(false);
+      return;
+    }
+
     if (isLoggedIn) {
       if (isLoggedIn === "user") {
         if (userRestrictions.includes(asPath)) {
@@ -78,15 +85,12 @@ const MyApp = ({ Component, pageProps }) => {
   }, [asPath]);
 
   return (
-    <>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          {isLoading && <Loader />}
-          <Component {...pageProps} />
-          {/* <SwipeableEdgeDrawer /> */}
-        </PersistGate>
-      </Provider>
-    </>
+    <Provider store={store}>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+        {isLoading && <Loader />}
+        <Component {...pageProps} />
+      {/* </PersistGate> */}
+    </Provider>
   );
 };
 
