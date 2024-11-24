@@ -62,7 +62,7 @@ const Header = ({ isHidden, isMobileHeader }) => {
 
   useEffect(() => {
     getLoggedInUser();
-    // getUsername();
+    getUsername();
   }, []);
 
   const handleLogout = () => {

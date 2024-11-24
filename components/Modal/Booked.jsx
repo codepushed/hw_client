@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { convertISODate } from "../../helpers/basic";
@@ -7,6 +7,7 @@ import Snackbars from "../Snackbars";
 const Booked = ({ bookingModal, handleBookingModal, bookingData }) => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snack, setSnack] = useState(false);
+  const [service, setService] = useState();
 
   const style = {
     position: "absolute",
@@ -23,13 +24,23 @@ const Booked = ({ bookingModal, handleBookingModal, bookingData }) => {
 
   const copyMessage = async () => {
     if (bookingData) {
+      const services = Array.isArray(bookingData?.service)
+      ? bookingData?.service
+      : JSON.parse(bookingData?.service || '[]'); // Safe fallback if it's an empty string
+
+    // Map over the services array to get only name and price
+    const serviceDetails = services.map((service) => `
+      Service: ${service?.name || "Not specified"}
+      Price: ${service?.price || "Not specified"}
+    `).join("\n\n");
+
       const message = `
     Hi,
 
     Thank you for booking with Homework Service! We've received your booking request and are currently in the process of assigning a professional to assist you.
 
     Below are the details of the service you requested:
-    Service: ${bookingData?.service?.name}
+    Service: ${serviceDetails}
     Booking date and time: ${convertISODate(bookingData?.updatedAt)}
 
     Our professional will be in touch with you soon and will arrive on ${
@@ -57,6 +68,8 @@ const Booked = ({ bookingModal, handleBookingModal, bookingData }) => {
     }
   };
 
+
+
   return (
     <div>
       <Modal
@@ -78,9 +91,33 @@ const Booked = ({ bookingModal, handleBookingModal, bookingData }) => {
 
           <div className="customerDetails">
             <div className="customerDetailsSpecific">
-              <p>Service</p>
-              <h3>{bookingData?.service?.name}</h3>
-              <h3>Price: {bookingData?.service?.price}</h3>
+              {bookingData &&
+                bookingData?.service &&
+                (() => {
+                  let services;
+                  try {
+                    // Try parsing the service data
+                    services = JSON.parse(bookingData?.service);
+                    // Check if the parsed data is an array
+                    if (!Array.isArray(services)) {
+                      throw new Error("Parsed service is not an array");
+                    }
+                  } catch (error) {
+                    // If parsing fails or it's not an array, log the error and return a fallback
+                    console.error("Error parsing service data:", error.message);
+                    return <p>Invalid service data</p>;
+                  }
+
+                  // Only map if services is a valid array
+                  return services.map((item, index) => (
+                    <div key={index} className="customerDetailsSpecific">
+                      <p>Service</p>
+                      <h3>{item.name}</h3>
+                      <h3>Price: {item?.price}</h3>
+                    </div>
+                  ));
+                })()}
+
               <h3>
                 Slot: {bookingData?.slotDate}, {bookingData?.slotTime}
               </h3>

@@ -188,3 +188,21 @@ export const getLoggedInUserDetails = () => {
     return user;
   }
 };
+
+export const EmailPreview = () => {
+  return (
+    <div
+      style={{ border: "1px solid #ccc", padding: "20px", margin: "20px 0" }}
+    >
+      <h2></h2>
+      <p>Hi admin,</p>
+      <p>Booking received</p>
+      <p>
+        To assign a profession
+        <strong>Login in as admin</strong>.
+      </p>
+      <p>Thank you,</p>
+      <p>The Homework Service Team</p>
+    </div>
+  );
+};

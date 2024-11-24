@@ -70,9 +70,10 @@ const ProfessionalList = ({
   }, [allProfessionals, searchQuery]);
 
   const handleAssignPro = async (pro) => {
+    console.log(pro, bookingData)
     setIsLoading(true);
     const data = {
-      professionaId: pro?._id,
+      professionalId: pro?._id,
       bookingId: bookingData?._id,
       bookingStatus: "Accepted",
     };

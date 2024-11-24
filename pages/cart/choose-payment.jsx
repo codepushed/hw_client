@@ -13,6 +13,7 @@ import {
   sentBookingDetails,
   // userGetAllProfessionals,
 } from "../../helpers";
+import { EmailPreview } from "../../helpers/basic";
 
 // import { getRandomObject } from "../../helpers/basic";
 
@@ -39,28 +40,38 @@ const ChoosePayment = () => {
 
   const handleCreateBooking = async () => {
     setIsLoading(true);
-    const data = {
-      userId: finalCart?.userId,
-      bookingDetails: finalCart?.bookingDetails?.address,
-      serviceId: finalCart[0]?.serviceId[0]?._id,
-      slotDate: finalCart?.slotDate,
-      slotTime: finalCart?.slotTime,
-      // otp: OTP,
-      // professionalId: assignedProfessional?._id,
-    };
+    const formData = new FormData();
+    formData.append("userId", finalCart?.userId);
+    formData.append("bookingDetails", finalCart?.bookingDetails?.address);
+    formData.append("service", JSON.stringify(finalCart?.service)); // Stringify nested object/array
+    formData.append("slotDate", finalCart?.slotDate);
+    formData.append("slotTime", finalCart?.slotTime);
+    // const data = {
+    //   userId: finalCart?.userId,
+    //   bookingDetails: finalCart?.bookingDetails?.address,
+    //   service: finalCart?.service,
+    //   slotDate: finalCart?.slotDate,
+    //   slotTime: finalCart?.slotTime,
+    //   // otp: OTP,
+    //   // professionalId: assignedProfessional?._id,
+    // };
+
+    // console.log(data, "yo");
 
     if (finalCart) {
       try {
-        const response = await createBooking(data);
+        const response = await createBooking(formData);
         setBookingDetails(response?.booking);
-        sendBookingConfirmation(response?.booking);
-        setOpen(true);
-        setIsLoading(false);
-        setOpenSnackbar(true);
-        setSnackbarMsg(
-          "Booking sucessful, please wait we will assign a professional"
-        );
-        setSnack(true);
+        if (response) {
+          await sendBookingConfirmation(response?.booking);
+          setOpen(true);
+          setIsLoading(false);
+          setOpenSnackbar(true);
+          setSnackbarMsg(
+            "Booking sucessful, please wait we will assign a professional"
+          );
+          setSnack(true);
+        }
       } catch {
         setOpen(false);
         setIsLoading(false);
@@ -73,14 +84,15 @@ const ChoosePayment = () => {
     }
   };
 
-  const sendBookingConfirmation = async (response) => {
+  const sendBookingConfirmation = async () => {
     const data = {
-      to: "homeworkindservice@gmail.com",
-      subject: "Booking recieved, Login as admin to assign professional!",
-      message: response,
+      to: "homeworkindservices@gmail.com",
+      subject: "Booking recieved",
+      message:
+        "Hi Admin, you have a recieved a booking on behalf on homework. Please login as admin and assign a professional to the user",
     };
     if (data) {
-      const response = await sentBookingDetails(data);
+      await sentBookingDetails(data);
     }
   };
 
@@ -93,11 +105,13 @@ const ChoosePayment = () => {
   // };
 
   useEffect(() => {
-    if (
-      bookingDetails?.bookingStatus !== "Pending" &&
-      bookingDetails?.bookingStatus !== "Accepted"
-    ) {
-      setOpen(true);
+    if (bookingDetails) {
+      if (
+        bookingDetails?.bookingStatus !== "Pending" ||
+        bookingDetails?.bookingStatus !== "Accepted"
+      ) {
+        setOpen(true);
+      }
     } else {
       setOpen(false);
     }
@@ -105,12 +119,14 @@ const ChoosePayment = () => {
 
   useEffect(() => {
     const handleBeforeUnload = (e) => {
-      if (
-        bookingDetails?.bookingStatus === "Pending" ||
-        bookingDetails?.bookingStatus === "Accepted"
-      ) {
-        e.preventDefault();
-        e.returnValue = "";
+      if (bookingDetails) {
+        if (
+          bookingDetails?.bookingStatus === "Pending" ||
+          bookingDetails?.bookingStatus === "Accepted"
+        ) {
+          e.preventDefault();
+          e.returnValue = "";
+        }
       }
     };
 
