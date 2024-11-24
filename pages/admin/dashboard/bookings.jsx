@@ -41,11 +41,6 @@ const Bookings = () => {
     getLoggedInUser();
   }, []);
 
-  //assign and update status
-  // create booking from user end
-  // user can only book one at a time, check if the bookingStatus === Accepted || Pending,
-  // then dont allow to book, if completed then he can,
-
   return (
     <div>
       <HeaderAdmin />

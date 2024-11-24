@@ -25,6 +25,8 @@ const BookingDetails = ({ open, handleClose, bookingDetails }) => {
     <div>
       <Modal
         open={open}
+        disableEscapeKeyDown
+        disableBackdropClick
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -86,8 +88,8 @@ const BookingDetails = ({ open, handleClose, bookingDetails }) => {
             <p>{bookingDetails?.professional?.phone}</p>
             <p>{bookingDetails?.professional?.profession}</p>
 
-            <p style={{ marginTop: "50px", color: "gray" }}>OTP</p>
-            <h4 style={{ marginBottom: "20px" }}>{bookingDetails?.otp}</h4>
+            {/* <p style={{ marginTop: "50px", color: "gray" }}>OTP</p>
+            <h4 style={{ marginBottom: "20px" }}>{bookingDetails?.otp}</h4> */}
 
             {/* <img src="/assets/professionalprofile.png" alt="professional" /> */}
           </div>

@@ -123,6 +123,7 @@ const Profile = ({ data }) => {
                   className="profileRightFormInput"
                   value={name || data?.name}
                   onChange={(e) => setName(e.target.value)}
+                  disabled
                 />
               </div>
 
@@ -133,6 +134,7 @@ const Profile = ({ data }) => {
                   className="profileRightFormInput"
                   value={email || data?.email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled
                 />
               </div>
 

@@ -27,20 +27,20 @@ const Bookings = () => {
       {isLogged ? (
         <div className="bookings">
           <div className="bookingsContent">
-            <div className="bookingImgContainer">
+            {/* <div className="bookingImgContainer">
               <img
                 src="/assets/Modern Kitchen Interior Design.jpg"
                 alt="bookings"
               />
-            </div>
+            </div> */}
 
             <div className="bookingsHeadingContainer">
               <div>
-                <h1 className="bookingsHeading">Kitchen Cleaning</h1>
-                <p className="bookingsSubHeading">Chimney cleaning</p>
+                <h1 className="bookingsHeading">Your bookings</h1>
+                <p className="bookingsSubHeading">will appear here soon</p>
               </div>
 
-              <span className="serviceCardPricing bookingsSubHeading">
+              {/* <span className="serviceCardPricing bookingsSubHeading">
                 <p>7 Aug 2024</p>
                 <img
                   src="/assets/icons/dot.png"
@@ -51,11 +51,11 @@ const Bookings = () => {
                 <span className="serviceCardPricingRuppee bookingsSubHeading">
                   <p>11:00 AM</p>
                 </span>
-              </span>
+              </span> */}
             </div>
           </div>
 
-          <button className="viewDetailsBtn">View details</button>
+          {/* <button className="viewDetailsBtn">View details</button> */}
         </div>
       ) : (
         <Loader />

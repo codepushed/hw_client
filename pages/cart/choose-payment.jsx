@@ -28,8 +28,14 @@ const ChoosePayment = () => {
   const [snackbarMsg, setSnackbarMsg] = useState();
   const finalCart = useSelector((state) => state.cart.finalCart);
 
-  const handleClose = () => setOpen(false);
-  
+  const handleClose = () => {
+    if (
+      !bookingDetails?.bookingStatus === "Pending" ||
+      !bookingDetails?.bookingStatus === "Accepted"
+    ) {
+      setOpen(false);
+    }
+  };
 
   const handleCreateBooking = async () => {
     setIsLoading(true);
@@ -43,13 +49,11 @@ const ChoosePayment = () => {
       // professionalId: assignedProfessional?._id,
     };
 
-    console.log(data, "data");
-
     if (finalCart) {
       try {
-        // const response = await createBooking(data);
+        const response = await createBooking(data);
         setBookingDetails(response?.booking);
-        // sendBookingConfirmation(response?.booking);
+        sendBookingConfirmation(response?.booking);
         setOpen(true);
         setIsLoading(false);
         setOpenSnackbar(true);
@@ -87,6 +91,17 @@ const ChoosePayment = () => {
   //   ).join("");
   //   setOTP(otp);
   // };
+
+  useEffect(() => {
+    if (
+      bookingDetails?.bookingStatus !== "Pending" &&
+      bookingDetails?.bookingStatus !== "Accepted"
+    ) {
+      setOpen(true);
+    } else {
+      setOpen(false);
+    }
+  }, [bookingDetails]);
 
   return (
     <div className="professionalLoginContainer">

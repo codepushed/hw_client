@@ -6,6 +6,8 @@ import Cookies from "js-cookie";
 
 import Address from "../../components/Modal/Address";
 import Slot from "../../components/Modal/Slot";
+import Snackbars from "../../components/Snackbars";
+
 import {
   cartPriceCalculator,
   formatDate,
@@ -28,6 +30,9 @@ const Checkout = () => {
   const [selectedDateSlots, setSelectedDateSlots] = useState();
   const [currentDateSlots, setCurrentDateSlots] = useState();
   const [phoneNo, setPhoneNo] = useState();
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snack, setSnack] = useState(false);
+  const [snackbarMsg, setSnackbarMsg] = useState();
   const cart = useSelector((state) => state.cart.cart);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -68,25 +73,28 @@ const Checkout = () => {
     getUserDetails();
   }, []);
 
-  //check for address, slots
-
-
   const handlePayments = () => {
     const userData = Cookies.get("userData");
-    if (userData) {
-      const parseData = JSON.parse(userData);
-      const id = parseData?.user?._id;
-      const checkoutData = {
-        userId: id,
-        bookingDetails: {
-          address: selectedAddress,
-        },
-        service: cart,
-        slotDate: selectedDateSlots,
-        slotTime: currentDateSlots,
-      };
-      dispatch(saveFinalCart(checkoutData));
-      router.push("/cart/choose-payment");
+    if (selectedAddress && selectedDateSlots && currentDateSlots) {
+      if (userData) {
+        const parseData = JSON.parse(userData);
+        const id = parseData?.user?._id;
+        const checkoutData = {
+          userId: id,
+          bookingDetails: {
+            address: selectedAddress,
+          },
+          service: cart,
+          slotDate: selectedDateSlots,
+          slotTime: currentDateSlots,
+        };
+        dispatch(saveFinalCart(checkoutData));
+        router.push("/cart/choose-payment");
+      }
+    } else {
+      setSnack(false);
+      setOpenSnackbar(true);
+      setSnackbarMsg("Please choose slots and address");
     }
   };
 
@@ -124,7 +132,7 @@ const Checkout = () => {
           <div className="checkoutServiceDetailsBox">
             {cart &&
               cart?.map((items, index) => (
-                <div className="checkoutServiceDetails">
+                <div className="checkoutServiceDetails" key={index}>
                   <p>{items.name}</p>
                   <span>
                     <p>&#8377; {items?.price || "0"}</p>
@@ -244,8 +252,11 @@ const Checkout = () => {
           </div>
         </>
       ) : (
-        <p style={{ textAlign: "center" }} className="yourcartisempty">Your cart is empty</p>
+        <p style={{ textAlign: "center" }} className="yourcartisempty">
+          Your cart is empty
+        </p>
       )}
+      <Snackbars open={openSnackbar} msg={snackbarMsg} snack={snack} />
     </div>
   );
 };

@@ -44,6 +44,7 @@ const Modal = ({ isOpen, handleClosed, isVerified }) => {
         open={isOpen}
         onClose={handleClosed}
         disableEscapeKeyDown
+        disableBackdropClick
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
