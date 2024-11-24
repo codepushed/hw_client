@@ -85,15 +85,12 @@ const MyApp = ({ Component, pageProps }) => {
   }, [asPath]);
 
   return (
-    <>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          {isLoading && <Loader />}
-          <Component {...pageProps} />
-          {/* <SwipeableEdgeDrawer /> */}
-        </PersistGate>
-      </Provider>
-    </>
+    <Provider store={store}>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+        {isLoading && <Loader />}
+        <Component {...pageProps} />
+      {/* </PersistGate> */}
+    </Provider>
   );
 };
 
