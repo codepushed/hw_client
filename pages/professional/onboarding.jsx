@@ -40,7 +40,7 @@ const Onboarding = () => {
             name: fullname,
             adhaarNumber: aadhaarNumber,
             phone: isPhoneValid,
-            address: address
+            address: address,
           };
           const response = await professionalSignUp(data);
           if (response?.token) {
@@ -77,10 +77,9 @@ const Onboarding = () => {
     }
 
     try {
-      const isPhoneValid = formatPhoneNumber(phoneNo);
       const confirmationResults = await signInWithPhoneNumber(
         auth,
-        isPhoneValid,
+        phoneNo,
         reCaptcha
       );
       setIsOtpSent(confirmationResults);
@@ -122,8 +121,7 @@ const Onboarding = () => {
       .confirm(OTP)
       .then(async (result) => {
         setIsOtpVerified(result?.user);
-    setIsLoading(false);
-
+        setIsLoading(false);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -158,7 +156,7 @@ const Onboarding = () => {
           <div className="professionalVerificationContainer">
             {isOtpVerified && isOtpVerified ? (
               <>
-              <h2>Enter your details</h2>
+                <h2>Enter your details</h2>
                 <span className="professionalVerificationInput">
                   <p>Full name</p>
                   <input
