@@ -14,8 +14,8 @@ import JobCard from "../Card/JobCard";
 
 import { staticJobCard } from "../../Static";
 
-const ToggleWidget = () => {
-  const [value, setValue] = useState("2");
+const ToggleWidget = ({ name }) => {
+  const [value, setValue] = useState("1");
   const [options, setOptions] = useState({
     type: "radial-gauge",
     value: 80,
@@ -79,7 +79,7 @@ const ToggleWidget = () => {
         </Box>
         <span className="toggleWidgetProDetails">
           <p>Hey</p>
-          <h2>Shristi</h2>
+          <h2>{name || "Professional"}</h2>
         </span>
         <TabPanel value="1" className="toggleWidgetTabPanel">
           <div className="toggleWidgetPanelOne">

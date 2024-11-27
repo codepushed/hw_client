@@ -68,6 +68,7 @@ const Onboarding = () => {
 
   const handleSendOTP = async (e) => {
     setIsLoading(true);
+    const isPhoneValid = formatPhoneNumber(phoneNo);
     e.preventDefault();
 
     if (!reCaptcha) {
