@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 import ToggleWidget from "../../components/ToggleWidget";
 import Header from "../../components/Header";
@@ -14,6 +15,7 @@ import { getLoggedInUserDetails, isLoggedIn } from "../../helpers/basic";
 const Dashboard = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [open, setOpen] = useState(false);
+  const [name, setName] = useState();
   const router = useRouter();
 
   const handleClose = () => {
@@ -40,9 +42,19 @@ const Dashboard = () => {
     }
   };
 
+  const getUsername = () => {
+    const userData = Cookies.get("userData");
+    if (userData) {
+      const parseData = JSON.parse(userData);
+      const FirstName = parseData?.user?.name;
+      setName(FirstName);
+    }
+  };
+
   useEffect(() => {
     getLoggedInUser();
     isVerified();
+    getUsername();
   }, []);
 
   return (
@@ -50,7 +62,7 @@ const Dashboard = () => {
       <Header isMobileHeader={isMobile} />
       {isLogged ? (
         <>
-          <ToggleWidget />
+          <ToggleWidget name={name} />
           <Modal isOpen={open} handleClosed={handleClose} />
           <ServiceDetailsModel />
           <OTP />

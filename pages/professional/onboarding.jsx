@@ -39,7 +39,7 @@ const Onboarding = () => {
           const data = {
             name: fullname,
             adhaarNumber: aadhaarNumber,
-            phone: isPhoneValid,
+            phone: phoneNo,
             address: address
           };
           const response = await professionalSignUp(data);
@@ -68,6 +68,7 @@ const Onboarding = () => {
 
   const handleSendOTP = async (e) => {
     setIsLoading(true);
+    const isPhoneValid = formatPhoneNumber(phoneNo);
     e.preventDefault();
 
     if (!reCaptcha) {
@@ -77,7 +78,6 @@ const Onboarding = () => {
     }
 
     try {
-      const isPhoneValid = formatPhoneNumber(phoneNo);
       const confirmationResults = await signInWithPhoneNumber(
         auth,
         isPhoneValid,

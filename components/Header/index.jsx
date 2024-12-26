@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Cookies from "js-cookie";
@@ -13,19 +13,27 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Logo from "../Logo";
 
 import { useRouter } from "next/router";
-import { isLoggedIn } from "../../helpers/basic";
+import { isLoggedIn, isLoggedType } from "../../helpers/basic";
 import { useSelector } from "react-redux";
 
 const Header = ({ isHidden, isMobileHeader }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [username, setUsername] = useState("S");
+  const [userType, setUserType] = useState();
   const [name, setName] = useState("");
   const open = Boolean(anchorEl);
   const [anchorElMobile, setAnchorEMobile] = React.useState(null);
   const openMobileNav = Boolean(anchorElMobile);
   const router = useRouter();
   const cart = useSelector((state) => state.cart.cart);
+
+  const getUserType = () => {
+    const user = isLoggedType();
+    if (user) {
+      setUserType(user);
+    }
+  };
 
   const handleClickMobileMenu = (event) => {
     setAnchorEMobile(event.currentTarget);
@@ -63,6 +71,7 @@ const Header = ({ isHidden, isMobileHeader }) => {
   useEffect(() => {
     getLoggedInUser();
     getUsername();
+    getUserType();
   }, []);
 
   const handleLogout = () => {
@@ -94,7 +103,7 @@ const Header = ({ isHidden, isMobileHeader }) => {
   const handleLogin = () => {
     setAnchorEMobile(null);
     router.push("/login");
-  }
+  };
 
   return (
     <div className="headerContainer">
@@ -147,22 +156,24 @@ const Header = ({ isHidden, isMobileHeader }) => {
             {loggedIn && (
               <>
                 <>
-                  <IconButton
-                    aria-label="cart"
-                    onClick={() => router.push("/cart")}
-                  >
-                    <Badge
-                      badgeContent={cart && cart.length}
-                      sx={{
-                        "& .MuiBadge-badge": {
-                          color: "#fff",
-                          backgroundColor: "#FF8C8C",
-                        },
-                      }}
+                  {userType === "user" && (
+                    <IconButton
+                      aria-label="cart"
+                      onClick={() => router.push("/cart")}
                     >
-                      <ShoppingCartIcon />
-                    </Badge>
-                  </IconButton>
+                      <Badge
+                        badgeContent={cart && cart.length}
+                        sx={{
+                          "& .MuiBadge-badge": {
+                            color: "#fff",
+                            backgroundColor: "#FF8C8C",
+                          },
+                        }}
+                      >
+                        <ShoppingCartIcon />
+                      </Badge>
+                    </IconButton>
+                  )}
                   <Box
                     sx={{
                       display: "flex",
@@ -204,12 +215,29 @@ const Header = ({ isHidden, isMobileHeader }) => {
                     transformOrigin={{ horizontal: "right", vertical: "top" }}
                     anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                   >
-                    <MenuItem
-                      style={{ fontSize: "13px", fontWeight: 700 }}
-                      onClick={() => router.push(`/user/${name}`)}
-                    >
-                      Profile
-                    </MenuItem>
+                    {userType === "user" ? (
+                      <MenuItem
+                        style={{ fontSize: "13px", fontWeight: 700 }}
+                        onClick={() => router.push(`/user/${name}`)}
+                      >
+                        Profile
+                      </MenuItem>
+                    ) : (
+                      <>
+                        <MenuItem
+                          style={{ fontSize: "13px", fontWeight: 700 }}
+                          onClick={() => router.push(`/professional/profile`)}
+                        >
+                          Profile
+                        </MenuItem>
+                        <MenuItem
+                          style={{ fontSize: "13px", fontWeight: 700 }}
+                          onClick={() => router.push(`/professional/dashboard`)}
+                        >
+                          Dashboard
+                        </MenuItem>
+                      </>
+                    )}
                     <MenuItem
                       onClick={() => handleLogout()}
                       style={{ fontSize: "13px", fontWeight: 700 }}
@@ -258,7 +286,29 @@ const Header = ({ isHidden, isMobileHeader }) => {
             )}
             {loggedIn && (
               <>
-                <MenuItem onClick={() => handleProfile()}>Profile</MenuItem>
+                {userType === "user" ? (
+                  <MenuItem
+                    style={{ fontSize: "13px", fontWeight: 700 }}
+                    onClick={() => router.push(`/user/${name}`)}
+                  >
+                    Profile
+                  </MenuItem>
+                ) : (
+                  <>
+                    <MenuItem
+                      style={{ fontSize: "13px", fontWeight: 700 }}
+                      onClick={() => router.push(`/professional/profile`)}
+                    >
+                      Profile
+                    </MenuItem>
+                    <MenuItem
+                      style={{ fontSize: "13px", fontWeight: 700 }}
+                      onClick={() => router.push(`/professional/dashboard`)}
+                    >
+                      Dashboard
+                    </MenuItem>
+                  </>
+                )}
                 <MenuItem onClick={() => handleCart()}>Cart</MenuItem>
                 <MenuItem onClick={() => handlelogoutMobile()}>Logout</MenuItem>
               </>
